@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt-Driven UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
+
+    <!-- Header -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="font-bold text-2xl text-indigo-600" href="#">Prompt-Driven UI</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-gray-600 hover:text-indigo-600 font-medium">Home</a>
+                <a href="#prompts" class="text-gray-600 hover:text-indigo-600 font-medium">Prompts</a>
+                <a href="#designs" class="text-gray-600 hover:text-indigo-600 font-medium">Designs</a>
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium">About</a>
+                <a href="#license" class="text-gray-600 hover:text-indigo-600 font-medium">License</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="container mx-auto px-6 pt-32 pb-16 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Prompt-Driven UI</h1>
+        <p class="text-xl mb-8 text-gray-600 max-w-2xl mx-auto">Generate website designs directly from plain English—no Figma needed. Explore 100 website designs (50 in English, 50 in Vietnamese).</p>
+        <div class="flex justify-center gap-4">
+            <a href="#prompts" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-500 transition duration-300">Learn to Prompt</a>
+            <a href="#designs" class="bg-white text-indigo-600 border border-indigo-600 font-bold py-3 px-8 rounded-full shadow-sm hover:bg-gray-50 transition duration-300">View 100 Designs</a>
+        </div>
+    </section>
+
+    <!-- Prompts Guide Section -->
+    <section id="prompts" class="bg-white py-16">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold mb-8 text-center text-indigo-600">How to Use the Prompts</h2>
+            <p class="text-center text-gray-600 mb-10 text-lg">A short guide on using AI to generate new website designs based on our 100 existing examples.</p>
+            
+            <div class="space-y-8">
+                <!-- Guide 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
+                        Generate the Exact Website
+                    </h3>
+                    <p class="text-gray-600 ml-11">You can copy the provided markdown prompts and paste them into AI code generators (like Claude, ChatGPT, v0 by Vercel, or GitHub Copilot) to generate fully functional HTML/CSS/JS without any modifications.</p>
+                </div>
+
+                <!-- Guide 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
+                        a) Create a Similar Website
+                    </h3>
+                    <p class="text-gray-600 ml-11">To create a unique website based on these examples, simply modify the variables in the prompt text:</p>
+                    <ul class="list-disc mt-4 text-gray-600 space-y-2 ml-16">
+                        <li><strong>Content:</strong> Swap out titles, descriptions, and placeholder text with your own.</li>
+                        <li><strong>Color Scheme:</strong> Update the color names (e.g., change "dark mode with neon accents" to "light mode with earth tones").</li>
+                        <li><strong>Layout Structure:</strong> Adjust layout instructions (e.g., "3-column grid" to "single column list").</li>
+                    </ul>
+                </div>
+
+                <!-- Guide 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-bold mb-3 text-gray-800 flex items-center">
+                        <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">3</span>
+                        b) Create a Multi-Language Website
+                    </h3>
+                    <p class="text-gray-600 ml-11">Our prompts are available in both English and Vietnamese. To adapt a site for multiple languages or a completely new language:</p>
+                    <ul class="list-disc mt-4 text-gray-600 space-y-2 ml-16">
+                        <li>Provide the layout and technical instructions in English to the AI for the best structural results.</li>
+                        <li>Provide the localized copy (e.g., Japanese, Spanish) within the content section of the prompt.</li>
+                        <li>Instruct the AI to add a "Language Switcher" toggle in the navigation bar.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designs & Prompts Grid Section -->
+    <section id="designs" class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold mb-12 text-center text-indigo-600">Designs & Prompts</h2>
+        <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamically populated via JS -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-indigo-600">About</h2>
+            <p class="text-xl text-gray-700 mb-6">Author: <strong>Vu Hung Nguyen</strong></p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.linkedin.com/in/nguyenvuhung/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium text-lg flex items-center transition">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/vuhung16au/" target="_blank" class="text-gray-800 hover:text-gray-600 font-medium text-lg flex items-center transition">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / License -->
+    <footer id="license" class="bg-gray-800 text-gray-400 py-10 text-center">
+        <p class="text-lg">License: MIT</p>
+        <p class="mt-2">&copy; 2026 Vu Hung Nguyen. All rights reserved.</p>
+        <p class="mt-4"><a href="LICENSE" class="text-indigo-400 hover:text-indigo-300 underline">Read full license</a></p>
+    </footer>
+
+    <script>
+        const sites = [
+            "01-expense-splitter", "02-idea-market", "03-night-shift", "04-say-it-right", "05-neon-88",
+            "06-flow-check", "07-this-weekend", "08-sketch-to-bowl", "09-brands-own-voice", "10-entire-chain-knows",
+            "11-entire-chain-known", "12-content-waiting-on", "13-words-have-rhythm", "14-one-task", "15-brief-to-approved",
+            "16-to-nghe", "17-read-closely", "18-read-deeply", "19-read-carefully", "20-take-a-moment",
+            "21-basket-of-greens", "22-ngu", "23-clear-books", "24-clear-inspection-repair", "25-clear-inspection-precise",
+            "26-neat-laundry", "27-neat-laundry-2", "28-consultation-schedule", "29-tapes-and-discs", "30-look-once",
+            "31-nguyet-cam", "32-three-shapes", "33-work-rhythm", "34-new-requests", "35-one-person",
+            "36-a-day", "37-from-documents", "38-scattered-ideas", "39-four-steps", "40-action-items",
+            "41-action-items-2", "42-modern-retro-editorial", "43-modern-minimalist", "44-trustworthy-dark-fintech", "45-minimalist-document",
+            "46-minimalist-portfolio", "47-personality-driven-editorial", "48-minimalist-gallery", "49-premium-dark-corporate", "50-straightforward-minimalist"
+        ];
+
+        const container = document.getElementById('grid-container');
+
+        sites.forEach(site => {
+            const parts = site.split('-');
+            const num = parts[0];
+            const name = parts.slice(1).join(' ').replace(/\b\w/g, l => l.toUpperCase());
+
+            const card = document.createElement('div');
+            card.className = "bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition duration-300";
+            
+            card.innerHTML = `
+                <div class="p-6">
+                    <div class="mb-4 pb-4 border-b border-gray-100 flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-gray-800">#${num} ${name}</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Vietnamese</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="websites/${site}/index.html" target="_blank" class="flex justify-center items-center bg-indigo-50 text-indigo-700 hover:bg-indigo-100 py-2 px-3 rounded-md text-sm font-semibold transition">View Site</a>
+                                <a href="prompts/${num}.md" target="_blank" class="flex justify-center items-center bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 py-2 px-3 rounded-md text-sm font-semibold transition shadow-sm">Prompt</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">English</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="websites-en/${site}/index.html" target="_blank" class="flex justify-center items-center bg-indigo-50 text-indigo-700 hover:bg-indigo-100 py-2 px-3 rounded-md text-sm font-semibold transition">View Site</a>
+                                <a href="prompts-en/${num}.md" target="_blank" class="flex justify-center items-center bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 py-2 px-3 rounded-md text-sm font-semibold transition shadow-sm">Prompt</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
