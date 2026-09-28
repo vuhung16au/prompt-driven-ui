@@ -173,6 +173,9 @@
             card.className = "bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition duration-300";
             
             card.innerHTML = `
+                <div class="w-full border-b border-gray-200 bg-gray-100 aspect-[16/9] overflow-hidden">
+                    <img src="thumbs/landscape/${site}-en.png" alt="${name} thumbnail" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
                 <div class="p-6">
                     <div class="mb-4 pb-4 border-b border-gray-100 flex items-center justify-between">
                         <h3 class="text-xl font-bold text-gray-800">#${num} ${name}</h3>
