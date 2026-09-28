@@ -1,0 +1,31 @@
+{
+  "name": "prompt-driven-ui",
+  "version": "1.0.0",
+  "description": "A showcase of 100+ website designs (concepts and variations) generated entirely from text prompts. Explore the possibilities of AI-driven UI generation and see how natural language translates into modern web design.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuhung16au/prompt-driven-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vuhung16au/prompt-driven-ui/issues"
+  },
+  "homepage": "https://github.com/vuhung16au/prompt-driven-ui#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "playwright": "^1.63.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
