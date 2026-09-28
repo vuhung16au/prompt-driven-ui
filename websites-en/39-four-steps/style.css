@@ -1,0 +1,302 @@
+:root {
+    --background: #F3F0E8;
+    --surface: #FFFFFF;
+    --surface-alt: #E6E9DF;
+    --foreground: #252924;
+    --muted: #596255;
+    --accent: #c2521b; /* Cam đất */
+    --on-accent: #FFFFFF;
+    --border: #D6D8CD;
+    --focus: #275F85;
+    --error: #A23E35;
+    
+    --radius: 12px;
+    --gap: 32px;
+    --stack-offset: 24px;
+    --stack-top: 40px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    padding: 80px 0 60px;
+}
+
+h1 {
+    font-size: 72px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+.lead {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--on-accent);
+}
+
+.btn-primary:hover {
+    background-color: #a84717;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(37, 41, 36, 0.05);
+}
+
+/* Stack Layout */
+.stack-container {
+    padding-bottom: 120px;
+    position: relative;
+}
+
+.step-card {
+    position: sticky;
+    /* top = base-offset + index * step-offset */
+    top: calc(var(--stack-top) + var(--step-index) * var(--stack-offset));
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(30, 40, 28, 0.10);
+    margin-bottom: var(--gap);
+    min-height: 500px;
+    z-index: calc(var(--step-index) + 1);
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    padding: 40px;
+    
+    transform-origin: top center;
+    transition: transform 0.1s ease-out, opacity 0.3s ease;
+}
+
+/* Typography in Card */
+.step-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.step-number {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.step-card h2 {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.deliverable {
+    background-color: var(--background);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.deliverable h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.deliverable p {
+    font-weight: 500;
+}
+
+.task-list h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+/* Checklist */
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+}
+
+.check-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.check-box {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    margin-right: 12px;
+    margin-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.check-item:hover .check-box {
+    border-color: var(--accent);
+}
+
+.check-item input:checked ~ .check-box {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.check-item input:checked ~ .check-box::after {
+    content: '';
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+}
+
+.check-item input:focus-visible ~ .check-box {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.check-label {
+    user-select: none;
+}
+
+.step-footer {
+    margin-top: 40px;
+}
+
+/* Media */
+.step-media {
+    background-color: var(--surface-alt);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.media-placeholder {
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* View All Mode */
+body.view-all .step-card {
+    position: relative;
+    top: 0 !important;
+    transform: none !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 52px;
+    }
+}
+
+@media (max-width: 768px), (max-height: 700px) {
+    .step-card {
+        position: relative;
+        top: 0 !important;
+        grid-template-columns: 1fr;
+        transform: none !important;
+        padding: 24px;
+    }
+    
+    .step-number {
+        font-size: 40px;
+    }
+    
+    h1 {
+        font-size: 38px;
+    }
+    
+    .header {
+        padding: 40px 0 32px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .step-card {
+        position: relative;
+        top: 0 !important;
+        transform: none !important;
+        transition: none;
+    }
+}

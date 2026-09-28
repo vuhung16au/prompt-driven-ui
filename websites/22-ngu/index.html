@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ngũ — Thiết kế từ điều kiện thực tế | Hồ sơ cải tạo nhà hẹp</title>
+  <meta name="description" content="Ngũ — Văn phòng kiến trúc chuyên sâu cải tạo nhà hẹp đô thị. Giải pháp vi khí hậu, thông tầng lấy sáng và tái cấu trúc thang lệch tầng từ điều kiện thực tế.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="swiss-noise">
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+  <!-- Global Header / Top Navigation -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand-group">
+        <a href="#hero" class="brand-logo" aria-label="Ngũ — Trang chủ">
+          <span class="brand-mark">NGŨ</span>
+          <span class="brand-subtitle">KIẾN TRÚC NHÀ HẸP</span>
+        </a>
+      </div>
+
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list">
+          <li><a href="#thesis" class="nav-link"><span class="nav-num">01.</span> Luận điểm</a></li>
+          <li><a href="#projects" class="nav-link"><span class="nav-num">02.</span> Công trình</a></li>
+          <li><a href="#decisions" class="nav-link"><span class="nav-num">03.</span> Hiện trạng & Quyết định</a></li>
+          <li><a href="#comparison" class="nav-link"><span class="nav-num">04.</span> Trước & Sau</a></li>
+          <li><a href="#contact" class="nav-link"><span class="nav-num">05.</span> Trao đổi</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-action">
+        <a href="#projects" class="btn btn-primary nav-cta">
+          <span class="btn-text">Xem hồ sơ công trình</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content">
+
+    <!-- Hero Section / Opening Content -->
+    <section id="hero" class="section-hero swiss-grid-pattern" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <!-- Hero Left Column: Asymmetrical Typography -->
+        <div class="hero-content">
+          <div class="hero-meta">
+            <span class="swiss-badge">HỒ SƠ THỰC HÀNH 2026</span>
+            <span class="hero-coord">21°01'49"N 105°51'08"E — HÀ NỘI</span>
+          </div>
+
+          <h1 id="hero-heading" class="hero-title">
+            Ngũ. Thiết kế từ điều kiện thực tế.
+          </h1>
+
+          <p class="hero-lead">
+            Hồ sơ cải tạo nhà hẹp, được trình bày qua hiện trạng, lựa chọn và không gian sau cùng.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary hero-btn">
+              <span class="btn-text">Xem hồ sơ công trình</span>
+              <span class="btn-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a href="#decisions" class="btn btn-secondary hero-btn">
+              <span class="btn-text">Phương pháp can thiệp</span>
+            </a>
+          </div>
+
+          <div class="hero-specs-strip">
+            <div class="spec-block">
+              <span class="spec-label">MẶT BẰNG ĐẶC TRƯNG</span>
+              <span class="spec-val">3.0M – 3.8M</span>
+            </div>
+            <div class="spec-block">
+              <span class="spec-label">TRỌNG TÂM THIẾT KẾ</span>
+              <span class="spec-val">LÕI LẤY SÁNG & GIÓ</span>
+            </div>
+            <div class="spec-block">
+              <span class="spec-label">PHƯƠNG CHÂM</span>
+              <span class="spec-val">TRUNG THỰC VẬT LIỆU</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Large Architectural Image -->
+        <div class="hero-media-wrapper">
+          <div class="hero-image-frame">
+            <div class="frame-tag">
+              <span class="tag-index">01</span>
+              <span class="tag-name">MẶT ĐỨNG ĐÓN NẮNG VÀ GIÓ TỰ NHIÊN</span>
+            </div>
+            <img 
+              src="./hero_architecture_1790520186908.jpg" 
+              alt="Mặt đứng công trình nhà hẹp với lam kim loại và giếng trời đón sáng tự nhiên"
+              class="hero-img"
+              width="1024"
+              height="1024"
+              fetchpriority="high"
+              onerror="this.classList.add('img-error');"
+            >
+            <div class="img-fallback" aria-hidden="true">
+              <span class="fallback-code">H-01</span>
+              <span class="fallback-text">ẢNH MINH HỌA ĐANG CẬP NHẬT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01: LUẬN ĐIỂM (MAIN THESIS) -->
+    <section id="thesis" class="section-block" aria-labelledby="thesis-title">
+      <div class="container">
+        <!-- Section Header with strict baseline alignment -->
+        <div class="section-header">
+          <span class="section-index">01. LUẬN ĐIỂM</span>
+          <h2 id="thesis-title" class="section-title">Nhà hẹp không phải biệt thự thu nhỏ</h2>
+        </div>
+
+        <div class="thesis-grid">
+          <!-- Left Column (4 columns): Text & Reasoning -->
+          <div class="thesis-text-col">
+            <div class="thesis-kicker">QUAN ĐIỂM BẮT BUỘC</div>
+            <p class="thesis-statement">
+              Nhà ống tại đô thị Việt Nam điển hình có bề ngang chỉ từ 3m đến 4m, chiều sâu gấp 4 đến 5 lần và bị kẹp chặt bởi ba bức tường liền kề.
+            </p>
+            <p class="thesis-body">
+              Sai lầm phổ biến nhất là áp đặt tư duy phân chia phòng kín của biệt thự hoặc căn hộ lớn vào một không gian hẹp. Hậu quả là những căn nhà thiếu ánh sáng, hành lang tối đen và cầu thang chiếm hết lối đi.
+            </p>
+            <div class="thesis-principles-list">
+              <div class="principle-item">
+                <span class="p-num">A</span>
+                <div class="p-content">
+                  <strong>Ánh sáng là vật liệu cấu trúc:</strong> Khoét sàn tạo giếng trời đón sáng đỉnh mái thay vì phụ thuộc 100% vào đèn nhân tạo ban ngày.
+                </div>
+              </div>
+              <div class="principle-item">
+                <span class="p-num">B</span>
+                <div class="p-content">
+                  <strong>Thang thép dạt biên:</strong> Dỡ bỏ thang bê tông đồ sộ giữa nhà để giải phóng diện tích sinh hoạt và tầm nhìn thông suốt.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (8 columns): Architectural Residence Image -->
+          <div class="thesis-media-col">
+            <div class="media-container swiss-diagonal">
+              <div class="media-header-bar">
+                <span class="m-code">T-01 / KHÔNG GIAN THÔNG TẦNG THỰC TẾ</span>
+                <span class="m-type">PHÂN LOẠI: NHÀ PHỐ ĐÔ THỊ</span>
+              </div>
+              <img 
+                src="./thesis_interior_1790520199249.jpg" 
+                alt="Không gian nội thất nhà hẹp sau cải tạo với trục thông tầng và giếng trời mở rộng"
+                class="content-img"
+                width="1024"
+                height="1024"
+                loading="lazy"
+                onerror="this.classList.add('img-error');"
+              >
+              <div class="img-fallback" aria-hidden="true">
+                <span class="fallback-code">T-01</span>
+                <span class="fallback-text">ẢNH MINH HỌA ĐANG CẬP NHẬT</span>
+              </div>
+              <div class="media-caption-bar">
+                <span>HIỆN TRẠNG XỬ LÝ: CHIỀU RỘNG 3.2M × CHIỀU DÀI 15.5M</span>
+                <span>GIẢI PHÁP: GIẢI PHÓNG TRỤC THÔNG GIÓ THẲNG ĐỨNG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: DANH MỤC CÔNG TRÌNH (PROJECT DIRECTORY) -->
+    <section id="projects" class="section-block bg-muted swiss-dots" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index">02. CÔNG TRÌNH</span>
+          <h2 id="projects-title" class="section-title">Hồ sơ cải tạo chọn lọc</h2>
+        </div>
+
+        <!-- Project Directory Controls: Filter + Disclaimer -->
+        <div class="catalog-controls">
+          <div class="filter-group" role="group" aria-label="Lọc theo loại công trình">
+            <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">
+              Tất cả <span class="filter-count">(3)</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="residential" aria-pressed="false">
+              Nhà ở <span class="filter-count">(2)</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="workspace" aria-pressed="false">
+              Không gian làm việc <span class="filter-count">(1)</span>
+            </button>
+          </div>
+
+          <div class="catalog-disclaimer">
+            <span class="disclaimer-mark">!</span>
+            <span class="disclaimer-text">DỮ LIỆU HỒ SƠ MINH HỌA — Dự án và thông số phục vụ mục đích trình bày phương pháp thiết kế nhà hẹp.</span>
+          </div>
+        </div>
+
+        <!-- Project Table / Directory Rows -->
+        <div class="projects-table" role="region" aria-label="Danh mục dự án">
+          <div class="table-header-row" aria-hidden="true">
+            <span class="th-cell col-code">MÃ SỐ</span>
+            <span class="th-cell col-name">TÊN CÔNG TRÌNH & ĐỊA ĐIỂM</span>
+            <span class="th-cell col-scope">PHẠM VI CẢI TẠO</span>
+            <span class="th-cell col-type">PHÂN LOẠI</span>
+            <span class="th-cell col-thumb">THUMBNAIL</span>
+            <span class="th-cell col-action">CHI TIẾT</span>
+          </div>
+
+          <!-- Project Row 1: N-01 -->
+          <article class="project-row" data-category="residential" data-id="N-01" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Xem chi tiết dự án N-01: Nhà phố Hàng Bông">
+            <div class="row-cell col-code">
+              <span class="code-badge">N-01</span>
+            </div>
+            <div class="row-cell col-name">
+              <h3 class="project-name">Nhà phố Hàng Bông</h3>
+              <span class="project-location">Hoàn Kiếm, Hà Nội (Khu phố cổ)</span>
+            </div>
+            <div class="row-cell col-scope">
+              <span class="scope-highlight">Cải tạo lõi thông tầng & mở giếng trời đón nắng đông nam</span>
+              <span class="scope-note">Kết cấu khung bê tông 1994, bề ngang 3.4m</span>
+            </div>
+            <div class="row-cell col-type">
+              <span class="type-tag">Nhà ở</span>
+            </div>
+            <div class="row-cell col-thumb">
+              <div class="thumb-frame">
+                <img 
+                  src="./thumb_n01_1790520210407.jpg" 
+                  alt="Ảnh thu nhỏ công trình Nhà phố Hàng Bông"
+                  class="thumb-img"
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                  onerror="this.classList.add('img-error');"
+                >
+                <div class="img-fallback" aria-hidden="true">
+                  <span class="fallback-code">N-01</span>
+                </div>
+              </div>
+            </div>
+            <div class="row-cell col-action">
+              <span class="action-btn-inline">
+                Mở hồ sơ <span class="arrow" aria-hidden="true">+</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project Row 2: W-01 -->
+          <article class="project-row" data-category="workspace" data-id="W-01" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Xem chi tiết dự án W-01: Xưởng sáng tạo Yên Phụ">
+            <div class="row-cell col-code">
+              <span class="code-badge">W-01</span>
+            </div>
+            <div class="row-cell col-name">
+              <h3 class="project-name">Xưởng sáng tạo Yên Phụ</h3>
+              <span class="project-location">Tây Hồ, Hà Nội (Gần đê sông Hồng)</span>
+            </div>
+            <div class="row-cell col-scope">
+              <span class="scope-highlight">Chuyển đổi nhà ống 3 tầng thành văn phòng kiến trúc mở</span>
+              <span class="scope-note">Bề ngang 3.1m, giải phóng toàn bộ vách ngăn kín</span>
+            </div>
+            <div class="row-cell col-type">
+              <span class="type-tag">Không gian làm việc</span>
+            </div>
+            <div class="row-cell col-thumb">
+              <div class="thumb-frame">
+                <img 
+                  src="./thumb_w01_1790520224360.jpg" 
+                  alt="Ảnh thu nhỏ công trình Xưởng sáng tạo Yên Phụ"
+                  class="thumb-img"
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                  onerror="this.classList.add('img-error');"
+                >
+                <div class="img-fallback" aria-hidden="true">
+                  <span class="fallback-code">W-01</span>
+                </div>
+              </div>
+            </div>
+            <div class="row-cell col-action">
+              <span class="action-btn-inline">
+                Mở hồ sơ <span class="arrow" aria-hidden="true">+</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project Row 3: N-02 -->
+          <article class="project-row" data-category="residential" data-id="N-02" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Xem chi tiết dự án N-02: Nhà hẹp Kim Mã">
+            <div class="row-cell col-code">
+              <span class="code-badge">N-02</span>
+            </div>
+            <div class="row-cell col-name">
+              <h3 class="project-name">Nhà hẹp Kim Mã</h3>
+              <span class="project-location">Ba Đình, Hà Nội (Ngõ sâu 1.8m)</span>
+            </div>
+            <div class="row-cell col-scope">
+              <span class="scope-highlight">Tái cấu trúc thang lệch tầng & mặt tiền lam đón gió</span>
+              <span class="scope-note">Khu đất 3.0m × 11.0m, giải phóng 35% diện tích sàn</span>
+            </div>
+            <div class="row-cell col-type">
+              <span class="type-tag">Nhà ở</span>
+            </div>
+            <div class="row-cell col-thumb">
+              <div class="thumb-frame">
+                <img 
+                  src="./thumb_n02_1790520262345.jpg" 
+                  alt="Ảnh thu nhỏ công trình Nhà hẹp Kim Mã"
+                  class="thumb-img"
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                  onerror="this.classList.add('img-error');"
+                >
+                <div class="img-fallback" aria-hidden="true">
+                  <span class="fallback-code">N-02</span>
+                </div>
+              </div>
+            </div>
+            <div class="row-cell col-action">
+              <span class="action-btn-inline">
+                Mở hồ sơ <span class="arrow" aria-hidden="true">+</span>
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Empty state when filter has no results -->
+        <div id="filter-empty-state" class="empty-state" hidden>
+          <div class="empty-box">
+            <span class="empty-code">00</span>
+            <h4 class="empty-title">Không tìm thấy công trình phù hợp</h4>
+            <p class="empty-desc">Không có hồ sơ nào thuộc nhóm phân loại được chọn.</p>
+            <button type="button" class="btn btn-primary btn-reset-filter" id="btn-reset-filter">
+              Khôi phục tất cả công trình
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: HIỆN TRẠNG VÀ QUYẾT ĐỊNH (EXISTING CONDITIONS & DECISIONS) -->
+    <section id="decisions" class="section-block" aria-labelledby="decisions-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index">03. HIỆN TRẠNG & QUYẾT ĐỊNH</span>
+          <h2 id="decisions-title" class="section-title">Đối mặt với hai rào cản cốt lõi</h2>
+        </div>
+
+        <!-- 4/8 Asymmetrical Layout -->
+        <div class="decisions-grid">
+          <!-- 4-column Left: Questions & Two Decisions -->
+          <div class="decisions-col-left">
+            <div class="problem-box">
+              <span class="box-tag">VẤN ĐỀ CỐT LÕI</span>
+              <h3 class="problem-heading">
+                Làm thế nào để nhà ống 3.2m sâu hun hút không biến thành một "đường hầm tối tăm"?
+              </h3>
+            </div>
+
+            <!-- Two Existing Conditions -->
+            <div class="conditions-list">
+              <div class="condition-item">
+                <span class="cond-tag">HIỆN TRẠNG 01</span>
+                <h4 class="cond-title">Thiếu ánh sáng tự nhiên trầm trọng</h4>
+                <p class="cond-desc">
+                  Ba mặt giáp tường hàng xóm. Ban ngày, toàn bộ tầng trệt và khu vực giữa nhà phải bật đèn điện 100%, không khí ẩm thấp và bí bách.
+                </p>
+              </div>
+
+              <div class="condition-item">
+                <span class="cond-tag">HIỆN TRẠNG 02</span>
+                <h4 class="cond-title">Lối đi chật hẹp, thang chắn lối lưu thông</h4>
+                <p class="cond-desc">
+                  Khối thang bê tông đặc nằm giữa nhà chiếm hơn 1/3 bề ngang, chia cắt nhà thành các phòng nhỏ vụn, cản trở tầm nhìn và thông gió.
+                </p>
+              </div>
+            </div>
+
+            <!-- Two Structural Decisions -->
+            <div class="decisions-applied">
+              <div class="decision-card">
+                <div class="d-header">
+                  <span class="d-badge">QUYẾT ĐỊNH 01</span>
+                  <span class="d-title">Giải phóng trục thông tầng vi khí hậu</span>
+                </div>
+                <p class="d-body">
+                  Khoét mở sàn tầng 2 và tầng 3 tạo lõi thông tầng 6.5m² kết hợp giếng trời đỉnh mái. Lớp lam gỗ nghiêng khuếch tán ánh sáng mềm xuống tận phòng khách tầng trệt.
+                </p>
+              </div>
+
+              <div class="decision-card">
+                <div class="d-header">
+                  <span class="d-badge">QUYẾT ĐỊNH 02</span>
+                  <span class="d-title">Thay thang bê tông bằng thang thép dạt biên</span>
+                </div>
+                <p class="d-body">
+                  Dỡ bỏ thang bê tông cồng kềnh. Chuyển sang hệ thang xương thép mặt gỗ sồi dạt sát tường biên, giải phóng 35% diện tích mặt sàn và tạo dòng đối lưu không khí liên tục.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8-column Right: Illustrative Floor Plan Drawing -->
+          <div class="decisions-col-right">
+            <div class="drawing-frame swiss-grid-pattern">
+              <div class="drawing-header">
+                <span class="drawing-code">MẶT BẰNG CAN THIỆP — TỶ LỆ MINH HỌA 1:50</span>
+                <span class="drawing-status">PHÂN TÍCH VÙNG LẤY SÁNG & THÔNG GIÓ</span>
+              </div>
+              
+              <div class="drawing-img-box">
+                <img 
+                  src="./floor_plan_1790520278194.jpg" 
+                  alt="Bản vẽ mặt bằng kiến trúc minh họa giải pháp thông tầng và bố trí thang dạt biên"
+                  class="drawing-img"
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                  onerror="this.classList.add('img-error');"
+                >
+                <div class="img-fallback" aria-hidden="true">
+                  <span class="fallback-code">FP-01</span>
+                  <span class="fallback-text">BẢN VẼ MẶT BẰNG ĐANG CẬP NHẬT</span>
+                </div>
+
+                <!-- Architectural annotations overlay on floor plan -->
+                <div class="plan-legend">
+                  <div class="legend-item">
+                    <span class="legend-marker marker-a">A</span>
+                    <span class="legend-desc">Trục thông tầng lấy sáng đỉnh mái (Lightwell)</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-marker marker-b">B</span>
+                    <span class="legend-desc">Hệ thang thép lệch tầng dạt biên</span>
+                  </div>
+                  <div class="legend-item">
+                    <span class="legend-marker marker-c">C</span>
+                    <span class="legend-desc">Hành lang thông gió xuyên phòng trước - sau</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="drawing-footer">
+                <span>DỰ ÁN: NHÀ PHỐ 3.2M × 15.5M</span>
+                <span>GIẢI PHÁP: GIẢI PHÓNG TOÀN DIỆN KHÔNG GIAN ĐỨNG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: TRƯỚC VÀ SAU (BEFORE & AFTER) -->
+    <section id="comparison" class="section-block bg-muted" aria-labelledby="comparison-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index">04. TRƯỚC VÀ SAU</span>
+          <h2 id="comparison-title" class="section-title">Khảo sát & không gian sau cùng</h2>
+        </div>
+
+        <div class="comparison-card">
+          <!-- Control bar outside the image frame as strictly specified -->
+          <div class="comparison-controls-bar">
+            <div class="badge-disclaimer">
+              <span class="badge-dot"></span>
+              <span>PHƯƠNG ÁN MINH HỌA (KHẢO SÁT & HOÀN THIỆN)</span>
+            </div>
+
+            <!-- External Buttons for Direct Toggle -->
+            <div class="toggle-btn-group" role="tablist" aria-label="Lựa chọn chế độ xem">
+              <button 
+                type="button" 
+                class="comp-btn active" 
+                id="btn-show-before" 
+                role="tab" 
+                aria-selected="true" 
+                aria-controls="comp-view-container"
+              >
+                [ 1. HIỆN TRẠNG TRƯỚC CẢI TẠO ]
+              </button>
+              <button 
+                type="button" 
+                class="comp-btn" 
+                id="btn-show-after" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="comp-view-container"
+              >
+                [ 2. KHÔNG GIAN SAU HOÀN THIỆN ]
+              </button>
+              <button 
+                type="button" 
+                class="comp-btn" 
+                id="btn-show-split" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="comp-view-container"
+              >
+                [ 3. SO SÁNH SONG SONG ]
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Label: Always Visible Outside Image -->
+          <div class="active-status-bar" id="active-status-bar" aria-live="polite">
+            <span class="status-marker" id="status-marker">TRẠNG THÁI HIỂN THỊ:</span>
+            <strong class="status-value" id="status-value">HIỆN TRẠNG TRƯỚC CẢI TẠO — VÁCH NGĂN KÍN, THIẾU ÁNH SÁNG</strong>
+          </div>
+
+          <!-- Dual Frames Comparison Area -->
+          <div class="comp-view-container mode-single" id="comp-view-container">
+            <!-- Frame Before -->
+            <div class="comp-frame frame-before active" id="frame-before">
+              <div class="frame-label-badge">TRƯỚC CẢI TẠO</div>
+              <img 
+                src="./before_img_1790520294885.jpg" 
+                alt="Ảnh hiện trạng trước cải tạo: căn phòng tối, đồ đạc chật chội và vách ngăn kín"
+                class="comp-img"
+                width="1024"
+                height="1024"
+                loading="lazy"
+                onerror="this.classList.add('img-error');"
+              >
+              <div class="img-fallback" aria-hidden="true">
+                <span class="fallback-code">BEFORE</span>
+                <span class="fallback-text">ẢNH HIỆN TRẠNG ĐANG CẬP NHẬT</span>
+              </div>
+            </div>
+
+            <!-- Frame After -->
+            <div class="comp-frame frame-after" id="frame-after">
+              <div class="frame-label-badge badge-after">SAU HOÀN THIỆN</div>
+              <img 
+                src="./after_img_1790520308244.jpg" 
+                alt="Ảnh không gian sau hoàn thiện: giếng trời sáng thoáng, sàn gỗ tần bì, thông tầng hiện đại"
+                class="comp-img"
+                width="1024"
+                height="1024"
+                loading="lazy"
+                onerror="this.classList.add('img-error');"
+              >
+              <div class="img-fallback" aria-hidden="true">
+                <span class="fallback-code">AFTER</span>
+                <span class="fallback-text">ẢNH HOÀN THIỆN ĐANG CẬP NHẬT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider alternative control -->
+          <div class="slider-control-box" id="slider-box">
+            <label for="compare-range" class="slider-label">
+              <span>ĐIỀU CHỈNH ĐỘ MỞ KHÔNG GIAN (0% TRƯỚC — 100% SAU):</span>
+              <span id="slider-percentage" class="slider-val">0%</span>
+            </label>
+            <input 
+              type="range" 
+              id="compare-range" 
+              min="0" 
+              max="100" 
+              value="0" 
+              class="swiss-range"
+              aria-label="Thanh trượt chuyển đổi giữa trước và sau cải tạo"
+            >
+          </div>
+
+          <!-- Technical Notes under Before & After -->
+          <div class="comp-notes-grid">
+            <div class="note-col">
+              <span class="note-num">01</span>
+              <h4>Ghi nhận hiện trạng:</h4>
+              <p>Khối cầu thang bê tông dốc đặc chiếm 2.4m chiều ngang; vách gạch dày 220mm chia nhỏ tầng trệt thành phòng khách tối và bếp ẩm thấp không có cửa thông gió.</p>
+            </div>
+            <div class="note-col">
+              <span class="note-num">02</span>
+              <h4>Can thiệp hoàn thiện:</h4>
+              <p>Mở rộng thông tầng 2 tầng cao 6m; thay thế toàn bộ lan can bằng thép hộp mỏng sơn đen mờ; lắp kính cường lực lấy sáng kèm nan cản nhiệt mái đón trọn nắng tự nhiên.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: TRAO ĐỔI DỰ ÁN (PROJECT INQUIRY) -->
+    <section id="contact" class="section-block" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-index">05. TRAO ĐỔI DỰ ÁN</span>
+          <h2 id="contact-title" class="section-title">Khởi đầu từ thông số thực tế</h2>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Column: Context & Guidelines -->
+          <div class="contact-info-col">
+            <div class="contact-lead-line">
+              Bắt đầu từ kích thước mảnh đất, hướng đón sáng và lối sinh hoạt gia đình.
+            </div>
+            <p class="contact-intro">
+              Chúng tôi không yêu cầu giấy tờ cá nhân hay bản vẽ phức tạp ở bước đầu. Chỉ cần những dữ kiện cốt lõi về vị trí và nhu cầu cải tạo để cùng thảo luận tính khả thi.
+            </p>
+
+            <div class="office-data-block">
+              <div class="data-row">
+                <span class="data-key">VĂN PHÒNG</span>
+                <span class="data-val">Tầng 3, Số 16 Ngõ Hàng Bột, Đống Đa, Hà Nội</span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">THƯ ĐIỆN TỬ</span>
+                <span class="data-val"><a href="mailto:studio@ngu-architecture.vn" class="swiss-link">studio@ngu-architecture.vn</a></span>
+              </div>
+              <div class="data-row">
+                <span class="data-key">LỊCH LÀM VIỆC</span>
+                <span class="data-val">Thứ Hai — Thứ Bảy: 08:30 – 17:30</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Clean Grid-Aligned Form (No Rounded Corners) -->
+          <div class="contact-form-col">
+            <form id="inquiry-form" class="swiss-form" novalidate>
+              <div class="form-row">
+                <label for="input-location" class="form-label">
+                  1. VỊ TRÍ CÔNG TRÌNH <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="input-location" 
+                  name="location" 
+                  class="swiss-input" 
+                  placeholder="Ví dụ: Quận Đống Đa, Hà Nội (Nhà ngõ 2m)" 
+                  required
+                  aria-required="true"
+                >
+                <span class="field-error" id="err-location" aria-live="polite"></span>
+              </div>
+
+              <div class="form-row">
+                <label for="input-dimensions" class="form-label">
+                  2. KÍCH THƯỚC KHU ĐẤT & HIỆN TRẠNG <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="input-dimensions" 
+                  name="dimensions" 
+                  class="swiss-input" 
+                  placeholder="Ví dụ: Rộng 3.2m × Dài 14m, hiện trạng 3 tầng cũ" 
+                  required
+                  aria-required="true"
+                >
+                <span class="field-error" id="err-dimensions" aria-live="polite"></span>
+              </div>
+
+              <div class="form-row">
+                <label for="input-needs" class="form-label">
+                  3. NHU CẦU CẢI TẠO CỐT LÕI <span class="required" aria-hidden="true">*</span>
+                </label>
+                <select id="input-needs" name="needs" class="swiss-select" required aria-required="true">
+                  <option value="" disabled selected>-- Chọn nhu cầu ưu tiên nhất --</option>
+                  <option value="lightwell">Mở giếng trời lấy sáng & xử lý thông gió đứng</option>
+                  <option value="staircase">Tái cấu trúc cầu thang & giải phóng diện tích trệt</option>
+                  <option value="workspace">Chuyển đổi công năng thành xưởng / văn phòng làm việc</option>
+                  <option value="full_renovation">Cải tạo kết cấu toàn diện nhà hẹp</option>
+                </select>
+                <span class="field-error" id="err-needs" aria-live="polite"></span>
+              </div>
+
+              <div class="form-row">
+                <label for="input-contact" class="form-label">
+                  4. THÔNG TIN LIÊN HỆ (EMAIL HOẶC SỐ ĐIỆN THOẠI) <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="input-contact" 
+                  name="contact" 
+                  class="swiss-input" 
+                  placeholder="name@domain.com hoặc 09xxxxxxxx" 
+                  required
+                  aria-required="true"
+                >
+                <span class="field-error" id="err-contact" aria-live="polite"></span>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
+                  <span class="btn-text">Gửi thông số dự án</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </button>
+                <button type="reset" class="btn btn-secondary btn-reset" id="btn-reset">
+                  <span class="btn-text">Làm mới form</span>
+                </button>
+              </div>
+
+              <!-- Explicit Demo Notice & Result Message Container -->
+              <div id="form-feedback" class="form-feedback" aria-live="polite" hidden></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Detail Modal Dialog (Native Accessible HTML5 Dialog) -->
+  <dialog id="project-modal" class="swiss-dialog" aria-labelledby="modal-project-title" aria-modal="true">
+    <div class="modal-inner">
+      <div class="modal-header">
+        <div class="modal-code-tag">
+          <span class="tag-code" id="modal-project-code">N-01</span>
+          <span class="tag-type" id="modal-project-type">NHÀ Ở</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Đóng cửa sổ chi tiết">
+          ĐÓNG [×]
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-image-col">
+            <img 
+              id="modal-project-img" 
+              src="" 
+              alt="Chi tiết dự án" 
+              class="modal-img"
+              width="600"
+              height="600"
+            >
+          </div>
+          <div class="modal-info-col">
+            <h3 id="modal-project-title" class="modal-title">Tên dự án</h3>
+            <p class="modal-location" id="modal-project-location">Địa điểm</p>
+            
+            <div class="modal-specs">
+              <div class="modal-spec-row">
+                <span class="s-key">HIỆN TRẠNG ĐẦU VÀO:</span>
+                <span class="s-val" id="modal-project-initial">Khung kết cấu cũ, thiếu sáng</span>
+              </div>
+              <div class="modal-spec-row">
+                <span class="s-key">PHẠM VI CAN THIỆP:</span>
+                <span class="s-val" id="modal-project-scope">Cải tạo lõi thông tầng</span>
+              </div>
+              <div class="modal-spec-row">
+                <span class="s-key">VẬT LIỆU CHỦ ĐẠO:</span>
+                <span class="s-val" id="modal-project-materials">Thép bản mỏng, bê tông mài, gỗ sồi</span>
+              </div>
+            </div>
+
+            <div class="modal-narrative">
+              <h4 class="narrative-heading">QUYẾT ĐỊNH CẤU TRÚC:</h4>
+              <p id="modal-project-desc" class="narrative-text">
+                Nội dung chi tiết về quyết định thiết kế...
+              </p>
+            </div>
+
+            <div class="modal-footer-actions">
+              <a href="#contact" class="btn btn-primary modal-cta-btn" id="modal-discuss-btn">
+                Trao đổi về trường hợp tương tự →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <span class="footer-logo">NGŨ</span>
+        <p class="footer-motto">
+          Văn phòng kiến trúc chuyên sâu cải tạo nhà hẹp đô thị. Xác lập trật tự không gian từ hiện trạng thực tế.
+        </p>
+        <span class="footer-copy">© 2026 NGŨ ARCHITECTURE STUDIO. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.</span>
+      </div>
+
+      <div class="footer-col footer-links">
+        <span class="footer-col-title">DANH MỤC TRÌNH BÀY</span>
+        <ul class="footer-nav">
+          <li><a href="#thesis" class="footer-link">01. Luận điểm thiết kế</a></li>
+          <li><a href="#projects" class="footer-link">02. Danh mục công trình</a></li>
+          <li><a href="#decisions" class="footer-link">03. Hiện trạng & Quyết định</a></li>
+          <li><a href="#comparison" class="footer-link">04. So sánh Trước và Sau</a></li>
+          <li><a href="#contact" class="footer-link">05. Trao đổi hồ sơ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-meta">
+        <span class="footer-col-title">QUY CHUẨN THỊ GIÁC</span>
+        <p class="footer-meta-desc">
+          Phong cách Swiss International Style (1950s) — Lưới cấu trúc 12 cột, kiểu chữ Grotesque, màu đỏ tín hiệu #D5342B, tuyệt đối không sử dụng hiệu ứng bóng đổ và góc bo tròn.
+        </p>
+        <div class="accessibility-note">
+          <span class="a11y-badge">A11Y WCAG 2.1 AA</span>
+          <span>Tương phản cao 21:1 — Hỗ trợ điều hướng bàn phím hoàn chỉnh.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

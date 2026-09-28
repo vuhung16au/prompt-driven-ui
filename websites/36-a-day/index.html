@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một ngày, nhìn rõ từng khoảng</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header-area">
+            <div class="control-bar">
+                <h1 class="sr-only">Sắp xếp lịch cá nhân</h1>
+                <div class="toggle-wrapper">
+                    <label class="switch">
+                        <input type="checkbox" id="reduce-transparency" aria-pressed="false">
+                        <span class="slider"></span>
+                    </label>
+                    <label for="reduce-transparency" class="toggle-label">Giảm trong suốt</label>
+                </div>
+            </div>
+            <h1>Một ngày, nhìn rõ từng khoảng.</h1>
+            <p>Thử sắp xếp lịch cá nhân trong giao diện kính mờ, với trạng thái và nội dung luôn đọc được.</p>
+            <div style="margin-top: 24px;">
+                <button class="btn-primary" id="btn-add-event">Thử sắp xếp một ngày</button>
+            </div>
+        </header>
+
+        <main class="grid">
+            <section class="calendar-section">
+                <div class="glass-panel">
+                    <div class="panel-content panel-header">
+                        <h2>Lịch hôm nay</h2>
+                    </div>
+                    <div class="timeline" id="timeline-container">
+                        <!-- Render slots via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="detail-section">
+                <div class="glass-panel" id="detail-panel">
+                    <div class="panel-content" id="detail-content">
+                        <!-- Render details via JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="notification" class="notification">
+        <span id="notif-text">Đã xóa lịch.</span>
+        <button id="btn-undo" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">Hoàn tác</button>
+    </div>
+
+    <script>
+        const I18N = {
+            addTitle: "Thêm lịch mẫu",
+            editTitle: "Chi tiết lịch",
+            titleLabel: "Tiêu đề",
+            startLabel: "Bắt đầu",
+            endLabel: "Kết thúc",
+            saveBtn: "Lưu lại",
+            cancelBtn: "Hủy",
+            deleteBtn: "Xóa lịch",
+            emptySelect: "Chọn một lịch hẹn để xem hoặc sửa",
+            errStartEnd: "Thời gian kết thúc phải sau bắt đầu.",
+            errRequired: "Vui lòng nhập đủ thông tin.",
+            conflictLabel: "Trùng giờ",
+            deletedMsg: "Đã xóa lịch.",
+            undoBtn: "Hoàn tác"
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

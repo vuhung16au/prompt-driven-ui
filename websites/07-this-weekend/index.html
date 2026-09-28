@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hạt Dẻ - Hoạt động cuối tuần cùng con</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Hạt Dẻ</div>
+            <nav class="nav">
+                <a href="#activities" class="btn btn-secondary">Khám phá ngay</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Cuối tuần, làm một điều mới cùng con.</h1>
+                    <p class="lead">Chọn buổi thực hành theo độ tuổi, thời gian và món đồ bé muốn tự tay làm.</p>
+                    <a href="#activities" class="btn btn-primary">
+                        Chọn hoạt động cuối tuần
+                        <span class="icon-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </span>
+                    </a>
+                </div>
+                <div class="hero-visual">
+                    <div class="circle-bg"></div>
+                    <div class="hero-image-wrapper blob-shape">
+                        <img src="https://placehold.co/600x600/F472B6/1E293B?text=Workshop+Ban+Tay+Nho" alt="Trẻ em đang làm đồ thủ công trên bàn workshop" class="hero-img">
+                    </div>
+                </div>
+            </div>
+            <div class="pattern-dots"></div>
+        </section>
+
+        <section id="activities" class="section-activities">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Chọn buổi thực hành</h2>
+                    <div class="age-filters" id="ageFilters">
+                        <button class="filter-btn" data-age="all">Tất cả</button>
+                        <button class="filter-btn" data-age="4-6">4–6 tuổi (Người lớn làm cùng)</button>
+                        <button class="filter-btn" data-age="7-9">7–9 tuổi (Cần hướng dẫn nhẹ)</button>
+                        <button class="filter-btn" data-age="10-12">10–12 tuổi (Tự làm 100%)</button>
+                    </div>
+                </div>
+
+                <div class="activities-grid" id="activitiesGrid">
+                    <!-- Tranh -->
+                    <article class="activity-card" data-ages="4-6">
+                        <div class="card-header bg-pink">
+                            <span class="badge">Vẽ Tranh</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Tranh+Sac+Mau" alt="Tranh giấy cắt lớp">
+                        </div>
+                        <div class="card-content">
+                            <h3>Tranh Giấy Cắt Lớp</h3>
+                            <p class="time-mat">Thời gian: 60 phút | Vật liệu: Giấy màu, keo</p>
+                            <p class="desc">Bé cắt và dán các lớp giấy để tạo thành một bức tranh nổi 3D thú vị.</p>
+                            <button class="btn btn-card action-select">Chọn buổi này</button>
+                        </div>
+                    </article>
+
+                    <!-- Đồ giấy -->
+                    <article class="activity-card" data-ages="4-6,7-9">
+                        <div class="card-header bg-yellow">
+                            <span class="badge">Đồ Giấy</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Mat+Na+Thu" alt="Mặt nạ giấy">
+                        </div>
+                        <div class="card-content">
+                            <h3>Làm Mặt Nạ Thú Rừng</h3>
+                            <p class="time-mat">Thời gian: 45 phút | Vật liệu: Bìa cứng, màu sáp</p>
+                            <p class="desc">Cùng làm chiếc mặt nạ độc đáo để hóa trang thành con vật bé yêu thích.</p>
+                            <button class="btn btn-card action-select">Chọn buổi này</button>
+                        </div>
+                    </article>
+
+                    <!-- Gốm -->
+                    <article class="activity-card" data-ages="7-9,10-12">
+                        <div class="card-header bg-mint">
+                            <span class="badge">Làm Gốm</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Coc+Dat+Set" alt="Cốc nặn từ đất sét">
+                        </div>
+                        <div class="card-content">
+                            <h3>Nặn Cốc Hình Động Vật</h3>
+                            <p class="time-mat">Thời gian: 90 phút | Vật liệu: Đất sét tự khô</p>
+                            <p class="desc">Nhào nặn đất sét thành chiếc cốc xinh xắn có hình thù sáng tạo.</p>
+                            <button class="btn btn-card action-select">Chọn buổi này</button>
+                        </div>
+                    </article>
+
+                    <!-- Vật thể -->
+                    <article class="activity-card" data-ages="10-12">
+                        <div class="card-header bg-violet">
+                            <span class="badge">Làm Mộc</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Do+Choi+Go" alt="Đồ chơi bằng gỗ">
+                        </div>
+                        <div class="card-content">
+                            <h3>Lắp Ráp Động Cơ Nhỏ</h3>
+                            <p class="time-mat">Thời gian: 120 phút | Vật liệu: Gỗ ép, linh kiện nhỏ</p>
+                            <p class="desc">Lắp ráp và trang trí cỗ máy nhỏ chạy bằng pin đơn giản.</p>
+                            <button class="btn btn-card action-select">Chọn buổi này</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div id="emptyState" class="empty-state hidden">
+                    <p>Không có hoạt động phù hợp. Hãy thử đổi nhóm tuổi nhé!</p>
+                    <button class="btn btn-secondary" id="resetBtn">Thử lại</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-prep">
+            <div class="container">
+                <div class="prep-box sticker-card">
+                    <h2>Chuẩn bị trước buổi</h2>
+                    <ul class="checklist">
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Đi cùng bé:</strong> 1 người lớn/bé để hỗ trợ tốt nhất.
+                        </li>
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Đồ mang theo:</strong> Bình nước cá nhân của bé, khăn giấy.
+                        </li>
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Mức bẩn:</strong> Quần áo có thể dính màu hoặc đất sét (nên mặc đồ thoải mái).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="selectionSummary" class="section-summary hidden">
+            <div class="container">
+                <div class="summary-box sticker-card bg-yellow-light">
+                    <h2>Lựa chọn của gia đình</h2>
+                    <div class="summary-content">
+                        <p><strong>Hoạt động:</strong> <span id="summaryActivity">Chưa chọn</span></p>
+                        <p><strong>Độ tuổi:</strong> <span id="summaryAge">Chưa chọn</span></p>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="btn btn-primary" id="confirmBtn">Đăng ký (Minh họa)</button>
+                        <button class="btn btn-secondary" id="changeBtn">Đổi hoạt động</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Hạt Dẻ. Website minh họa phong cách Playful Geometric.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

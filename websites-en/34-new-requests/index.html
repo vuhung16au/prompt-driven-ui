@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sổ Khách - New requests are no longer left forgotten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#FAFAFA',
+                        foreground: '#0F172A',
+                        muted: '#F1F5F9',
+                        'muted-foreground': '#64748B',
+                        accent: '#0052FF',
+                        'accent-secondary': '#4D7CFF',
+                        border: '#E2E8F0',
+                        card: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        display: ['Calistoga', 'Georgia', 'serif'],
+                        ui: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'subtle': '0 1px 3px rgba(0,0,0,0.06)',
+                        'card': '0 4px 6px rgba(0,0,0,0.07)',
+                        'elevated': '0 10px 15px rgba(0,0,0,0.08)',
+                        'accent': '0 4px 14px rgba(0,82,255,0.25)',
+                        'accent-lg': '0 8px 24px rgba(0,82,255,0.35)',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 60s linear infinite',
+                        'float-1': 'float 5s ease-in-out infinite',
+                        'float-2': 'float 4s ease-in-out infinite 1s',
+                        'pulse-dot': 'pulse-dot 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-dot': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: 1 },
+                            '50%': { transform: 'scale(1.3)', opacity: 0.7 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.foreground');
+            font-family: theme('fontFamily.ui');
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: theme('fontFamily.display');
+            font-weight: normal;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #0052FF, #4D7CFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-underline {
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            height: 0.75rem;
+            width: 100%;
+            border-radius: 0.125rem;
+            background: linear-gradient(to right, rgba(0, 82, 255, 0.15), rgba(77, 124, 255, 0.1));
+            z-index: -1;
+        }
+        @media (min-width: 768px) {
+            .gradient-underline {
+                bottom: -0.5rem;
+                height: 1rem;
+            }
+        }
+        .dot-pattern {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .radial-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,82,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #0052FF, #4D7CFF);
+            color: white;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease-out;
+            box-shadow: theme('boxShadow.subtle');
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: theme('boxShadow.accent-lg');
+            filter: brightness(1.1);
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: theme('colors.foreground');
+            border: 1px solid theme('colors.border');
+            border-radius: 0.75rem;
+            transition: all 0.2s ease-out;
+        }
+        .btn-secondary:hover {
+            border-color: rgba(0, 82, 255, 0.3);
+            box-shadow: theme('boxShadow.subtle');
+            background: theme('colors.muted');
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .status-new {
+            background-color: rgba(0, 82, 255, 0.1);
+            color: #0052FF;
+        }
+        .status-waiting {
+            background-color: #F3F4F6;
+            color: #4B5563;
+        }
+        .status-scheduled {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+        
+        .card-hover {
+            transition: all 0.2s ease-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: theme('boxShadow.elevated');
+            border-color: rgba(0, 82, 255, 0.2);
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar for clean UI in certain containers */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden selection:bg-accent/20 selection:text-foreground">
+    
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-16 md:pt-32 md:pb-28 px-6 lg:px-8 max-w-6xl mx-auto z-10" id="hero">
+        <div class="radial-glow -top-40 -left-40"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center">
+            <div class="flex flex-col items-start text-left relative z-10">
+                <div class="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/5 px-4 md:px-5 py-2 mb-8">
+                    <span class="h-2 w-2 rounded-full bg-accent animate-pulse-dot"></span>
+                    <span class="font-mono text-xs uppercase tracking-[0.15em] text-accent">Customer Inbox</span>
+                </div>
+                
+                <h1 class="text-[2.75rem] leading-[1.1] md:text-6xl lg:text-[5.25rem] lg:leading-[1.05] tracking-[-0.02em] mb-6 text-foreground max-w-2xl">
+                    New requests are no longer left <span class="relative inline-block"><span class="gradient-text">forgotten.</span><span class="gradient-underline"></span></span>
+                </h1>
+                
+                <p class="text-base md:text-lg text-muted-foreground mb-10 max-w-lg leading-[1.625] font-ui">
+                    Sổ Khách helps a small team see who needs to be contacted, what tasks are pending, and what the next step is.
+                </p>
+                
+                <a href="#inbox" class="btn-primary h-12 md:h-14 px-8 inline-flex items-center justify-center font-medium text-base w-full sm:w-auto group">
+                    Try handling a request
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                </a>
+            </div>
+            
+            <!-- Abstract Hero Graphic -->
+            <div class="hidden lg:block relative h-[500px] w-full z-0">
+                <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-[4rem] border border-border/50"></div>
+                <!-- Rotating Ring -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-dashed border-accent/20 rounded-full animate-spin-slow"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] border border-accent/10 rounded-full"></div>
+                
+                <!-- Floating Cards -->
+                <div class="absolute top-[20%] left-[10%] w-64 bg-card p-4 rounded-xl shadow-lg border border-border animate-float-1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold">Ha Nguyen</div>
+                            <div class="text-xs text-muted-foreground">Consultation booking</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="status-badge status-new"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>New</span>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-[25%] right-[5%] w-56 bg-card p-4 rounded-xl shadow-lg border border-border animate-float-2 z-10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold">Meeting Scheduled</div>
+                            <div class="text-xs text-muted-foreground">Tomorrow, 10:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Inbox Section -->
+    <section id="inbox" class="py-20 md:py-28 px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16 flex flex-col items-center">
+            <div class="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/5 px-4 py-2 mb-6">
+                <span class="font-mono text-xs uppercase tracking-[0.15em] text-accent">Inbox</span>
+            </div>
+            <h2 class="text-3xl md:text-[3.25rem] leading-[1.15] mb-4">Current Requests</h2>
+            <p class="text-muted-foreground max-w-xl mx-auto">Select a request below to view details, assign team members, and update the status.</p>
+        </div>
+        
+        <div class="bg-card rounded-2xl border border-border shadow-md overflow-hidden flex flex-col md:flex-row h-auto md:h-[600px]">
+            <!-- List Panel -->
+            <div class="w-full md:w-1/3 border-b md:border-b-0 md:border-r border-border bg-background/50 flex flex-col h-[400px] md:h-full">
+                <div class="p-4 border-b border-border bg-card font-semibold text-sm flex justify-between items-center">
+                    <span>Requests (6)</span>
+                    <button class="text-muted-foreground hover:text-foreground"><i data-lucide="filter" class="w-4 h-4"></i></button>
+                </div>
+                <div class="overflow-y-auto flex-1 no-scrollbar p-2 space-y-1" id="request-list">
+                    <!-- Dynamically rendered list items -->
+                </div>
+            </div>
+            
+            <!-- Detail Panel -->
+            <div class="w-full md:w-2/3 bg-card flex flex-col h-auto md:h-full min-h-[500px]" id="request-detail">
+                <!-- Select a request state -->
+                <div class="flex-1 flex flex-col items-center justify-center text-muted-foreground p-8 text-center" id="empty-state">
+                    <div class="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4 text-foreground/20">
+                        <i data-lucide="inbox" class="w-8 h-8"></i>
+                    </div>
+                    <p>Select a request from the list to handle it.</p>
+                </div>
+                
+                <!-- Detail Content (hidden by default) -->
+                <div id="detail-content" class="hidden flex-col h-full">
+                    <!-- Header -->
+                    <div class="p-6 border-b border-border flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1" id="detail-name">Name</h3>
+                            <p class="text-muted-foreground text-sm" id="detail-need">Need</p>
+                        </div>
+                        <div id="detail-badge-container"></div>
+                    </div>
+                    
+                    <!-- Actions & History -->
+                    <div class="flex-1 overflow-y-auto p-6 flex flex-col gap-8">
+                        
+                        <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-4 mb-2">
+                            <p class="text-sm text-blue-800 flex items-start gap-2">
+                                <i data-lucide="info" class="w-4 h-4 mt-0.5 shrink-0"></i>
+                                <span>This is a simulated demo environment. Actions taken here will not send real emails or trigger external workflows.</span>
+                            </p>
+                        </div>
+
+                        <!-- Actions Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Assignee -->
+                            <div class="space-y-2">
+                                <label class="font-mono text-xs uppercase text-muted-foreground tracking-wider">Assign To</label>
+                                <select id="select-assignee" class="w-full h-11 px-3 rounded-lg border border-border bg-transparent focus:ring-2 focus:ring-accent focus:ring-offset-1 text-sm outline-none">
+                                    <option value="Unassigned">Unassigned</option>
+                                    <option value="Alex">Alex</option>
+                                    <option value="Sarah">Sarah</option>
+                                    <option value="You">You</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Next Step -->
+                            <div class="space-y-2">
+                                <label class="font-mono text-xs uppercase text-muted-foreground tracking-wider">Update Status</label>
+                                <select id="select-status" class="w-full h-11 px-3 rounded-lg border border-border bg-transparent focus:ring-2 focus:ring-accent focus:ring-offset-1 text-sm outline-none">
+                                    <option value="New">New</option>
+                                    <option value="Awaiting response">Awaiting response</option>
+                                    <option value="Scheduled">Scheduled</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Time Slot (Only visible when Scheduled is selected) -->
+                            <div id="time-slot-container" class="space-y-2 col-span-1 sm:col-span-2 hidden">
+                                <label class="font-mono text-xs uppercase text-muted-foreground tracking-wider">Meeting Time</label>
+                                <div class="flex gap-2">
+                                    <input type="datetime-local" id="input-time" class="flex-1 h-11 px-3 rounded-lg border border-border bg-transparent focus:ring-2 focus:ring-accent focus:ring-offset-1 text-sm outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="space-y-2">
+                            <label class="font-mono text-xs uppercase text-muted-foreground tracking-wider">Add Note</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="input-note" placeholder="E.g., Sent pricing PDF..." class="flex-1 h-11 px-3 rounded-lg border border-border bg-transparent focus:ring-2 focus:ring-accent focus:ring-offset-1 text-sm outline-none">
+                                <button id="btn-add-note" class="btn-secondary px-4 h-11 text-sm font-medium">Add</button>
+                            </div>
+                        </div>
+                        
+                        <!-- History -->
+                        <div class="mt-4">
+                            <h4 class="font-mono text-xs uppercase text-muted-foreground tracking-wider mb-4">Activity History</h4>
+                            <div id="history-list" class="space-y-4 pl-2 border-l-2 border-border ml-2">
+                                <!-- History items -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suggested Automation -->
+    <section class="py-20 md:py-28 px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16 flex flex-col items-center">
+            <div class="inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/5 px-4 py-2 mb-6">
+                <span class="font-mono text-xs uppercase tracking-[0.15em] text-accent">Workflow</span>
+            </div>
+            <h2 class="text-3xl md:text-[3.25rem] leading-[1.15] mb-4">Suggested Automation</h2>
+            <p class="text-muted-foreground max-w-xl mx-auto">Connect your forms and tools seamlessly. We recommend tools like n8n to automate this flow.</p>
+        </div>
+        
+        <!-- Automation Diagram -->
+        <div class="bg-card rounded-2xl border border-border shadow-md p-6 md:p-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+                
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center max-w-[120px]">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent via-accent-secondary to-accent flex items-center justify-center text-white shadow-accent mb-4">
+                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                    </div>
+                    <div class="font-semibold text-sm mb-1">Form Receipt</div>
+                    <div class="text-xs text-muted-foreground">New lead submits contact form</div>
+                </div>
+                
+                <!-- Connector -->
+                <div class="hidden md:block w-16 h-px bg-border relative">
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-right" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                <div class="md:hidden h-8 w-px bg-border relative">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-down" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center max-w-[120px]">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-border flex items-center justify-center text-foreground shadow-sm mb-4">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-foreground/70"></i>
+                    </div>
+                    <div class="font-semibold text-sm mb-1">Validation</div>
+                    <div class="text-xs text-muted-foreground">Check required fields & spam</div>
+                </div>
+                
+                <!-- Connector -->
+                <div class="hidden md:block w-16 h-px bg-border relative">
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-right" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                <div class="md:hidden h-8 w-px bg-border relative">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-down" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center max-w-[120px]">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-border flex items-center justify-center text-foreground shadow-sm mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-foreground/70"></i>
+                    </div>
+                    <div class="font-semibold text-sm mb-1">Assignment</div>
+                    <div class="text-xs text-muted-foreground">Route to available member</div>
+                </div>
+                
+                <!-- Connector -->
+                <div class="hidden md:block w-16 h-px bg-border relative">
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-right" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                <div class="md:hidden h-8 w-px bg-border relative">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center">
+                        <i data-lucide="chevron-down" class="w-2 h-2 text-accent"></i>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center text-center max-w-[120px]">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-border flex items-center justify-center text-foreground shadow-sm mb-4">
+                        <i data-lucide="bell" class="w-8 h-8 text-foreground/70"></i>
+                    </div>
+                    <div class="font-semibold text-sm mb-1">Notification</div>
+                    <div class="text-xs text-muted-foreground">Alert team via Slack / Email</div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Inverted Contrast Section: Trial Summary -->
+    <section class="bg-foreground text-background py-24 relative overflow-hidden mt-12">
+        <div class="absolute inset-0 dot-pattern opacity-30"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-accent/20 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl mb-12">Session Summary</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-background/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl font-display mb-2 text-white" id="stat-processed">0</div>
+                    <div class="text-sm text-slate-400 font-mono uppercase tracking-wider">Requests Updated</div>
+                </div>
+                <div class="bg-background/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl font-display mb-2 text-white" id="stat-scheduled">0</div>
+                    <div class="text-sm text-slate-400 font-mono uppercase tracking-wider">Meetings Scheduled</div>
+                </div>
+                <div class="bg-background/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                    <div class="text-4xl font-display mb-2 text-white" id="stat-remaining">6</div>
+                    <div class="text-sm text-slate-400 font-mono uppercase tracking-wider">Remaining Tasks</div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <p class="text-slate-400 mb-8 max-w-xl text-sm leading-relaxed">
+                    This trial session demonstrates how Sổ Khách organizes incoming leads. 
+                    Reset the data to try again from the beginning.
+                </p>
+                <button id="btn-reset" class="btn-secondary border-white/20 text-white hover:bg-white/10 hover:border-white/40 h-12 px-8 flex items-center gap-2">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                    Reset Trial Data
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-sm text-muted-foreground border-t border-border mt-auto">
+        <div class="max-w-6xl mx-auto px-6">
+            <p>&copy; 2026 Sổ Khách. Minimalist Modern SaaS Design.</p>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Initial Data
+        const initialRequests = [
+            { id: 1, name: 'Ha Nguyen', need: 'Consultation booking', status: 'New', assignee: 'Unassigned', history: [] },
+            { id: 2, name: 'Minh Tran', need: 'Pricing inquiry', status: 'Awaiting response', assignee: 'Alex', history: [] },
+            { id: 3, name: 'Lan Pham', need: 'Product demo', status: 'Scheduled', assignee: 'Sarah', history: [{type: 'status', detail: 'Scheduled for tomorrow 10:00 AM', time: new Date().toISOString()}] },
+            { id: 4, name: 'Tuan Le', need: 'Technical support', status: 'New', assignee: 'Unassigned', history: [] },
+            { id: 5, name: 'Hoa Vu', need: 'Partnership', status: 'Awaiting response', assignee: 'Alex', history: [] },
+            { id: 6, name: 'Kien Do', need: 'Contract renewal', status: 'New', assignee: 'Unassigned', history: [] },
+        ];
+
+        let requests = JSON.parse(JSON.stringify(initialRequests));
+        let activeRequestId = null;
+        let processedIds = new Set();
+
+        // DOM Elements
+        const listEl = document.getElementById('request-list');
+        const emptyStateEl = document.getElementById('empty-state');
+        const detailContentEl = document.getElementById('detail-content');
+        
+        const detailName = document.getElementById('detail-name');
+        const detailNeed = document.getElementById('detail-need');
+        const badgeContainer = document.getElementById('detail-badge-container');
+        
+        const selectAssignee = document.getElementById('select-assignee');
+        const selectStatus = document.getElementById('select-status');
+        const timeSlotContainer = document.getElementById('time-slot-container');
+        const inputTime = document.getElementById('input-time');
+        const inputNote = document.getElementById('input-note');
+        const btnAddNote = document.getElementById('btn-add-note');
+        const historyList = document.getElementById('history-list');
+
+        const statProcessed = document.getElementById('stat-processed');
+        const statScheduled = document.getElementById('stat-scheduled');
+        const statRemaining = document.getElementById('stat-remaining');
+        const btnReset = document.getElementById('btn-reset');
+
+        // Render List
+        function renderList() {
+            listEl.innerHTML = '';
+            requests.forEach(req => {
+                const item = document.createElement('div');
+                const isActive = req.id === activeRequestId;
+                
+                item.className = `p-3 rounded-xl cursor-pointer transition-colors border ${isActive ? 'bg-card border-accent/30 shadow-sm' : 'bg-transparent border-transparent hover:bg-card/50 hover:border-border'}`;
+                
+                let statusBadge = '';
+                if(req.status === 'New') statusBadge = `<div class="w-2 h-2 rounded-full bg-accent"></div>`;
+                else if(req.status === 'Scheduled') statusBadge = `<div class="w-2 h-2 rounded-full bg-green-500"></div>`;
+                else statusBadge = `<div class="w-2 h-2 rounded-full bg-gray-400"></div>`;
+
+                item.innerHTML = `
+                    <div class="flex justify-between items-start mb-1">
+                        <div class="font-semibold text-sm text-foreground">${req.name}</div>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-xs text-muted-foreground truncate mb-2">${req.need}</div>
+                    <div class="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
+                        <span>${req.status}</span>
+                        <span class="flex items-center gap-1"><i data-lucide="user" class="w-3 h-3"></i> ${req.assignee}</span>
+                    </div>
+                `;
+                
+                item.addEventListener('click', () => {
+                    activeRequestId = req.id;
+                    renderList();
+                    renderDetail();
+                });
+                listEl.appendChild(item);
+            });
+            lucide.createIcons();
+            updateStats();
+        }
+
+        // Render Badge html
+        function getBadgeHtml(status) {
+            if (status === 'New') {
+                return `<span class="status-badge status-new"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot"></span>New</span>`;
+            } else if (status === 'Scheduled') {
+                return `<span class="status-badge status-scheduled"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Scheduled</span>`;
+            } else {
+                return `<span class="status-badge status-waiting"><span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>Awaiting response</span>`;
+            }
+        }
+
+        // Format Date
+        function formatDate(isoString) {
+            if(!isoString) return 'Just now';
+            const date = new Date(isoString);
+            return date.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+        }
+
+        // Render Detail
+        function renderDetail() {
+            if (!activeRequestId) {
+                emptyStateEl.classList.remove('hidden');
+                detailContentEl.classList.add('hidden');
+                return;
+            }
+
+            const req = requests.find(r => r.id === activeRequestId);
+            if (!req) return;
+
+            emptyStateEl.classList.add('hidden');
+            detailContentEl.classList.remove('hidden');
+            detailContentEl.style.display = 'flex';
+
+            detailName.textContent = req.name;
+            detailNeed.textContent = req.need;
+            badgeContainer.innerHTML = getBadgeHtml(req.status);
+
+            selectAssignee.value = req.assignee;
+            selectStatus.value = req.status;
+            
+            if (req.status === 'Scheduled') {
+                timeSlotContainer.classList.remove('hidden');
+            } else {
+                timeSlotContainer.classList.add('hidden');
+            }
+            inputTime.value = '';
+            inputNote.value = '';
+
+            renderHistory(req);
+        }
+
+        function renderHistory(req) {
+            historyList.innerHTML = '';
+            if (req.history.length === 0) {
+                historyList.innerHTML = `<div class="text-xs text-muted-foreground italic ml-2">No activity yet.</div>`;
+                return;
+            }
+
+            req.history.slice().reverse().forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'relative -left-[5px] flex gap-3 items-start';
+                
+                let iconHtml = '';
+                if (item.type === 'note') {
+                    iconHtml = `<div class="w-2 h-2 rounded-full bg-muted-foreground mt-1.5 outline outline-4 outline-card"></div>`;
+                } else {
+                    iconHtml = `<div class="w-2 h-2 rounded-full bg-accent mt-1.5 outline outline-4 outline-card"></div>`;
+                }
+
+                div.innerHTML = `
+                    ${iconHtml}
+                    <div class="flex-1">
+                        <div class="text-sm text-foreground">${item.detail}</div>
+                        <div class="text-xs text-muted-foreground mt-0.5">${formatDate(item.time)}</div>
+                    </div>
+                `;
+                historyList.appendChild(div);
+            });
+        }
+
+        // Actions
+        function addHistory(reqId, type, detail) {
+            const req = requests.find(r => r.id === reqId);
+            if(req) {
+                req.history.push({ type, detail, time: new Date().toISOString() });
+                processedIds.add(reqId);
+            }
+        }
+
+        selectAssignee.addEventListener('change', (e) => {
+            const req = requests.find(r => r.id === activeRequestId);
+            if(req && req.assignee !== e.target.value) {
+                const old = req.assignee;
+                req.assignee = e.target.value;
+                addHistory(req.id, 'assign', `Assigned changed from ${old} to ${req.assignee}`);
+                renderList();
+                renderDetail();
+            }
+        });
+
+        selectStatus.addEventListener('change', (e) => {
+            const newStatus = e.target.value;
+            if (newStatus === 'Scheduled') {
+                timeSlotContainer.classList.remove('hidden');
+            } else {
+                timeSlotContainer.classList.add('hidden');
+                updateStatus(newStatus);
+            }
+        });
+
+        inputTime.addEventListener('change', (e) => {
+            if(e.target.value) {
+                updateStatus('Scheduled', e.target.value);
+            }
+        });
+
+        function updateStatus(newStatus, timeVal = null) {
+            const req = requests.find(r => r.id === activeRequestId);
+            if (!req) return;
+            
+            if (newStatus === 'Scheduled' && !timeVal) {
+                // Do not update until time is provided (Requirement 9.1)
+                return;
+            }
+
+            if(req.status !== newStatus || timeVal) {
+                const oldStatus = req.status;
+                req.status = newStatus;
+                
+                let detailStr = `Status changed to ${newStatus}`;
+                if (newStatus === 'Scheduled' && timeVal) {
+                    const t = new Date(timeVal).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+                    detailStr = `Scheduled meeting for ${t}`;
+                }
+                
+                addHistory(req.id, 'status', detailStr);
+                renderList();
+                renderDetail();
+            }
+        }
+
+        btnAddNote.addEventListener('click', () => {
+            const text = inputNote.value.trim();
+            if(text && activeRequestId) {
+                addHistory(activeRequestId, 'note', `Note: "${text}"`);
+                inputNote.value = '';
+                processedIds.add(activeRequestId);
+                renderList();
+                renderDetail();
+            }
+        });
+        
+        inputNote.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') btnAddNote.click();
+        });
+
+        // Summary Stats
+        function updateStats() {
+            statProcessed.textContent = processedIds.size;
+            const scheduledCount = requests.filter(r => r.status === 'Scheduled').length;
+            statScheduled.textContent = scheduledCount;
+            
+            const remaining = requests.filter(r => r.status === 'New').length;
+            statRemaining.textContent = remaining;
+        }
+
+        // Reset
+        btnReset.addEventListener('click', () => {
+            requests = JSON.parse(JSON.stringify(initialRequests));
+            activeRequestId = null;
+            processedIds.clear();
+            renderList();
+            renderDetail();
+            // Scroll to top to see fresh state
+            document.getElementById('inbox').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Init
+        renderList();
+    </script>
+</body>
+</html>

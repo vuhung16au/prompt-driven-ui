@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ sơ dự án | Bento Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="bento-grid">
+    <!-- Intro -->
+    <div class="bento-cell cell-intro">
+      <span class="meta" style="margin-bottom: auto;">Giới thiệu</span>
+      <h1>Một người,<br>nhiều cách tạo ra sản phẩm.</h1>
+      <p>Một hồ sơ dự án nhỏ, từ công cụ tiện ích đến nhận diện và thử nghiệm tương tác.</p>
+    </div>
+
+    <!-- Main Project -->
+    <button class="bento-cell cell-main interactive" aria-expanded="false" aria-controls="case-study" id="btn-main-project">
+      <div class="project-content">
+        <h2 class="cell-title">Công cụ lập lịch cá nhân</h2>
+        <p>Giao diện tối giản giúp tối ưu hóa thời gian và năng suất.</p>
+      </div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80" alt="Giao diện công cụ lập lịch (Ảnh minh họa)" loading="lazy">
+    </button>
+
+    <!-- Case Study (Expanded) -->
+    <div class="bento-cell cell-case" id="case-study" hidden>
+      <div class="case-header">
+        <h2 class="cell-title">Chi tiết: Công cụ lập lịch cá nhân</h2>
+        <button class="btn-close" id="btn-close-case" aria-label="Đóng chi tiết">Đóng</button>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <h3>Vấn đề</h3>
+          <p>Lịch mặc định quá phức tạp và nhiều nút không cần thiết, làm giảm tốc độ lên lịch hàng ngày.</p>
+        </div>
+        <div class="case-col">
+          <h3>Giải pháp</h3>
+          <p>Lược bỏ tính năng thừa, tập trung vào thao tác gõ tự nhiên để tạo sự kiện nhanh chóng, giao diện chỉ hiển thị những gì cần thiết.</p>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1507925922837-336f4ee0eb1b?auto=format&fit=crop&w=1200&q=80" alt="Tài sản thiết kế chi tiết (Ảnh minh họa)" class="case-asset" loading="lazy">
+    </div>
+
+    <!-- Project 2: Image -->
+    <a href="#" class="bento-cell cell-proj1 interactive" style="text-decoration: none; color: inherit;">
+      <div class="project-content">
+        <h2 class="cell-title">Giao diện Đọc sách</h2>
+        <p>Thử nghiệm không gian đọc trên thiết bị di động.</p>
+      </div>
+      <img class="project-img" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Giao diện đọc sách (Ảnh minh họa)" loading="lazy">
+    </a>
+
+    <!-- Project 3: Interactive Tool -->
+    <div class="bento-cell cell-proj2">
+      <div class="project-content" style="z-index: 2;">
+        <h2 class="cell-title">Trình tạo CSS Grid</h2>
+        <p>Công cụ code-native giúp tạo lưới CSS trực quan.</p>
+      </div>
+      <div class="interactive-demo">
+        <div class="demo-grid">
+          <div></div><div></div><div></div><div></div>
+        </div>
+        <button class="btn-tool" onclick="alert('Dữ liệu minh họa: Chức năng thử nghiệm chưa gửi dữ liệu.')">Chạy thử nghiệm</button>
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div class="bento-cell cell-note">
+      <p style="font-weight: 500; color: var(--text); font-size: 18px;">"Thiết kế không chỉ là cái nhìn, mà là cách nó hoạt động."</p>
+    </div>
+
+    <!-- Portrait -->
+    <div class="bento-cell cell-portrait">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Chân dung (Ảnh minh họa)" class="portrait-img" loading="lazy">
+      <div class="portrait-info">
+        <span class="cell-title" style="font-size: 18px; display: block; margin-bottom: 2px;">Vũ Hùng</span>
+        <span class="meta">Nhà thiết kế &amp; Lập trình viên</span>
+        <span class="meta" style="font-size: 12px; display: block; margin-top: 4px; opacity: 0.7;">(Ảnh minh họa)</span>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="bento-cell cell-contact interactive" role="button" tabindex="0" onclick="alert('Dữ liệu minh họa: Mở form liên hệ.')" onkeydown="if(event.key==='Enter'||event.key===' ') this.click();">
+      <span class="meta">Trao đổi</span>
+      <h2 class="cell-title" style="margin: 8px 0;">Sẵn sàng hợp tác?</h2>
+      <span style="color: var(--accent); font-weight: 500; margin-top: auto; display: flex; align-items: center; gap: 4px;">
+        Xem brief mẫu 
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

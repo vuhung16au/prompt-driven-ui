@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra rõ. Sửa đúng việc.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+  <style>
+:root {
+  --chassis: #e0e5ec;
+  --panel: #f0f2f5;
+  --recessed: #d1d9e6;
+  --text-primary: #2d3436;
+  --text-muted: #4a5568;
+  --accent: #ff4757;
+  --accent-glow: rgba(255, 71, 87, 0.6);
+  --shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+  --shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255,255,255,0.5);
+  --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+  --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+}
+body {
+  background-color: var(--chassis);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+  background-blend-mode: overlay;
+  opacity: 0.98;
+}
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-floating { box-shadow: var(--shadow-floating); }
+.shadow-pressed { box-shadow: var(--shadow-pressed); }
+.shadow-recessed { box-shadow: var(--shadow-recessed); }
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 4px 4px 8px rgba(166,50,60,0.4), -4px -4px 8px rgba(255,100,110,0.4);
+  transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-primary:active, .btn-primary.active {
+  transform: translateY(2px);
+  box-shadow: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+}
+
+.btn-chassis {
+  background-color: var(--chassis);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card);
+  transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-chassis:hover {
+  color: var(--accent);
+}
+.btn-chassis:active, .btn-chassis.active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-pressed);
+  color: var(--accent);
+}
+
+.card {
+  background-color: var(--chassis);
+  box-shadow: var(--shadow-card);
+  border-radius: 16px;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-floating);
+  transition: all 300ms ease-out;
+}
+.screw {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(0,0,0,0.15) 2px, transparent 3px);
+  border-radius: 50%;
+}
+.screw-tl { top: 12px; left: 12px; }
+.screw-tr { top: 12px; right: 12px; }
+.screw-bl { bottom: 12px; left: 12px; }
+.screw-br { bottom: 12px; right: 12px; }
+.vent {
+  width: 4px;
+  height: 24px;
+  background-color: var(--muted);
+  border-radius: 9999px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+}
+.led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(34,197,94,0.6);
+  background-color: #22c55e;
+}
+.led.error {
+  box-shadow: 0 0 10px 2px rgba(255,71,87,0.6);
+  background-color: #ff4757;
+}
+.led.warning {
+  box-shadow: 0 0 10px 2px rgba(234,179,8,0.6);
+  background-color: #eab308;
+}
+.led.inactive {
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+  background-color: #9ca3af;
+}
+</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            chassis: '#e0e5ec',
+            panel: '#f0f2f5',
+            recessed: '#d1d9e6',
+            accent: '#ff4757',
+            muted: '#4a5568'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="antialiased min-h-screen pb-24" x-data="appData()">
+  
+  <header class="py-12 px-6 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b-2 border-recessed pb-6">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="led animate-pulse"></div>
+          <span class="font-mono text-xs font-bold uppercase tracking-widest text-muted">GARA 47 - CHUẨN ĐOÁN</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-[0_1px_1px_#ffffff] text-gray-800 uppercase">Kiểm tra rõ. Sửa đúng việc.</h1>
+      </div>
+      <div class="mt-4 md:mt-0 p-4 shadow-recessed rounded-lg bg-chassis flex flex-col items-end">
+        <span class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-1">STATUS</span>
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-sm font-bold">HỆ THỐNG HOẠT ĐỘNG</span>
+          <div class="led"></div>
+        </div>
+      </div>
+    </div>
+    <p class="text-lg max-w-2xl leading-relaxed text-gray-700">Một phiếu kiểm tra mẫu giúp bạn thấy tình trạng xe trước khi quyết định hạng mục sửa.</p>
+  </header>
+
+  <main class="px-6 max-w-6xl mx-auto space-y-24">
+    
+    <!-- 2. Chọn hạng mục -->
+    <section>
+      <div class="flex items-center gap-4 mb-8">
+        <span class="flex items-center justify-center w-8 h-8 rounded-full shadow-card font-mono font-bold text-sm">01</span>
+        <h2 class="text-2xl font-bold uppercase tracking-tight drop-shadow-[0_1px_1px_#ffffff]">Modules</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <template x-for="mod in modules" :key="mod.id">
+          <button 
+            @click="activeModule = mod.id"
+            :class="['card p-6 text-left w-full transition-all focus:outline-none focus:ring-2 focus:ring-accent', activeModule === mod.id ? 'active !shadow-pressed' : '']"
+            :aria-pressed="activeModule === mod.id"
+          >
+            <div class="screw screw-tl"></div>
+            <div class="screw screw-tr"></div>
+            <div class="screw screw-bl"></div>
+            <div class="screw screw-br"></div>
+            
+            <div class="absolute top-6 right-6 flex gap-1">
+              <div class="vent"></div>
+              <div class="vent"></div>
+              <div class="vent"></div>
+            </div>
+
+            <div class="flex items-center gap-3 mb-4">
+              <div :class="['led', mod.status === 'ok' ? '' : (mod.status === 'error' ? 'error' : 'warning')]"></div>
+              <span class="font-mono font-bold text-sm tracking-wider" x-text="mod.name"></span>
+            </div>
+            
+            <p class="text-sm text-muted mb-4 h-10" x-text="mod.desc"></p>
+            
+            <div class="w-full h-32 rounded-md shadow-recessed overflow-hidden bg-recessed relative grayscale transition-all duration-500 hover:grayscale-0">
+              <img :src="mod.img" alt="" class="w-full h-full object-cover mix-blend-multiply opacity-80" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+            </div>
+          </button>
+        </template>
+      </div>
+    </section>
+
+    <!-- 3. Phiếu chi tiết & 4. So hạng mục -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Chi tiết -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full shadow-card font-mono font-bold text-sm">02</span>
+          <h2 class="text-2xl font-bold uppercase tracking-tight drop-shadow-[0_1px_1px_#ffffff]">PHIẾU CHI TIẾT</h2>
+        </div>
+        
+        <div class="p-8 rounded-xl shadow-recessed bg-chassis border border-white/40 min-h-[400px]">
+          <template x-if="activeModule">
+            <div class="space-y-6 animate-fade-in">
+              <div class="flex justify-between items-center border-b border-gray-300 pb-4">
+                <h3 class="text-xl font-bold font-mono tracking-widest uppercase" x-text="getActiveModule().name"></h3>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs font-bold text-muted uppercase">STATUS</span>
+                  <div :class="['led', getActiveModule().status === 'ok' ? '' : (getActiveModule().status === 'error' ? 'error' : 'warning')]"></div>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-6">
+                  <div>
+                    <label class="font-mono text-xs font-bold text-muted uppercase tracking-widest block mb-2">QUAN SÁT</label>
+                    <div class="p-4 bg-chassis shadow-recessed rounded-md font-mono text-sm leading-relaxed" x-text="getActiveModule().obs"></div>
+                  </div>
+                  <div>
+                    <label class="font-mono text-xs font-bold text-muted uppercase tracking-widest block mb-2">GỢI Ý BƯỚC TIẾP</label>
+                    <div class="p-4 bg-chassis shadow-recessed rounded-md font-mono text-sm font-bold text-accent" x-text="getActiveModule().rec"></div>
+                  </div>
+                </div>
+                
+                <div class="w-full h-full min-h-[200px] shadow-recessed rounded-md overflow-hidden relative border-4 border-chassis">
+                  <img :src="getActiveModule().img" alt="Detail view" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black/10"></div>
+                  <!-- Scanline effect -->
+                  <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.1) 50%); background-size: 100% 4px;"></div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- So sánh / Chọn -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full shadow-card font-mono font-bold text-sm">03</span>
+          <h2 class="text-2xl font-bold uppercase tracking-tight drop-shadow-[0_1px_1px_#ffffff]">SO HẠNG MỤC</h2>
+        </div>
+        
+        <div class="card p-6 space-y-4">
+          <div class="screw screw-tl"></div><div class="screw screw-tr"></div><div class="screw screw-bl"></div><div class="screw screw-br"></div>
+          
+          <template x-for="mod in modules" :key="mod.id">
+            <label class="flex items-center gap-4 p-4 shadow-card rounded-md cursor-pointer hover:shadow-floating transition-all border border-transparent focus-within:border-accent">
+              <div class="relative w-6 h-6 flex-shrink-0">
+                <input type="checkbox" class="peer sr-only" x-model="selectedItems" :value="mod.id">
+                <div class="w-6 h-6 rounded bg-chassis shadow-recessed flex items-center justify-center peer-focus:ring-2 peer-focus:ring-accent">
+                  <div class="w-3 h-3 bg-accent rounded-sm opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                </div>
+              </div>
+              <div class="flex-grow">
+                <span class="font-mono font-bold block text-sm" x-text="mod.name"></span>
+                <span class="text-[10px] text-muted font-mono" x-text="mod.status === 'ok' ? 'OK' : 'ATTENTION REQUIRED'"></span>
+              </div>
+              <div :class="['led', mod.status === 'ok' ? '' : (mod.status === 'error' ? 'error' : 'warning')]"></div>
+            </label>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Phiếu bàn giao -->
+    <section class="max-w-3xl mx-auto">
+      <div class="flex flex-col items-center mb-8">
+        <span class="flex items-center justify-center w-8 h-8 rounded-full shadow-card font-mono font-bold text-sm mb-4">04</span>
+        <h2 class="text-2xl font-bold uppercase tracking-tight drop-shadow-[0_1px_1px_#ffffff] text-center">PHIẾU BÀN GIAO (XEM TRƯỚC)</h2>
+      </div>
+
+      <div class="p-8 shadow-card rounded-xl bg-chassis mb-8 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-red-500 rounded-full shadow-[inset_1px_1px_3px_rgba(255,255,255,0.6),2px_2px_4px_rgba(0,0,0,0.3)] z-10 flex items-center justify-center"><div class="w-1 h-1 bg-white/50 rounded-full"></div></div>
+        
+        <div class="bg-gray-50 rounded shadow-inner p-8 text-gray-800 relative font-mono text-sm leading-relaxed min-h-[300px]">
+          <!-- Giả lập giấy in -->
+          <div class="absolute inset-0 bg-[url('https://transparenttextures.com/patterns/cream-paper.png')] opacity-50 pointer-events-none"></div>
+          
+          <div class="border-b-2 border-gray-300 pb-4 mb-6 flex justify-between items-end relative z-10">
+            <div>
+              <h4 class="font-bold text-lg mb-1">GARA 47 - CHUẨN ĐOÁN</h4>
+              <p class="text-xs text-gray-500" x-text="new Date().toLocaleDateString()"></p>
+            </div>
+            <div class="text-right">
+              <span class="font-bold text-xl tracking-widest text-gray-400">INSPECT</span>
+            </div>
+          </div>
+          
+          <div class="relative z-10">
+            <template x-if="selectedItems.length === 0">
+              <div class="text-center text-gray-400 py-12 italic">
+                -- CHỌN MỤC ĐỂ XUẤT --
+              </div>
+            </template>
+            
+            <template x-if="selectedItems.length > 0">
+              <div>
+                <p class="font-bold mb-4 uppercase text-xs tracking-widest text-gray-500">Các mục đã chọn:</p>
+                <div class="space-y-6">
+                  <template x-for="id in selectedItems" :key="id">
+                    <div class="flex border-b border-gray-200 pb-4">
+                      <div class="w-32 font-bold" x-text="modules.find(m => m.id === id).name"></div>
+                      <div class="flex-grow">
+                        <p class="mb-1" x-text="modules.find(m => m.id === id).obs"></p>
+                        <p class="font-bold text-gray-900" x-text="'> ' + modules.find(m => m.id === id).rec"></p>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button 
+          class="btn-primary px-8 py-4 rounded-lg font-mono font-bold tracking-widest uppercase disabled:opacity-50 disabled:cursor-not-allowed"
+          :disabled="selectedItems.length === 0"
+          @click="alert('This is a prototype. Export functionality will be connected later.')"
+        >
+          <span x-show="selectedItems.length > 0">XUẤT BẢN TÓM TẮT</span>
+          <span x-show="selectedItems.length === 0">CHỌN MỤC ĐỂ XUẤT</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    function appData() {
+      return {
+        modules: [{"id":"tires","name":"LỐP XE","desc":"Độ mòn & áp suất","img":"https://images.unsplash.com/photo-1599557434190-2d93e36e89cd?auto=format&fit=crop&q=80&w=400&h=300","status":"warning","obs":"Lốp trước mòn còn 3mm. Cân nhắc thay sớm.","rec":"Thay 2 lốp trước"},{"id":"brakes","name":"PHANH","desc":"Má phanh & đĩa phanh","img":"https://images.unsplash.com/photo-1633519846669-e77be34df4e2?auto=format&fit=crop&q=80&w=400&h=300","status":"error","obs":"Má phanh sau mòn còn 2mm. Đĩa phanh mòn không đều.","rec":"Thay má và đĩa phanh sau"},{"id":"lights","name":"ĐÈN","desc":"Đèn trong & ngoài","img":"https://images.unsplash.com/photo-1555543710-18e0018865fc?auto=format&fit=crop&q=80&w=400&h=300","status":"ok","obs":"Tất cả đèn hoạt động bình thường.","rec":"Không cần xử lý"},{"id":"battery","name":"ẮC QUY","desc":"Điện áp & tuổi thọ","img":"https://images.unsplash.com/photo-1616422329245-09c3a372eb4f?auto=format&fit=crop&q=80&w=400&h=300","status":"ok","obs":"Tình trạng ắc quy 85%. Điện áp 12.6V.","rec":"Không cần xử lý"}],
+        activeModule: 'tires', // Default active
+        selectedItems: [],
+        getActiveModule() {
+          return this.modules.find(m => m.id === this.activeModule) || this.modules[0];
+        }
+      }
+    }
+  </script>
+</body>
+</html>

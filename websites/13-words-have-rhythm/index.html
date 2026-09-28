@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chữ Cũng Có Nhịp | Kinetic Typography</title>
+  <meta name="description" content="Ba nghiên cứu chuyển động cho cùng một thông điệp: nhấn, kéo giãn và đổi nhịp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav">
+    <div class="logo">KINETIC TYPE.</div>
+    <div class="nav-controls">
+      <button id="motion-toggle" class="btn-ghost" aria-pressed="false">TẠM DỪNG CHUYỂN ĐỘNG</button>
+      <a href="#brief" class="btn btn-outline">GỬI Ý TƯỞNG</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Section 1: Motion Message -->
+    <section class="hero">
+      <div class="marquee marquee-fast bg-accent text-black border-y">
+        <div class="marquee-content">
+          <span>TỐC ĐỘ LÀ THÔNG ĐIỆP + KÍCH THƯỚC LÀ CẢM XÚC + CHUYỂN ĐỘNG LÀ NHỊP THỞ +</span>
+          <span>TỐC ĐỘ LÀ THÔNG ĐIỆP + KÍCH THƯỚC LÀ CẢM XÚC + CHUYỂN ĐỘNG LÀ NHỊP THỞ +</span>
+        </div>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">CHỮ CŨNG<br>CÓ NHỊP.</h1>
+        <p class="lead">Ba nghiên cứu chuyển động cho cùng một thông điệp: nhấn, kéo giãn và đổi nhịp.</p>
+        <a href="#studies" class="btn btn-primary">XEM CHUYỂN ĐỘNG</a>
+      </div>
+    </section>
+
+    <div class="marquee marquee-slow border-b">
+      <div class="marquee-content">
+        <span>"NHỊP ĐIỆU CỦA CHỮ CHÍNH LÀ TIẾNG NÓI CỦA THIẾT KẾ" — KINETIC STUDIO &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>"NHỊP ĐIỆU CỦA CHỮ CHÍNH LÀ TIẾNG NÓI CỦA THIẾT KẾ" — KINETIC STUDIO &nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Section 2: Ba nghiên cứu -->
+    <section id="studies" class="section">
+      <div class="container">
+        <h2 class="section-title">BA NGHIÊN CỨU</h2>
+        <div class="grid studies-grid">
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">01</span>
+            <div class="card-content">
+              <h3 class="card-title">NHẤN</h3>
+              <p class="card-desc">Tập trung năng lượng vào một điểm duy nhất để tạo ra sức nặng thị giác.</p>
+              <div class="preview-box play-demo" data-study="emphasize">
+                <div class="demo-text">CHÚ Ý</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Phát mẫu Nhấn">PHÁT</button>
+            </div>
+          </div>
+          
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">02</span>
+            <div class="card-content">
+              <h3 class="card-title">KÉO GIÃN</h3>
+              <p class="card-desc">Thao túng thời gian và không gian qua việc thay đổi tỉ lệ chữ liên tục.</p>
+              <div class="preview-box play-demo" data-study="stretch">
+                <div class="demo-text">MỞ RỘNG</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Phát mẫu Kéo giãn">PHÁT</button>
+            </div>
+          </div>
+          
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">03</span>
+            <div class="card-content">
+              <h3 class="card-title">ĐỔI NHỊP</h3>
+              <p class="card-desc">Phá vỡ sự đều đặn bằng các điểm dừng đột ngột để tạo bất ngờ.</p>
+              <div class="preview-box play-demo" data-study="rhythm">
+                <div class="demo-text">BẤT NGỜ</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Phát mẫu Đổi nhịp">PHÁT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Giải phẫu nhịp -->
+    <section class="section border-y">
+      <div class="container">
+        <h2 class="section-title">GIẢI PHẪU NHỊP</h2>
+        <div class="timeline-container">
+          <div class="timeline-track"></div>
+          <div class="grid md-grid-3 gap-px bg-border">
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">0.0s - BẮT ĐẦU</div>
+              <div class="keyframe-visual"></div>
+              <p class="muted-text">Khung hình tĩnh thiết lập kỳ vọng của người xem trước khi chuyển động xảy ra.</p>
+            </div>
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">1.2s - CAO TRÀO</div>
+              <div class="keyframe-visual inverted"></div>
+              <p class="muted-text">Điểm nhấn thị giác mạnh nhất, phá vỡ tính ổn định ban đầu.</p>
+            </div>
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">2.4s - BUÔNG</div>
+              <div class="keyframe-visual"></div>
+              <p class="muted-text">Trả về trạng thái cân bằng với dư âm chuyển động trong tâm trí.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Phạm vi làm việc -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">PHẠM VI LÀM VIỆC</h2>
+        <div class="editorial-list">
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">CHUYỂN ĐỘNG NHẬN DIỆN</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">TIÊU ĐỀ PHIM</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">GIAO DIỆN TƯƠNG TÁC</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Brief chuyển động -->
+    <section id="brief" class="section bg-accent text-black border-t">
+      <div class="container">
+        <h2 class="section-title text-black">BRIEF CHUYỂN ĐỘNG</h2>
+        <div class="grid md-grid-2">
+          <form class="brief-form" id="brief-form">
+            <div class="form-group">
+              <label for="message">THÔNG ĐIỆP (TỐI ĐA 50 KÝ TỰ)</label>
+              <input type="text" id="message" class="large-input" maxlength="50" placeholder="NHẬP THÔNG ĐIỆP Ở ĐÂY">
+              <div class="char-count" id="char-count">0/50</div>
+            </div>
+            <div class="form-group">
+              <label for="purpose">MỤC ĐÍCH SỬ DỤNG</label>
+              <select id="purpose" class="large-input">
+                <option value="">CHỌN MỤC ĐÍCH</option>
+                <option value="brand">NHẬN DIỆN THƯƠNG HIỆU</option>
+                <option value="ui">GIAO DIỆN WEB</option>
+                <option value="video">VIDEO/PHIM</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-outline form-submit">THỬ NGHIỆM MẪU</button>
+            <p class="muted-text-dark mt-4">* Đây là bản thử nghiệm trực tiếp, không gửi dữ liệu đi.</p>
+          </form>
+          
+          <div class="preview-panel">
+            <div class="preview-label">BẢN XEM TRƯỚC</div>
+            <div class="preview-canvas" id="preview-canvas">
+              <div id="preview-text">...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer border-t">
+    <div class="container">
+      <div class="marquee marquee-fast">
+        <div class="marquee-content">
+          <span>KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY </span>
+          <span>KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY </span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 KINETIC STUDIO.</p>
+        <p>THIẾT KẾ BỞI AI</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điều khiển - Cần xử lý</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="logo">Cockpit</div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">Bảng điều khiển</a>
+                <a href="#" class="nav-item">Quy trình</a>
+                <a href="#" class="nav-item">Cài đặt</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1>Có việc cần xử lý, bạn thấy ngay.</h1>
+                    <p class="subtitle">Theo dõi các lần chạy workflow mẫu và tìm lý do một bước bị dừng.</p>
+                </div>
+                <div class="header-actions">
+                    <span class="badge">Dữ liệu mẫu</span>
+                    <button class="btn btn-outline" id="btn-export">Xuất CSV</button>
+                    <button class="btn btn-outline" id="btn-reset">Reset</button>
+                </div>
+            </header>
+
+            <section class="overview">
+                <div class="kpi-card">
+                    <div class="kpi-label">Tổng lượt (24h)</div>
+                    <div class="kpi-value tabular">1,248</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Thành công</div>
+                    <div class="kpi-value tabular text-success">1,235</div>
+                </div>
+                <div class="kpi-card alert-card">
+                    <div class="kpi-label">Cần xử lý</div>
+                    <div class="kpi-value tabular text-error">13</div>
+                </div>
+            </section>
+
+            <section class="action-items">
+                <h2>Cần xử lý</h2>
+                <div class="alert-list">
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Thiếu email khách hàng</strong>
+                            <span>Dữ liệu đầu vào không có trường email. Hãy bổ sung email mặc định hoặc kiểm tra nguồn.</span>
+                        </div>
+                    </div>
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Đích không phản hồi</strong>
+                            <span>API bên thứ ba timeout. Nhấn vào chi tiết lượt chạy để xem log và chạy lại.</span>
+                        </div>
+                    </div>
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Dữ liệu không hợp lệ</strong>
+                            <span>Sai định dạng ngày tháng. Sửa dữ liệu mẫu để chạy tiếp.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="run-history">
+                <div class="table-toolbar">
+                    <h2>Lịch sử chạy</h2>
+                    <div class="table-controls">
+                        <input type="text" placeholder="Tìm kiếm..." class="input-search">
+                        <select class="input-select">
+                            <option>Tất cả trạng thái</option>
+                            <option>Thành công</option>
+                            <option>Cần xử lý</option>
+                        </select>
+                        <select class="input-select">
+                            <option>24 giờ qua</option>
+                            <option>7 ngày qua</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quy trình</th>
+                                <th>Thời gian</th>
+                                <th>Trạng thái</th>
+                                <th class="text-right">Thời lượng (ms)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <aside class="run-detail-panel" id="run-detail" aria-hidden="true">
+            <div class="panel-header">
+                <h3>Chi tiết lượt chạy <span id="detail-id" class="tabular"></span></h3>
+                <button class="btn-close" id="btn-close-detail">&times;</button>
+            </div>
+            <div class="panel-body">
+                <div class="timeline" id="timeline">
+                    <!-- Timeline generated by JS -->
+                </div>
+                
+                <h4 class="section-title">Dữ liệu đầu vào (Mẫu)</h4>
+                <pre class="code-block tabular"><code>{
+  "orderId": "ORD-8821",
+  "customerName": "Nguyễn Văn A",
+  "email": null,
+  "total": 1500000
+}</code></pre>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-outline" id="btn-edit">Sửa dữ liệu mẫu</button>
+                <button class="btn btn-primary" id="btn-retry">Chạy lại mô phỏng</button>
+            </div>
+        </aside>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazelnut - Weekend Activities with Your Child</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Hazelnut</div>
+            <nav class="nav">
+                <a href="#activities" class="btn btn-secondary">Explore Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>This weekend, try something new with your child.</h1>
+                    <p class="lead">Choose a workshop session by age, schedule, and the craft your child wants to make by hand.</p>
+                    <a href="#activities" class="btn btn-primary">
+                        Choose weekend activity
+                        <span class="icon-circle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </span>
+                    </a>
+                </div>
+                <div class="hero-visual">
+                    <div class="circle-bg"></div>
+                    <div class="hero-image-wrapper blob-shape">
+                        <img src="https://placehold.co/600x600/F472B6/1E293B?text=Little+Hands+Workshop" alt="Children doing crafts on a workshop table" class="hero-img">
+                    </div>
+                </div>
+            </div>
+            <div class="pattern-dots"></div>
+        </section>
+
+        <section id="activities" class="section-activities">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Choose a hands-on session</h2>
+                    <div class="age-filters" id="ageFilters">
+                        <button class="filter-btn" data-age="all">All Ages</button>
+                        <button class="filter-btn" data-age="4-6">4–6 years (Adult assistance)</button>
+                        <button class="filter-btn" data-age="7-9">7–9 years (Light guidance)</button>
+                        <button class="filter-btn" data-age="10-12">10–12 years (100% independent)</button>
+                    </div>
+                </div>
+
+                <div class="activities-grid" id="activitiesGrid">
+                    <!-- Painting -->
+                    <article class="activity-card" data-ages="4-6">
+                        <div class="card-header bg-pink">
+                            <span class="badge">Painting</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Layered+Paper+Art" alt="Layered paper painting">
+                        </div>
+                        <div class="card-content">
+                            <h3>Layered Paper Painting</h3>
+                            <p class="time-mat">Duration: 60 mins | Materials: Colored paper, glue</p>
+                            <p class="desc">Kids cut and paste layers of paper to create a fun 3D pop-up picture.</p>
+                            <button class="btn btn-card action-select">Select this session</button>
+                        </div>
+                    </article>
+
+                    <!-- Paper craft -->
+                    <article class="activity-card" data-ages="4-6,7-9">
+                        <div class="card-header bg-yellow">
+                            <span class="badge">Paper Craft</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Animal+Mask" alt="Animal paper mask">
+                        </div>
+                        <div class="card-content">
+                            <h3>Forest Animal Mask</h3>
+                            <p class="time-mat">Duration: 45 mins | Materials: Cardboard, crayons</p>
+                            <p class="desc">Create a unique mask together to dress up as their favorite animal.</p>
+                            <button class="btn btn-card action-select">Select this session</button>
+                        </div>
+                    </article>
+
+                    <!-- Ceramics -->
+                    <article class="activity-card" data-ages="7-9,10-12">
+                        <div class="card-header bg-mint">
+                            <span class="badge">Ceramics</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Clay+Mug" alt="Clay mug shaped like an animal">
+                        </div>
+                        <div class="card-content">
+                            <h3>Animal Clay Mug</h3>
+                            <p class="time-mat">Duration: 90 mins | Materials: Air-dry clay</p>
+                            <p class="desc">Knead and mold clay into a cute mug with creative shapes.</p>
+                            <button class="btn btn-card action-select">Select this session</button>
+                        </div>
+                    </article>
+
+                    <!-- Objects -->
+                    <article class="activity-card" data-ages="10-12">
+                        <div class="card-header bg-violet">
+                            <span class="badge">Woodwork</span>
+                        </div>
+                        <div class="card-image">
+                            <img src="https://placehold.co/400x300/F1F5F9/1E293B?text=Wooden+Toy" alt="Wooden toy engine">
+                        </div>
+                        <div class="card-content">
+                            <h3>Mini Engine Assembly</h3>
+                            <p class="time-mat">Duration: 120 mins | Materials: Plywood, small parts</p>
+                            <p class="desc">Assemble and decorate a simple battery-powered mini machine.</p>
+                            <button class="btn btn-card action-select">Select this session</button>
+                        </div>
+                    </article>
+                </div>
+
+                <div id="emptyState" class="empty-state hidden">
+                    <p>No suitable activities found. Try selecting a different age group!</p>
+                    <button class="btn btn-secondary" id="resetBtn">Try Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-prep">
+            <div class="container">
+                <div class="prep-box sticker-card">
+                    <h2>Pre-session preparation</h2>
+                    <ul class="checklist">
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Chaperoning:</strong> 1 adult/child for the best support.
+                        </li>
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Items to bring:</strong> Child's personal water bottle, tissues.
+                        </li>
+                        <li>
+                            <span class="icon-check">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+                            </span>
+                            <strong>Messiness level:</strong> Clothes might get stained with paint or clay (wear comfortable clothes).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="selectionSummary" class="section-summary hidden">
+            <div class="container">
+                <div class="summary-box sticker-card bg-yellow-light">
+                    <h2>Family's Selection</h2>
+                    <div class="summary-content">
+                        <p><strong>Activity:</strong> <span id="summaryActivity">Not selected</span></p>
+                        <p><strong>Age Group:</strong> <span id="summaryAge">Not selected</span></p>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="btn btn-primary" id="confirmBtn">Register (Demo)</button>
+                        <button class="btn btn-secondary" id="changeBtn">Change activity</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Hazelnut. Illustrative website in Playful Geometric style.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

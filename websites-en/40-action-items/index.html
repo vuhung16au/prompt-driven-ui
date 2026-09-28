@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Action Items</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="logo">Cockpit</div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Workflows</a>
+                <a href="#" class="nav-item">Settings</a>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1>Action items needed, visible right away.</h1>
+                    <p class="subtitle">Track sample workflow runs and find out why a step stopped.</p>
+                </div>
+                <div class="header-actions">
+                    <span class="badge">Sample Data</span>
+                    <button class="btn btn-outline" id="btn-export">Export CSV</button>
+                    <button class="btn btn-outline" id="btn-reset">Reset</button>
+                </div>
+            </header>
+
+            <section class="overview">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total runs (24h)</div>
+                    <div class="kpi-value tabular">1,248</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Succeeded</div>
+                    <div class="kpi-value tabular text-success">1,235</div>
+                </div>
+                <div class="kpi-card alert-card">
+                    <div class="kpi-label">Needs attention</div>
+                    <div class="kpi-value tabular text-error">13</div>
+                </div>
+            </section>
+
+            <section class="action-items">
+                <h2>Needs attention</h2>
+                <div class="alert-list">
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Missing customer email</strong>
+                            <span>Data input is missing email field. Add a default email or check the source.</span>
+                        </div>
+                    </div>
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Destination unresponsive</strong>
+                            <span>Third-party API timeout. Click on run detail to view log and retry.</span>
+                        </div>
+                    </div>
+                    <div class="alert-item error-item">
+                        <div class="alert-icon error-icon"></div>
+                        <div class="alert-content">
+                            <strong>Invalid data</strong>
+                            <span>Invalid date format. Edit sample data to resume.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="run-history">
+                <div class="table-toolbar">
+                    <h2>Run history</h2>
+                    <div class="table-controls">
+                        <input type="text" placeholder="Search..." class="input-search">
+                        <select class="input-select">
+                            <option>All statuses</option>
+                            <option>Succeeded</option>
+                            <option>Needs attention</option>
+                        </select>
+                        <select class="input-select">
+                            <option>Last 24 hours</option>
+                            <option>Last 7 days</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Workflow</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th class="text-right">Duration (ms)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <aside class="run-detail-panel" id="run-detail" aria-hidden="true">
+            <div class="panel-header">
+                <h3>Run Details <span id="detail-id" class="tabular"></span></h3>
+                <button class="btn-close" id="btn-close-detail" aria-label="Close panel">&times;</button>
+            </div>
+            <div class="panel-body">
+                <div class="timeline" id="timeline">
+                    <!-- Timeline generated by JS -->
+                </div>
+                
+                <h4 class="section-title">Input data (Sample)</h4>
+                <pre class="code-block tabular"><code>{
+  "orderId": "ORD-8821",
+  "customerName": "John Doe",
+  "email": null,
+  "total": 1500000
+}</code></pre>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-outline" id="btn-edit">Edit Sample Data</button>
+                <button class="btn btn-primary" id="btn-retry">Simulate Rerun</button>
+            </div>
+        </aside>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

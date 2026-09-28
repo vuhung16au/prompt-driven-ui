@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sổ sách rõ để bạn tập trung kinh doanh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#FAFAF8',
+                        foreground: '#1A1A1A',
+                        muted: '#F5F3F0',
+                        'muted-foreground': '#6B6B6B',
+                        border: '#E8E4DF',
+                        accent: '#B8860B',
+                        'accent-secondary': '#D4A84B',
+                        card: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'small-caps': '0.15em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            line-height: 1.75;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.03"/%3E%3C/svg%3E');
+        }
+        .small-caps {
+            font-family: '"IBM Plex Mono"', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background-color: #B8860B;
+            color: white;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            transition: all 200ms ease-out;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .btn-primary:hover {
+            background-color: #D4A84B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #1A1A1A;
+            border: 1px solid #1A1A1A;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            transition: all 200ms ease-out;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        .btn-secondary:hover {
+            background-color: #F5F3F0;
+            border-color: #B8860B;
+            color: #B8860B;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E8E4DF;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px rgba(26,26,26,0.04);
+            transition: all 200ms ease-out;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+            background-color: rgba(245, 243, 240, 0.3);
+            border-color: #D4A84B;
+        }
+        .card-featured {
+            border-top: 2px solid #B8860B;
+            background-color: rgba(184, 134, 11, 0.02);
+            box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+        }
+        .input-field {
+            height: 44px;
+            border: 1px solid #E8E4DF;
+            border-radius: 6px;
+            background-color: transparent;
+            padding: 0 1rem;
+            transition: all 150ms ease-out;
+            width: 100%;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #B8860B;
+            box-shadow: 0 0 0 2px #FAFAF8, 0 0 0 4px #B8860B;
+        }
+        .section-label-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-label-line {
+            height: 1px;
+            flex: 1;
+            background-color: #E8E4DF;
+        }
+        .section-label-text {
+            color: #B8860B;
+        }
+        
+        /* Tabular nums for tables/pricing */
+        .tabular-nums {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Checklist animation */
+        .checklist-content {
+            display: none;
+            animation: fadeIn 200ms ease-out forwards;
+        }
+        .checklist-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ambient glow */
+        .ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.03) 0%, rgba(250, 250, 248, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-foreground bg-background relative overflow-x-hidden">
+    <div class="ambient-glow"></div>
+
+    <nav class="py-6 px-6 md:px-12 max-w-7xl mx-auto flex justify-between items-center relative z-10">
+        <div class="font-serif text-xl md:text-2xl font-semibold tracking-tight">Clear Books</div>
+        <div class="hidden md:flex gap-8 items-center text-sm font-medium tracking-wide">
+            <a href="#pham-vi" class="hover:text-accent transition-colors">Phạm vi dịch vụ</a>
+            <a href="#hien-trang" class="hover:text-accent transition-colors">Hiện trạng</a>
+            <a href="#quy-trinh" class="hover:text-accent transition-colors">Quy trình</a>
+        </div>
+        <a href="#lien-he" class="btn-primary text-sm px-6">Gửi yêu cầu</a>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-32 md:py-44 px-6 relative z-10 text-center max-w-5xl mx-auto flex flex-col items-center">
+            <h1 class="font-serif text-[2.5rem] md:text-[4.5rem] leading-[1.1] tracking-[-0.02em] mb-8 max-w-4xl text-foreground">
+                Sổ sách rõ để bạn<br/>tập trung kinh doanh.
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl font-sans tracking-[0.01em]">
+                Xem phạm vi công việc, hồ sơ cần chuẩn bị và những gì nhận được sau mỗi kỳ. Một quy trình minh bạch cho doanh nghiệp.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#hien-trang" class="btn-primary">Xem hồ sơ mẫu</a>
+                <a href="#lien-he" class="btn-secondary">Gửi nhu cầu tư vấn</a>
+            </div>
+        </section>
+
+        <!-- Phạm vi dịch rõ -->
+        <section id="pham-vi" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Phạm vi dịch vụ</span>
+                <span class="section-label-line"></span>
+            </div>
+            
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-6">Minh bạch trong từng hạng mục</h2>
+                <p class="text-muted-foreground max-w-3xl mx-auto">
+                    Chúng tôi thực hiện sổ sách kế toán, báo cáo định kỳ dựa trên chứng từ bạn cung cấp. Không bao gồm các cam kết chịu phạt chưa có căn cứ hoặc tư vấn pháp lý không chính thức.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="card card-featured">
+                    <h3 class="font-serif text-xl font-semibold mb-4">Trong phạm vi</h3>
+                    <ul class="space-y-4 text-muted-foreground">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Kiểm tra tính hợp lệ của hóa đơn, chứng từ đầu vào.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Hạch toán số liệu lên phần mềm kế toán.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Lập báo cáo thuế định kỳ, báo cáo tài chính năm.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="font-serif text-xl font-semibold mb-4">Ngoài phạm vi</h3>
+                    <ul class="space-y-4 text-muted-foreground">
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Tư vấn lách luật, trốn thuế hoặc làm giả chứng từ.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Cam kết bao đậu quyết toán thuế hoặc bù tiền phạt không do lỗi hạch toán.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Chữ ký số, hóa đơn điện tử (khách hàng tự trang bị).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#ho-so-ban-giao" class="inline-flex items-center gap-2 text-foreground font-medium hover:text-accent transition-colors">
+                    <span class="pb-1 border-b border-accent">Xem hồ sơ bàn giao</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Bạn đang ở đâu (Where You Are) -->
+        <section id="hien-trang" class="py-24 md:py-32 px-6 max-w-5xl mx-auto bg-muted/30">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Tình trạng của bạn</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-6 text-center">Chọn nhu cầu hiện tại</h2>
+                
+                <div class="flex flex-col md:flex-row gap-4 justify-center mt-8">
+                    <button onclick="showChecklist('start')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-accent bg-accent/10 text-accent" id="btn-start">
+                        Mới thành lập
+                    </button>
+                    <button onclick="showChecklist('monthly')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent" id="btn-monthly">
+                        Làm theo tháng/quý
+                    </button>
+                    <button onclick="showChecklist('cleanup')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent" id="btn-cleanup">
+                        Cần gỡ rối số liệu
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-card border border-border p-8 rounded-lg shadow-sm">
+                <!-- Start Checklist -->
+                <div id="checklist-start" class="checklist-content active">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Doanh nghiệp mới bắt đầu</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Giấy phép đăng ký kinh doanh</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Thiết lập tài khoản ngân hàng công ty</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Đăng ký chữ ký số và hóa đơn điện tử</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Tờ khai thuế môn bài lần đầu</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Monthly Checklist -->
+                <div id="checklist-monthly" class="checklist-content">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Làm định kỳ hàng tháng/quý</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Sao kê tài khoản ngân hàng định kỳ</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Bảng tổng hợp hóa đơn đầu ra, đầu vào</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Bảng lương và chấm công thực tế</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cleanup Checklist -->
+                <div id="checklist-cleanup" class="checklist-content">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Gỡ rối & dọn dẹp số liệu</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Toàn bộ chứng từ, hóa đơn các năm cũ</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Báo cáo tài chính, báo cáo thuế đã nộp</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">File mềm sổ sách kế toán (nếu có)</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Biên bản kiểm tra thuế các kỳ trước (nếu có)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-sm text-muted-foreground italic border-t border-border pt-4">
+                    * Lưu ý: Danh sách này chỉ là hồ sơ mẫu, chưa thay thế cho tư vấn pháp lý chính thức.
+                </div>
+            </div>
+        </section>
+
+        <!-- Một bộ bàn giao -->
+        <section id="ho-so-ban-giao" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Kết quả công việc</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-12 text-center">Một bộ hồ sơ bàn giao chuẩn</h2>
+            
+            <div class="overflow-x-auto rounded-lg border border-border">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="bg-muted/50 border-b border-border">
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3">Hồ sơ đầu vào</th>
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3 border-l border-border">Việc thực hiện</th>
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3 border-l border-border">Kết quả bạn nhận</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border bg-card">
+                        <tr>
+                            <td class="p-6 align-top text-muted-foreground">
+                                - Hóa đơn mua vào/bán ra<br>
+                                - Sao kê ngân hàng<br>
+                                - Bảng lương
+                            </td>
+                            <td class="p-6 align-top border-l border-border text-muted-foreground">
+                                - Phân loại, đối chiếu hợp lệ<br>
+                                - Nhập liệu lên phần mềm<br>
+                                - Tính toán số thuế phát sinh
+                            </td>
+                            <td class="p-6 align-top border-l border-border font-medium">
+                                - Bảng kê hóa đơn chi tiết<br>
+                                - Tờ khai thuế GTGT, TNCN kỳ đó<br>
+                                - Sổ nhật ký chung
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 align-top text-muted-foreground">
+                                - Số liệu kế toán cả năm<br>
+                                - Các tờ khai đã nộp
+                            </td>
+                            <td class="p-6 align-top border-l border-border text-muted-foreground">
+                                - Kết chuyển doanh thu, chi phí<br>
+                                - Lập báo cáo tài chính<br>
+                                - Quyết toán thuế năm
+                            </td>
+                            <td class="p-6 align-top border-l border-border font-medium">
+                                - Bộ Báo cáo tài chính năm<br>
+                                - Tờ khai quyết toán TNDN, TNCN<br>
+                                - Biên bản bàn giao số liệu
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-right text-sm text-muted-foreground">
+                <p>Các tài liệu như sổ phụ ngân hàng bản cứng, hóa đơn giấy khách hàng tự lưu trữ.</p>
+            </div>
+        </section>
+
+        <!-- Cách cộng tác -->
+        <section id="quy-trinh" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Quy trình</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-16 text-center">3 bước cộng tác rõ ràng</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Desktop line connector -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-border"></div>
+                
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-background border border-accent rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl text-accent">1</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Nhận tài liệu</h3>
+                    <p class="text-muted-foreground text-sm">Doanh nghiệp gửi file sao kê, danh sách hóa đơn xuất/nhập qua email hoặc nhóm chung.</p>
+                </div>
+                
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-background border border-accent rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl text-accent">2</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Xử lý & Đối chiếu</h3>
+                    <p class="text-muted-foreground text-sm">Kế toán rà soát, phản hồi chứng từ lỗi/thiếu và lên dự thảo báo cáo hoặc số thuế dự kiến.</p>
+                </div>
+
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow card-featured">
+                    <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl">3</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Bàn giao & Nộp</h3>
+                    <p class="text-muted-foreground text-sm">Doanh nghiệp duyệt số liệu. Kế toán nộp báo cáo và gửi lại biên bản xác nhận đã nộp.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trao đổi nhu cầu -->
+        <section id="lien-he" class="py-24 md:py-32 px-6 max-w-3xl mx-auto">
+            <div class="card card-featured p-8 md:p-12">
+                <h2 class="font-serif text-3xl leading-[1.2] tracking-[-0.01em] mb-4 text-center">Gửi nhu cầu tư vấn</h2>
+                <p class="text-center text-muted-foreground mb-8">Điền thông tin cơ bản để chúng tôi gửi mẫu báo giá và hồ sơ năng lực.</p>
+
+                <form id="contact-form" class="space-y-6" onsubmit="handleForm(event)">
+                    <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-4">
+                        Vui lòng điền đầy đủ các thông tin bắt buộc.
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 small-caps">Tên doanh nghiệp / Người liên hệ *</label>
+                            <input type="text" id="name" class="input-field" placeholder="Ví dụ: Công ty TNHH ABC" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 small-caps">Email / Số điện thoại *</label>
+                            <input type="text" id="contact" class="input-field" placeholder="Để nhận thông tin phản hồi" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 small-caps">Loại hình doanh nghiệp</label>
+                        <select class="input-field cursor-pointer" id="type">
+                            <option value="">Chọn loại hình</option>
+                            <option value="thuong_mai">Thương mại, dịch vụ</option>
+                            <option value="san_xuat">Sản xuất</option>
+                            <option value="xay_dung">Xây dựng, lắp đặt</option>
+                            <option value="khac">Khác</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 small-caps">Số lượng chứng từ ước tính / tháng</label>
+                        <select class="input-field cursor-pointer" id="volume">
+                            <option value="">Chọn khoảng lượng</option>
+                            <option value="duoi_10">Dưới 10 hóa đơn</option>
+                            <option value="10_50">10 - 50 hóa đơn</option>
+                            <option value="tren_50">Trên 50 hóa đơn</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="btn-primary w-full justify-center">Xem trước & Gửi thông tin</button>
+                        <p class="text-xs text-muted-foreground text-center mt-4">
+                            Biểu mẫu này dùng để đánh giá sơ bộ, không bắt buộc ký kết dịch vụ.<br>
+                            Vui lòng không đính kèm số liệu thật tại đây.
+                        </p>
+                    </div>
+                </form>
+
+                <div id="form-success" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 text-2xl">✓</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2">Đã nhận thông tin</h3>
+                    <p class="text-muted-foreground mb-6">Chúng tôi sẽ liên hệ lại với bạn qua thông tin đã cung cấp.</p>
+                    <button type="button" onclick="resetForm()" class="btn-secondary">Gửi nhu cầu khác</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-foreground text-white py-12 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div>
+                <div class="font-serif text-2xl font-semibold mb-2">Clear Books</div>
+                <p class="text-gray-400 text-sm">Sổ sách rõ ràng, kinh doanh vững vàng.</p>
+            </div>
+            <div class="text-sm text-gray-400 tabular-nums">
+                © 2024 Clear Books. Thiết kế minh họa.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showChecklist(id) {
+            // Hide all checklists
+            document.querySelectorAll('.checklist-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show selected
+            document.getElementById('checklist-' + id).classList.add('active');
+            
+            // Update button styles
+            const btns = ['start', 'monthly', 'cleanup'];
+            btns.forEach(btn => {
+                const el = document.getElementById('btn-' + btn);
+                if (btn === id) {
+                    el.className = 'px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-accent bg-accent/10 text-accent';
+                } else {
+                    el.className = 'px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent';
+                }
+            });
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const error = document.getElementById('form-error');
+            
+            if(!name || !contact) {
+                error.classList.remove('hidden');
+                return;
+            }
+            error.classList.add('hidden');
+            
+            // Show success state
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('form-success').classList.add('hidden');
+            document.getElementById('contact-form').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

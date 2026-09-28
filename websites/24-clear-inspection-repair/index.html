@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage 47 - Kiểm tra rõ. Sửa đúng việc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chassis: '#e0e5ec',
+                        panel: '#f0f2f5',
+                        recessed: '#d1d9e6',
+                        primary: '#2d3436',
+                        muted: '#4a5568',
+                        accent: '#ff4757',
+                        'accent-fg': '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        card: '8px 8px 16px #babecc, -8px -8px 16px #ffffff',
+                        floating: '12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255,255,255,0.5)',
+                        pressed: 'inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff',
+                        recessed: 'inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff',
+                        sharp: '4px 4px 8px rgba(0,0,0,0.15), -1px -1px 1px rgba(255,255,255,0.8)',
+                        'glow-red': '0 0 10px 2px rgba(255, 71, 87, 0.6)',
+                        'glow-green': '0 0 10px 2px rgba(34, 197, 94, 0.6)',
+                        'glow-yellow': '0 0 10px 2px rgba(234, 179, 8, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #e0e5ec;
+            color: #2d3436;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            /* Noise overlay simulation */
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.05;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .text-shadow-emboss {
+            text-shadow: 0 1px 1px #ffffff;
+        }
+        .text-shadow-dark {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .screw {
+            background: radial-gradient(circle at 12px 12px, rgba(0,0,0,0.15) 2px, transparent 3px),
+                        radial-gradient(circle at calc(100% - 12px) 12px, rgba(0,0,0,0.15) 2px, transparent 3px),
+                        radial-gradient(circle at 12px calc(100% - 12px), rgba(0,0,0,0.15) 2px, transparent 3px),
+                        radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(0,0,0,0.15) 2px, transparent 3px);
+        }
+        .scanlines {
+            background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        
+        /* Interactive elements */
+        .btn-industrial {
+            transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-industrial:active:not(:disabled) {
+            transform: translateY(2px);
+            box-shadow: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff !important;
+        }
+        .card-industrial {
+            transition: all 300ms ease-out;
+        }
+        .card-industrial:hover {
+            transform: translateY(-4px);
+            box-shadow: 12px 12px 24px #babecc, -12px -12px 24px #ffffff, inset 1px 1px 0 rgba(255,255,255,0.5);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen pb-24">
+
+<div class="max-w-[72rem] mx-auto px-6 lg:px-12 pt-12 space-y-24 relative z-10">
+    
+    <!-- 1. Bàn kiểm tra (Hero) -->
+    <header class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="lg:w-[60%] space-y-6 order-2 lg:order-1">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-md shadow-recessed bg-recessed">
+                <div class="w-3 h-3 rounded-full bg-green-500 shadow-glow-green animate-pulse"></div>
+                <span class="font-mono text-sm font-bold text-muted uppercase tracking-widest">Hệ thống sẵn sàng</span>
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-primary text-shadow-emboss leading-tight">
+                Kiểm tra rõ.<br>Sửa đúng việc.
+            </h1>
+            <p class="text-lg text-muted max-w-[65ch] leading-relaxed">
+                Một phiếu kiểm tra mẫu giúp bạn thấy tình trạng xe trước khi quyết định hạng mục sửa. Dữ liệu minh họa từ Garage 47.
+            </p>
+            <div class="pt-4">
+                <button onclick="document.getElementById('selection-section').scrollIntoView({behavior: 'smooth'})" class="btn-industrial bg-accent text-accent-fg font-bold uppercase tracking-widest px-8 h-14 rounded-lg shadow-[4px_4px_8px_rgba(166,50,60,0.4),-4px_-4px_8px_rgba(255,100,110,0.4)] flex items-center gap-3">
+                    <i data-lucide="power"></i>
+                    Bắt đầu kiểm tra
+                </button>
+            </div>
+        </div>
+        
+        <div class="lg:w-[40%] w-full order-1 lg:order-2">
+            <!-- 3D Device Mockup -->
+            <div class="aspect-square lg:aspect-auto lg:h-[400px] w-full bg-[#2d3436] rounded-2xl p-4 shadow-floating relative overflow-hidden flex flex-col group border-4 border-[#1a1f21]">
+                <div class="absolute inset-0 opacity-20 mix-blend-overlay" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
+                <!-- Screen -->
+                <div class="flex-1 bg-black rounded-lg shadow-recessed relative overflow-hidden border-2 border-[#111]">
+                    <div class="absolute inset-0 scanlines z-10"></div>
+                    <div class="p-6 relative z-0 h-full flex flex-col justify-between">
+                        <div class="flex justify-between items-center text-accent-fg">
+                            <span class="font-mono text-xs text-green-400">SYS.DIAG_V2.1</span>
+                            <div class="w-2 h-2 rounded-full bg-red-500 shadow-glow-red animate-pulse"></div>
+                        </div>
+                        
+                        <div class="flex-1 flex items-center justify-center relative">
+                            <!-- Schematic Placeholder -->
+                            <div class="relative w-48 h-48 border-2 border-[#4a5568] rounded-md flex items-center justify-center">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#2d3436] border border-[#4a5568]"></div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-[#2d3436] border border-[#4a5568]"></div>
+                                <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#2d3436] border border-[#4a5568]"></div>
+                                <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#2d3436] border border-[#4a5568]"></div>
+                                <i data-lucide="car" class="text-[#4a5568] w-24 h-24"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="h-2 w-full bg-[#2d3436] rounded-full overflow-hidden mt-4">
+                            <div class="h-full bg-accent w-[65%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Physical Connectors (Desktop only) -->
+    <div class="hidden md:block h-3 w-full rounded-full bg-recessed shadow-recessed relative">
+        <div class="absolute left-1/4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-chassis shadow-card z-10 border-2 border-recessed"></div>
+        <div class="absolute left-3/4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-chassis shadow-card z-10 border-2 border-recessed"></div>
+    </div>
+
+    <!-- 2. Chọn hạng mục -->
+    <section id="selection-section" class="space-y-8">
+        <div>
+            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-primary">Chọn hạng mục</h2>
+            <p class="text-muted font-mono text-sm mt-2">MODULE_SELECTION // Chọn hệ thống để xem tình trạng mẫu</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tires -->
+            <button onclick="selectSystem('tires')" id="btn-sys-tires" class="btn-industrial bg-chassis shadow-card rounded-lg p-6 text-left relative overflow-hidden border border-transparent focus:outline-none h-40 flex flex-col justify-between" aria-pressed="false">
+                <div class="flex justify-between items-start w-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-chassis shadow-floating text-primary">
+                        <i data-lucide="circle-dashed"></i>
+                    </div>
+                    <div id="status-tires" class="w-3 h-3 rounded-full bg-red-500 shadow-glow-red hidden"></div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Hệ thống Lốp</h3>
+                    <p class="text-sm font-mono text-muted uppercase mt-1">Cần chú ý</p>
+                </div>
+            </button>
+            
+            <!-- Brakes -->
+            <button onclick="selectSystem('brakes')" id="btn-sys-brakes" class="btn-industrial bg-chassis shadow-card rounded-lg p-6 text-left relative overflow-hidden border border-transparent focus:outline-none h-40 flex flex-col justify-between" aria-pressed="false">
+                <div class="flex justify-between items-start w-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-chassis shadow-floating text-primary">
+                        <i data-lucide="circle-dot"></i>
+                    </div>
+                    <div id="status-brakes" class="w-3 h-3 rounded-full bg-green-500 shadow-glow-green hidden"></div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Phanh & Thắng</h3>
+                    <p class="text-sm font-mono text-muted uppercase mt-1">Bình thường</p>
+                </div>
+            </button>
+            
+            <!-- Lights -->
+            <button onclick="selectSystem('lights')" id="btn-sys-lights" class="btn-industrial bg-chassis shadow-card rounded-lg p-6 text-left relative overflow-hidden border border-transparent focus:outline-none h-40 flex flex-col justify-between" aria-pressed="false">
+                <div class="flex justify-between items-start w-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-chassis shadow-floating text-primary">
+                        <i data-lucide="lightbulb"></i>
+                    </div>
+                    <div id="status-lights" class="w-3 h-3 rounded-full bg-yellow-500 shadow-glow-yellow hidden"></div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Đèn chiếu sáng</h3>
+                    <p class="text-sm font-mono text-muted uppercase mt-1">Sắp tới hạn</p>
+                </div>
+            </button>
+            
+            <!-- Battery -->
+            <button onclick="selectSystem('battery')" id="btn-sys-battery" class="btn-industrial bg-chassis shadow-card rounded-lg p-6 text-left relative overflow-hidden border border-transparent focus:outline-none h-40 flex flex-col justify-between" aria-pressed="false">
+                <div class="flex justify-between items-start w-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-chassis shadow-floating text-primary">
+                        <i data-lucide="battery-warning"></i>
+                    </div>
+                    <div id="status-battery" class="w-3 h-3 rounded-full bg-red-500 shadow-glow-red hidden"></div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Ắc quy</h3>
+                    <p class="text-sm font-mono text-muted uppercase mt-1">Cần thay thế</p>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- 3. Phiếu chi tiết & 4. So hạng mục -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Detail Report -->
+        <div class="lg:col-span-2">
+            <div class="bg-chassis shadow-card rounded-xl p-1 w-full screw relative">
+                <div class="absolute top-4 right-4 flex gap-1 z-10">
+                    <div class="h-6 w-1 rounded-full bg-muted shadow-recessed"></div>
+                    <div class="h-6 w-1 rounded-full bg-muted shadow-recessed"></div>
+                    <div class="h-6 w-1 rounded-full bg-muted shadow-recessed"></div>
+                </div>
+                
+                <div class="bg-chassis m-3 rounded-lg border border-[#ffffff] shadow-[inset_1px_1px_0_rgba(255,255,255,0.5)] p-6 min-h-[400px] flex flex-col">
+                    <div class="border-b border-[#a3b1c6] pb-4 mb-6 flex justify-between items-end">
+                        <div>
+                            <h3 class="text-2xl font-bold">Chi tiết kiểm tra</h3>
+                            <p class="font-mono text-xs text-muted uppercase mt-1">Dữ liệu mẫu từ máy quét</p>
+                        </div>
+                        <div id="detail-indicator" class="flex items-center gap-2 hidden">
+                            <span id="detail-status-text" class="font-mono text-xs font-bold uppercase"></span>
+                            <div id="detail-status-led" class="w-3 h-3 rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="empty-state" class="flex-1 flex flex-col items-center justify-center text-muted">
+                        <i data-lucide="monitor" class="w-16 h-16 mb-4 opacity-50"></i>
+                        <p class="font-mono text-sm uppercase tracking-wider">Chưa chọn hệ thống</p>
+                        <p class="text-sm mt-2">Vui lòng chọn một module phía trên để xem chi tiết.</p>
+                    </div>
+
+                    <div id="detail-content" class="hidden flex-1 flex-col gap-6">
+                        <div class="bg-recessed shadow-recessed rounded-md p-4">
+                            <h4 class="font-mono text-sm font-bold text-muted uppercase mb-2">Quan sát</h4>
+                            <p id="detail-obs" class="text-primary"></p>
+                        </div>
+                        
+                        <div class="bg-recessed shadow-recessed rounded-md p-4 min-h-[160px] flex items-center justify-center relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-[#2d3436] flex items-center justify-center text-[#4a5568]">
+                                <i data-lucide="image" class="w-12 h-12"></i>
+                            </div>
+                            <!-- Mock image placeholder -->
+                            <div id="detail-img-overlay" class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80')"></div>
+                            <div class="absolute top-2 left-2 bg-[rgba(255,230,0,0.8)] backdrop-blur-sm text-black font-mono text-xs px-2 py-1 skew-x-12">Hình ảnh mẫu</div>
+                        </div>
+                        
+                        <div class="bg-chassis shadow-card rounded-md p-4 border border-[#ffffff]">
+                            <h4 class="font-mono text-sm font-bold text-accent uppercase mb-2">Gợi ý bước tiếp</h4>
+                            <p id="detail-rec" class="text-primary font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item Comparison / Cart -->
+        <div class="lg:col-span-1 flex flex-col gap-6">
+            <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                <i data-lucide="clipboard-list"></i>
+                Mục cần trao đổi
+            </h3>
+            
+            <div class="bg-recessed shadow-recessed rounded-lg p-4 flex-1 flex flex-col">
+                <p class="text-sm text-muted mb-4">Chọn các hạng mục bên dưới để đưa vào phiếu tóm tắt.</p>
+                
+                <div id="checklist-items" class="space-y-3 flex-1">
+                    <!-- Items injected here by JS -->
+                </div>
+                
+                <div class="pt-6 mt-auto border-t border-[#a3b1c6]">
+                    <button id="btn-export" disabled class="btn-industrial w-full h-14 bg-chassis text-muted shadow-card rounded-lg font-bold uppercase tracking-widest flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+                        <i data-lucide="file-output"></i>
+                        Xuất phiếu tóm tắt
+                    </button>
+                    <p id="export-msg" class="text-xs text-muted text-center mt-2 font-mono">Chưa chọn hạng mục nào</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Phiếu bàn giao (Modal) -->
+    <div id="export-modal" class="fixed inset-0 bg-primary/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-chassis shadow-floating rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto screw relative p-8">
+            <button onclick="closeModal()" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-chassis shadow-card hover:shadow-pressed transition-all text-primary">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold tracking-tight">Phiếu Tóm Tắt Kiểm Tra</h2>
+                <p class="font-mono text-sm text-muted uppercase mt-2" id="modal-time"></p>
+                <div class="mt-4 inline-block bg-[rgba(255,230,0,0.3)] backdrop-blur-sm text-primary font-mono text-xs px-3 py-1 skew-x-12 border border-yellow-400">
+                    BẢN XEM TRƯỚC - DỮ LIỆU MẪU
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-panel shadow-recessed rounded p-6">
+                    <h3 class="font-bold text-lg mb-4 border-b border-[#a3b1c6] pb-2">Hạng mục đã chọn:</h3>
+                    <ul id="modal-items-list" class="space-y-4">
+                        <!-- Items -->
+                    </ul>
+                </div>
+                
+                <div class="p-4 bg-yellow-100/50 border border-yellow-300 rounded text-sm text-muted">
+                    <i data-lucide="info" class="inline w-4 h-4 mr-1"></i>
+                    Đây là phiên bản mẫu. Mọi thông tin không phản ánh tình trạng xe thực tế và không bao gồm hóa đơn.
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-end">
+                <button onclick="closeModal()" class="btn-industrial bg-accent text-accent-fg font-bold uppercase tracking-widest px-8 h-12 rounded shadow-[4px_4px_8px_rgba(166,50,60,0.4),-4px_-4px_8px_rgba(255,100,110,0.4)]">
+                    Đóng phiên
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize icons
+    lucide.createIcons();
+
+    const mockData = {
+        tires: {
+            id: 'tires',
+            title: 'Hệ thống Lốp',
+            status: 'danger',
+            obs: 'Lốp trước mòn không đều, gai lốp dưới mức an toàn (2mm). Lốp sau nứt nhẹ ở hông.',
+            rec: 'Thay thế 2 lốp trước, cân bằng động và chỉnh chụm 4 bánh.',
+            img: 'https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=800&q=80'
+        },
+        brakes: {
+            id: 'brakes',
+            title: 'Phanh & Thắng',
+            status: 'success',
+            obs: 'Má phanh còn dày (7mm), đĩa phanh nhẵn, không có gờ. Dầu phanh ở mức MAX.',
+            rec: 'Vệ sinh heo phanh để duy trì hiệu suất. Chưa cần thay thế linh kiện.',
+            img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80'
+        },
+        lights: {
+            id: 'lights',
+            title: 'Đèn chiếu sáng',
+            status: 'warning',
+            obs: 'Đèn pha mờ chóa do ố vàng, bóng cos bên trái tối hơn bên phải. Các đèn tín hiệu hoạt động tốt.',
+            rec: 'Đánh bóng phục hồi chóa đèn pha. Thay bóng cos bên trái cùng loại.',
+            img: 'https://images.unsplash.com/photo-1549467657-377317950c40?auto=format&fit=crop&w=800&q=80'
+        },
+        battery: {
+            id: 'battery',
+            title: 'Ắc quy',
+            status: 'danger',
+            obs: 'Điện áp khi không nổ máy: 11.5V. Cọc bình bị sunfat hóa nhiều. Khả năng khởi động kém.',
+            rec: 'Thay thế ắc quy mới (khuyên dùng loại 60Ah). Vệ sinh sạch cọc cáp.',
+            img: 'https://images.unsplash.com/photo-1616788880625-78e705822709?auto=format&fit=crop&w=800&q=80'
+        }
+    };
+
+    let selectedSystem = null;
+    let includedItems = new Set();
+    let viewedItems = new Set();
+
+    function getStatusConfig(status) {
+        if (status === 'danger') return { color: 'bg-red-500', shadow: 'shadow-glow-red', text: 'Cần sửa chữa' };
+        if (status === 'warning') return { color: 'bg-yellow-500', shadow: 'shadow-glow-yellow', text: 'Chú ý' };
+        return { color: 'bg-green-500', shadow: 'shadow-glow-green', text: 'Tốt' };
+    }
+
+    function selectSystem(sysId) {
+        // Update selection state
+        if (selectedSystem) {
+            const oldBtn = document.getElementById(`btn-sys-${selectedSystem}`);
+            oldBtn.setAttribute('aria-pressed', 'false');
+            oldBtn.classList.remove('shadow-pressed', 'text-accent');
+            oldBtn.classList.add('shadow-card');
+        }
+        
+        selectedSystem = sysId;
+        viewedItems.add(sysId);
+        
+        const newBtn = document.getElementById(`btn-sys-${sysId}`);
+        newBtn.setAttribute('aria-pressed', 'true');
+        newBtn.classList.remove('shadow-card');
+        newBtn.classList.add('shadow-pressed', 'text-accent');
+
+        // Show indicator on button
+        Object.keys(mockData).forEach(id => {
+            const statEl = document.getElementById(`status-${id}`);
+            if (id === sysId) {
+                statEl.classList.remove('hidden');
+            } else {
+                statEl.classList.add('hidden');
+            }
+        });
+
+        // Render detail
+        document.getElementById('empty-state').classList.add('hidden');
+        document.getElementById('detail-content').classList.remove('hidden');
+        document.getElementById('detail-content').classList.add('flex');
+        
+        const data = mockData[sysId];
+        document.getElementById('detail-obs').textContent = data.obs;
+        document.getElementById('detail-rec').textContent = data.rec;
+        document.getElementById('detail-img-overlay').style.backgroundImage = `url('${data.img}')`;
+
+        // Update detail header status
+        const indicator = document.getElementById('detail-indicator');
+        indicator.classList.remove('hidden');
+        
+        const statusCfg = getStatusConfig(data.status);
+        document.getElementById('detail-status-text').textContent = statusCfg.text;
+        
+        const led = document.getElementById('detail-status-led');
+        led.className = `w-3 h-3 rounded-full ${statusCfg.color} ${statusCfg.shadow}`;
+
+        // Render checklist
+        renderChecklist();
+    }
+
+    function toggleInclude(sysId) {
+        if (includedItems.has(sysId)) {
+            includedItems.delete(sysId);
+        } else {
+            includedItems.add(sysId);
+        }
+        renderChecklist();
+        updateExportBtn();
+    }
+
+    function renderChecklist() {
+        const container = document.getElementById('checklist-items');
+        container.innerHTML = '';
+        
+        if (viewedItems.size === 0) {
+            container.innerHTML = '<p class="text-sm text-muted italic">Chưa xem hạng mục nào.</p>';
+            return;
+        }
+
+        viewedItems.forEach(id => {
+            const data = mockData[id];
+            const isIncluded = includedItems.has(id);
+            const statusCfg = getStatusConfig(data.status);
+            
+            const div = document.createElement('div');
+            div.className = `p-3 rounded bg-chassis border ${isIncluded ? 'border-accent shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1)]' : 'border-transparent shadow-card'} flex items-center gap-3 cursor-pointer transition-all`;
+            div.onclick = () => toggleInclude(id);
+            
+            div.innerHTML = `
+                <div class="w-5 h-5 rounded border-2 ${isIncluded ? 'bg-accent border-accent flex items-center justify-center' : 'border-[#a3b1c6]'}">
+                    ${isIncluded ? '<i data-lucide="check" class="text-white w-4 h-4"></i>' : ''}
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm ${isIncluded ? 'text-primary' : 'text-muted'}">${data.title}</p>
+                </div>
+                <div class="w-2 h-2 rounded-full ${statusCfg.color}"></div>
+            `;
+            container.appendChild(div);
+        });
+        
+        lucide.createIcons();
+    }
+
+    function updateExportBtn() {
+        const btn = document.getElementById('btn-export');
+        const msg = document.getElementById('export-msg');
+        
+        if (includedItems.size > 0) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed', 'text-muted', 'bg-chassis', 'shadow-card');
+            btn.classList.add('bg-accent', 'text-accent-fg', 'shadow-[4px_4px_8px_rgba(166,50,60,0.4),-4px_-4px_8px_rgba(255,100,110,0.4)]');
+            msg.textContent = `Đã chọn ${includedItems.size} hạng mục`;
+            msg.classList.remove('text-muted');
+            msg.classList.add('text-primary');
+        } else {
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed', 'text-muted', 'bg-chassis', 'shadow-card');
+            btn.classList.remove('bg-accent', 'text-accent-fg', 'shadow-[4px_4px_8px_rgba(166,50,60,0.4),-4px_-4px_8px_rgba(255,100,110,0.4)]');
+            msg.textContent = 'Vui lòng chọn ít nhất 1 hạng mục để xuất phiếu';
+            msg.classList.remove('text-primary');
+            msg.classList.add('text-muted');
+        }
+    }
+
+    // Modal logic
+    const exportBtn = document.getElementById('btn-export');
+    const modal = document.getElementById('export-modal');
+    
+    exportBtn.addEventListener('click', () => {
+        if (includedItems.size === 0) return;
+        
+        const list = document.getElementById('modal-items-list');
+        list.innerHTML = '';
+        
+        includedItems.forEach(id => {
+            const data = mockData[id];
+            const statusCfg = getStatusConfig(data.status);
+            
+            list.innerHTML += `
+                <li class="pb-4 border-b border-gray-200 last:border-0 last:pb-0">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-2 h-2 rounded-full ${statusCfg.color}"></div>
+                        <strong class="text-primary">${data.title}</strong>
+                        <span class="font-mono text-xs text-muted ml-auto uppercase border px-2 py-1">${statusCfg.text}</span>
+                    </div>
+                    <p class="text-sm text-primary"><strong>Vấn đề:</strong> ${data.obs}</p>
+                    <p class="text-sm text-accent mt-1"><strong>Khuyến nghị:</strong> ${data.rec}</p>
+                </li>
+            `;
+        });
+        
+        const now = new Date();
+        document.getElementById('modal-time').textContent = `THỜI ĐIỂM: ${now.toLocaleString('vi-VN')}`;
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+    });
+
+    function closeModal() {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+</script>
+
+</body>
+</html>

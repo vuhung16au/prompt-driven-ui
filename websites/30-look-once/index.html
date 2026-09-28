@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xưởng Gấu - Thiết kế nhận diện thương hiệu</title>
+  <meta name="description" content="Xưởng Gấu làm bộ nhận diện cho cửa hàng độc lập muốn có một dấu ấn rõ ràng.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neo: {
+              bg: '#fdf6e3',
+              accent: '#FF6B6B',
+              secondary: '#FFD93D',
+              muted: '#C4B5FD'
+            }
+          },
+          fontFamily: {
+            space: ['"Space Grotesk"', 'sans-serif'],
+          },
+          boxShadow: {
+            'neo-sm': '4px 4px 0px 0px #000',
+            'neo-md': '8px 8px 0px 0px #000',
+            'neo-lg': '12px 12px 0px 0px #000',
+            'neo-xl': '16px 16px 0px 0px #000',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #fdf6e3;
+      color: #000;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px);
+      background-size: 30px 30px;
+    }
+    .text-stroke {
+      -webkit-text-stroke: 2px black;
+      color: transparent;
+    }
+    .neo-btn {
+      border: 4px solid #000;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 4px 4px 0px 0px #000;
+      transition: all 100ms linear;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+    .neo-card {
+      background-color: #fff;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0px 0px #000;
+      transition: all 200ms ease-out;
+    }
+    .neo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 12px 12px 0px 0px #000;
+    }
+    .neo-input {
+      border: 4px solid #000;
+      background-color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 1rem;
+      transition: background-color 100ms linear;
+    }
+    .neo-input:focus {
+      background-color: #FFD93D;
+      box-shadow: 4px 4px 0px 0px #000;
+      outline: none;
+    }
+    .tab-btn[aria-selected="true"] {
+      background-color: #FFD93D;
+      border-color: #000;
+      box-shadow: 4px 4px 0px 0px #000;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-content { animation: none; }
+      .neo-card:hover { transform: none; box-shadow: 8px 8px 0px 0px #000; }
+    }
+  </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+
+  <!-- Navigation -->
+  <header class="border-b-4 border-black bg-neo-bg sticky top-0 z-50">
+    <div class="container mx-auto px-4 max-w-7xl h-20 flex items-center justify-between">
+      <a href="#" class="border-4 border-black bg-neo-secondary px-4 py-2 font-black text-xl uppercase tracking-widest shadow-neo-sm rotate-1 inline-block">
+        Xưởng Gấu
+      </a>
+      <nav class="hidden md:flex gap-6">
+        <a href="#work" class="font-bold uppercase tracking-widest hover:border-black hover:bg-neo-accent hover:px-2 hover:shadow-neo-sm transition-all py-1 border-2 border-transparent">Dự Án</a>
+        <a href="#services" class="font-bold uppercase tracking-widest hover:border-black hover:bg-neo-accent hover:px-2 hover:shadow-neo-sm transition-all py-1 border-2 border-transparent">Dịch Vụ</a>
+        <a href="#brief" class="font-bold uppercase tracking-widest hover:border-black hover:bg-neo-secondary hover:px-2 hover:shadow-neo-sm transition-all py-1 border-2 border-transparent">Brief</a>
+      </nav>
+      <button class="md:hidden border-4 border-black bg-white p-2 shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none" aria-label="Mở menu">
+        <i data-lucide="menu" class="w-6 h-6 stroke-[3px]"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Marquee -->
+  <div class="border-b-4 border-black bg-black text-white py-2 marquee-container">
+    <div class="marquee-content font-bold uppercase tracking-widest text-sm flex gap-8">
+      <span>★ THIẾT KẾ ĐỘC BẢN</span>
+      <span>★ KHÔNG DÙNG MẪU CÓ SẴN</span>
+      <span>★ DẤU ẤN RÕ RÀNG</span>
+      <span>★ THIẾT KẾ ĐỘC BẢN</span>
+      <span>★ KHÔNG DÙNG MẪU CÓ SẴN</span>
+      <span>★ DẤU ẤN RÕ RÀNG</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 container mx-auto px-4 max-w-7xl relative">
+      <!-- Decorative Elements -->
+      <div class="absolute top-10 right-10 md:top-20 md:right-20 border-4 border-black bg-neo-muted rounded-full w-24 h-24 shadow-neo-md -z-10"></div>
+      <div class="absolute bottom-20 left-4 md:left-20 border-4 border-black bg-white w-16 h-16 shadow-neo-sm rotate-12 -z-10"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 relative z-10">
+          <div class="inline-block border-4 border-black bg-neo-muted px-4 py-1 text-sm font-black uppercase tracking-widest shadow-neo-sm -rotate-2">
+            Studio Thiết Kế
+          </div>
+          <h1 class="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
+            Nhìn Một Lần.<br>
+            <span class="text-neo-accent text-stroke">Nhớ Cái Tên.</span>
+          </h1>
+          <p class="text-xl md:text-2xl font-bold max-w-lg border-l-8 border-black pl-4">
+            Xưởng Gấu làm bộ nhận diện cho cửa hàng độc lập muốn có một dấu ấn rõ ràng.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#work" class="neo-btn bg-neo-accent px-8 py-4 text-center h-14 flex items-center justify-center">
+              Xem bộ nhận diện
+            </a>
+            <a href="#brief" class="neo-btn bg-white px-8 py-4 text-center h-14 flex items-center justify-center">
+              Gửi brief ngay
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Image (Mockup) -->
+        <div class="relative z-10 w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto">
+          <!-- Main Card -->
+          <div class="bg-white border-8 border-black shadow-neo-xl rotate-2 relative">
+            <div class="border-b-4 border-black bg-neo-secondary p-3 flex justify-between items-center">
+              <span class="font-bold uppercase tracking-widest text-sm">Cửa Hàng Gấu</span>
+              <div class="flex gap-2">
+                <div class="w-4 h-4 rounded-full border-4 border-black bg-white"></div>
+                <div class="w-4 h-4 rounded-full border-4 border-black bg-white"></div>
+              </div>
+            </div>
+            <div class="p-4 bg-neo-bg aspect-[4/3] flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[radial-gradient(#000_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-20"></div>
+              <div class="border-8 border-black bg-neo-accent p-8 -rotate-6 shadow-neo-md text-center">
+                <h2 class="text-4xl font-black uppercase text-white tracking-tighter" style="text-shadow: 4px 4px 0px #000">GẤU</h2>
+              </div>
+              <!-- Badge -->
+              <div class="absolute -bottom-4 -right-4 border-4 border-black bg-neo-secondary rounded-full w-20 h-20 flex items-center justify-center rotate-12 shadow-neo-sm">
+                <span class="font-black text-lg">MỚI!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before Design Section -->
+    <section class="py-16 md:py-24 bg-neo-muted border-y-8 border-black relative">
+      <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        <h2 class="text-5xl md:text-7xl font-black uppercase mb-16 text-center tracking-tighter">Trước Khi <span class="bg-neo-secondary px-2">Thiết Kế</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-[40%_60%] gap-8 items-start">
+          <!-- Problem Block (Smaller) -->
+          <div class="neo-card rotate-1 z-10">
+            <div class="bg-black text-white p-4 border-b-4 border-black">
+              <h3 class="text-2xl font-black uppercase flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="w-8 h-8 stroke-[3px]"></i> Bài toán
+              </h3>
+            </div>
+            <div class="p-6 md:p-8 space-y-4">
+              <p class="font-bold text-lg">Cửa hàng quá giống hàng xóm, khách mua xong quên tên.</p>
+              <div class="border-l-4 border-neo-accent pl-4">
+                <p class="font-medium text-black/80">Nhận diện cũ rườm rà, dùng nhiều màu nhưng không có trọng tâm, khó in ấn trên bao bì nhỏ.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Objective Block (Larger) -->
+          <div class="neo-card -rotate-1 z-20 md:-ml-8 md:mt-12 bg-neo-bg">
+            <div class="bg-neo-accent border-b-4 border-black p-4">
+              <h3 class="text-2xl font-black uppercase flex items-center gap-2">
+                <i data-lucide="target" class="w-8 h-8 stroke-[3px]"></i> Mục tiêu & Ràng buộc
+              </h3>
+            </div>
+            <div class="p-6 md:p-8">
+              <ul class="space-y-6">
+                <li class="flex gap-4">
+                  <div class="bg-white border-4 border-black shadow-neo-sm w-12 h-12 flex items-center justify-center shrink-0">
+                    <span class="font-black text-xl">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-xl uppercase">Sạch & Nhớ Lâu</h4>
+                    <p class="mt-1">Giảm thiểu chi tiết thừa, tập trung vào typography mạnh mẽ.</p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <div class="bg-white border-4 border-black shadow-neo-sm w-12 h-12 flex items-center justify-center shrink-0">
+                    <span class="font-black text-xl">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-xl uppercase">In Ấn Tiết Kiệm</h4>
+                    <p class="mt-1">Thiết kế giới hạn 2 màu để giảm chi phí in bao bì số lượng lớn.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Identity Applications -->
+    <section id="work" class="py-16 md:py-24 container mx-auto px-4 max-w-6xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">Bộ Nhận Diện</h2>
+        
+        <!-- Tabs -->
+        <div class="flex flex-wrap gap-4" role="tablist">
+          <button id="tab-packaging" role="tab" aria-selected="true" aria-controls="panel-packaging" class="tab-btn neo-btn bg-white px-6 py-3" onclick="switchTab('packaging')">Bao Bì</button>
+          <button id="tab-signage" role="tab" aria-selected="false" aria-controls="panel-signage" class="tab-btn neo-btn bg-white px-6 py-3 opacity-80" onclick="switchTab('signage')">Biển Hiệu</button>
+          <button id="tab-web" role="tab" aria-selected="false" aria-controls="panel-web" class="tab-btn neo-btn bg-white px-6 py-3 opacity-80" onclick="switchTab('web')">Web</button>
+        </div>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="border-8 border-black bg-white shadow-neo-lg relative p-4 md:p-8">
+        <!-- Packaging -->
+        <div id="panel-packaging" role="tabpanel" aria-labelledby="tab-packaging" class="tab-content active">
+          <div class="aspect-video bg-neo-bg border-4 border-black flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px)] [background-size:40px_40px]"></div>
+            <div class="border-4 border-black bg-[#cfb49a] w-[40%] h-[70%] shadow-neo-md relative flex flex-col items-center justify-center">
+              <div class="border-2 border-black bg-white w-2/3 h-1/2 p-2 text-center rotate-2 shadow-[2px_2px_0px_#000]">
+                <h4 class="font-black text-2xl uppercase tracking-tighter mt-2">GẤU</h4>
+                <div class="w-full h-1 bg-black mt-2"></div>
+                <p class="text-[10px] font-bold uppercase mt-1">Cà Phê & Bánh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signage -->
+        <div id="panel-signage" role="tabpanel" aria-labelledby="tab-signage" class="tab-content">
+          <div class="aspect-video bg-neo-bg border-4 border-black flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px)] [background-size:40px_40px]"></div>
+            <!-- Signage Mockup -->
+            <div class="w-4 h-32 bg-black absolute top-0 left-1/3"></div>
+            <div class="w-4 h-32 bg-black absolute top-0 right-1/3"></div>
+            <div class="border-8 border-black bg-neo-secondary w-[60%] h-[50%] mt-16 shadow-neo-md flex items-center justify-center">
+               <h4 class="font-black text-5xl md:text-7xl uppercase tracking-tighter text-black">GẤU</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web -->
+        <div id="panel-web" role="tabpanel" aria-labelledby="tab-web" class="tab-content">
+          <div class="aspect-video bg-neo-bg border-4 border-black flex items-center justify-center relative overflow-hidden">
+            <div class="border-4 border-black bg-white w-[80%] h-[80%] shadow-neo-md flex flex-col">
+              <div class="border-b-4 border-black bg-gray-200 h-8 flex items-center px-2 gap-2">
+                 <div class="w-3 h-3 rounded-full border-2 border-black bg-neo-accent"></div>
+                 <div class="w-3 h-3 rounded-full border-2 border-black bg-neo-secondary"></div>
+                 <div class="w-3 h-3 rounded-full border-2 border-black bg-neo-bg"></div>
+              </div>
+              <div class="flex-1 bg-neo-bg p-4 md:p-8 flex items-center">
+                <div>
+                  <h4 class="font-black text-3xl md:text-5xl uppercase tracking-tighter mb-2">Xin Chào.</h4>
+                  <div class="border-4 border-black bg-neo-secondary px-4 py-2 inline-block shadow-[4px_4px_0px_#000] rotate-2 font-bold uppercase">Đặt Món Ngay</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope of Work Section -->
+    <section id="services" class="py-16 md:py-24 bg-white border-y-8 border-black">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12 text-center">Phạm Vi Công Việc</h2>
+        
+        <div class="border-4 border-black shadow-neo-lg overflow-x-auto bg-neo-bg">
+          <table class="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr class="bg-black text-white uppercase text-xl font-black">
+                <th class="p-6 border-b-4 border-r-4 border-black w-1/3">Tên việc</th>
+                <th class="p-6 border-b-4 border-r-4 border-black w-1/3">Đầu ra</th>
+                <th class="p-6 border-b-4 border-black w-1/3 text-center">Số vòng phản hồi</th>
+              </tr>
+            </thead>
+            <tbody class="font-bold text-lg">
+              <tr class="hover:bg-neo-secondary/30 transition-colors">
+                <td class="p-6 border-b-4 border-r-4 border-black">Nhận diện cơ bản</td>
+                <td class="p-6 border-b-4 border-r-4 border-black">Logo, Bảng màu, Typography</td>
+                <td class="p-6 border-b-4 border-black text-center font-black text-2xl">3</td>
+              </tr>
+              <tr class="hover:bg-neo-accent/20 transition-colors">
+                <td class="p-6 border-b-4 border-r-4 border-black">Hướng dẫn sử dụng</td>
+                <td class="p-6 border-b-4 border-r-4 border-black">Brand Guideline (PDF)</td>
+                <td class="p-6 border-b-4 border-black text-center font-black text-2xl">2</td>
+              </tr>
+              <tr class="bg-neo-bg hover:bg-neo-muted/30 transition-colors">
+                <td class="p-6 border-r-4 border-black">Trang giới thiệu</td>
+                <td class="p-6 border-r-4 border-black">Website 1 trang (Landing)</td>
+                <td class="p-6 border-black text-center font-black text-2xl">2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- First Brief Section -->
+    <section id="brief" class="py-16 md:py-24 container mx-auto px-4 max-w-4xl relative">
+       <!-- Decorative -->
+       <div class="absolute top-20 -left-10 text-neo-secondary/30 -z-10 rotate-[15deg]">
+          <i data-lucide="star" class="w-48 h-48 fill-current"></i>
+       </div>
+
+      <div class="neo-card p-6 md:p-12 rotate-1">
+        <div class="mb-8">
+          <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Bắt Đầu Cùng Nhau</h2>
+          <p class="font-bold text-lg mt-2 text-black/70">Để lại thông tin dự án, Xưởng Gấu sẽ xem xét và phản hồi.</p>
+        </div>
+
+        <form id="briefForm" class="space-y-6" novalidate onsubmit="submitForm(event)">
+          <div class="space-y-2 relative form-group">
+            <label for="projectName" class="font-black uppercase tracking-widest text-sm block">Tên dự án *</label>
+            <input type="text" id="projectName" class="neo-input w-full" placeholder="Ví dụ: Cửa Hàng Gấu">
+            <div class="error-msg text-white bg-black font-bold uppercase text-xs p-2 absolute right-0 -top-8 border-2 border-black shadow-[2px_2px_0px_#FF6B6B]">
+              Vui lòng nhập tên dự án
+            </div>
+          </div>
+
+          <div class="space-y-2 relative form-group">
+            <label for="audience" class="font-black uppercase tracking-widest text-sm block">Chân dung người mua *</label>
+            <input type="text" id="audience" class="neo-input w-full" placeholder="Ví dụ: Gen Z thích trà sữa đậm vị">
+            <div class="error-msg text-white bg-black font-bold uppercase text-xs p-2 absolute right-0 -top-8 border-2 border-black shadow-[2px_2px_0px_#FF6B6B]">
+              Vui lòng nhập người mua
+            </div>
+          </div>
+
+          <div class="space-y-2 relative form-group">
+            <label for="feel" class="font-black uppercase tracking-widest text-sm block">Cảm giác mong muốn *</label>
+            <textarea id="feel" rows="3" class="neo-input w-full" placeholder="Ví dụ: Trẻ trung, năng động, hơi quậy..."></textarea>
+            <div class="error-msg text-white bg-black font-bold uppercase text-xs p-2 absolute right-0 -top-8 border-2 border-black shadow-[2px_2px_0px_#FF6B6B]">
+              Vui lòng nhập cảm giác
+            </div>
+          </div>
+
+          <button type="submit" class="neo-btn bg-neo-accent text-white w-full h-16 text-xl mt-4">
+            Gửi Brief
+          </button>
+
+          <p id="formStatus" class="font-bold text-center mt-4 hidden p-4 border-4 border-black bg-neo-secondary shadow-neo-sm">
+            Đã lưu. Chức năng gửi mẫu chưa kết nối mạng.
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t-8 border-black bg-black text-white py-12">
+    <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <h3 class="font-black text-3xl uppercase tracking-tighter">Xưởng Gấu</h3>
+        <p class="font-bold mt-2">Dấu ấn rõ ràng.</p>
+      </div>
+      <div class="font-bold text-sm text-gray-400">
+        &copy; 2026 Xưởng Gấu. Bản minh họa.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Tab switching logic
+    function switchTab(tabId) {
+      // Update buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.setAttribute('aria-selected', 'false');
+        btn.classList.add('opacity-80');
+        btn.classList.remove('shadow-neo-sm');
+      });
+      const activeBtn = document.getElementById('tab-' + tabId);
+      activeBtn.setAttribute('aria-selected', 'true');
+      activeBtn.classList.remove('opacity-80');
+      activeBtn.classList.add('shadow-neo-sm');
+
+      // Update panels
+      document.querySelectorAll('.tab-content').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      document.getElementById('panel-' + tabId).classList.add('active');
+    }
+
+    // Form submission logic
+    function submitForm(e) {
+      e.preventDefault();
+      let isValid = true;
+      
+      const fields = ['projectName', 'audience', 'feel'];
+      fields.forEach(id => {
+        const input = document.getElementById(id);
+        const group = input.closest('.form-group');
+        if (!input.value.trim()) {
+          group.classList.add('invalid');
+          isValid = false;
+        } else {
+          group.classList.remove('invalid');
+        }
+      });
+
+      if (isValid) {
+        document.getElementById('formStatus').classList.remove('hidden');
+      } else {
+        document.getElementById('formStatus').classList.add('hidden');
+      }
+    }
+
+    // Remove invalid state on input
+    document.querySelectorAll('.neo-input').forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.form-group').classList.remove('invalid');
+      });
+    });
+  </script>
+</body>
+</html>

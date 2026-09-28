@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Một thay đổi. Cả chuỗi cùng biết.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#030304',
+            surface: '#0F1115',
+            orange: '#F7931A',
+            burnt: '#EA580C',
+            gold: '#FFD600',
+            border: '#1E293B',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased min-h-screen relative">
+  <!-- Background Effects -->
+  <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-50"></div>
+  <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-burnt opacity-10 blur-[120px] z-[-1]"></div>
+  <div class="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-orange opacity-10 blur-[120px] z-[-1]"></div>
+
+  <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+    <div class="font-heading font-bold text-xl tracking-wider flex items-center gap-2">
+      <i data-lucide="layers" class="text-orange"></i>
+      BLOCK<span class="text-orange">LOG</span>
+    </div>
+    <a href="#interactive-model" class="px-6 py-2 rounded-full border-2 border-white/20 text-white hover:border-white hover:bg-white/10 transition-all text-sm font-medium">
+      Trải nghiệm
+    </a>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 md:py-24 relative z-10">
+    <!-- Hero Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-32">
+      <div class="space-y-8">
+        <h1 class="font-heading font-bold text-5xl md:text-7xl leading-tight">
+          Một thay đổi.<br>
+          <span class="bg-gradient-to-r from-burnt to-gold bg-clip-text text-transparent">Cả chuỗi cùng biết.</span>
+        </h1>
+        <p class="text-muted text-lg md:text-xl leading-relaxed max-w-lg">
+          Khám phá cách các khối dữ liệu liên hệ với nhau qua một mô hình tương tác đơn giản. Dữ liệu của bạn được liên kết chặt chẽ.
+        </p>
+        <div>
+          <a href="#interactive-model" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-burnt to-orange text-white font-bold uppercase tracking-wider glow-orange glow-orange-hover transition-all hover:-translate-y-1">
+            Thử thay đổi một khối
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- 3D Orbital Hero Graphic -->
+      <div class="relative h-[300px] md:h-[450px] flex items-center justify-center animate-float">
+        <!-- Center Orb -->
+        <div class="absolute w-24 h-24 rounded-full bg-gradient-to-br from-gold to-orange glow-gold z-10 flex items-center justify-center">
+          <i data-lucide="database" class="text-void w-10 h-10"></i>
+        </div>
+        <!-- Ring 1 -->
+        <div class="absolute w-64 h-64 rounded-full border border-orange/30 border-dashed animate-spin-slow"></div>
+        <!-- Ring 2 -->
+        <div class="absolute w-80 h-80 rounded-full border border-gold/20 animate-spin-slow-reverse"></div>
+        <!-- Floating Blocks -->
+        <div class="absolute top-10 left-10 glass-panel p-4 rounded-xl border border-white/10 animate-bounce" style="animation-duration: 4s;">
+          <div class="font-mono text-xs text-orange">Block #104</div>
+        </div>
+        <div class="absolute bottom-10 right-10 glass-panel p-4 rounded-xl border border-white/10 animate-bounce" style="animation-duration: 3s; animation-delay: 1s;">
+          <div class="font-mono text-xs text-gold">Block #105</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Model Section -->
+    <section id="interactive-model" class="py-12 scroll-mt-24">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="font-heading font-bold text-3xl md:text-4xl">Tình huống cần kiểm chứng</h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Dưới đây là một sổ ghi nhận 4 lần bàn giao tài liệu. Mỗi khối nối với khối trước bằng một chữ ký (Hash). Hãy thử sửa tên file ở Khối 2 để xem điều gì xảy ra với phần còn lại của chuỗi.
+        </p>
+      </div>
+
+      <!-- Chain Display -->
+      <div class="glass-panel rounded-2xl p-6 md:p-10 mb-12 relative overflow-hidden">
+        <div class="flex gap-8 overflow-x-auto pb-8 pt-4 chain-scroll relative" id="chain-container">
+          <!-- Block 1 -->
+          <div class="flex-shrink-0 w-72 bg-surface border border-white/10 rounded-xl p-6 relative group transition-all duration-300">
+            <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/10">
+              <span class="font-heading font-semibold text-lg">Khối 1</span>
+              <span class="flex items-center gap-1 text-xs font-mono text-orange bg-orange/10 px-2 py-1 rounded-lg">
+                <span class="w-2 h-2 rounded-full bg-orange animate-ping"></span> Mới
+              </span>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between"><span class="text-muted">Hoạt động:</span> <span>Giao tài liệu</span></div>
+              <div class="flex justify-between"><span class="text-muted">Người gửi:</span> <span>Alice</span></div>
+              <div class="flex justify-between"><span class="text-muted">File:</span> <span class="font-mono text-white">tailieu_v1.pdf</span></div>
+              <div class="mt-4 pt-4 border-t border-white/10 space-y-1">
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Prev:</span> <span>00000000</span></div>
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Hash:</span> <span class="text-orange">a1b2c3d4</span></div>
+              </div>
+            </div>
+            <div class="block-line"></div>
+          </div>
+
+          <!-- Block 2 (Editable) -->
+          <div class="flex-shrink-0 w-80 bg-surface border-2 border-orange/50 rounded-xl p-6 relative group transition-all duration-300 hover:-translate-y-1 glow-card z-10 scale-105" id="block-2">
+            <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-orange"></div>
+            <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-orange"></div>
+            
+            <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/10">
+              <span class="font-heading font-semibold text-lg text-orange">Khối 2 (Sửa đổi)</span>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between items-center"><span class="text-muted">Hoạt động:</span> <span>Giao tài liệu</span></div>
+              <div class="flex justify-between items-center"><span class="text-muted">Người gửi:</span> <span>Bob</span></div>
+              
+              <div class="flex flex-col gap-1 mt-2">
+                <label class="text-muted text-xs">File Name:</label>
+                <input type="text" id="file-name-input" value="tailieu_v2.pdf" class="w-full bg-black/50 text-white font-mono px-3 py-2 text-sm">
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-white/10 space-y-1">
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Prev:</span> <span>a1b2c3d4</span></div>
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Hash:</span> <span class="text-orange" id="block-2-hash">e5f6g7h8</span></div>
+              </div>
+            </div>
+            <div class="block-line" id="line-2-3"></div>
+          </div>
+
+          <!-- Block 3 -->
+          <div class="flex-shrink-0 w-72 bg-surface border border-white/10 rounded-xl p-6 relative group transition-all duration-300" id="block-3">
+            <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/10">
+              <span class="font-heading font-semibold text-lg">Khối 3</span>
+              <i data-lucide="link" class="text-muted w-4 h-4" id="icon-link-3"></i>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between"><span class="text-muted">Hoạt động:</span> <span>Giao tài liệu</span></div>
+              <div class="flex justify-between"><span class="text-muted">Người gửi:</span> <span>Charlie</span></div>
+              <div class="flex justify-between"><span class="text-muted">File:</span> <span class="font-mono text-white">tailieu_v3.pdf</span></div>
+              <div class="mt-4 pt-4 border-t border-white/10 space-y-1">
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Prev:</span> <span id="block-3-prev">e5f6g7h8</span></div>
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Hash:</span> <span class="text-orange">i9j0k1l2</span></div>
+              </div>
+            </div>
+            <div class="block-line" id="line-3-4"></div>
+          </div>
+
+          <!-- Block 4 -->
+          <div class="flex-shrink-0 w-72 bg-surface border border-white/10 rounded-xl p-6 relative group transition-all duration-300" id="block-4">
+            <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/10">
+              <span class="font-heading font-semibold text-lg">Khối 4</span>
+              <i data-lucide="link" class="text-muted w-4 h-4" id="icon-link-4"></i>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between"><span class="text-muted">Hoạt động:</span> <span>Giao tài liệu</span></div>
+              <div class="flex justify-between"><span class="text-muted">Người gửi:</span> <span>Dave</span></div>
+              <div class="flex justify-between"><span class="text-muted">File:</span> <span class="font-mono text-white">tailieu_v4.pdf</span></div>
+              <div class="mt-4 pt-4 border-t border-white/10 space-y-1">
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Prev:</span> <span id="block-4-prev">i9j0k1l2</span></div>
+                <div class="flex justify-between text-xs font-mono"><span class="text-muted">Hash:</span> <span class="text-orange">m3n4o5p6</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <button id="btn-check" class="px-8 py-3 rounded-full bg-gradient-to-r from-burnt to-orange text-white font-bold uppercase tracking-wider glow-orange glow-orange-hover transition-all flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+          Kiểm tra liên kết
+        </button>
+        <button id="btn-reset" class="px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all flex items-center gap-2">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          Khôi phục chuỗi
+        </button>
+      </div>
+
+      <!-- Explanation Panel -->
+      <div id="result-panel" class="max-w-3xl mx-auto bg-surface border border-white/10 rounded-2xl p-8 hidden opacity-0 transition-opacity duration-500">
+        <h3 class="font-heading font-semibold text-2xl mb-4 flex items-center gap-2" id="result-title">
+          Kết quả kiểm tra
+        </h3>
+        <p class="text-muted mb-6 leading-relaxed" id="result-desc">
+          Mô tả kết quả sẽ hiển thị ở đây.
+        </p>
+        
+        <div class="bg-black/40 rounded-xl p-4 border border-white/5 text-sm text-muted">
+          <p><i data-lucide="info" class="inline w-4 h-4 mr-1"></i> Lưu ý: Đây là mô phỏng giao diện tương tác; không kết nối mạng blockchain, không phát sinh giao dịch thực.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glossary -->
+    <section class="py-12 border-t border-white/10">
+      <h2 class="font-heading font-bold text-2xl md:text-3xl mb-8 text-center">Thuật ngữ</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="glass-panel p-6 rounded-xl border border-white/10 hover:border-orange/50 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-orange/20 border border-orange/50 flex items-center justify-center mb-4">
+            <i data-lucide="box" class="text-orange w-5 h-5"></i>
+          </div>
+          <h4 class="font-heading font-semibold text-lg mb-2">Khối (Block)</h4>
+          <p class="text-muted text-sm">Một tệp ghi chép thông tin. Trong ví dụ này, nó lưu hoạt động giao nhận tài liệu.</p>
+        </div>
+        
+        <div class="glass-panel p-6 rounded-xl border border-white/10 hover:border-orange/50 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-orange/20 border border-orange/50 flex items-center justify-center mb-4">
+            <i data-lucide="link-2" class="text-orange w-5 h-5"></i>
+          </div>
+          <h4 class="font-heading font-semibold text-lg mb-2">Liên kết (Link/Prev)</h4>
+          <p class="text-muted text-sm">Giá trị băm (Hash) của khối ngay trước đó, dùng để nối các khối lại thành một chuỗi.</p>
+        </div>
+        
+        <div class="glass-panel p-6 rounded-xl border border-white/10 hover:border-orange/50 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-orange/20 border border-orange/50 flex items-center justify-center mb-4">
+            <i data-lucide="check-circle" class="text-orange w-5 h-5"></i>
+          </div>
+          <h4 class="font-heading font-semibold text-lg mb-2">Kiểm chứng</h4>
+          <p class="text-muted text-sm">Hành động đối chiếu mã Hash hiện tại với Prev Hash của khối kế tiếp để đảm bảo tính toàn vẹn.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-muted text-sm">
+    <p>BlockLog &copy; 2026. Designed with Web3 Aesthetic.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

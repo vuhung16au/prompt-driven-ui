@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Từ chứng từ tới dữ liệu có thể kiểm tra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="hero">
+      <h1>Từ chứng từ tới dữ liệu có thể kiểm tra.</h1>
+      <p>Xem một tài liệu mẫu, rà lại các trường trích xuất và sửa phần cần xác nhận.</p>
+      <button class="primary-action">Thử một chứng từ mẫu</button>
+    </header>
+    
+    <main class="workspace">
+      <div class="toolbar">
+        <label>Tài liệu mẫu:</label>
+        <div class="doc-selector">
+          <button class="active" data-doc="invoice">Hóa đơn</button>
+          <button data-doc="delivery">Phiếu giao</button>
+          <button data-doc="receipt">Biên nhận</button>
+        </div>
+      </div>
+      
+      <div class="mobile-tabs">
+        <button class="active" data-tab="doc">Tài liệu</button>
+        <button data-tab="data">Dữ liệu</button>
+      </div>
+
+      <div class="panels">
+        <div class="panel doc-panel active" id="doc-panel">
+          <div class="doc-container" id="doc-container">
+            <div class="mock-doc"></div>
+          </div>
+        </div>
+
+        <div class="panel data-panel" id="data-panel">
+          <div class="data-table"></div>
+          
+          <div class="export-section">
+            <div class="export-header">
+              <h3>Bản xuất JSON</h3>
+              <div class="export-actions">
+                <button id="btn-copy">Copy</button>
+                <button id="btn-reset">Reset</button>
+              </div>
+            </div>
+            <pre><code id="json-output"></code></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

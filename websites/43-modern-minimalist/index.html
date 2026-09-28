@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm Mới - Modern Minimalist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: {
+                            DEFAULT: '#3E513E',
+                            light: '#849C84',
+                        },
+                        sand: '#E8E3D2',
+                        warmwhite: '#F4F0E6',
+                        offwhite: '#F9FAFB',
+                        sage: '#A1B0A1',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'display-hero': ['clamp(3.75rem, 8vw + 1rem, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
+                        'display-stat': ['clamp(3rem, 5vw + 1rem, 5rem)', { lineHeight: '1' }],
+                        'h1': ['clamp(2.5rem, 4vw + 1rem, 3.75rem)', { lineHeight: '0.9' }],
+                        'h2': ['clamp(2rem, 3vw + 1rem, 2.5rem)', { lineHeight: '1' }],
+                        'h3': ['1.125rem', { lineHeight: '1' }],
+                        'p': ['0.9375rem', { lineHeight: '1.4' }],
+                        'caption': ['0.75rem', { lineHeight: '1.4' }],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased selection:bg-sand selection:text-olive">
+    
+    <!-- Navbar (Minimal) -->
+    <nav class="w-full px-6 py-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="font-bold tracking-tight text-xl">Dự Án</div>
+        <div>
+            <a href="#" class="text-offwhite text-sm hover:opacity-80 transition-opacity">Liên Hệ &rarr;</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-16 pb-32 px-6 flex flex-col items-center text-center max-w-7xl mx-auto">
+            <h1 class="text-display-hero font-bold tracking-tight text-offwhite mb-8 max-w-5xl">
+                Tương Lai<br>Định Hình.
+            </h1>
+            <p class="text-sage text-p max-w-lg mb-12">
+                Một định nghĩa mới về sự tinh gọn và hiệu suất. Trải nghiệm nền tảng tiên tiến được thiết kế cho sự tối giản, tập trung tuyệt đối vào những gì quan trọng nhất.
+            </p>
+            <button class="bg-sand text-olive font-semibold px-8 py-4 rounded-full text-[15px] hover:scale-[1.02] hover:opacity-90 transition-all duration-150 mb-20 shadow-lg shadow-black/10">
+                Khám Phá Ngay
+            </button>
+
+            <!-- Hero Image / Mockup Placeholder -->
+            <div class="w-full aspect-video md:aspect-[21/9] bg-black/20 rounded-3xl border border-white/5 overflow-hidden relative shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                <!-- Placeholder Image via Unsplash with appropriate content -->
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract 3D rendering representing future technology" class="w-full h-full object-cover opacity-70 mix-blend-overlay">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-sand/50 uppercase tracking-widest text-sm font-medium border border-sand/30 px-4 py-2 rounded-lg backdrop-blur-sm">Dữ liệu mẫu UI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="py-24 px-6 border-y border-white/5">
+            <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
+                <div class="flex flex-col gap-2">
+                    <span class="text-display-stat font-semibold text-offwhite tracking-tight">99%</span>
+                    <span class="text-sage text-caption uppercase tracking-wider font-medium">Độ Tin Cậy Hệ Thống</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-display-stat font-semibold text-offwhite tracking-tight">2.5M</span>
+                    <span class="text-sage text-caption uppercase tracking-wider font-medium">Người Dùng Hiện Tại</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-display-stat font-semibold text-offwhite tracking-tight">0.1s</span>
+                    <span class="text-sage text-caption uppercase tracking-wider font-medium">Tốc Độ Phản Hồi</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-display-stat font-semibold text-offwhite tracking-tight">24/7</span>
+                    <span class="text-sage text-caption uppercase tracking-wider font-medium">Hỗ Trợ Toàn Cầu</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid Features Section -->
+        <section class="py-32 px-6 max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-h2 font-semibold tracking-tight text-offwhite mb-4">Sức Mạnh Tối Giản</h2>
+                <p class="text-sage text-p max-w-md">Mọi tính năng được cấu trúc tỉ mỉ trong một hệ thống không gian thoáng đãng, mang lại trải nghiệm mượt mà không tì vết.</p>
+            </div>
+
+            <!-- CSS Grid for Bento Box -->
+            <div class="grid grid-cols-1 md:grid-cols-3 auto-rows-[400px] gap-6">
+                <!-- Large Card 1 -->
+                <div class="md:col-span-2 bento-card rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
+                    <div class="z-10 relative max-w-md">
+                        <h3 class="text-h3 font-semibold text-offwhite mb-3">Hiệu Suất Vượt Trội</h3>
+                        <p class="text-sage text-p">Kiến trúc lõi được tối ưu hóa cho tốc độ xử lý nhanh chưa từng có, loại bỏ hoàn toàn độ trễ trong mọi thao tác.</p>
+                    </div>
+                    <div class="absolute right-0 bottom-0 w-2/3 h-2/3 bg-gradient-to-tl from-sand/20 to-transparent rounded-tl-[100px] blur-3xl transition-opacity group-hover:opacity-70"></div>
+                </div>
+                
+                <!-- Image/Visual Card -->
+                <div class="bento-card rounded-3xl overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" alt="Minimalist tech hardware" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-olive/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <span class="text-sand font-medium text-caption uppercase tracking-widest">Thiết Kế Đỉnh Cao</span>
+                    </div>
+                </div>
+
+                <!-- Text-only / Stat Card -->
+                <div class="bento-card rounded-3xl p-10 flex flex-col justify-center items-start">
+                    <div class="bg-olive-light/20 p-4 rounded-full mb-6 text-sand">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-h3 font-semibold text-offwhite mb-3">Tích Hợp Tức Thì</h3>
+                    <p class="text-sage text-p">Kết nối hệ sinh thái hiện tại của bạn chỉ với một thao tác đơn giản.</p>
+                </div>
+
+                <!-- Large Card 2 -->
+                <div class="md:col-span-2 bg-sand text-olive rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                    <div class="flex-1 z-10">
+                        <h3 class="text-h2 font-bold mb-4 tracking-tight">Sẵn Sàng Thay Đổi?</h3>
+                        <p class="text-olive/80 text-p mb-8 max-w-sm">Tham gia cùng những người dẫn đầu. Bắt đầu hành trình của bạn ngay hôm nay với nền tảng của chúng tôi.</p>
+                        <button class="bg-olive text-offwhite font-medium px-6 py-3 rounded-full text-sm hover:scale-95 transition-transform duration-150">
+                            Bắt Đầu Trải Nghiệm
+                        </button>
+                    </div>
+                    <div class="flex-1 w-full h-full min-h-[200px] bg-black/5 rounded-2xl border border-olive/10 relative overflow-hidden flex items-center justify-center">
+                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-olive/20 rounded-full blur-2xl"></div>
+                         <span class="text-olive/50 text-caption font-medium tracking-wide relative z-10">Khu vực UI tương tác</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5 mt-16 text-center md:text-left">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-sage text-caption">
+            <div>&copy; 2026 Dự Án Của Bạn. Bảo lưu mọi quyền. (Dữ liệu mẫu)</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-offwhite transition-colors">Bảo Mật</a>
+                <a href="#" class="hover:text-offwhite transition-colors">Điều Khoản</a>
+                <a href="#" class="hover:text-offwhite transition-colors">Hệ Thống</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Rhythm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-color: #E0E5EC;
+      --text-primary: #3D4852;
+      --text-muted: #6B7280;
+      --accent: #6C63FF;
+      --accent-light: #8B84FF;
+      --accent-secondary: #38B2AC;
+      
+      --shadow-light: rgba(255, 255, 255, 0.5);
+      --shadow-dark: rgb(163, 177, 198, 0.6);
+      
+      --extruded: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+      --extruded-hover: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
+      --inset: inset 6px 6px 10px rgba(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+      --inset-deep: inset 10px 10px 20px rgba(163, 177, 198, 0.7), inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+      --inset-small: inset 3px 3px 6px rgba(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .neu-extruded {
+      background-color: var(--bg-color);
+      box-shadow: var(--extruded);
+      transition: all 0.3s ease-out;
+    }
+    .neu-extruded:not(:disabled):hover {
+      box-shadow: var(--extruded-hover);
+      transform: translateY(-1px);
+    }
+    .neu-extruded:not(:disabled):active {
+      box-shadow: var(--inset-small);
+      transform: translateY(0.5px);
+    }
+    
+    .neu-extruded-accent {
+      background-color: var(--accent);
+      color: white;
+      box-shadow: 9px 9px 16px rgba(108, 99, 255, 0.3), -9px -9px 16px rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease-out;
+    }
+    .neu-extruded-accent:not(:disabled):hover {
+      box-shadow: 12px 12px 20px rgba(108, 99, 255, 0.4), -12px -12px 20px rgba(255, 255, 255, 0.6);
+      transform: translateY(-1px);
+    }
+    .neu-extruded-accent:not(:disabled):active, .neu-extruded-accent.active {
+      box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+      transform: translateY(0.5px);
+    }
+
+    .neu-inset {
+      background-color: var(--bg-color);
+      box-shadow: var(--inset);
+    }
+    .neu-inset-deep {
+      background-color: var(--bg-color);
+      box-shadow: var(--inset-deep);
+    }
+    
+    /* High contrast mode */
+    body.high-contrast .neu-extruded,
+    body.high-contrast .neu-extruded-accent,
+    body.high-contrast .neu-inset,
+    body.high-contrast .neu-inset-deep {
+      border: 1px solid var(--text-muted);
+    }
+    body.high-contrast .neu-extruded-accent {
+      border-color: #4A44B3;
+    }
+
+    button:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--accent);
+    }
+    
+    .timer-circle {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+    
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <div class="max-w-md w-full">
+    <header class="text-center mb-10 px-4">
+      <h1 class="font-display text-4xl font-extrabold tracking-tight mb-3 text-[#3D4852]">Tune your work rhythm.</h1>
+      <p class="text-[#6B7280] text-lg">A focus session control panel with clear duration and break intervals.</p>
+    </header>
+
+    <div class="neu-extruded rounded-[32px] p-8 md:p-10 mb-8">
+      
+      <!-- Timer Display -->
+      <div class="timer-circle neu-inset-deep relative" aria-live="polite">
+        <div id="status-text" class="text-[#6B7280] font-medium tracking-wide uppercase text-sm mb-1">Idle</div>
+        <div id="time-display" class="font-display text-6xl font-extrabold tracking-tight text-[#3D4852]" aria-label="Time remaining">25:00</div>
+        <div id="mode-text" class="text-[#6C63FF] font-bold text-sm mt-2 opacity-0 transition-opacity">Focus Mode</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="space-y-6 mb-8" id="settings-panel">
+        <!-- Focus Setting -->
+        <div class="flex items-center justify-between">
+          <div class="text-[#3D4852] font-bold">Focus</div>
+          <div class="flex items-center gap-4">
+            <button id="focus-dec" class="icon-btn neu-extruded text-[#6B7280] font-bold text-xl" aria-label="Decrease focus time">-</button>
+            <div id="focus-val" class="w-12 text-center font-bold text-[#3D4852] text-xl" aria-live="polite">25</div>
+            <button id="focus-inc" class="icon-btn neu-extruded text-[#6B7280] font-bold text-xl" aria-label="Increase focus time">+</button>
+          </div>
+        </div>
+        
+        <!-- Break Setting -->
+        <div class="flex items-center justify-between">
+          <div class="text-[#3D4852] font-bold">Break</div>
+          <div class="flex items-center gap-4">
+            <button id="break-dec" class="icon-btn neu-extruded text-[#6B7280] font-bold text-xl" aria-label="Decrease break time">-</button>
+            <div id="break-val" class="w-12 text-center font-bold text-[#3D4852] text-xl" aria-live="polite">5</div>
+            <button id="break-inc" class="icon-btn neu-extruded text-[#6B7280] font-bold text-xl" aria-label="Increase break time">+</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="flex flex-col gap-4">
+        <button id="primary-action" class="neu-extruded-accent w-full h-14 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+          Start 25-minute session
+        </button>
+        <button id="reset-action" class="neu-extruded w-full h-14 rounded-2xl font-bold text-[#6B7280] text-lg">
+          Reset Session
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Display Options & Stats -->
+    <div class="neu-extruded rounded-3xl p-6 flex items-center justify-between">
+      <div class="text-sm">
+        <div class="text-[#6B7280] mb-1">Total focus time</div>
+        <div class="font-bold text-[#3D4852] text-xl"><span id="total-focus-time">0</span> min</div>
+      </div>
+      <button id="toggle-contrast" class="neu-extruded rounded-xl px-4 py-3 text-sm font-bold text-[#3D4852]">
+        High Contrast
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const state = {
+      status: 'idle', // idle, running, paused, finished
+      mode: 'focus', // focus, break
+      focusDuration: 25,
+      breakDuration: 5,
+      remainingSeconds: 25 * 60,
+      totalFocusSeconds: 0,
+      timerId: null
+    };
+
+    const els = {
+      statusText: document.getElementById('status-text'),
+      timeDisplay: document.getElementById('time-display'),
+      modeText: document.getElementById('mode-text'),
+      focusVal: document.getElementById('focus-val'),
+      breakVal: document.getElementById('break-val'),
+      focusInc: document.getElementById('focus-inc'),
+      focusDec: document.getElementById('focus-dec'),
+      breakInc: document.getElementById('break-inc'),
+      breakDec: document.getElementById('break-dec'),
+      primaryAction: document.getElementById('primary-action'),
+      resetAction: document.getElementById('reset-action'),
+      totalFocusTime: document.getElementById('total-focus-time'),
+      toggleContrast: document.getElementById('toggle-contrast'),
+      settingsPanel: document.getElementById('settings-panel'),
+      body: document.body
+    };
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    function updateDisplay() {
+      els.timeDisplay.textContent = formatTime(state.remainingSeconds);
+      els.focusVal.textContent = state.focusDuration;
+      els.breakVal.textContent = state.breakDuration;
+      els.totalFocusTime.textContent = Math.floor(state.totalFocusSeconds / 60);
+      
+      const disableSettings = state.status === 'running' || state.status === 'paused';
+      els.focusInc.disabled = disableSettings;
+      els.focusDec.disabled = disableSettings;
+      els.breakInc.disabled = disableSettings;
+      els.breakDec.disabled = disableSettings;
+      
+      els.settingsPanel.style.opacity = disableSettings ? '0.5' : '1';
+      els.settingsPanel.style.pointerEvents = disableSettings ? 'none' : 'auto';
+
+      els.modeText.style.opacity = (state.status !== 'idle') ? '1' : '0';
+      els.modeText.textContent = state.mode === 'focus' ? 'Focus Mode' : 'Break Mode';
+
+      switch (state.status) {
+        case 'idle':
+          els.statusText.textContent = 'Idle';
+          els.primaryAction.textContent = `Start ${state.focusDuration}-minute session`;
+          els.primaryAction.classList.remove('active');
+          break;
+        case 'running':
+          els.statusText.textContent = 'Running';
+          els.primaryAction.textContent = 'Pause Session';
+          els.primaryAction.classList.add('active'); // triggers inset shadow
+          break;
+        case 'paused':
+          els.statusText.textContent = 'Paused';
+          els.primaryAction.textContent = 'Resume Session';
+          els.primaryAction.classList.remove('active');
+          break;
+        case 'finished':
+          els.statusText.textContent = 'Finished';
+          els.primaryAction.textContent = `Start Next Session`;
+          els.primaryAction.classList.remove('active');
+          break;
+      }
+    }
+
+    function changeSetting(type, delta) {
+      if (state.status === 'running' || state.status === 'paused') return;
+      
+      if (type === 'focus') {
+        state.focusDuration = Math.max(1, Math.min(120, state.focusDuration + delta));
+        if (state.mode === 'focus' || state.status === 'idle') {
+          state.remainingSeconds = state.focusDuration * 60;
+          state.status = 'idle'; 
+        }
+      } else {
+        state.breakDuration = Math.max(1, Math.min(30, state.breakDuration + delta));
+        if (state.mode === 'break') {
+          state.remainingSeconds = state.breakDuration * 60;
+          state.status = 'idle';
+        }
+      }
+      updateDisplay();
+    }
+
+    function tick() {
+      if (state.remainingSeconds > 0) {
+        state.remainingSeconds--;
+        if (state.mode === 'focus') {
+          state.totalFocusSeconds++;
+        }
+        updateDisplay();
+      } else {
+        clearInterval(state.timerId);
+        if (state.mode === 'focus') {
+          state.mode = 'break';
+          state.remainingSeconds = state.breakDuration * 60;
+          state.status = 'finished'; 
+        } else {
+          state.mode = 'focus';
+          state.remainingSeconds = state.focusDuration * 60;
+          state.status = 'finished';
+        }
+        updateDisplay();
+      }
+    }
+
+    els.focusInc.addEventListener('click', () => changeSetting('focus', 1));
+    els.focusDec.addEventListener('click', () => changeSetting('focus', -1));
+    els.breakInc.addEventListener('click', () => changeSetting('break', 1));
+    els.breakDec.addEventListener('click', () => changeSetting('break', -1));
+
+    els.primaryAction.addEventListener('click', () => {
+      if (state.status === 'idle' || state.status === 'finished') {
+        state.status = 'running';
+        state.timerId = setInterval(tick, 1000);
+      } else if (state.status === 'running') {
+        state.status = 'paused';
+        clearInterval(state.timerId);
+      } else if (state.status === 'paused') {
+        state.status = 'running';
+        state.timerId = setInterval(tick, 1000);
+      }
+      updateDisplay();
+    });
+
+    els.resetAction.addEventListener('click', () => {
+      clearInterval(state.timerId);
+      state.status = 'idle';
+      state.mode = 'focus';
+      state.remainingSeconds = state.focusDuration * 60;
+      updateDisplay();
+    });
+
+    els.toggleContrast.addEventListener('click', () => {
+      els.body.classList.toggle('high-contrast');
+      const isHigh = els.body.classList.contains('high-contrast');
+      els.toggleContrast.textContent = isHigh ? 'Standard Contrast' : 'High Contrast';
+      if (isHigh) {
+        els.toggleContrast.classList.add('neu-inset');
+        els.toggleContrast.classList.remove('neu-extruded');
+      } else {
+        els.toggleContrast.classList.remove('neu-inset');
+        els.toggleContrast.classList.add('neu-extruded');
+      }
+    });
+
+    updateDisplay();
+  </script>
+</body>
+</html>

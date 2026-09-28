@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON 88 - Vaporwave Event</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="background-grid"></div>
+    <div class="floating-sun"></div>
+
+    <div class="page-content">
+        <!-- Hero / Poster -->
+        <header class="hero section-padding">
+            <div class="hero-top">
+                <div class="time-location">
+                    <p class="mono-text">> DATE: SATURDAY</p>
+                    <p class="mono-text">> TIME: 19:00 - 22:00</p>
+                </div>
+                <div class="time-location text-right">
+                    <p class="mono-text">> LOC: VIRTUAL DIMENSION</p>
+                    <p class="mono-text">> SECTOR: 88</p>
+                </div>
+            </div>
+            
+            <h1 class="hero-title">NEON 88<br><span class="hero-subtitle">step into another night.</span></h1>
+            
+            <p class="lead-text">An electronic music listening session in a digital nostalgia world.<br>All schedules and characters on the page are illustrative.</p>
+            
+            <div class="hero-actions">
+                <a href="#schedule" class="btn btn-primary">
+                    <span class="btn-inner">View Schedule</span>
+                </a>
+                <a href="#tickets" class="btn btn-secondary">
+                    <span class="btn-inner">Select Illustrative Slot</span>
+                </a>
+            </div>
+            
+            <!-- Stage Artwork Placeholder -->
+            <div class="stage-artwork">
+                <img src="https://via.placeholder.com/1200x500/1a103c/00FFFF?text=STAGE+ARTWORK" alt="Neon Stage" class="artwork-img">
+            </div>
+        </header>
+
+        <!-- Program / Schedule -->
+        <section id="schedule" class="section-padding schedule-section">
+            <h2 class="section-title">> SCHEDULE</h2>
+            
+            <div class="schedule-container terminal-window">
+                <div class="window-chrome">
+                    <div class="window-dots">
+                        <span class="dot dot-magenta"></span>
+                        <span class="dot dot-cyan"></span>
+                        <span class="dot dot-orange"></span>
+                    </div>
+                    <div class="window-title">TIMELINE.EXE</div>
+                </div>
+                <div class="window-content schedule-layout">
+                    <div class="timeline">
+                        <button class="timeline-item active" data-time="19:00" data-title="Warm-up" data-desc="Gentle warm-up with nostalgic synthwave sounds.">
+                            <span class="time">19:00</span>
+                            <span class="title">Warm-up</span>
+                        </button>
+                        <button class="timeline-item" data-time="20:00" data-title="Neon Fields" data-desc="Immerse yourself in cyberpunk vibes with heavy beats.">
+                            <span class="time">20:00</span>
+                            <span class="title">Neon Fields</span>
+                        </button>
+                        <button class="timeline-item" data-time="21:00" data-title="Afterimage" data-desc="Close the night with ethereal melodies and echoing mirages.">
+                            <span class="time">21:00</span>
+                            <span class="title">Afterimage</span>
+                        </button>
+                    </div>
+                    <div class="schedule-details">
+                        <img id="schedule-img" src="https://via.placeholder.com/600x400/FF00FF/090014?text=WARM-UP" alt="Warm-up session">
+                        <h3 id="schedule-title" class="glow-cyan-text">Warm-up</h3>
+                        <p id="schedule-desc" class="mono-text">Gentle warm-up with nostalgic synthwave sounds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Space / Venue -->
+        <section class="section-padding space-section">
+            <h2 class="section-title">> VENUE</h2>
+            <div class="space-grid">
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/00FFFF?text=PANORAMA" alt="Panoramic view">
+                    <h3 class="glow-cyan-text">Panorama</h3>
+                    <p class="mono-text">Panoramic view of the digital nostalgia space.</p>
+                </div>
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/FF00FF?text=LISTENING+STATION" alt="Listening station">
+                    <h3 class="glow-cyan-text">Listening Station</h3>
+                    <p class="mono-text">Personalized audio experience area.</p>
+                </div>
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/FF9900?text=LIGHTING" alt="Lighting details">
+                    <h3 class="glow-cyan-text">Lighting</h3>
+                    <p class="mono-text">Neon light system reflecting another dimension.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticket Selection -->
+        <section id="tickets" class="section-padding ticket-section">
+            <h2 class="section-title">> SELECT ILLUSTRATIVE SLOT</h2>
+            
+            <div class="ticket-window terminal-window outline-cyan">
+                <div class="window-chrome bg-cyan-10 border-cyan">
+                    <div class="window-dots">
+                        <span class="dot dot-magenta"></span>
+                        <span class="dot dot-cyan"></span>
+                        <span class="dot dot-orange"></span>
+                    </div>
+                    <div class="window-title text-cyan">TICKETS.BAT</div>
+                </div>
+                <div class="window-content p-6">
+                    <div class="ticket-options">
+                        <label class="ticket-option">
+                            <input type="radio" name="slot" value="standing">
+                            <div class="option-content standard-card">
+                                <h3>Standing</h3>
+                                <p class="mono-text">Free experience in the space</p>
+                            </div>
+                        </label>
+                        <label class="ticket-option">
+                            <input type="radio" name="slot" value="seated">
+                            <div class="option-content standard-card">
+                                <h3>Seated</h3>
+                                <p class="mono-text">Perfect view from private area</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="ticket-summary">
+                        <p id="ticket-status" class="mono-text text-magenta mt-4">> Ticket not yet created or reserved.</p>
+                        <button id="view-selection-btn" class="btn btn-primary mt-4" disabled>
+                            <span class="btn-inner">View Selection</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section-padding faq-section">
+            <div class="file-explorer-window">
+                <div class="explorer-header">
+                    <span class="mono-text">C:\NEON88\INFO.TXT</span>
+                </div>
+                <div class="explorer-content p-6">
+                    <h2 class="section-title text-2xl mb-6">> INFORMATION PRIOR TO LISTENING SESSION</h2>
+                    
+                    <div class="faq-item mb-6">
+                        <h3 class="glow-cyan-text">Q: What time is entry?</h3>
+                        <p class="mono-text">A: Doors open at 18:30. Please arrive early to settle in.</p>
+                    </div>
+                    <div class="faq-item mb-6">
+                        <h3 class="glow-cyan-text">Q: What is the session content?</h3>
+                        <p class="mono-text">A: Three main parts featuring electronic music, synthwave, and retro visuals.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="glow-cyan-text">Q: How to view the sample schedule?</h3>
+                        <p class="mono-text">A: Click on the time milestones on the Timeline bar to view performance details.</p>
+                    </div>
+                </div>
+                <div class="explorer-status">
+                    <span>STATUS: READY</span>
+                    <button id="toggle-effects-btn" class="btn btn-ghost btn-sm">
+                        [Disable Effects]
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p class="mono-text">© 2088 NEON DIMENSION. END OF TRANSMISSION.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

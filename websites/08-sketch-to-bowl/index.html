@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ nét phác tới chiếc chén</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Một buổi làm gốm bắt đầu bằng điều bạn muốn cầm trên tay.">
+</head>
+<body>
+    <div class="page-container">
+        <!-- 1. Trang sổ mở -->
+        <header class="section hero">
+            <div class="hero-text">
+                <h1>Từ nét phác tới chiếc chén.</h1>
+                <p>Một buổi làm gốm bắt đầu bằng điều bạn muốn cầm trên tay.</p>
+                <div class="hero-actions">
+                    <a href="#process" class="btn primary">Xem quá trình</a>
+                    <a href="#shapes" class="btn secondary">Chọn mẫu gốm</a>
+                </div>
+            </div>
+            
+            <div class="hero-image decorative-tilt">
+                <div class="sketch-card">
+                    <div class="placeholder-img">Ảnh phác thảo</div>
+                    <span class="caption">Phác</span>
+                </div>
+                <div class="arrow-dashed" aria-hidden="true">
+                    <svg viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="6 6">
+                        <path d="M0,10 Q50,0 90,10" />
+                        <path d="M80,0 L95,10 L80,20" />
+                    </svg>
+                </div>
+                <div class="sketch-card">
+                    <div class="placeholder-img">Ảnh thành phẩm</div>
+                    <span class="caption">Thành phẩm</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Bốn bước làm -->
+        <section id="process" class="section process">
+            <h2>Bốn bước tạo hình</h2>
+            <div class="process-grid">
+                <article class="process-step decorative-tilt-alt">
+                    <div class="placeholder-img step-img">Ảnh chiếc chén (phác)</div>
+                    <h3 class="step-title">1. Phác</h3>
+                    <p>Hình dung dáng vẻ trên giấy.</p>
+                </article>
+                <article class="process-step">
+                    <div class="placeholder-img step-img">Ảnh chiếc chén (nặn)</div>
+                    <h3 class="step-title">2. Nặn</h3>
+                    <p>Cảm nhận đất sét qua đầu ngón tay.</p>
+                </article>
+                <article class="process-step decorative-tilt">
+                    <div class="placeholder-img step-img">Ảnh chiếc chén (sửa)</div>
+                    <h3 class="step-title">3. Sửa</h3>
+                    <p>Gọt giũa đường nét, tạo họa tiết.</p>
+                </article>
+                <article class="process-step decorative-tilt-alt">
+                    <div class="placeholder-img step-img">Ảnh chiếc chén (nung)</div>
+                    <h3 class="step-title">4. Nung</h3>
+                    <p>Đợi lửa hoàn thiện tác phẩm.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. Chọn dáng -->
+        <section id="shapes" class="section shapes">
+            <h2>Chọn dáng</h3>
+            <div class="shape-container">
+                <div class="shape-tabs">
+                    <button class="tab-btn active" data-shape="chen">Chén</button>
+                    <button class="tab-btn" data-shape="coc">Cốc</button>
+                    <button class="tab-btn" data-shape="dia">Đĩa</button>
+                </div>
+                <div class="shape-preview decorative-tilt">
+                    <div class="tape-strip" aria-hidden="true"></div>
+                    <div class="placeholder-img preview-img" id="shape-img" aria-label="Ảnh mẫu chén">Ảnh phác thảo chén</div>
+                    <p class="preview-desc" id="shape-desc">Dáng chén tròn, vừa vặn trong lòng bàn tay.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="layout-grid-2">
+            <!-- 4. Buổi thực hành -->
+            <section class="section workshop-note">
+                <div class="tape-strip red-tape" aria-hidden="true"></div>
+                <div class="note-content">
+                    <h2>Buổi thực hành</h2>
+                    <ul class="workshop-details">
+                        <li><strong>Thời lượng:</strong> Khoảng 3 giờ</li>
+                        <li><strong>Vật liệu:</strong> Đất sét tự nhiên, men an toàn</li>
+                        <li><strong>Bao gồm:</strong> Nặn tay, tráng men, nung lửa 2 lần</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5. Sổ ý tưởng -->
+            <section class="section idea-notebook">
+                <div class="thumbtack" aria-hidden="true"></div>
+                <h2>Sổ ý tưởng</h2>
+                <form class="idea-form" id="idea-form" novalidate>
+                    <div class="form-group">
+                        <label for="idea-text">Điều bạn muốn làm:</label>
+                        <textarea id="idea-text" placeholder="Ghi chú ý tưởng, họa tiết hoặc dáng gốm..." rows="4"></textarea>
+                    </div>
+                    <button type="button" class="btn primary" id="save-idea-btn">Lưu nháp</button>
+                    <div class="form-msg" id="form-msg" aria-live="polite"></div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

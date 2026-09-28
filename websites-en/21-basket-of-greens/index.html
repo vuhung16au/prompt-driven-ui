@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A basket of greens, perfectly portioned for family meals.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#FDFCF8',
+                        foreground: '#2C2C24',
+                        primary: {
+                            DEFAULT: '#5D7052',
+                            foreground: '#F3F4F1'
+                        },
+                        secondary: {
+                            DEFAULT: '#C18C5D',
+                            foreground: '#FFFFFF'
+                        },
+                        accent: {
+                            DEFAULT: '#E6DCCD',
+                            foreground: '#4A4A40'
+                        },
+                        muted: {
+                            DEFAULT: '#F0EBE5',
+                            foreground: '#78786C'
+                        },
+                        border: '#DED8CF',
+                        destructive: '#A85448',
+                    },
+                    fontFamily: {
+                        heading: ['Fraunces', 'serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        soft: '0 4px 20px -2px rgba(93, 112, 82, 0.15)',
+                        float: '0 10px 40px -10px rgba(193, 140, 93, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FDFCF8;
+            color: #2C2C24;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Fraunces', serif;
+        }
+
+        /* Global grain texture */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .blob-bg {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .blob-1 {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            background-color: #E6DCCD;
+            width: 50vw;
+            height: 50vw;
+            top: -10%;
+            right: -10%;
+        }
+
+        .blob-2 {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background-color: #F0EBE5;
+            width: 40vw;
+            height: 40vw;
+            bottom: -10%;
+            left: -10%;
+        }
+        
+        .organic-mask {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+        }
+
+        .organic-mask-2 {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            overflow: hidden;
+        }
+
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .btn-primary {
+            @apply bg-primary text-primary-foreground shadow-soft rounded-full font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_24px_-4px_rgba(93,112,82,0.25)] active:scale-95 px-8 h-12 flex items-center justify-center;
+        }
+        
+        .btn-outline {
+            @apply border-2 border-secondary text-secondary rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95 px-8 h-12 flex items-center justify-center bg-transparent;
+        }
+
+        .card {
+            @apply bg-[#FEFEFA] border border-[#DED8CF]/50 rounded-[2rem] shadow-soft relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(93,112,82,0.15)];
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden text-lg">
+
+    <div class="blob-bg blob-1"></div>
+    <div class="blob-bg blob-2"></div>
+
+    <nav class="sticky top-4 z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white/70 backdrop-blur-md border border-[#DED8CF]/50 rounded-full h-16 flex items-center justify-between px-6 shadow-sm">
+            <div class="flex items-center gap-3">
+                <div class="bg-primary rounded-full p-2 flex items-center justify-center">
+                    <i data-lucide="leaf" class="text-white" width="20" height="20"></i>
+                </div>
+                <span class="font-heading font-bold text-xl text-foreground">Green Basket</span>
+            </div>
+            <div class="hidden md:flex gap-6 items-center text-foreground font-semibold">
+                <a href="#this-week" class="hover:text-primary transition-colors">This Week's Basket</a>
+                <a href="#configurator" class="hover:text-primary transition-colors">Sizes</a>
+                <a href="#origin" class="hover:text-primary transition-colors">Origin Story</a>
+            </div>
+            <button class="md:hidden text-foreground">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
+        <div class="max-w-4xl space-y-8 relative z-10">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold text-foreground leading-[1.1]">
+                A basket of greens,<br>perfectly portioned.
+            </h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">
+                Select the number of people and meals to preview a suitably tailored sample basket for your family meals.
+            </p>
+            <div class="pt-4">
+                <a href="#configurator" class="btn-primary inline-flex gap-2 w-full sm:w-auto">
+                    Create your basket <i data-lucide="arrow-down" width="20"></i>
+                </a>
+            </div>
+        </div>
+        <div class="relative z-10">
+            <div class="absolute inset-0 bg-secondary/10 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] transform -rotate-6 scale-105"></div>
+            <img src="https://images.unsplash.com/photo-1595855767215-68006e897a95?auto=format&fit=crop&q=80&w=800" alt="Fresh green basket" class="w-full h-auto object-cover organic-mask shadow-float transition-transform duration-700 hover:scale-105">
+        </div>
+    </section>
+
+    <section id="this-week" class="bg-primary/5 py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">What's in this week's basket?</h2>
+                <p class="text-lg text-muted-foreground">Harvested early in the morning, carefully packed and delivered to you the same day. Here is the list of vegetables currently in season and at their peak flavor.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-8 group">
+                    <div class="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-primary">
+                        <i data-lucide="sun" class="text-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">Fresh Everyday</h3>
+                    <p class="text-muted-foreground">Vegetables are picked at dawn to retain their natural crispness, sweetness, and nutritional value.</p>
+                </div>
+                <div class="card p-8 group" style="border-radius: 4rem 2rem 2rem 2rem;">
+                    <div class="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-primary">
+                        <i data-lucide="shield-check" class="text-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">Naturally Grown</h3>
+                    <p class="text-muted-foreground">No harmful chemicals used, respecting the soil and the local ecosystem.</p>
+                </div>
+                <div class="card p-8 group" style="border-radius: 2rem 2rem 4rem 2rem;">
+                    <div class="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-primary">
+                        <i data-lucide="truck" class="text-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">Careful Delivery</h3>
+                    <p class="text-muted-foreground">Packed using eco-friendly materials, kept cool and handled gently during transport.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="configurator" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-foreground text-center mb-16">Customize your basket</h2>
+        
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-7 space-y-12">
+                
+                <div class="space-y-6">
+                    <h3 class="font-heading font-bold text-2xl text-foreground border-b border-border pb-4">1. Basket Sizes</h3>
+                    
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm font-bold text-muted-foreground mb-3 uppercase tracking-wider">Number of people</label>
+                            <div class="flex gap-3">
+                                <button onclick="setPeople(2)" id="btn-people-2" class="flex-1 py-3 px-4 rounded-2xl border-2 border-primary bg-primary text-white font-bold transition-all hover:scale-105 active:scale-95">2 People</button>
+                                <button onclick="setPeople(4)" id="btn-people-4" class="flex-1 py-3 px-4 rounded-2xl border-2 border-border text-foreground font-bold transition-all hover:border-primary hover:text-primary hover:scale-105 active:scale-95">4 People</button>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-muted-foreground mb-3 uppercase tracking-wider">Meals / week</label>
+                            <div class="flex gap-3">
+                                <button onclick="setMeals(3)" id="btn-meals-3" class="flex-1 py-3 px-4 rounded-2xl border-2 border-primary bg-primary text-white font-bold transition-all hover:scale-105 active:scale-95">3 Meals</button>
+                                <button onclick="setMeals(5)" id="btn-meals-5" class="flex-1 py-3 px-4 rounded-2xl border-2 border-border text-foreground font-bold transition-all hover:border-primary hover:text-primary hover:scale-105 active:scale-95">5 Meals</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex justify-between items-end border-b border-border pb-4">
+                        <h3 class="font-heading font-bold text-2xl text-foreground">2. Inside the basket</h3>
+                        <span class="text-sm text-muted-foreground">You can swap 1 item</span>
+                    </div>
+                    
+                    <div id="basket-items" class="space-y-4 transition-all duration-200">
+                        <!-- Items rendered via JS -->
+                    </div>
+
+                    <div id="swap-panel" class="hidden mt-6 p-6 rounded-3xl bg-white border border-border shadow-soft">
+                        <h4 class="font-heading font-bold text-xl mb-4" id="swap-title">Choose substitute</h4>
+                        <div class="grid sm:grid-cols-2 gap-4" id="swap-options">
+                            <!-- Options generated via JS -->
+                        </div>
+                        <button onclick="closeSwap()" class="mt-4 text-sm text-muted-foreground hover:text-foreground underline">Cancel swap</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 sticky top-24">
+                <div class="card p-8 bg-stone-50/80 backdrop-blur-sm">
+                    <h3 class="font-heading font-bold text-2xl mb-6 border-b border-border pb-4">Selection Summary</h3>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center text-lg">
+                            <span class="text-muted-foreground">Portion size</span>
+                            <span class="font-bold" id="summary-size">2 people, 3 meals</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg">
+                            <span class="text-muted-foreground">Variety</span>
+                            <span class="font-bold" id="summary-count">4 items</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg">
+                            <span class="text-muted-foreground">Total weight</span>
+                            <span class="font-bold" id="summary-weight">1.5 kg</span>
+                        </div>
+                        <hr class="border-border">
+                        <div class="flex justify-between items-center text-xl mt-4">
+                            <span class="font-heading font-bold">Estimated Total</span>
+                            <span class="font-heading font-bold text-primary tabular-nums" id="summary-price">$15.00</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary/5 rounded-2xl p-4 flex gap-3 items-start mb-8 text-sm">
+                        <i data-lucide="info" class="text-primary shrink-0 mt-0.5" width="18"></i>
+                        <p class="text-muted-foreground">This is an illustrative sample basket. Actual prices and products may vary slightly based on seasonal availability when you order.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <button class="btn-primary w-full text-lg" onclick="alert('This is a demo. Your sample basket has been created successfully!')">View Sample Basket</button>
+                        <button class="btn-outline w-full" onclick="resetBasket()">Reset to Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="origin" class="py-24 bg-stone-100/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 relative">
+                <div class="absolute inset-0 bg-[#C18C5D]/10 rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] transform rotate-3 scale-105"></div>
+                <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&q=80&w=800" alt="Vegetable farm" class="w-full h-auto object-cover organic-mask-2 shadow-soft hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="order-1 md:order-2 space-y-6">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-foreground">From healthy soil to your table</h2>
+                <p class="text-lg text-muted-foreground leading-relaxed">We believe great meals start with happy ingredients. Our greens are grown at partner farms where the soil rests, the water is filtered, and the morning dew refreshes the crops daily.</p>
+                <p class="text-lg text-muted-foreground leading-relaxed">No rushing or forcing growth, each vegetable matures at its own natural pace, fully developing its flavor and nutrients before reaching your family.</p>
+                <div class="pt-4 flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1601646875936-e0ce43717549?auto=format&fit=crop&q=80&w=150" alt="Garden" class="w-16 h-16 rounded-full object-cover shadow-sm border-2 border-white">
+                    <span class="font-heading font-bold italic text-primary">Illustrative Happy Garden</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#2C2C24] text-[#F3F4F1] py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <i data-lucide="leaf" class="text-primary"></i>
+                    <span class="font-heading font-bold text-2xl">Green Basket</span>
+                </div>
+                <p class="text-[#78786C] mb-6">Bringing nature into every family meal. A conceptual website showcasing the Organic design style.</p>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold text-xl mb-6">Explore</h4>
+                <ul class="space-y-3 text-[#78786C]">
+                    <li><a href="#" class="hover:text-white transition-colors">This week's basket</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">How it works</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Farm story</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-heading font-bold text-xl mb-6">Contact (Demo)</h4>
+                <ul class="space-y-3 text-[#78786C]">
+                    <li class="flex items-center gap-3"><i data-lucide="mail" width="18"></i> hello@greenbasket.local</li>
+                    <li class="flex items-center gap-3"><i data-lucide="phone" width="18"></i> (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

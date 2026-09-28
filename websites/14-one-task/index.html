@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một việc. Một khoảng tập trung.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    
+    <main class="container">
+        <header class="hero">
+            <h1>Một việc. Một khoảng tập trung.</h1>
+            <p>Chọn việc cần làm, đặt thời lượng và bắt đầu. Mọi thay đổi chỉ lưu trong phiên thử.</p>
+        </header>
+
+        <section class="card" id="setup-view">
+            <form id="focus-form">
+                <div class="form-group">
+                    <label for="task-name">Tên công việc</label>
+                    <input type="text" id="task-name" placeholder="Ví dụ: Viết bản giới thiệu dự án" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Thời lượng</label>
+                    <div class="duration-options">
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="15">
+                            <span>15 phút</span>
+                        </label>
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="25" checked>
+                            <span>25 phút</span>
+                        </label>
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="45">
+                            <span>45 phút</span>
+                        </label>
+                        <label class="duration-btn custom-duration-label">
+                            <input type="radio" name="duration" value="custom">
+                            <span>Tùy chỉnh</span>
+                        </label>
+                    </div>
+                    <div id="custom-duration-container" class="hidden">
+                        <input type="number" id="custom-duration" placeholder="Nhập số phút (1-120)" min="1" max="120" aria-label="Nhập thời lượng tùy chỉnh">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Bắt đầu phiên tập trung</button>
+            </form>
+        </section>
+
+        <section class="card hidden" id="timer-view">
+            <div class="task-display">
+                <span class="badge">Đang tập trung</span>
+                <h2 id="current-task-name">Tên công việc</h2>
+            </div>
+            
+            <div class="timer-display">
+                <div id="time-left" class="time">25:00</div>
+            </div>
+            
+            <div class="timer-controls">
+                <button id="btn-toggle" class="btn btn-primary">Tạm dừng</button>
+                <button id="btn-reset" class="btn btn-ghost">Hủy phiên</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="completed-view">
+            <div class="completed-content">
+                <div class="success-badge"></div>
+                <h2>Đã hết thời gian</h2>
+                <p>Bạn đã làm được gì?</p>
+                <div class="completed-task-name" id="completed-task-name"></div>
+                <button id="btn-new-session" class="btn btn-primary mt-6">Bắt đầu phiên mới</button>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h3>Lịch sử phiên thử</h3>
+            <div id="history-list" class="history-list">
+                <p class="empty-state">Chưa có phiên nào hoàn thành.</p>
+            </div>
+            <button id="btn-clear-history" class="btn btn-ghost btn-sm hidden">Xóa dữ liệu thử</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

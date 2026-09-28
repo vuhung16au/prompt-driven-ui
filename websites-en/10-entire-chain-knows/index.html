@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain - Interactive Simulation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#030304',
+            surface: '#0F1115',
+            primary: '#F7931A',
+            secondary: '#EA580C',
+            tertiary: '#FFD600',
+            muted: '#94A3B8',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative overflow-x-hidden antialiased">
+  
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+  <div class="bg-blur-ambient w-[600px] h-[600px] top-[-200px] left-1/2 -translate-x-1/2"></div>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    
+    <!-- Hero Section -->
+    <header class="text-center max-w-3xl mx-auto mb-24">
+      <h1 class="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+        One change.<br>
+        <span class="text-gradient">The entire chain knows.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-muted mb-10 font-body leading-relaxed">
+        Discover how data blocks connect with one another through a simple interactive model.
+      </p>
+      <a href="#demo" class="btn-primary focus-visible">Try changing a block</a>
+    </header>
+
+    <!-- Scenario & Sample Chain -->
+    <section id="demo" class="mb-24">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Scenario to Verify</h2>
+        <p class="text-muted max-w-2xl mx-auto">Example ledger recording four document handovers. The data below is simulated to explain how the chain works.</p>
+      </div>
+
+      <!-- Chain Visualizer -->
+      <div class="relative overflow-x-auto pb-8">
+        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start min-w-[768px] mx-auto justify-center" id="blockchain-container">
+          
+          <!-- Block 1 -->
+          <div class="w-64 card-block relative group" id="block-1">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">1</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Action</div>
+              <div class="font-heading font-semibold text-lg">Create record</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Current Hash:</span>
+                <span class="text-primary truncate ml-2" title="a1b2c3d4">a1b2...</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted">Prev Hash:</span>
+                <span class="text-white">0000...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Link 1 -> 2 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-1"></div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="w-64 card-block relative group" id="block-2">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">2</div>
+            <div class="mb-4 pb-4 border-b border-white/10 flex justify-between items-center cursor-pointer" onclick="toggleDisclosure('block-2-details')">
+              <div>
+                <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Action</div>
+                <div class="font-heading font-semibold text-lg" id="block-2-title-display">Hand over to Alice</div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted group-hover:text-primary transition-colors"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            
+            <div id="block-2-details" class="disclosure-content mb-4 space-y-2 font-body text-sm text-gray-300 bg-white/5 p-3 rounded-lg">
+              <p><span class="text-muted">Sender:</span> System</p>
+              <p><span class="text-muted">Record name:</span> <span id="block-2-doc-name">Contract A</span></p>
+              <p><span class="text-muted">Version:</span> v1.0</p>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Current Hash:</span>
+                <span class="text-primary truncate ml-2" id="block-2-hash">e5f6g7h8</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted">Prev Hash:</span>
+                <span class="text-white truncate ml-2" title="a1b2c3d4">a1b2...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-2-status">Matched</span>
+            </div>
+          </div>
+
+          <!-- Link 2 -> 3 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-2"></div>
+          </div>
+
+          <!-- Block 3 -->
+          <div class="w-64 card-block relative group" id="block-3">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">3</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Action</div>
+              <div class="font-heading font-semibold text-lg">Hand over to Bob</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Current Hash:</span>
+                <span class="text-primary truncate ml-2" id="block-3-hash">i9j0k1l2</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-muted">Prev Hash:</span>
+                <span class="text-white truncate ml-2 flex-1 text-right" id="block-3-prev-hash" title="e5f6g7h8">e5f6...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-3-status">Matched</span>
+            </div>
+          </div>
+
+          <!-- Link 3 -> 4 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-3"></div>
+          </div>
+
+          <!-- Block 4 -->
+          <div class="w-64 card-block relative group" id="block-4">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">4</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Action</div>
+              <div class="font-heading font-semibold text-lg">Archive</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Current Hash:</span>
+                <span class="text-primary truncate ml-2">m3n4o5p6</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-muted">Prev Hash:</span>
+                <span class="text-white truncate ml-2 flex-1 text-right" id="block-4-prev-hash" title="i9j0k1l2">i9j0...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-4-status">Matched</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Try Changing Data & Explain -->
+    <div class="grid md:grid-cols-2 gap-12 mb-24">
+      <section class="glass-card p-8">
+        <h3 class="font-heading text-2xl font-semibold mb-6">Try modifying data in block 2</h3>
+        <form id="edit-form" class="space-y-6">
+          <div>
+            <label for="doc-title" class="block text-sm font-mono text-muted mb-2 uppercase tracking-wider">New document name</label>
+            <input type="text" id="doc-title" class="input-field focus-visible" value="Contract A" autocomplete="off">
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <button type="button" id="btn-update" class="btn-primary focus-visible">Update block</button>
+            <button type="button" id="btn-verify" class="btn-outline focus-visible" disabled>Verify Linkage</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="p-8 border border-white/10 rounded-2xl bg-surface/50">
+        <h3 class="font-heading text-2xl font-semibold mb-4">Verification Results</h3>
+        <div id="result-text" class="text-muted leading-relaxed mb-6">
+          <p>All links are secure. Try changing the document name and verify to see what happens to the succeeding blocks.</p>
+        </div>
+        <div class="p-4 bg-void border border-white/10 rounded-lg text-sm text-gray-400">
+          <strong>Note:</strong> This is just an interactive UI simulation; there is no actual blockchain network connection or real transaction.
+        </div>
+      </section>
+    </div>
+
+    <!-- Reset & Glossary -->
+    <section class="border-t border-white/10 pt-16">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="flex-1">
+          <h3 class="font-heading text-2xl font-semibold mb-6">Understand the model?</h3>
+          <p class="text-muted mb-8 max-w-md">You can reset to the initial data to start over, or learn about the terminology alongside.</p>
+          <button type="button" id="btn-reset" class="btn-outline focus-visible">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            Reset chain
+          </button>
+        </div>
+
+        <div class="flex-1 w-full space-y-4">
+          <!-- Glossary Item 1 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-1')">
+              Block
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-1" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              Data packet containing transaction, action, or record information. Each block has a unique identifier generated from its own content.
+            </div>
+          </div>
+          
+          <!-- Glossary Item 2 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-2')">
+              Link (Reference Hash)
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-2" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              A subsequent block always stores the hash of the previous one. This creates an unbreakable sequence that cannot be tampered with or intercepted.
+            </div>
+          </div>
+
+          <!-- Glossary Item 3 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-3')">
+              Verify
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-3" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              The act of recalculating block hashes. If a block's content changes, its hash changes accordingly, breaking the link with the next block.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

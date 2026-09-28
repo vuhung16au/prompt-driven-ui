@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tối Giản</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                    },
+                    colors: {
+                        canvas: '#F5F5F5',
+                        surface: '#FFFFFF',
+                        primary: '#111111',
+                        secondary: '#666666',
+                        line: '#E5E5E5'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-canvas text-primary font-sans antialiased fade-in selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="bg-surface border-b border-line px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-lg font-medium tracking-tight">Nguyễn Văn A</div>
+        <div class="hidden md:flex gap-6 text-sm font-medium">
+            <a href="#work" class="hover:text-secondary transition-colors">Dự án</a>
+            <a href="#process" class="hover:text-secondary transition-colors">Quy trình</a>
+            <a href="#contact" class="hover:text-secondary transition-colors">Liên hệ</a>
+        </div>
+        <button class="md:hidden w-10 h-10 flex items-center justify-center border border-line rounded-sm hover:bg-gray-50 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Hero / Carousel Showcase -->
+    <section class="max-w-7xl mx-auto px-6 py-20 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-tight mb-6">
+                Kiến tạo trải nghiệm kỹ thuật số.
+            </h1>
+            <p class="text-base md:text-lg text-secondary leading-relaxed mb-10 max-w-md">
+                Một nhà thiết kế tối giản tập trung vào giao diện gọn gàng, nghệ thuật chữ chặt chẽ và tương tác có mục đích. Làm việc tại San Francisco.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#contact" class="bg-primary text-white px-8 py-4 text-sm font-medium hover:bg-gray-800 transition-colors rounded-sm">Liên hệ ngay</a>
+                <a href="#work" class="bg-transparent border border-primary text-primary px-8 py-4 text-sm font-medium hover:bg-gray-50 transition-colors rounded-sm">Xem dự án</a>
+            </div>
+        </div>
+        
+        <!-- Carousel Slide Placeholder -->
+        <div class="relative bg-surface p-4 border border-line rounded-sm group">
+            <div class="aspect-[4/3] bg-canvas border border-line overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop" alt="Dự án nổi bật" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-90" loading="lazy">
+                <div class="absolute top-4 left-4 bg-surface px-3 py-1 text-xs font-medium uppercase tracking-widest border border-line rounded-sm">Nổi bật</div>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+                <div>
+                    <h3 class="text-lg font-medium tracking-tight">Dự án Alpha</h3>
+                    <p class="text-sm text-secondary mt-1">Thiết kế lại Thương mại điện tử</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="w-10 h-10 flex items-center justify-center border border-line rounded-sm hover:bg-gray-50 transition-colors" aria-label="Slide trước">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center border border-line rounded-sm hover:bg-gray-50 transition-colors" aria-label="Slide tiếp theo">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Grid -->
+    <section id="work" class="max-w-7xl mx-auto px-6 py-20 border-t border-line">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="text-2xl md:text-3xl font-medium tracking-tight">Dự án tiêu biểu</h2>
+            <a href="#" class="text-sm font-medium hover:text-secondary transition-colors uppercase tracking-widest">Xem tất cả</a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <a href="#" class="group block bg-surface p-4 border border-line rounded-sm hover:bg-gray-50 transition-colors">
+                <div class="aspect-square bg-canvas mb-4 border border-line overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop" alt="Thiết kế Ứng dụng Lunar" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300" loading="lazy">
+                </div>
+                <h3 class="text-lg font-medium tracking-tight">Ứng dụng Lunar</h3>
+                <p class="text-sm text-secondary mt-1 uppercase tracking-widest">Ứng dụng di động</p>
+            </a>
+            <!-- Project 2 -->
+            <a href="#" class="group block bg-surface p-4 border border-line rounded-sm hover:bg-gray-50 transition-colors">
+                <div class="aspect-square bg-canvas mb-4 border border-line overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="Nhận diện thương hiệu Aura" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300" loading="lazy">
+                </div>
+                <h3 class="text-lg font-medium tracking-tight">Thương hiệu Aura</h3>
+                <p class="text-sm text-secondary mt-1 uppercase tracking-widest">Bộ nhận diện</p>
+            </a>
+            <!-- Project 3 -->
+            <a href="#" class="group block bg-surface p-4 border border-line rounded-sm hover:bg-gray-50 transition-colors">
+                <div class="aspect-square bg-canvas mb-4 border border-line overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?q=80&w=800&auto=format&fit=crop" alt="Thiết kế trang web Folio" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300" loading="lazy">
+                </div>
+                <h3 class="text-lg font-medium tracking-tight">Trang web Folio</h3>
+                <p class="text-sm text-secondary mt-1 uppercase tracking-widest">Thiết kế web</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ / Process -->
+    <section id="process" class="bg-surface border-y border-line">
+        <div class="max-w-3xl mx-auto px-6 py-24">
+            <h2 class="text-2xl md:text-3xl font-medium tracking-tight mb-12">Quy trình & Chi tiết</h2>
+            
+            <div class="border-t border-line">
+                <!-- Accordion Item 1 -->
+                <div class="border-b border-line">
+                    <button class="w-full flex justify-between items-center py-6 text-left hover:text-secondary transition-colors" onclick="toggleFaq(1)" aria-expanded="false">
+                        <span class="text-lg font-medium tracking-tight">01. Khám phá</span>
+                        <svg id="icon-1" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    </button>
+                    <div id="content-1" class="hidden pb-6 text-secondary leading-relaxed text-base">
+                        Mỗi dự án bắt đầu bằng việc tìm hiểu sâu về mục tiêu kinh doanh và nhu cầu của người dùng. Chúng tôi loại bỏ tất cả các yếu tố không cần thiết để tìm ra mục đích cốt lõi của giao diện.
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 2 -->
+                <div class="border-b border-line">
+                    <button class="w-full flex justify-between items-center py-6 text-left hover:text-secondary transition-colors" onclick="toggleFaq(2)" aria-expanded="false">
+                        <span class="text-lg font-medium tracking-tight">02. Cấu trúc</span>
+                        <svg id="icon-2" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    </button>
+                    <div id="content-2" class="hidden pb-6 text-secondary leading-relaxed text-base">
+                        Thiết lập hệ thống lưới nghiêm ngặt và phân cấp nghệ thuật chữ. Cấu trúc thông tin được bố trí mà không có trang trí trực quan để đảm bảo nội dung quyết định hình thức.
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="border-b border-line">
+                    <button class="w-full flex justify-between items-center py-6 text-left hover:text-secondary transition-colors" onclick="toggleFaq(3)" aria-expanded="false">
+                        <span class="text-lg font-medium tracking-tight">03. Hoàn thiện</span>
+                        <svg id="icon-3" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    </button>
+                    <div id="content-3" class="hidden pb-6 text-secondary leading-relaxed text-base">
+                        Áp dụng bảng màu đơn sắc độ tương phản cao. Đường viền xác định không gian trong khi bóng đổ được loại bỏ. Giao diện người dùng trở thành khung vô hình cho nội dung.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-5xl md:text-7xl font-medium tracking-tighter leading-tight mb-8">Hãy cùng nhau xây dựng.</h2>
+                <a href="mailto:hello@example.com" class="inline-block bg-primary text-white px-8 py-4 text-sm font-medium hover:bg-gray-800 transition-colors rounded-sm">hello@example.com</a>
+            </div>
+            <div class="flex flex-col md:items-end justify-end gap-2 text-sm font-medium uppercase tracking-widest text-secondary">
+                <a href="#" class="hover:text-primary transition-colors">Twitter</a>
+                <a href="#" class="hover:text-primary transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-primary transition-colors">Dribbble</a>
+                <a href="#" class="hover:text-primary transition-colors mt-4">© 2026 Tối giản</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lớp Học Academia - Đọc kỹ hơn, lập luận rõ hơn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: "#1C1714",
+            backgroundAlt: "#251E19",
+            foreground: "#E8DFD4",
+            muted: "#3D332B",
+            mutedForeground: "#9C8B7A",
+            border: "#4A3F35",
+            accent: "#C9A962",
+            accentSecondary: "#8B2635",
+          },
+          fontFamily: {
+            heading: ["'Cormorant Garamond'", "serif"],
+            body: ["'Crimson Pro'", "serif"],
+            display: ["'Cinzel'", "serif"],
+          },
+          letterSpacing: {
+            widest: '0.25em',
+            wider: '0.2em',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-background text-foreground font-body text-lg leading-relaxed antialiased min-h-screen relative overflow-x-hidden">
+  
+  <div class="texture-overlay"></div>
+  <div class="vignette-overlay"></div>
+
+  <div class="relative z-10">
+    <header class="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent font-medium leading-[1.45]">Lớp Đọc & Thảo Luận</span>
+        <h1 class="font-heading text-5xl lg:text-7xl leading-[1.1] tracking-tight">Đọc kỹ hơn.<br>Lập luận rõ hơn.</h1>
+        <p class="text-lg lg:text-xl text-mutedForeground max-w-lg leading-relaxed">
+          Một lớp đọc và thảo luận dành cho người đi làm muốn hiểu sâu điều mình đọc. Chúng ta không đọc nhanh, chúng ta đọc chậm và phân tích từng luận điểm.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#sample-lesson" class="btn-primary engraved-text">Xem bài học mẫu</a>
+          <a href="#schedule" class="btn-secondary">Chọn lịch học</a>
+        </div>
+      </div>
+      <div class="relative flex justify-center">
+        <div class="w-full max-w-sm aspect-[3/4] arch-top overflow-hidden border border-border relative">
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800" alt="Không gian thư viện cổ điển với ánh sáng ấm" class="w-full h-full object-cover sepia-img">
+        </div>
+      </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-12 py-24">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Giáo Trình</span>
+        <h2 class="font-heading text-4xl lg:text-5xl">Bốn Chương Trọng Tâm</h2>
+        <div class="ornate-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume I</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Đọc câu hỏi</h3>
+          <p class="text-mutedForeground mb-6">Kết quả: Nắm bắt chính xác vấn đề cốt lõi mà văn bản đang cố gắng trả lời trước khi phân tích nội dung.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-1')">
+            Mở bài tập <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-1" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Xác định câu hỏi chính trong đoạn văn bản về chính sách kinh tế. [Bài tập minh họa]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume II</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Tách luận điểm</h3>
+          <p class="text-mutedForeground mb-6">Kết quả: Phân rã văn bản thành các lập luận nhỏ, xác định tiền đề và kết luận của tác giả.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-2')">
+            Mở bài tập <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-2" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Phân rã một bài luận trên báo thành cấu trúc cây lập luận. [Bài tập minh họa]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume III</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Kiểm bằng chứng</h3>
+          <p class="text-mutedForeground mb-6">Kết quả: Đánh giá độ tin cậy, tính xác đáng và sự đầy đủ của các bằng chứng được đưa ra.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-3')">
+            Mở bài tập <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-3" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Đánh giá 3 nguồn dữ liệu thống kê trong một báo cáo thường niên. [Bài tập minh họa]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume IV</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Viết phản hồi</h3>
+          <p class="text-mutedForeground mb-6">Kết quả: Trình bày lại lập luận của mình một cách mạch lạc, bác bỏ hoặc đồng tình có cơ sở.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-4')">
+            Mở bài tập <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-4" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Viết đoạn văn phản biện dài 200 chữ cho bài luận đã phân tích. [Bài tập minh họa]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-lesson" class="max-w-4xl mx-auto px-6 lg:px-12 py-24">
+      <div class="ornate-frame bg-backgroundAlt border border-border p-8 lg:p-16">
+        <div class="text-center mb-12">
+          <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-4 block leading-[1.45]">Bài Học Mẫu</span>
+          <h2 class="font-heading text-4xl lg:text-6xl mb-4">Phân Tích Lập Luận</h2>
+          <div class="ornate-divider ornate-divider-alt"></div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-12 top-0 bottom-0 w-8 hidden lg:block border-r border-border"></div>
+          <p class="drop-cap text-lg lg:text-xl text-mutedForeground mb-6 leading-relaxed">
+            Trong một cuộc thảo luận về năng suất, tác giả viết: 
+            <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(1, this)">"Làm việc nhiều giờ hơn không có nghĩa là tạo ra nhiều giá trị hơn."</button> 
+            Tuy nhiên, nhiều doanh nghiệp vẫn <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(2, this)">đánh giá hiệu quả dựa trên thời gian ngồi tại bàn</button>. 
+            Do đó, chúng ta cần <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(3, this)">thay đổi cách đo lường hiệu suất sang dựa trên kết quả cuối cùng.</button>
+          </p>
+          
+          <div class="mt-12 p-6 border border-border bg-background">
+            <p class="font-display text-xs uppercase text-accent mb-2 tracking-[0.25em] leading-[1.45]">Thử Thách</p>
+            <p class="mb-4">Hãy chọn câu chứa <strong>kết luận chính</strong> của đoạn văn trên bằng cách bấm vào các đoạn văn bản.</p>
+            <div id="feedback-area" class="text-sm italic text-mutedForeground">
+              Chưa có lựa chọn.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-12 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative flex justify-center order-2 lg:order-1">
+          <div class="w-full max-w-sm aspect-[4/5] arch-top overflow-hidden border border-border relative">
+            <div class="absolute inset-0 bg-accent/10 z-10 pointer-events-none mix-blend-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Người điều phối thảo luận" class="w-full h-full object-cover sepia-img">
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Người Hướng Dẫn</span>
+          <h2 class="font-heading text-4xl lg:text-5xl mb-6">Người Điều Phối Thảo Luận</h2>
+          <p class="text-mutedForeground mb-4 italic text-sm">(Ảnh và thông tin minh họa)</p>
+          <div class="ornate-divider !ml-0 max-w-[8rem] mb-8"></div>
+          <div class="space-y-6 text-lg text-foreground/90">
+            <p>
+              Vai trò của người hướng dẫn không phải là giảng bài một chiều, mà là tạo ra không gian để bạn tự suy ngẫm và tranh luận.
+            </p>
+            <p>
+              Chúng ta sẽ cùng nhau bóc tách các văn bản phức tạp, đặt những câu hỏi khó và rèn luyện tư duy phản biện qua từng buổi học. Người hướng dẫn đóng vai trò gợi mở, giúp bạn nhìn thấy những góc khuất trong lập luận mà có thể bạn đã bỏ qua.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32 border-t border-border mt-12 bg-backgroundAlt/30">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Lịch Trình</span>
+        <h2 class="font-heading text-4xl lg:text-5xl">Chọn Lịch Học</h2>
+        <div class="ornate-divider"></div>
+        <p class="text-mutedForeground max-w-2xl mx-auto">
+          Mỗi lớp giới hạn số lượng học viên để đảm bảo chất lượng thảo luận. Vui lòng đọc kỹ yêu cầu chuẩn bị trước mỗi buổi.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="relative bg-background border border-border p-8 rounded corner-flourish transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-mutedForeground mb-2 leading-[1.45]">Lựa chọn I</div>
+          <h3 class="font-heading text-2xl mb-2">Tối Thứ 3 & Thứ 5</h3>
+          <p class="text-accent mb-6">19:30 - 21:30</p>
+          
+          <div class="space-y-4 mb-8 text-sm text-mutedForeground">
+            <div class="flex items-start gap-3">
+              <i data-lucide="book-open" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Yêu cầu đọc trước 20 trang tài liệu mỗi buổi.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <i data-lucide="users" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Thảo luận nhóm nhỏ và viết phản hồi.</p>
+            </div>
+          </div>
+          
+          <button class="btn-secondary w-full engraved-text">Xem lựa chọn</button>
+        </div>
+
+        <div class="relative bg-background border border-accent p-8 rounded corner-flourish transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="wax-seal">
+            <i data-lucide="star" class="w-4 h-4 text-foreground"></i>
+          </div>
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Lựa chọn II</div>
+          <h3 class="font-heading text-2xl mb-2">Sáng Thứ 7</h3>
+          <p class="text-accent mb-6">09:00 - 12:00 (Học dồn)</p>
+          
+          <div class="space-y-4 mb-8 text-sm text-mutedForeground">
+            <div class="flex items-start gap-3">
+              <i data-lucide="book-open" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Yêu cầu đọc trước 40 trang tài liệu cuối tuần.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <i data-lucide="users" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Thảo luận chuyên sâu và tranh biện trực tiếp.</p>
+            </div>
+          </div>
+          
+          <button class="btn-primary w-full engraved-text text-accentForeground">Xem lựa chọn</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-border text-center text-sm text-mutedForeground">
+      <p>&copy; 2026 Lớp Học Academia. Dự án minh họa.</p>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function checkAnswer(id, el) {
+      const feedback = document.getElementById('feedback-area');
+      document.querySelectorAll('button.inline').forEach(btn => {
+        btn.classList.remove('text-accent', 'border-b', 'border-accent');
+      });
+      
+      el.classList.add('text-accent', 'border-b', 'border-accent');
+      
+      if (id === 3) {
+        feedback.innerHTML = '<span class="text-accent">Chính xác.</span> "Do đó" là từ báo hiệu kết luận. Câu này là lời kêu gọi hành động dựa trên các tiền đề đã nêu.';
+      } else if (id === 1) {
+        feedback.innerHTML = 'Đây là một tiền đề (quan điểm), không phải kết luận. Tác giả dùng nó làm nền tảng để đưa ra kết luận ở cuối.';
+      } else {
+        feedback.innerHTML = 'Đây là một quan sát thực tế (tiền đề thứ hai), đóng vai trò bối cảnh, chưa phải là thông điệp cuối cùng.';
+      }
+    }
+    
+    function toggleSyllabus(id) {
+      const el = document.getElementById(id);
+      const icon = el.previousElementSibling.querySelector('i');
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+/* ==========================================================================
+   NGUYỆT CẦM - ART DECO STYLE SYSTEM
+   Specification: Obsidian #111a22 / Cream #f2e7d2 / Gold #c9a227 (#d4af37)
+   Headings: Marcellus (Roman serif) | Body: Josefin Sans (Geometric vintage)
+   ========================================================================== */
+
+:root {
+  --bg-obsidian: #111a22;
+  --bg-charcoal: #16222d;
+  --bg-darker: #0d141b;
+  --color-cream: #f2e7d2;
+  --color-gold: #c9a227;
+  --color-gold-metallic: #d4af37;
+  --color-gold-light: #f2e8c4;
+  --color-gold-glow: rgba(201, 162, 39, 0.25);
+  --color-midnight: #1e3d59;
+  --color-pewter: #94a3b8;
+  --color-danger: #f87171;
+  --font-heading: 'Marcellus', Georgia, serif;
+  --font-body: 'Josefin Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-strict: 0px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-obsidian);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Background Crosshatch Pattern (3-5% opacity) */
+.bg-crosshatch {
+  background-color: var(--bg-obsidian);
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(201, 162, 39, 0.035) 0, rgba(201, 162, 39, 0.035) 1px, transparent 1px, transparent 12px),
+    repeating-linear-gradient(-45deg, rgba(201, 162, 39, 0.035) 0, rgba(201, 162, 39, 0.035) 1px, transparent 1px, transparent 12px);
+}
+
+/* Sunburst Radial Gradients */
+.sunburst-bg {
+  background: radial-gradient(circle at center 15%, rgba(201, 162, 39, 0.16) 0%, rgba(17, 26, 34, 0.02) 65%, transparent 100%);
+}
+
+.sunburst-subtle {
+  background: radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.10) 0%, transparent 70%);
+}
+
+/* Typography Standards */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* Vertical Symmetrical Column Dividers */
+.vertical-divider {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(201, 162, 39, 0.45) 20%, rgba(201, 162, 39, 0.45) 80%, transparent);
+}
+
+/* Symmetrical Fan Divider Motif */
+.fan-divider {
+  width: 140px;
+  height: 1px;
+  background: var(--color-gold);
+  position: relative;
+  margin: 0 auto;
+}
+
+.fan-divider::before, .fan-divider::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--color-gold);
+  background-color: var(--bg-obsidian);
+  transform: rotate(45deg);
+}
+
+.fan-divider::before {
+  left: 0;
+}
+
+.fan-divider::after {
+  right: 0;
+}
+
+.fan-divider-center {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--color-gold);
+  background-color: var(--bg-obsidian);
+}
+
+/* Precision Art Deco Buttons */
+.deco-btn {
+  position: relative;
+  background-color: transparent;
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: all 0.35s ease-out;
+  cursor: pointer;
+  border-radius: var(--radius-strict);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 28px;
+  text-decoration: none;
+  font-weight: 600;
+  user-select: none;
+}
+
+.deco-btn:hover {
+  background-color: var(--color-gold);
+  color: var(--bg-obsidian);
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.45);
+  transform: translateY(-2px);
+}
+
+.deco-btn:active {
+  transform: translateY(0);
+}
+
+.deco-btn-solid {
+  background-color: var(--color-gold);
+  color: var(--bg-obsidian);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 15px rgba(201, 162, 39, 0.25);
+}
+
+.deco-btn-solid:hover {
+  background-color: var(--color-gold-light);
+  color: var(--bg-obsidian);
+  box-shadow: 0 0 25px rgba(201, 162, 39, 0.55);
+}
+
+.deco-btn-sm {
+  min-height: 44px;
+  padding: 6px 18px;
+  font-size: 0.85rem;
+}
+
+.deco-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-obsidian), 0 0 0 4px var(--color-gold);
+}
+
+/* Showtime Pill Switcher */
+.showtime-nav {
+  display: inline-flex;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background-color: var(--bg-charcoal);
+  padding: 4px;
+  gap: 4px;
+}
+
+.showtime-btn {
+  background: transparent;
+  color: var(--color-pewter);
+  border: 1px solid transparent;
+  padding: 8px 18px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-height: 44px;
+}
+
+.showtime-btn:hover:not(.active) {
+  color: var(--color-cream);
+  border-color: rgba(201, 162, 39, 0.3);
+}
+
+.showtime-btn.active {
+  background-color: rgba(201, 162, 39, 0.15);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.2);
+}
+
+.showtime-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Stepped Corner Decorations (Ziggurat motif) */
+.stepped-corner-tl {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.stepped-corner-tr {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.stepped-corner-bl {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.stepped-corner-br {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.deco-card:hover .stepped-corner-tl,
+.deco-card:hover .stepped-corner-tr,
+.deco-card:hover .stepped-corner-bl,
+.deco-card:hover .stepped-corner-br {
+  opacity: 1;
+}
+
+/* Deco Cards (Double border, ziggurat feel) */
+.deco-card {
+  background-color: var(--bg-charcoal);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  position: relative;
+  transition: all 0.45s ease-out;
+  border-radius: var(--radius-strict);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.deco-card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--color-gold-glow);
+}
+
+/* Double-Frame Images */
+.img-frame {
+  border: 1px solid var(--color-gold);
+  padding: 5px;
+  position: relative;
+  background-color: var(--bg-charcoal);
+  border-radius: var(--radius-strict);
+}
+
+.img-frame-inner {
+  border: 2px solid var(--bg-obsidian);
+  overflow: hidden;
+  position: relative;
+  background-color: #0b1117;
+}
+
+.img-frame img {
+  transition: transform 0.6s ease, filter 0.4s ease;
+  filter: grayscale(70%) contrast(115%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-frame:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%) contrast(108%);
+}
+
+.img-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 240px;
+  background: linear-gradient(135deg, #111a22 0%, #1a2734 100%);
+  color: var(--color-gold);
+  text-align: center;
+}
+
+/* Symmetrical Seating System */
+.stage-arch {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  height: 80px;
+  border-top: 2px solid var(--color-gold);
+  border-left: 1px solid rgba(201, 162, 39, 0.4);
+  border-right: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: 120px 120px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.12) 0%, transparent 80%);
+}
+
+.stage-badge {
+  position: absolute;
+  bottom: -14px;
+  background-color: var(--bg-obsidian);
+  border: 1px solid var(--color-gold);
+  padding: 3px 20px;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.seat-row-label {
+  width: 32px;
+  text-align: right;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.seat-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  background: transparent;
+  color: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  position: relative;
+  border-radius: var(--radius-strict);
+}
+
+.seat-btn:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  background: rgba(201, 162, 39, 0.15);
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
+  transform: translateY(-2px);
+}
+
+.seat-btn.selected {
+  background-color: var(--color-gold) !important;
+  color: var(--bg-obsidian) !important;
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 0 16px rgba(201, 162, 39, 0.6) !important;
+  font-weight: 700;
+}
+
+.seat-btn:disabled {
+  border-color: #2b3945;
+  color: #556575;
+  background-color: rgba(13, 20, 27, 0.6);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.seat-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.seat-aisle {
+  width: 24px;
+}
+
+@media (min-width: 768px) {
+  .seat-row {
+    gap: 18px;
+  }
+  .seat-aisle {
+    width: 48px;
+  }
+}
+
+/* Perspective Preview Box */
+.perspective-card {
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background-color: var(--bg-charcoal);
+  padding: 20px 24px;
+  text-align: left;
+  position: relative;
+}
+
+/* Ticket Modal (Stepped Ziggurat Frame) */
+.ticket-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: rgba(10, 16, 22, 0.88);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+}
+
+.ticket-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ticket-box {
+  background-color: var(--bg-charcoal);
+  border: 2px solid var(--color-gold);
+  max-width: 480px;
+  width: 100%;
+  padding: 4px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 162, 39, 0.2);
+  transform: translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ticket-modal-overlay.active .ticket-box {
+  transform: translateY(0);
+}
+
+.ticket-box-inner {
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  padding: 32px 28px;
+  text-align: center;
+  position: relative;
+}
+
+.ticket-disclaimer {
+  background-color: var(--bg-obsidian);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  padding: 12px 16px;
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+/* Mobile Dropdown Quick Selector */
+.mobile-seat-select {
+  background-color: var(--bg-charcoal);
+  border: 2px solid var(--color-gold);
+  color: var(--color-cream);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.mobile-seat-select:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
+}
+
+/* Alert Notification */
+.alert-banner {
+  min-height: 28px;
+  font-size: 0.9rem;
+  color: var(--color-danger);
+  transition: opacity 0.3s;
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive Rules for Small Devices (320px - 390px) */
+@media (max-width: 640px) {
+  .seat-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 0.85rem;
+  }
+  
+  .deco-btn {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  
+  .fan-divider {
+    width: 100px;
+  }
+}

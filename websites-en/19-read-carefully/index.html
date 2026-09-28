@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Class - Read more carefully, argue more clearly</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: "#1C1714",
+            backgroundAlt: "#251E19",
+            foreground: "#E8DFD4",
+            muted: "#3D332B",
+            mutedForeground: "#9C8B7A",
+            border: "#4A3F35",
+            accent: "#C9A962",
+            accentSecondary: "#8B2635",
+          },
+          fontFamily: {
+            heading: ["'Cormorant Garamond'", "serif"],
+            body: ["'Crimson Pro'", "serif"],
+            display: ["'Cinzel'", "serif"],
+          },
+          letterSpacing: {
+            widest: '0.25em',
+            wider: '0.2em',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-background text-foreground font-body text-lg leading-relaxed antialiased min-h-screen relative overflow-x-hidden">
+  
+  <div class="texture-overlay"></div>
+  <div class="vignette-overlay"></div>
+
+  <div class="relative z-10">
+    <header class="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent font-medium leading-[1.45]">Reading & Discussion Class</span>
+        <h1 class="font-heading text-5xl lg:text-7xl leading-[1.1] tracking-tight">Read more carefully.<br>Argue more clearly.</h1>
+        <p class="text-lg lg:text-xl text-mutedForeground max-w-lg leading-relaxed">
+          A reading and discussion class for professionals who want to deeply understand what they read. We do not speed read, we read slowly and analyze every argument.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#sample-lesson" class="btn-primary engraved-text">View sample lesson</a>
+          <a href="#schedule" class="btn-secondary">Select class schedule</a>
+        </div>
+      </div>
+      <div class="relative flex justify-center">
+        <div class="w-full max-w-sm aspect-[3/4] arch-top overflow-hidden border border-border relative">
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800" alt="Classical library space with warm lighting" class="w-full h-full object-cover sepia-img">
+        </div>
+      </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-12 py-24">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Syllabus</span>
+        <h2 class="font-heading text-4xl lg:text-5xl">Four Core Chapters</h2>
+        <div class="ornate-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume I</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Read the Question</h3>
+          <p class="text-mutedForeground mb-6">Result: Accurately grasp the core issue the text attempts to answer before analyzing content.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-1')">
+            Open exercise <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-1" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Identify the main question in a policy text. [Sample exercise]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume II</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Separate the Arguments</h3>
+          <p class="text-mutedForeground mb-6">Result: Deconstruct the text into smaller arguments, identifying premises and conclusions.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-2')">
+            Open exercise <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-2" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Break down a newspaper editorial into an argument tree. [Sample exercise]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume III</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Verify the Evidence</h3>
+          <p class="text-mutedForeground mb-6">Result: Evaluate the reliability, relevance, and sufficiency of the provided evidence.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-3')">
+            Open exercise <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-3" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Assess 3 statistical data sources in an annual report. [Sample exercise]</p>
+          </div>
+        </div>
+
+        <div class="corner-flourish bg-backgroundAlt border border-border rounded p-8 lg:p-12 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Volume IV</div>
+          <h3 class="font-heading text-2xl lg:text-3xl mb-4">Write the Rebuttal</h3>
+          <p class="text-mutedForeground mb-6">Result: Restate your argument coherently, refuting or agreeing with a solid foundation.</p>
+          <button class="btn-ghost flex items-center gap-2 group" onclick="toggleSyllabus('syllabus-4')">
+            Open exercise <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div id="syllabus-4" class="hidden mt-6 pt-6 border-t border-border">
+            <p class="text-sm italic text-mutedForeground">Write a 200-word rebuttal paragraph for the analyzed essay. [Sample exercise]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-lesson" class="max-w-4xl mx-auto px-6 lg:px-12 py-24">
+      <div class="ornate-frame bg-backgroundAlt border border-border p-8 lg:p-16">
+        <div class="text-center mb-12">
+          <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-4 block leading-[1.45]">Sample Lesson</span>
+          <h2 class="font-heading text-4xl lg:text-6xl mb-4">Argument Analysis</h2>
+          <div class="ornate-divider ornate-divider-alt"></div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-12 top-0 bottom-0 w-8 hidden lg:block border-r border-border"></div>
+          <p class="drop-cap text-lg lg:text-xl text-mutedForeground mb-6 leading-relaxed">
+            In a discussion about productivity, the author writes: 
+            <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(1, this)">"Working longer hours does not mean creating more value."</button> 
+            However, many businesses still <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(2, this)">evaluate performance based on time spent at the desk.</button> 
+            Therefore, we need to <button class="inline text-left text-foreground hover:text-accent transition-colors duration-300 outline-none focus-visible:text-accent focus-visible:underline" onclick="checkAnswer(3, this)">change how we measure performance to be based on final outcomes.</button>
+          </p>
+          
+          <div class="mt-12 p-6 border border-border bg-background">
+            <p class="font-display text-xs uppercase text-accent mb-2 tracking-[0.25em] leading-[1.45]">Challenge</p>
+            <p class="mb-4">Select the sentence containing the <strong>main conclusion</strong> of the paragraph above by clicking on the text.</p>
+            <div id="feedback-area" class="text-sm italic text-mutedForeground">
+              No selection made.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-12 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative flex justify-center order-2 lg:order-1">
+          <div class="w-full max-w-sm aspect-[4/5] arch-top overflow-hidden border border-border relative">
+            <div class="absolute inset-0 bg-accent/10 z-10 pointer-events-none mix-blend-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="The Discussion Facilitator" class="w-full h-full object-cover sepia-img">
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Instructors</span>
+          <h2 class="font-heading text-4xl lg:text-5xl mb-6">The Discussion Facilitator</h2>
+          <p class="text-mutedForeground mb-4 italic text-sm">(Illustrative persona and photo)</p>
+          <div class="ornate-divider !ml-0 max-w-[8rem] mb-8"></div>
+          <div class="space-y-6 text-lg text-foreground/90">
+            <p>
+              The facilitator's role is not to lecture one-way, but to create a space for you to reflect and debate.
+            </p>
+            <p>
+              We will dissect complex texts together, ask hard questions, and hone critical thinking through each session. The facilitator acts as a guide, helping you see the blind spots in arguments you might have missed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32 border-t border-border mt-12 bg-backgroundAlt/30">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.25em] text-accent block mb-4 leading-[1.45]">Schedule</span>
+        <h2 class="font-heading text-4xl lg:text-5xl">Select Class Schedule</h2>
+        <div class="ornate-divider"></div>
+        <p class="text-mutedForeground max-w-2xl mx-auto">
+          Each class limits the number of students to ensure discussion quality. Please carefully read the preparation requirements before each session.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="relative bg-background border border-border p-8 rounded corner-flourish transition-all duration-300 hover:border-accent/50 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-mutedForeground mb-2 leading-[1.45]">Option I</div>
+          <h3 class="font-heading text-2xl mb-2">Tue & Thu Evenings</h3>
+          <p class="text-accent mb-6">19:30 - 21:30</p>
+          
+          <div class="space-y-4 mb-8 text-sm text-mutedForeground">
+            <div class="flex items-start gap-3">
+              <i data-lucide="book-open" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Read 20 pages of material before each session.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <i data-lucide="users" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Small group discussion and rebuttal writing.</p>
+            </div>
+          </div>
+          
+          <button class="btn-secondary w-full engraved-text">View options</button>
+        </div>
+
+        <div class="relative bg-background border border-accent p-8 rounded corner-flourish transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="wax-seal">
+            <i data-lucide="star" class="w-4 h-4 text-foreground"></i>
+          </div>
+          <div class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 leading-[1.45]">Option II</div>
+          <h3 class="font-heading text-2xl mb-2">Saturday Mornings</h3>
+          <p class="text-accent mb-6">09:00 - 12:00 (Intensive)</p>
+          
+          <div class="space-y-4 mb-8 text-sm text-mutedForeground">
+            <div class="flex items-start gap-3">
+              <i data-lucide="book-open" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Read 40 pages of material over the weekend.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <i data-lucide="users" class="w-5 h-5 text-accent shrink-0 mt-0.5"></i>
+              <p>Deep discussion and live debate.</p>
+            </div>
+          </div>
+          
+          <button class="btn-primary w-full engraved-text text-accentForeground">View options</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-border text-center text-sm text-mutedForeground">
+      <p>&copy; 2026 Academia Class. Illustrative project.</p>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function checkAnswer(id, el) {
+      const feedback = document.getElementById('feedback-area');
+      document.querySelectorAll('button.inline').forEach(btn => {
+        btn.classList.remove('text-accent', 'border-b', 'border-accent');
+      });
+      
+      el.classList.add('text-accent', 'border-b', 'border-accent');
+      
+      if (id === 3) {
+        feedback.innerHTML = '<span class="text-accent">Correct.</span> "Therefore" signals a conclusion. This is the call to action based on the premises.';
+      } else if (id === 1) {
+        feedback.innerHTML = 'This is a premise (viewpoint), not the conclusion. The author uses it to build up to the end.';
+      } else {
+        feedback.innerHTML = 'This is a factual observation (second premise) serving as context, not the final message.';
+      }
+    }
+    
+    function toggleSyllabus(id) {
+      const el = document.getElementById(id);
+      const icon = el.previousElementSibling.querySelector('i');
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        el.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>

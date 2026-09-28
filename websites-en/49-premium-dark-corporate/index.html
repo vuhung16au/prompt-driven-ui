@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Dark Corporate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#1E1E1E',
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-white antialiased">
+    
+    <!-- Navigation -->
+    <nav class="border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="font-serif text-xl font-bold tracking-wider uppercase">Acme Corp</div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase text-gray-400">
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-flex border border-white/20 bg-transparent text-white hover:bg-white hover:text-charcoal px-6 py-3 text-xs font-semibold tracking-widest uppercase transition-all duration-300 rounded-none">Consultation</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-24 md:py-32 border-b border-white/10 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7">
+                <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl leading-tight tracking-tight mb-8">
+                    Authority, Trust,<br>and Expertise.
+                </h1>
+                <p class="font-sans font-light text-base sm:text-lg leading-relaxed text-gray-400 mb-12 max-w-2xl">
+                    We deliver unparalleled strategic advisory and professional services for global enterprises. Precision and clarity in every engagement.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-widest uppercase bg-white text-charcoal hover:bg-gray-200 transition-all duration-300 rounded-none">
+                        Schedule a Consultation
+                    </a>
+                    <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-widest uppercase border border-white/20 bg-transparent text-white hover:bg-white hover:text-charcoal transition-all duration-300 rounded-none">
+                        View Services
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-5 h-96 bg-[#2A2A2A] border border-white/10 relative flex items-center justify-center overflow-hidden">
+                <!-- Placeholder Image representing moody, desaturated professional photography -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-charcoal/80 to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200&h=1600&sat=-100" alt="Corporate office abstract" class="object-cover w-full h-full grayscale opacity-50" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 md:py-32 border-b border-white/10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 max-w-3xl">
+                <h2 class="font-serif text-3xl sm:text-4xl mb-6">Strategic Capabilities</h2>
+                <p class="text-gray-400 font-light text-base sm:text-lg leading-relaxed">
+                    Our core competencies are designed to navigate complex regulatory environments and drive sustainable corporate growth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/10">
+                <!-- Service 1 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">01</span>
+                    <h3 class="font-serif text-2xl mb-4">Business Formation</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Structuring global entities with an emphasis on liability protection and tax efficiency.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Learn More <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+                <!-- Service 2 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">02</span>
+                    <h3 class="font-serif text-2xl mb-4">Corporate Governance</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Establishing resilient board structures, compliance protocols, and internal policies.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Learn More <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+                <!-- Service 3 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">03</span>
+                    <h3 class="font-serif text-2xl mb-4">Contract Drafting</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Meticulous preparation of master service agreements, vendor contracts, and employment documentation.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Learn More <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 md:py-32 px-6 border-b border-white/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-serif text-3xl sm:text-4xl mb-12">Client Perspectives</h2>
+                <div class="border-t border-white/10 pt-8">
+                    <p class="font-serif text-2xl sm:text-3xl leading-relaxed mb-8">
+                        <span class="text-gray-500 text-4xl mr-2">"</span>Their precision and strategic foresight have been instrumental in our international expansion. A truly premium partnership."
+                    </p>
+                    <div>
+                        <div class="font-semibold tracking-wider uppercase text-sm mb-1 text-white">Jane Doe</div>
+                        <div class="text-gray-400 font-light text-sm">Chief Executive Officer, Global Nexus</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 mt-auto hidden md:block">
+                 <p class="font-serif text-2xl sm:text-3xl leading-relaxed mb-8">
+                        <span class="text-gray-500 text-4xl mr-2">"</span>Uncompromising quality and deep industry knowledge. They navigate complexity with unmatched elegance."
+                    </p>
+                    <div>
+                        <div class="font-semibold tracking-wider uppercase text-sm mb-1 text-white">Richard Roe</div>
+                        <div class="text-gray-400 font-light text-sm">Managing Director, Horizon Capital</div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="py-24 md:py-32 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-serif text-4xl sm:text-5xl mb-6">Ready to proceed?</h2>
+            <p class="text-gray-400 font-light text-base sm:text-lg leading-relaxed mb-12">
+                Schedule a private consultation to discuss your specific requirements.
+            </p>
+            <a href="#" class="inline-flex items-center justify-center px-12 py-5 text-sm font-semibold tracking-widest uppercase bg-white text-charcoal hover:bg-gray-200 transition-all duration-300 rounded-none">
+                Contact Our Partners
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 px-6 text-sm text-gray-500 font-light">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 uppercase tracking-widest font-semibold text-gray-400">Acme Corp &copy; 2026</div>
+            <div class="flex space-x-6 uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

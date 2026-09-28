@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One task. One focus session.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    
+    <main class="container">
+        <header class="hero">
+            <h1>One task. One focus session.</h1>
+            <p>Choose a task, set the duration, and begin. All changes are saved only in the demo session.</p>
+        </header>
+
+        <section class="card" id="setup-view">
+            <form id="focus-form">
+                <div class="form-group">
+                    <label for="task-name">Task name</label>
+                    <input type="text" id="task-name" placeholder="e.g., Write project overview" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Duration</label>
+                    <div class="duration-options">
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="15">
+                            <span>15 min</span>
+                        </label>
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="25" checked>
+                            <span>25 min</span>
+                        </label>
+                        <label class="duration-btn">
+                            <input type="radio" name="duration" value="45">
+                            <span>45 min</span>
+                        </label>
+                        <label class="duration-btn custom-duration-label">
+                            <input type="radio" name="duration" value="custom">
+                            <span>Custom</span>
+                        </label>
+                    </div>
+                    <div id="custom-duration-container" class="hidden">
+                        <input type="number" id="custom-duration" placeholder="Enter minutes (1-120)" min="1" max="120" aria-label="Custom duration in minutes">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Start focus session</button>
+            </form>
+        </section>
+
+        <section class="card hidden" id="timer-view">
+            <div class="task-display">
+                <span class="badge">Focusing</span>
+                <h2 id="current-task-name">Task Name</h2>
+            </div>
+            
+            <div class="timer-display">
+                <div id="time-left" class="time">25:00</div>
+            </div>
+            
+            <div class="timer-controls">
+                <button id="btn-toggle" class="btn btn-primary">Pause</button>
+                <button id="btn-reset" class="btn btn-ghost">Reset</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="completed-view">
+            <div class="completed-content">
+                <div class="success-badge"></div>
+                <h2>Time is up</h2>
+                <p>What did you accomplish?</p>
+                <div class="completed-task-name" id="completed-task-name"></div>
+                <button id="btn-new-session" class="btn btn-primary mt-6">Start new session</button>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h3>Demo session history</h3>
+            <div id="history-list" class="history-list">
+                <p class="empty-state">No completed sessions yet.</p>
+            </div>
+            <button id="btn-clear-history" class="btn btn-ghost btn-sm hidden">Clear demo data</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thủ Công - Roasters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mocha: '#382B1C',
+              cream: '#FDFBF7',
+              terracotta: '#D48C62',
+              taupe: '#A89F91',
+            },
+            fontFamily: {
+              display: ['Oswald', 'sans-serif'],
+              body: ['"DM Sans"', 'sans-serif'],
+            },
+            fontSize: {
+              'display': ['150px', '0.8'],
+              'h1': ['60px', '1.1'],
+              'h2': ['42px', '1.1'],
+              'h3': ['30px', '1.3'],
+              'body-lg': ['20px', '1.39'],
+              'link': ['26px', '1.39'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-body text-cream bg-mocha antialiased">
+
+    <!-- Navigation -->
+    <nav class="border-b divider-light px-6 py-5 flex justify-between items-center">
+        <div class="font-display text-3xl uppercase tracking-wider font-bold">Thủ Công</div>
+        <ul class="hidden md:flex space-x-12 text-link font-display uppercase tracking-wide">
+            <li><a href="#" class="hover:text-terracotta transition-colors">Sản Phẩm</a></li>
+            <li><a href="#" class="hover:text-terracotta transition-colors">Câu Chuyện</a></li>
+            <li><a href="#" class="hover:text-terracotta transition-colors">Liên Hệ</a></li>
+        </ul>
+        <button class="md:hidden font-display text-xl uppercase tracking-widest border border-cream px-4 py-2 hover:bg-cream hover:text-mocha transition-colors">Menu</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="grid grid-cols-1 md:grid-cols-12 border-b divider-light min-h-[80vh]">
+        <div class="col-span-1 md:col-span-8 p-8 md:p-16 lg:p-24 flex flex-col justify-center border-b md:border-b-0 md:border-r divider-light">
+            <h1 class="font-display text-[80px] md:text-display font-bold uppercase tracking-tight mb-8 leading-[0.9] md:leading-[0.8] break-words">
+                Hương Vị<br>Nguyên Bản
+            </h1>
+            <div class="zigzag-divider mb-12 w-full max-w-lg"></div>
+            <p class="font-body text-body-lg max-w-2xl text-cream mb-12">
+                Khám phá bộ sưu tập cà phê rang xay thủ công, mang đậm dấu ấn thời gian và lưu giữ những nốt hương tinh tế nhất từ những vùng trồng cà phê trứ danh.
+            </p>
+            <div>
+                <a href="#" class="inline-flex items-center justify-center bg-terracotta text-cream font-display uppercase tracking-widest text-xl px-10 h-16 border border-terracotta hover:bg-transparent hover:text-terracotta transition-colors">
+                    Khám Phá Ngay
+                </a>
+            </div>
+        </div>
+        <div class="col-span-1 md:col-span-4 h-96 md:h-auto bg-terracotta relative">
+            <img src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?q=80&w=1000&auto=format&fit=crop" alt="Cà phê rang xay thủ công" class="absolute inset-0 w-full h-full object-cover grayscale mix-blend-multiply opacity-80">
+        </div>
+    </header>
+
+    <!-- Features / Offerings -->
+    <section class="bg-cream text-mocha">
+        <div class="grid grid-cols-1 md:grid-cols-3 border-b divider-dark">
+            <!-- Item 1 -->
+            <div class="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r divider-dark">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">01. Tuyển Chọn</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Hạt Cà Phê<br>Thượng Hạng</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    Mỗi hạt cà phê được lựa chọn kỹ lưỡng từ những nông trại phát triển bền vững, đảm bảo chất lượng tuyệt hảo trong từng tách.
+                </p>
+            </div>
+            <!-- Item 2 -->
+            <div class="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r divider-dark">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">02. Kỹ Thuật</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Rang Xay<br>Thủ Công</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    Bí quyết rang mộc truyền thống kết hợp cùng công nghệ kiểm soát nhiệt độ hiện đại, đánh thức trọn vẹn hương vị nguyên bản.
+                </p>
+            </div>
+            <!-- Item 3 -->
+            <div class="p-8 md:p-12 lg:p-16">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">03. Trải Nghiệm</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Đậm Đà<br>Khó Quên</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    Sự cân bằng hoàn hảo giữa vị đắng êm dịu, hậu ngọt sâu lắng và hương thơm nồng nàn quyến rũ mọi giác quan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Block -->
+    <section class="grid grid-cols-1 md:grid-cols-2 border-b divider-light">
+        <div class="h-[400px] md:h-auto bg-mocha border-b md:border-b-0 md:border-r divider-light relative">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop" alt="Nghệ thuật pha chế cà phê" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-terracotta text-mocha">
+            <h2 class="font-display text-[50px] md:text-h1 leading-none uppercase font-bold mb-8">Nghệ Thuật<br>Của Sự Chờ Đợi</h2>
+            <p class="font-body text-body-lg mb-12 text-mocha/90 max-w-lg">
+                Chúng tôi tin rằng những điều tốt đẹp nhất luôn đòi hỏi thời gian. Từ việc chăm sóc cây trồng, thu hoạch những quả chín mọng, cho đến quá trình ủ và chiết xuất từng giọt cà phê tinh túy.
+            </p>
+            <div>
+                <a href="#" class="inline-flex items-center justify-center bg-mocha text-cream font-display uppercase tracking-widest text-xl px-10 h-16 border border-mocha hover:bg-transparent hover:text-mocha transition-colors">
+                    Tìm Hiểu Thêm
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="p-12 md:p-32 flex flex-col items-center text-center border-b divider-light">
+        <h2 class="font-display text-5xl md:text-h1 uppercase font-bold mb-8 leading-tight">Thưởng Thức<br>Sự Khác Biệt</h2>
+        <p class="font-body text-body-lg max-w-2xl text-cream/90 mb-12">
+            Đặt hàng ngay hôm nay để tự mình trải nghiệm hương vị cà phê thủ công đích thực, được rang mới mỗi tuần và giao đến tận cửa nhà bạn.
+        </p>
+        <a href="#" class="inline-flex items-center justify-center bg-cream text-mocha font-display uppercase tracking-widest text-xl px-12 h-16 border border-cream hover:bg-mocha hover:text-cream transition-colors">
+            Cửa Hàng Trực Tuyến
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-mocha text-cream p-8 md:p-12 border-t divider-light">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
+            <div class="font-display text-5xl uppercase font-bold tracking-widest mb-10 md:mb-0">
+                Thủ Công.
+            </div>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12 font-display text-xl uppercase tracking-widest">
+                <a href="#" class="hover:text-terracotta transition-colors">Instagram</a>
+                <a href="#" class="hover:text-terracotta transition-colors">Facebook</a>
+                <a href="#" class="hover:text-terracotta transition-colors">Journal</a>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center font-body text-sm text-taupe uppercase tracking-widest border-t divider-light pt-8">
+            <span>© 2026 Thu Cong Roasters. All Rights Reserved.</span>
+            <span class="mt-4 md:mt-0">Thiết Kế Độc Bản</span>
+        </div>
+    </footer>
+
+</body>
+</html>

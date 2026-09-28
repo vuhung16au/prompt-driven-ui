@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft - Roasters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mocha: '#382B1C',
+              cream: '#FDFBF7',
+              terracotta: '#D48C62',
+              taupe: '#A89F91',
+            },
+            fontFamily: {
+              display: ['Oswald', 'sans-serif'],
+              body: ['"DM Sans"', 'sans-serif'],
+            },
+            fontSize: {
+              'display': ['150px', '0.8'],
+              'h1': ['60px', '1.1'],
+              'h2': ['42px', '1.1'],
+              'h3': ['30px', '1.3'],
+              'body-lg': ['20px', '1.39'],
+              'link': ['26px', '1.39'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-body text-cream bg-mocha antialiased">
+
+    <!-- Navigation -->
+    <nav class="border-b divider-light px-6 py-5 flex justify-between items-center">
+        <div class="font-display text-3xl uppercase tracking-wider font-bold">Craft</div>
+        <ul class="hidden md:flex space-x-12 text-link font-display uppercase tracking-wide">
+            <li><a href="#" class="hover:text-terracotta transition-colors">Products</a></li>
+            <li><a href="#" class="hover:text-terracotta transition-colors">Story</a></li>
+            <li><a href="#" class="hover:text-terracotta transition-colors">Contact</a></li>
+        </ul>
+        <button class="md:hidden font-display text-xl uppercase tracking-widest border border-cream px-4 py-2 hover:bg-cream hover:text-mocha transition-colors">Menu</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="grid grid-cols-1 md:grid-cols-12 border-b divider-light min-h-[80vh]">
+        <div class="col-span-1 md:col-span-8 p-8 md:p-16 lg:p-24 flex flex-col justify-center border-b md:border-b-0 md:border-r divider-light">
+            <h1 class="font-display text-[80px] md:text-display font-bold uppercase tracking-tight mb-8 leading-[0.9] md:leading-[0.8] break-words">
+                Authentic<br>Flavor
+            </h1>
+            <div class="zigzag-divider mb-12 w-full max-w-lg"></div>
+            <p class="font-body text-body-lg max-w-2xl text-cream mb-12">
+                Discover our collection of craft roasted coffee, bearing the mark of time and preserving the most exquisite flavor notes from renowned coffee growing regions.
+            </p>
+            <div>
+                <a href="#" class="inline-flex items-center justify-center bg-terracotta text-cream font-display uppercase tracking-widest text-xl px-10 h-16 border border-terracotta hover:bg-transparent hover:text-terracotta transition-colors">
+                    Discover Now
+                </a>
+            </div>
+        </div>
+        <div class="col-span-1 md:col-span-4 h-96 md:h-auto bg-terracotta relative">
+            <img src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?q=80&w=1000&auto=format&fit=crop" alt="Craft roasted coffee" class="absolute inset-0 w-full h-full object-cover grayscale mix-blend-multiply opacity-80">
+        </div>
+    </header>
+
+    <!-- Features / Offerings -->
+    <section class="bg-cream text-mocha">
+        <div class="grid grid-cols-1 md:grid-cols-3 border-b divider-dark">
+            <!-- Item 1 -->
+            <div class="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r divider-dark">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">01. Selection</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Premium<br>Coffee Beans</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    Each coffee bean is carefully selected from sustainable farms, ensuring perfect quality in every cup.
+                </p>
+            </div>
+            <!-- Item 2 -->
+            <div class="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r divider-dark">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">02. Technique</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Craft<br>Roasting</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    Traditional roasting secrets combined with modern temperature control technology, fully awakening the original flavor.
+                </p>
+            </div>
+            <!-- Item 3 -->
+            <div class="p-8 md:p-12 lg:p-16">
+                <span class="block font-display text-sm tracking-[0.2em] uppercase text-taupe mb-6">03. Experience</span>
+                <h3 class="font-display text-h3 uppercase font-bold mb-6">Unforgettable<br>Richness</h3>
+                <p class="font-body text-body-lg text-mocha/80">
+                    A perfect balance of smooth bitterness, deep sweet aftertaste, and a passionate aroma that captivates all senses.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Block -->
+    <section class="grid grid-cols-1 md:grid-cols-2 border-b divider-light">
+        <div class="h-[400px] md:h-auto bg-mocha border-b md:border-b-0 md:border-r divider-light relative">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop" alt="The art of brewing coffee" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-terracotta text-mocha">
+            <h2 class="font-display text-[50px] md:text-h1 leading-none uppercase font-bold mb-8">The Art<br>Of Waiting</h2>
+            <p class="font-body text-body-lg mb-12 text-mocha/90 max-w-lg">
+                We believe the best things always take time. From tending the plants, harvesting the ripe cherries, to the brewing and extraction of every quintessential drop of coffee.
+            </p>
+            <div>
+                <a href="#" class="inline-flex items-center justify-center bg-mocha text-cream font-display uppercase tracking-widest text-xl px-10 h-16 border border-mocha hover:bg-transparent hover:text-mocha transition-colors">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="p-12 md:p-32 flex flex-col items-center text-center border-b divider-light">
+        <h2 class="font-display text-5xl md:text-h1 uppercase font-bold mb-8 leading-tight">Taste<br>The Difference</h2>
+        <p class="font-body text-body-lg max-w-2xl text-cream/90 mb-12">
+            Order today to personally experience the authentic taste of craft coffee, freshly roasted every week and delivered right to your door.
+        </p>
+        <a href="#" class="inline-flex items-center justify-center bg-cream text-mocha font-display uppercase tracking-widest text-xl px-12 h-16 border border-cream hover:bg-mocha hover:text-cream transition-colors">
+            Online Store
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-mocha text-cream p-8 md:p-12 border-t divider-light">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
+            <div class="font-display text-5xl uppercase font-bold tracking-widest mb-10 md:mb-0">
+                Craft.
+            </div>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-12 font-display text-xl uppercase tracking-widest">
+                <a href="#" class="hover:text-terracotta transition-colors">Instagram</a>
+                <a href="#" class="hover:text-terracotta transition-colors">Facebook</a>
+                <a href="#" class="hover:text-terracotta transition-colors">Journal</a>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center font-body text-sm text-taupe uppercase tracking-widest border-t divider-light pt-8">
+            <span>© 2026 Craft Roasters. All Rights Reserved.</span>
+            <span class="mt-4 md:mt-0">Exclusive Design</span>
+        </div>
+    </footer>
+
+</body>
+</html>

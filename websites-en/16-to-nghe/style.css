@@ -1,0 +1,163 @@
+:root {
+  --color-bg: #F9F9F7;
+  --color-fg: #111111;
+  --color-muted: #E5E5E0;
+  --color-accent: #CC0000;
+
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+  --font-body: 'Lora', Georgia, serif;
+  --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23111111' fill-opacity='0.04' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sharp Corners Enforcement */
+.sharp-corners,
+.sharp-corners * {
+  border-radius: 0px !important;
+}
+
+/* Textures */
+.newsprint-texture {
+  position: relative;
+}
+.newsprint-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(0deg, transparent 98%, rgba(0,0,0,0.02) 100%),
+    linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
+  background-size: 3px 3px;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.halftone-bg {
+  background: radial-gradient(#111111 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: center;
+  opacity: 0.1;
+}
+
+/* Hard Shadow Hover Effect */
+.hard-shadow-hover {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.hard-shadow-hover:hover {
+  box-shadow: 4px 4px 0px 0px #111111;
+  transform: translate(-2px, -2px);
+}
+
+/* Drop Cap */
+.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.8;
+  float: left;
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: -0.2rem;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+/* Custom Scrollbar for internal scrolling if needed */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: var(--color-muted);
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-fg);
+}
+
+/* Typography utilities missing from Tailwind or customized */
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+.border-black { border-color: var(--color-fg) !important; }
+
+/* Grid Collapsing Borders */
+/* We will use standard tailwind border-r, border-b logic, but mobile needs adjusting */
+@media (max-width: 767px) {
+  .md\:border-r {
+    border-right-width: 0px !important;
+  }
+}
+
+/* Button & Link Interactions */
+.btn-primary {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  border: 1px solid transparent;
+  transition: all 0.2s ease-out;
+}
+.btn-primary:hover {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-color: var(--color-fg);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-fg);
+  border: 1px solid var(--color-fg);
+  transition: all 0.2s ease-out;
+}
+.btn-secondary:hover {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.link-red-hover {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: all 0.15s ease-out;
+}
+.link-red-hover:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  color: var(--color-fg);
+}
+
+/* Grayscale Image Effect */
+.newsprint-img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-out;
+}
+.newsprint-img:hover {
+  filter: sepia(50%) grayscale(50%);
+}
+
+/* Ticker Animation */
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 20s linear infinite;
+}
+.ticker-container:hover .ticker-content {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-content {
+    animation: none;
+    transform: none;
+    white-space: normal;
+  }
+}

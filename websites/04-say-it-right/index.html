@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nói Đúng. Nhớ Lâu. - Say It Right</title>
+  <meta name="description" content="Câu chữ cho những thương hiệu muốn nói rõ điều mình làm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter+Tight:wght@400;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <main>
+    <!-- 1. Poster bằng chữ -->
+    <section class="hero container py-20">
+      <h1 class="display-title">
+        NÓI ĐÚNG.<br>
+        <span class="accent-text">NHỚ LÂU.</span>
+      </h1>
+      <p class="lead">Câu chữ cho những thương hiệu muốn nói rõ điều mình làm.</p>
+      <hr class="divider">
+      <div>
+        <a href="#work" class="btn btn-primary">
+          Xem câu chữ đã làm
+          <span class="underline"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Ba bài toán -->
+    <section id="work" class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Ba Bài Toán</h2>
+      
+      <div class="cases-grid">
+        <article class="case-item">
+          <div class="mono-label case-brand">Lumiere Tech</div>
+          <p class="case-problem">Khó giải thích công nghệ AI phân tích dữ liệu cho khách hàng không chuyên.</p>
+          <h3 class="case-solution">Hiểu dữ liệu của bạn, không cần học mã.</h3>
+        </article>
+        
+        <article class="case-item">
+          <div class="mono-label case-brand">Verdant Co.</div>
+          <p class="case-problem">Thông điệp xanh quá chung chung, chìm nghỉm giữa hàng ngàn sản phẩm eco khác.</p>
+          <h3 class="case-solution">Bao bì tự hủy sau 30 ngày. Không để lại dấu vết.</h3>
+        </article>
+
+        <article class="case-item">
+          <div class="mono-label case-brand">Apex Fitness</div>
+          <p class="case-problem">Slogan cũ "Cố gắng hết mình" không tạo động lực rõ ràng để đăng ký tập.</p>
+          <h3 class="case-solution">Mỗi ngày thêm 1%. Chúng tôi đếm cùng bạn.</h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. Trước và sau -->
+    <section class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Trước & Sau</h2>
+      <p class="lead">Bài tập minh họa cách làm rõ thông điệp.</p>
+      
+      <div class="ba-toggle-wrapper">
+        <div class="ba-toggle" role="group" aria-label="Chuyển đổi phiên bản câu chữ">
+          <button type="button" class="ba-btn" id="btn-before" aria-pressed="true">Bản cũ</button>
+          <button type="button" class="ba-btn" id="btn-after" aria-pressed="false">Bản rõ</button>
+        </div>
+      </div>
+
+      <div class="before-after-container">
+        <div class="ba-column">
+          <div class="mono-label mb-12">Ví dụ 1: Phần mềm quản lý</div>
+          <div id="text-1" class="ba-text">"Giải pháp toàn diện giúp tối ưu hóa quy trình làm việc và tăng hiệu suất doanh nghiệp."</div>
+        </div>
+        <div class="ba-column">
+          <div class="mono-label mb-12">Ví dụ 2: Dịch vụ giao hàng</div>
+          <div id="text-2" class="ba-text">"Cam kết mang đến dịch vụ vận chuyển nhanh chóng, an toàn và uy tín hàng đầu."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Cách tìm câu đúng -->
+    <section class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Cách Tìm Câu Đúng</h2>
+      
+      <div class="process-list">
+        <div class="process-row">
+          <div class="process-num">01</div>
+          <h3 class="process-title">Nghiên Cứu</h3>
+          <p class="process-desc">Tìm ra điểm nghẽn thực sự của sản phẩm và cách khách hàng đang gọi tên vấn đề đó.</p>
+        </div>
+        <div class="process-row">
+          <div class="process-num">02</div>
+          <h3 class="process-title">Chọn Ý</h3>
+          <p class="process-desc">Loại bỏ những từ sáo rỗng. Giữ lại một thông điệp duy nhất, sắc bén nhất.</p>
+        </div>
+        <div class="process-row">
+          <div class="process-num">03</div>
+          <h3 class="process-title">Kiểm Tra</h3>
+          <p class="process-desc">Đọc to lên. Nếu ngượng miệng hoặc người nghe không hiểu ngay, phải viết lại.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Thử brief -->
+    <section class="container py-28 mb-12">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Thử Brief</h2>
+      <p class="lead">Nhập thông tin dự án để tóm tắt yêu cầu (Đây là bản dùng thử định dạng brief, không sinh nội dung tự động).</p>
+
+      <div class="brief-container">
+        <form id="brief-form">
+          <div class="input-group">
+            <label for="brandName" class="input-label">Tên thương hiệu</label>
+            <input type="text" id="brandName" class="input-field" placeholder="VD: Công ty TNHH ABC" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="brandGoal" class="input-label">Mục đích truyền thông</label>
+            <textarea id="brandGoal" class="input-field" placeholder="VD: Khách hàng biết chúng tôi bán cà phê rang mộc..." required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 2rem;">
+            <button type="submit" class="btn btn-outline">Xem brief của bạn</button>
+            <button type="reset" id="btn-reset" class="btn btn-primary" style="display: none;">
+              Làm lại
+              <span class="underline"></span>
+            </button>
+          </div>
+        </form>
+
+        <div id="brief-result" class="brief-output" aria-live="polite">
+          <div class="mono-label" style="margin-bottom: 1rem;">Tóm tắt Brief</div>
+          <h4 id="out-brand" style="font-size: 1.5rem; margin-bottom: 0.5rem; word-break: break-word;"></h4>
+          <p id="out-goal" style="color: var(--mutedForeground); word-break: break-word;"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container py-20" style="border-top: 1px solid var(--border);">
+    <div class="mono-label">© 2026 Say It Right. Thiết kế theo phong cách Bold Typography.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thảo An — Dành một khoảng dịu lại</title>
+  <meta name="description" content="Thảo An - Không gian chăm sóc và thư giãn thảo mộc tự nhiên. Chọn một buổi thư giãn theo thời gian và cảm giác bạn đang tìm kiếm.">
+  <meta name="theme-color" content="#F9F8F4">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Thảo An — Dành một khoảng dịu lại">
+  <meta property="og:description" content="Không gian chăm sóc và thư giãn thảo mộc tự nhiên. Mọi thứ diễn ra chậm rãi để cơ thể và tâm trí bạn được lắng đọng trọn vẹn.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.jpg">
+
+  <!-- Google Fonts: Playfair Display (Serif) & Source Sans 3 (Humanist Sans) with Vietnamese Subsets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Botanical Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Paper Grain Tactile Texture (Crucial Botanical Brand Element) -->
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="site-container">
+      <nav class="nav-bar" aria-label="Điều hướng chính">
+        <a href="#hero-section" class="brand-logo" aria-label="Thảo An - Trang chủ">
+          <span>Thảo</span><i>An</i>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="nav-links">
+          <a href="#services-section" class="nav-link">Chọn buổi</a>
+          <a href="#experience-section" class="nav-link">Trải nghiệm</a>
+          <a href="#booking-section" class="nav-link">Lịch minh họa</a>
+          <a href="#prepare-section" class="nav-link">Trước khi tới</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="#booking-section" class="btn btn-secondary" style="min-height: 42px; padding: 0.5rem 1.25rem;">Đặt lịch</a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-toggle" id="menu-toggle" aria-label="Mở thực đơn điều hướng" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-overlay" id="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Thực đơn di động">
+    <div class="mobile-nav-header">
+      <div class="brand-logo">
+        <span>Thảo</span><i>An</i>
+      </div>
+      <button type="button" class="mobile-nav-close" id="menu-close" aria-label="Đóng thực đơn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-nav-body">
+      <a href="#hero-section" class="mobile-nav-link">Trang chủ</a>
+      <a href="#services-section" class="mobile-nav-link">Chọn buổi thư giãn</a>
+      <a href="#experience-section" class="mobile-nav-link">Quy trình trải nghiệm</a>
+      <a href="#booking-section" class="mobile-nav-link">Lịch minh họa</a>
+      <a href="#prepare-section" class="mobile-nav-link">Trước khi tới</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 1: Hero / Relaxation Session -->
+    <section class="hero-section" id="hero-section" aria-labelledby="hero-heading">
+      <div class="site-container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"></path>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <span>Không gian thư giãn tự nhiên</span>
+            </div>
+
+            <h1 class="hero-title" id="hero-heading">
+              Dành một khoảng <br>
+              <i class="italic font-normal">dịu lại.</i>
+            </h1>
+
+            <p class="hero-lead">
+              Chọn một buổi thư giãn theo thời gian và cảm giác bạn đang tìm kiếm. Tại Thảo An, mọi thứ diễn ra chậm rãi để cơ thể và tâm trí bạn được lắng đọng và tái tạo trọn vẹn.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#services-section" class="btn btn-primary">
+                <span>Chọn buổi phù hợp</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#experience-section" class="btn btn-secondary">
+                <span>Khám phá không gian</span>
+              </a>
+            </div>
+
+            <p class="hero-trust-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Thảo dược bản địa sạch • Không can thiệp y khoa • Nhịp chăm sóc cá nhân hóa</span>
+            </p>
+          </div>
+
+          <div class="hero-image-wrap">
+            <!-- Decorative organic leaf SVG line art -->
+            <svg class="leaf-ornament leaf-ornament-hero swaying-leaf" viewBox="0 0 64 128" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M32 128 C32 80, 0 64, 0 32 C0 0, 32 0, 32 0 C64 0, 64 32, 64 32 C64 64, 32 80, 32 128" />
+              <path d="M32 0 L32 128" />
+              <path d="M32 40 C20 34, 12 36, 6 42" />
+              <path d="M32 60 C44 54, 52 56, 58 62" />
+              <path d="M32 80 C20 74, 12 76, 6 82" />
+            </svg>
+
+            <!-- Arched Roman Frame -->
+            <div class="arch-frame">
+              <img src="images/hero.jpg" alt="Không gian phòng thư giãn thảo mộc tại Thảo An với ánh sáng tự nhiên, vải lanh và cây xanh" class="arch-image" width="800" height="1067" priority="high">
+            </div>
+
+            <!-- Floating Hero Quote -->
+            <div class="hero-quote-card" aria-hidden="true">
+              <div class="hero-quote-text">“Chậm lại một nhịp, lắng nghe cơ thể thở.”</div>
+              <div class="hero-quote-author">Thảo An • Không gian an lành</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Choose by Need (Chọn theo nhu cầu) -->
+    <section class="section-spacing" id="services-section" aria-labelledby="services-heading">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">Chọn theo nhu cầu</span>
+          <h2 class="section-title" id="services-heading">
+            Một buổi thư giãn <i class="italic font-normal">dành riêng cho bạn</i>
+          </h2>
+          <p class="section-desc">
+            Mỗi lựa chọn được tinh chỉnh cụ thể theo quỹ thời gian và những điểm nhức mỏi riêng mà bạn đang mong muốn giải tỏa hôm nay.
+          </p>
+        </div>
+
+        <div class="services-grid" role="listbox" aria-label="Danh sách các buổi thư giãn">
+          <!-- Service 1: Nghỉ ngắn -->
+          <article class="service-card" data-service-id="short" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <span class="service-duration-badge">30 Phút</span>
+            <h3 class="service-name">Nghỉ ngắn</h3>
+            <p class="service-description">
+              Tập trung giải tỏa căng thẳng vùng cổ, vai và gáy. Phù hợp để nạp lại năng lượng nhanh chóng vào giờ nghỉ trưa hoặc sau một ngày làm việc dài bên máy tính.
+            </p>
+            <div class="service-select-btn">
+              <span>Chọn buổi này</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Service 2: Thư giãn dài (Staggered naturally in desktop grid) -->
+          <article class="service-card card-stagger" data-service-id="long" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+            </div>
+            <span class="service-duration-badge">90 Phút</span>
+            <h3 class="service-name">Thư giãn dài</h3>
+            <p class="service-description">
+              Liệu trình toàn thân kết hợp tinh dầu ngải cứu ấm và kỹ thuật ấn huyệt sâu. Xoa dịu các bó cơ nhức mỏi, gỡ rối những điểm tắc nghẽn và đưa bạn vào giấc ngủ ngon.
+            </p>
+            <div class="service-select-btn">
+              <span>Chọn buổi này</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Service 3: Trải nghiệm thảo mộc -->
+          <article class="service-card" data-service-id="herbal" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <span class="service-duration-badge">120 Phút</span>
+            <h3 class="service-name">Trải nghiệm thảo mộc</h3>
+            <p class="service-description">
+              Bắt đầu bằng ngâm chân gừng tươi, xông hơi lá nam truyền thống và kết thúc bằng massage toàn thân với đá nóng trầm hương. Sự chăm sóc trọn vẹn mọi giác quan.
+            </p>
+            <div class="service-select-btn">
+              <span>Chọn buổi này</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: What Happens During the Session (Điều diễn ra trong buổi) -->
+    <section class="section-spacing" id="experience-section" aria-labelledby="experience-heading" style="background-color: var(--color-bg-subtle);">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">Điều diễn ra trong buổi</span>
+          <h2 class="section-title" id="experience-heading">
+            Từng bước <i class="italic font-normal">lắng đọng các giác quan</i>
+          </h2>
+          <p class="section-desc">
+            Không vội vã, không áp lực. Mỗi khoảnh khắc tại Thảo An được chăm chút cẩn trọng để đem lại cảm giác tự nhiên và thoải mái nhất.
+          </p>
+        </div>
+
+        <div class="experience-list">
+          <!-- Step 1: Đón tiếp -->
+          <div class="experience-step">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-top">
+                <img src="images/welcome.jpg" alt="Tách trà thảo mộc gốm mộc mạc và sả chanh đón tiếp khách" loading="lazy" width="800" height="900">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">01</span>
+              <h3 class="step-title">Đón <i class="italic font-normal">tiếp</i></h3>
+              <p class="step-desc">
+                Bước qua cánh cửa, bạn được chào đón bằng hương sả chanh dịu nhẹ và một tách trà đậu đen rang ấm nóng. Đây là khoảng thời gian để nhịp tim chậm lại, rời xa tiếng ồn ào trước khi bắt đầu liệu trình.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Chất liệu tự nhiên:</strong> Hương tinh dầu sả chanh thanh khiết kết hợp cùng trà đậu đen và cánh sen khô rang mộc.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Trải nghiệm -->
+          <div class="experience-step is-reversed">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-soft">
+                <img src="images/experience.jpg" alt="Đá nóng bazan tự nhiên và tinh dầu thảo mộc ấm trong phòng chăm sóc" loading="lazy" width="800" height="600">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">02</span>
+              <h3 class="step-title">Trải <i class="italic font-normal">nghiệm</i></h3>
+              <p class="step-desc">
+                Trong không gian mờ ảo và tiếng nhạc trầm bổng, chuyên viên sẽ bắt đầu liệu trình. Bạn hoàn toàn có quyền yêu cầu điều chỉnh lực tay mạnh nhẹ, hay thay đổi vị trí cần tập trung để cảm thấy thoải mái nhất. Sự chăm sóc luôn tuân theo nhịp độ của bạn.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Quyền điều chỉnh:</strong> Bạn luôn có quyền đề nghị tăng hoặc giảm lực bấm, nhiệt độ túi chườm thảo mộc bất cứ lúc nào.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Kết thúc -->
+          <div class="experience-step">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-round">
+                <img src="images/conclusion.jpg" alt="Khăn ấm dệt tổ ong và mứt gừng ấm thơm kết thúc buổi thư giãn" loading="lazy" width="800" height="800">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">03</span>
+              <h3 class="step-title">Kết <i class="italic font-normal">thúc</i></h3>
+              <p class="step-desc">
+                Khi liệu trình khép lại, chúng tôi dành không gian riêng để bạn từ từ đánh thức các giác quan. Bạn sẽ được phục vụ mứt gừng và nước ấm để ổn định đường huyết, giữ lại sự nhẹ nhõm bao bọc cơ thể trước khi ra về.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Hồi phục chậm rãi:</strong> Khăn bông ấm, một lát mứt gừng nồng ấm và ly nước ấm giúp cơ thể cân bằng trọn vẹn.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Illustrative Schedule (Lịch minh họa) -->
+    <section class="section-spacing" id="booking-section" aria-labelledby="booking-heading">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">Lịch minh họa</span>
+          <h2 class="section-title" id="booking-heading">
+            Lịch hẹn <i class="italic font-normal">minh họa</i>
+          </h2>
+          <p class="section-desc">
+            Chọn ngày và khung giờ để xem cách quy trình sắp xếp thời gian diễn ra.
+          </p>
+        </div>
+
+        <div class="booking-panel-container">
+          <div class="booking-card">
+            <!-- Retained Selected Service Summary at top of panel -->
+            <div class="selected-service-summary" id="booking-service-summary">
+              <div class="summary-left">
+                <span class="summary-heading">Dịch vụ đã chọn</span>
+                <div class="summary-name" id="selected-service-name">Nghỉ ngắn</div>
+                <div class="summary-meta" id="selected-service-duration">30 Phút • Tập trung giải tỏa căng thẳng vùng cổ, vai, gáy.</div>
+              </div>
+              <a href="#services-section" class="summary-change-btn" aria-label="Thay đổi dịch vụ thư giãn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                  <path d="M16 21h5v-5"></path>
+                </svg>
+                <span>Thay đổi buổi</span>
+              </a>
+            </div>
+
+            <!-- Schedule Grid: Date Picker & Time Slots -->
+            <div class="schedule-grid">
+              <!-- Column 1: Date Picker (Mock Month) -->
+              <div class="schedule-column">
+                <h3 class="column-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>1. Chọn ngày (Tháng 10)</span>
+                </h3>
+
+                <div class="calendar-widget">
+                  <div class="calendar-month-bar">
+                    <button type="button" class="calendar-nav-btn" aria-label="Tháng trước (không khả dụng)" disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <span class="month-label">Tháng 10, 2026</span>
+                    <button type="button" class="calendar-nav-btn" aria-label="Tháng sau (không khả dụng)" disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                  </div>
+
+                  <div class="calendar-weekdays" aria-hidden="true">
+                    <div>T2</div>
+                    <div>T3</div>
+                    <div>T4</div>
+                    <div>T5</div>
+                    <div>T6</div>
+                    <div>T7</div>
+                    <div>CN</div>
+                  </div>
+
+                  <div class="calendar-days-grid" id="calendar-days" role="grid" aria-label="Lịch chọn ngày tháng 10">
+                    <!-- Populated dynamically by script.js -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2: Time Slots Selector -->
+              <div class="schedule-column">
+                <h3 class="column-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>2. Chọn khung giờ mẫu</span>
+                </h3>
+
+                <div class="slots-container" id="time-slots-container" role="radiogroup" aria-label="Khung giờ trống">
+                  <!-- Populated dynamically by script.js -->
+                </div>
+
+                <!-- Acceptance Test Case 1: Notice when changing services invalidates old slot -->
+                <div class="slot-reset-alert hidden" id="slot-reset-alert" role="alert">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span id="slot-reset-reason">
+                    Thời lượng dịch vụ đã thay đổi, khung giờ đã chọn trước đó không còn phù hợp. Vui lòng chọn lại giờ.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking Confirmation Footer -->
+            <div class="booking-footer">
+              <!-- Acceptance Test Case 2: Sample schedule label appears PRIOR to confirm action -->
+              <div class="schedule-disclaimer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:var(--color-sage);" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>
+                  <strong>Nhãn lịch minh họa:</strong> Chức năng thử nghiệm mô phỏng giao diện, không lưu trữ thông tin thực, không tạo đơn đặt hẹn và không có phí phát sinh.
+                </span>
+              </div>
+
+              <!-- Acceptance Test Case 3 & 4: Button high-contrast & disabled when incomplete -->
+              <div style="text-align: right; width: 100%;">
+                <p id="booking-help-text" style="font-size: 0.8125rem; color: var(--color-fg-muted); margin-bottom: 0.75rem;">
+                  Vui lòng chọn khung giờ để tiếp tục.
+                </p>
+                <button type="button" class="btn btn-primary" id="btn-confirm-booking" disabled aria-haspopup="dialog">
+                  <span>Xác nhận lịch minh họa</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Before You Arrive (Trước khi tới) -->
+    <section class="section-spacing" id="prepare-section" aria-labelledby="prepare-heading">
+      <div class="site-container">
+        <div class="arrive-grid">
+          <div class="arrive-left">
+            <span class="section-label">Trước khi tới</span>
+            <h2 class="section-title" id="prepare-heading">
+              Gợi ý nhỏ <i class="italic font-normal">cho buổi thư giãn</i>
+            </h2>
+            <p class="section-desc">
+              Để trải nghiệm diễn ra trọn vẹn và êm ái nhất, bạn có thể tham khảo một vài lưu ý chuẩn bị nhỏ từ Thảo An.
+            </p>
+
+            <ul class="checklist" role="list">
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Đến sớm 10 phút:</strong> Thong thả thưởng một tách trà đậu đen nóng và thả lỏng tinh thần trước khi vào phòng.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Trang phục thoải mái:</strong> Ưu tiên quần áo rộng rãi, chất liệu mềm mại để các cơ được tự do hít thở.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Dùng bữa nhẹ trước 1 tiếng:</strong> Tránh để bụng quá đói hoặc quá no trong suốt buổi ấn huyệt thảo mộc.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Nhịp sống tĩnh lặng:</strong> Giữ điện thoại ở chế độ im lặng để không gian duy trì sự an yên.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="arrive-right">
+            <div class="request-card">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Ghi chú mong muốn</h3>
+              <p style="font-size: 0.9375rem; color: var(--color-fg-muted); margin-bottom: 1.5rem;">
+                Mỗi cơ thể có một câu chuyện riêng. Bạn có thể ghi lại vùng cần lưu ý để kỹ thuật viên chăm sóc phù hợp.
+              </p>
+
+              <form onsubmit="return false;" aria-label="Biểu mẫu ghi chú mong muốn">
+                <label for="special-requests" class="form-label">Ghi chú cá nhân (Minh họa)</label>
+                <textarea id="special-requests" class="form-textarea" placeholder="Ví dụ: Mong muốn ấn huyệt lực vừa ở vùng bả vai phải, da dễ mẩn cảm với mùi hương nồng..."></textarea>
+                <div class="form-helper-text">
+                  * Biểu mẫu minh họa: Không lưu thông tin và không gửi dữ liệu ra bên ngoài.
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary" id="btn-toggle-sample" aria-expanded="false" aria-controls="sample-note-box">
+                    <span>Xem yêu cầu mẫu</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Sample Note Display -->
+                <div class="sample-note-box hidden" id="sample-note-box" role="region" aria-label="Nội dung yêu cầu mẫu">
+                  <div class="sample-note-header">
+                    <span>Yêu cầu mẫu gợi ý:</span>
+                  </div>
+                  <p class="sample-note-content">
+                    “Xin chào Thảo An, tôi bị căng mỏi vùng cổ vai gáy bên phải do ngồi làm việc nhiều. Mong muốn chuyên viên hỗ trợ ấn huyệt với lực vừa phải và dùng tinh dầu ngải cứu ấm. Tôi nhạy cảm với mùi hương quá nồng. Xin cảm ơn.”
+                  </p>
+                  <button type="button" class="sample-copy-btn" id="btn-use-sample">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                    <span>Dùng mẫu này vào ô ghi chú</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span>Thảo</span><i>An</i>
+        </div>
+        <p class="footer-tagline">
+          Một khoảng dừng lại giữa nhịp sống hối hả.
+        </p>
+
+        <div class="footer-nav">
+          <a href="#hero-section">Trang chủ</a>
+          <a href="#services-section">Buổi thư giãn</a>
+          <a href="#experience-section">Trải nghiệm</a>
+          <a href="#booking-section">Lịch minh họa</a>
+          <a href="#prepare-section">Trước khi tới</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Thảo An. Thiết kế theo phong cách Botanical / Organic Serif.</p>
+          <p style="margin-top: 0.5rem; opacity: 0.75;">
+            Trang web mẫu minh họa giao diện. Không thực hiện thu thập dữ liệu y khoa hoặc giao dịch thật.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confirmation Modal Dialog -->
+  <div class="dialog-backdrop" id="booking-dialog" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="dialog-card">
+      <button type="button" class="dialog-close-btn" id="dialog-close-btn" aria-label="Đóng hộp thoại">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <div class="dialog-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Mô phỏng thành công</span>
+      </div>
+
+      <h3 class="dialog-title" id="dialog-title">Lịch hẹn mẫu đã sẵn sàng</h3>
+      <p class="dialog-desc">Dưới đây là tóm tắt thông tin buổi thư giãn bạn vừa lựa chọn trên giao diện minh họa:</p>
+
+      <div class="dialog-summary-list">
+        <div class="summary-row">
+          <span class="summary-row-label">Dịch vụ:</span>
+          <span class="summary-row-value" id="dialog-service-val">Nghỉ ngắn (30 Phút)</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Ngày đã chọn:</span>
+          <span class="summary-row-value" id="dialog-date-val">Ngày 15 Tháng 10, 2026</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Khung giờ:</span>
+          <span class="summary-row-value" id="dialog-time-val">09:30</span>
+        </div>
+      </div>
+
+      <div class="dialog-note">
+        <strong>Lưu ý minh họa:</strong> Thao tác này nhằm kiểm tra trải nghiệm người dùng, không lưu dữ liệu thật, không tạo đơn và không phát sinh chi phí.
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <button type="button" class="btn btn-secondary" id="btn-dialog-reset" style="flex: 1;">
+          Chọn lại từ đầu
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-dialog-done" style="flex: 1;">
+          Hoàn tất
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

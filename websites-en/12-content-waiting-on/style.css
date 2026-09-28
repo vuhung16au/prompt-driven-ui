@@ -1,0 +1,70 @@
+/* Custom styles to supplement Tailwind */
+
+.perspective-container {
+    perspective: 2000px;
+}
+
+.isometric-card {
+    transform: rotateX(5deg) rotateY(-12deg);
+    transform-style: preserve-3d;
+}
+
+.isometric-card:hover {
+    transform: rotateX(2deg) rotateY(-8deg);
+}
+
+.blob {
+    filter: blur(80px);
+    will-change: transform;
+}
+
+/* Scrollbar styling for internal panels */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .blob {
+        animation: none;
+    }
+}
+
+.tab-active {
+    background-color: #4F46E5;
+    color: white;
+}
+
+.tab-inactive {
+    background-color: #F1F5F9;
+    color: #334155;
+}
+
+.tab-inactive:hover {
+    background-color: #E2E8F0;
+}
+
+.highlight-row {
+    animation: highlight 1.5s ease-out;
+}
+
+@keyframes highlight {
+    0% { background-color: #EEF2FF; }
+    100% { background-color: transparent; }
+}

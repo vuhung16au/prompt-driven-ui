@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyệt Cầm — Đêm Nhạc Phòng Trà Cổ Điển</title>
+  <meta name="description" content="Một đêm nhạc phòng trà, được trình bày như tấm vé bước vào một nhà hát cổ theo phong cách Art Deco.">
+  
+  <!-- Google Fonts: Marcellus (Roman Display) & Josefin Sans (Geometric Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+  
+  <!-- Art Deco Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-crosshatch">
+
+  <!-- =========================================================================
+       1. MẶT TIỀN NHÀ HÁT (THEATER FACADE / HERO)
+       Trục trung tâm đối xứng, sunburst, đôi cột dọc, cổng vòm sân khấu
+       ========================================================================= -->
+  <header class="sunburst-bg" style="position: relative; padding: 60px 20px 80px; text-align: center; border-bottom: 1px solid rgba(201, 162, 39, 0.3);">
+    <!-- Đôi cột dọc cân xứng (Kiến trúc cổ điển) -->
+    <div class="vertical-divider" style="position: absolute; left: 32px; top: 0; bottom: 0;" aria-hidden="true"></div>
+    <div class="vertical-divider" style="position: absolute; right: 32px; top: 0; bottom: 0;" aria-hidden="true"></div>
+
+    <div style="max-w: 960px; margin: 0 auto; position: relative; z-index: 2;">
+      <!-- Họa tiết trang trí vương miện đỉnh đầu -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px;" aria-hidden="true">
+        <span style="width: 48px; height: 1px; background: var(--color-gold); opacity: 0.6;"></span>
+        <div style="width: 10px; height: 10px; border: 1px solid var(--color-gold); transform: rotate(45deg);"></div>
+        <span style="width: 48px; height: 1px; background: var(--color-gold); opacity: 0.6;"></span>
+      </div>
+
+      <!-- H1 Tiêu đề chính -->
+      <h1 style="color: var(--color-gold); font-size: clamp(2.5rem, 6vw, 5.2rem); letter-spacing: 0.14em; margin-bottom: 16px; text-transform: uppercase;">
+        NGUYỆT CẦM
+      </h1>
+
+      <!-- Lời dẫn mở đầu -->
+      <p style="color: var(--color-cream); font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 640px; margin: 0 auto 28px; font-weight: 300; letter-spacing: 0.04em;">
+        Một đêm nhạc phòng trà, được trình bày như tấm vé bước vào một nhà hát cổ.
+      </p>
+
+      <!-- Thông tin suất mẫu minh họa -->
+      <div style="display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(201, 162, 39, 0.4); padding: 8px 24px; background: var(--bg-charcoal); margin-bottom: 36px;">
+        <span style="color: var(--color-gold); font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;">Suất Diễn Mẫu</span>
+        <span style="color: var(--color-gold); opacity: 0.5;">|</span>
+        <span style="color: var(--color-cream); font-size: 0.95rem;">Thứ Bảy, 19:30 & 21:15</span>
+      </div>
+
+      <!-- Cửa vòm ảnh sân khấu trục trung tâm -->
+      <div style="max-width: 420px; margin: 0 auto 36px; position: relative;">
+        <!-- Vòng cung vòm đồng trang trí -->
+        <div style="position: absolute; top: -10px; left: -8px; right: -8px; height: 100px; border-top: 2px solid var(--color-gold); border-left: 2px solid var(--color-gold); border-right: 2px solid var(--color-gold); border-radius: 200px 200px 0 0; opacity: 0.4; pointer-events: none;" aria-hidden="true"></div>
+        <div class="img-frame" style="border-radius: 190px 190px 0 0; padding: 6px;">
+          <div class="img-frame-inner" style="border-radius: 184px 184px 0 0;">
+            <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 alt="Sân khấu nhà hát kịch cổ với ánh sáng vàng ấm và phím đàn dương cầm" 
+                 style="width: 100%; aspect-ratio: 4/5; display: block; border-radius: 184px 184px 0 0;"
+                 width="800" height="1000">
+          </div>
+        </div>
+      </div>
+
+      <!-- Hành động chính (CTA) -->
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;">
+        <a href="#program" class="deco-btn">Xem Chương Trình</a>
+        <a href="#seating" class="deco-btn deco-btn-solid">Chọn Vị Trí Ngồi</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1 0 auto;">
+    <!-- =========================================================================
+         2. CHƯƠNG TRÌNH I–III
+         Ba hồi nhạc La Mã, khung ziggurat, fan divider, nghệ sĩ minh họa
+         ========================================================================= -->
+    <section id="program" style="padding: 80px 20px; max-width: 1120px; margin: 0 auto;" aria-labelledby="program-title">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <span style="color: var(--color-pewter); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; display: block; margin-bottom: 8px;">Cấu Trúc Đêm Diễn</span>
+        <h2 id="program-title" style="color: var(--color-gold); font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px;">
+          Chương Trình Âm Nhạc
+        </h2>
+        <div class="fan-divider" aria-hidden="true">
+          <div class="fan-divider-center"></div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; align-items: stretch;">
+        <!-- Act I -->
+        <article class="deco-card" style="padding: 36px 28px; text-align: center;">
+          <div class="stepped-corner-tl" aria-hidden="true"></div>
+          <div class="stepped-corner-tr" aria-hidden="true"></div>
+          <div class="stepped-corner-bl" aria-hidden="true"></div>
+          <div class="stepped-corner-br" aria-hidden="true"></div>
+
+          <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 8px;">I</div>
+          <h3 style="color: var(--color-cream); font-size: 1.35rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.1em;">
+            Khúc Dương Cầm
+          </h3>
+          <div style="width: 48px; height: 1px; background: var(--color-gold); opacity: 0.35; margin: 0 auto 18px;"></div>
+          <p style="color: var(--color-pewter); font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+            Độc tấu dương cầm thính phòng với các tuyệt phẩm bán cổ điển thế kỷ 20, khởi đầu không gian hoài niệm.
+          </p>
+          <div style="border-top: 1px solid rgba(201, 162, 39, 0.2); padding-top: 16px; margin-top: auto;">
+            <div style="color: var(--color-gold); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Thời Lượng: 45 Phút</div>
+            <div style="color: var(--color-cream); font-size: 0.85rem; opacity: 0.75; font-style: italic;">Nghệ sĩ: Vĩnh Khang (Minh họa)</div>
+          </div>
+        </article>
+
+        <!-- Act II (Điểm nhấn trung tâm) -->
+        <article class="deco-card" style="padding: 36px 28px; text-align: center; border-color: rgba(201, 162, 39, 0.6); background: linear-gradient(180deg, #182633 0%, #131d27 100%);">
+          <div class="stepped-corner-tl" aria-hidden="true" style="opacity: 0.9;"></div>
+          <div class="stepped-corner-tr" aria-hidden="true" style="opacity: 0.9;"></div>
+          <div class="stepped-corner-bl" aria-hidden="true" style="opacity: 0.9;"></div>
+          <div class="stepped-corner-br" aria-hidden="true" style="opacity: 0.9;"></div>
+
+          <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 8px;">II</div>
+          <h3 style="color: var(--color-cream); font-size: 1.35rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.1em;">
+            Tiếng Hát Đêm Thâu
+          </h3>
+          <div style="width: 48px; height: 1px; background: var(--color-gold); opacity: 0.5; margin: 0 auto 18px;"></div>
+          <p style="color: var(--color-cream); font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+            Giọng nữ trung trầm (Mezzo-Soprano) hòa cùng dương cầm và contrabass, đưa khán giả vào chiều sâu cảm xúc.
+          </p>
+          <div style="border-top: 1px solid rgba(201, 162, 39, 0.3); padding-top: 16px; margin-top: auto;">
+            <div style="color: var(--color-gold); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Thời Lượng: 60 Phút</div>
+            <div style="color: var(--color-cream); font-size: 0.85rem; opacity: 0.85; font-style: italic;">Nghệ sĩ: Mộc Lan (Minh họa)</div>
+          </div>
+        </article>
+
+        <!-- Act III -->
+        <article class="deco-card" style="padding: 36px 28px; text-align: center;">
+          <div class="stepped-corner-tl" aria-hidden="true"></div>
+          <div class="stepped-corner-tr" aria-hidden="true"></div>
+          <div class="stepped-corner-bl" aria-hidden="true"></div>
+          <div class="stepped-corner-br" aria-hidden="true"></div>
+
+          <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 8px;">III</div>
+          <h3 style="color: var(--color-cream); font-size: 1.35rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.1em;">
+            Giao Hưởng Cuối
+          </h3>
+          <div style="width: 48px; height: 1px; background: var(--color-gold); opacity: 0.35; margin: 0 auto 18px;"></div>
+          <p style="color: var(--color-pewter); font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+            Hòa tấu Acoustic với violin, cello và kèn saxophone trầm, khép lại một đêm tiệc nghệ thuật trọn vẹn.
+          </p>
+          <div style="border-top: 1px solid rgba(201, 162, 39, 0.2); padding-top: 16px; margin-top: auto;">
+            <div style="color: var(--color-gold); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Thời Lượng: 45 Phút</div>
+            <div style="color: var(--color-cream); font-size: 0.85rem; opacity: 0.75; font-style: italic;">Nghệ sĩ: Ban Nhạc Hoa Niên (Minh họa)</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. KHÔNG GIAN PHÒNG TRÀ
+         Chi tiết đồng, nhung đen, âm học nhà hát cổ
+         ========================================================================= -->
+    <section id="space" style="background-color: var(--bg-charcoal); border-top: 1px solid rgba(201, 162, 39, 0.25); border-bottom: 1px solid rgba(201, 162, 39, 0.25); padding: 80px 20px;" aria-labelledby="space-title">
+      <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center;">
+        <div>
+          <span style="color: var(--color-pewter); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; display: block; margin-bottom: 8px;">Kiến Trúc & Âm Học</span>
+          <h2 id="space-title" style="color: var(--color-gold); font-size: clamp(2rem, 3.5vw, 2.8rem); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px;">
+            Không Gian Thính Phòng
+          </h2>
+          <div style="width: 80px; height: 1px; background: var(--color-gold); margin-bottom: 24px;"></div>
+          
+          <p style="color: var(--color-cream); margin-bottom: 18px; font-size: 1.05rem;">
+            Lấy cảm hứng từ thời hoàng kim của các nhà hát thính phòng thập niên 1920, Nguyệt Cầm được bài trí với kim loại đồng thau đúc, gỗ sồi sẫm màu và rèm nhung cách âm chuyên dụng.
+          </p>
+          <p style="color: var(--color-pewter); margin-bottom: 32px; font-size: 0.95rem;">
+            Toàn bộ cấu trúc khán phòng được tính toán để tạo độ vang tự nhiên cho tiếng đàn và giọng mộc, hạn chế tối đa các thiết bị khuếch đại điện tử gây chói gắt.
+          </p>
+
+          <div style="display: flex; gap: 24px; border-left: 2px solid var(--color-gold); padding-left: 20px;">
+            <div>
+              <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.5rem;">48 Chỗ</div>
+              <div style="color: var(--color-pewter); font-size: 0.85rem;">Quy mô thính phòng ấm cúng</div>
+            </div>
+            <div>
+              <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.5rem;">100% Mộc</div>
+              <div style="color: var(--color-pewter); font-size: 0.85rem;">Âm thanh phòng trà thuần túy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cặp ảnh đôi trang nhã -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="img-frame" style="margin-top: 24px;">
+            <div class="img-frame-inner">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Chi tiết nhạc cụ kèn đồng ánh kim trong không gian ấm" 
+                   style="width: 100%; aspect-ratio: 3/4; display: block;" 
+                   loading="lazy" width="600" height="800">
+            </div>
+          </div>
+          <div class="img-frame" style="margin-bottom: 24px;">
+            <div class="img-frame-inner">
+              <img src="https://images.unsplash.com/photo-1542828330-9ebf42777b73?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Góc khán phòng sang trọng với ánh đèn vàng ấm áp" 
+                   style="width: 100%; aspect-ratio: 3/4; display: block;" 
+                   loading="lazy" width="600" height="800">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. CHỌN VỊ TRÍ MẪU (SEATING SELECTION)
+         Sơ đồ đối xứng, chuyển suất, góc nhìn mô phỏng, danh sách mobile
+         ========================================================================= -->
+    <section id="seating" class="sunburst-subtle" style="padding: 80px 20px 100px; text-align: center;" aria-labelledby="seating-title">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <span style="color: var(--color-pewter); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; display: block; margin-bottom: 8px;">Trải Nghiệm Tương Tác</span>
+        <h2 id="seating-title" style="color: var(--color-gold); font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px;">
+          Sơ Đồ Vị Trí Ngồi
+        </h2>
+        <div class="fan-divider" style="margin-bottom: 28px;" aria-hidden="true">
+          <div class="fan-divider-center"></div>
+        </div>
+
+        <p style="color: var(--color-cream); font-size: 1rem; max-width: 600px; margin: 0 auto 32px;">
+          Lựa chọn bàn để xem góc nhìn minh họa hướng về sân khấu. Dữ liệu mang tính chất mô phỏng trải nghiệm giao diện, không kết nối hệ thống giao dịch hay thanh toán thực.
+        </p>
+
+        <!-- Bộ chuyển đổi Suất Diễn (Showtime Switcher) -->
+        <div style="margin-bottom: 32px;">
+          <div style="color: var(--color-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px;">Chọn Suất Diễn</div>
+          <div class="showtime-nav" role="tablist" aria-label="Lựa chọn suất diễn">
+            <button class="showtime-btn active" role="tab" aria-selected="true" data-show="show-1">
+              Suất I: 19:30 (Khúc Hoàng Hôn)
+            </button>
+            <button class="showtime-btn" role="tab" aria-selected="false" data-show="show-2">
+              Suất II: 21:15 (Dạ Khúc Huyền Diệu)
+            </button>
+          </div>
+        </div>
+
+        <!-- Chú thích trạng thái bàn -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 36px;" aria-hidden="true">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 24px; height: 24px; border: 1px solid rgba(201, 162, 39, 0.45); background: transparent;"></div>
+            <span style="font-size: 0.9rem; color: var(--color-pewter);">Còn trống</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 24px; height: 24px; background: var(--color-gold); border: 1px solid var(--color-gold); box-shadow: 0 0 8px rgba(201, 162, 39, 0.6);"></div>
+            <span style="font-size: 0.9rem; color: var(--color-cream); font-weight: 600;">Đang chọn</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 24px; height: 24px; background: rgba(13, 20, 27, 0.6); border: 1px solid #2b3945;"></div>
+            <span style="font-size: 0.9rem; color: #6b7280;">Đã giữ chỗ / Kỹ thuật</span>
+          </div>
+        </div>
+
+        <!-- Sân khấu vòm đối xứng trung tâm -->
+        <div style="margin-bottom: 40px;">
+          <div class="stage-arch" aria-hidden="true">
+            <div class="stage-badge">Sân Khấu Chính Diện</div>
+          </div>
+        </div>
+
+        <!-- Lưới bàn đối xứng (Desktop / Tablet view) -->
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-bottom: 32px;" role="group" aria-label="Sơ đồ chọn bàn">
+          <!-- Hàng A (Hàng cận sân khấu) -->
+          <div class="seat-row">
+            <span class="seat-row-label" aria-hidden="true">A</span>
+            <button type="button" class="seat-btn" data-seat="A1">A1</button>
+            <button type="button" class="seat-btn" data-seat="A2">A2</button>
+            <div class="seat-aisle" aria-hidden="true"></div>
+            <button type="button" class="seat-btn" data-seat="A3">A3</button>
+            <button type="button" class="seat-btn" data-seat="A4">A4</button>
+          </div>
+
+          <!-- Hàng B (Hàng trung tâm) -->
+          <div class="seat-row">
+            <span class="seat-row-label" aria-hidden="true">B</span>
+            <button type="button" class="seat-btn" data-seat="B1">B1</button>
+            <button type="button" class="seat-btn" data-seat="B2">B2</button>
+            <button type="button" class="seat-btn" data-seat="B3">B3</button>
+            <div class="seat-aisle" style="width: 16px;" aria-hidden="true"></div>
+            <button type="button" class="seat-btn" data-seat="B4">B4</button>
+            <button type="button" class="seat-btn" data-seat="B5">B5</button>
+            <button type="button" class="seat-btn" data-seat="B6">B6</button>
+          </div>
+
+          <!-- Hàng C (Hàng ban công âm hưởng) -->
+          <div class="seat-row">
+            <span class="seat-row-label" aria-hidden="true">C</span>
+            <button type="button" class="seat-btn" data-seat="C1">C1</button>
+            <button type="button" class="seat-btn" data-seat="C2">C2</button>
+            <button type="button" class="seat-btn" data-seat="C3">C3</button>
+            <div class="seat-aisle" style="width: 16px;" aria-hidden="true"></div>
+            <button type="button" class="seat-btn" data-seat="C4">C4</button>
+            <button type="button" class="seat-btn" data-seat="C5">C5</button>
+            <button type="button" class="seat-btn" data-seat="C6">C6</button>
+          </div>
+        </div>
+
+        <!-- Lựa chọn bàn nhanh dạng danh sách cho Mobile / A11y -->
+        <div style="margin-bottom: 32px;">
+          <label for="mobile-seat-select" style="display: block; color: var(--color-pewter); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+            Hoặc chọn bàn theo danh sách:
+          </label>
+          <select id="mobile-seat-select" class="mobile-seat-select" aria-label="Chọn vị trí bàn từ danh sách">
+            <option value="">-- Chọn bàn từ danh sách --</option>
+          </select>
+        </div>
+
+        <!-- Thông báo phản hồi trực tiếp (Aria Alert) -->
+        <div id="seat-alert" role="alert" aria-live="polite" class="alert-banner" style="margin-bottom: 24px; opacity: 0;"></div>
+
+        <!-- Thẻ mô phỏng góc nhìn khán giả (Perspective Preview Card) -->
+        <div id="perspective-card" class="perspective-card" style="max-width: 600px; margin: 0 auto 32px;">
+          <div class="stepped-corner-tl" aria-hidden="true"></div>
+          <div class="stepped-corner-tr" aria-hidden="true"></div>
+          <div class="stepped-corner-bl" aria-hidden="true"></div>
+          <div class="stepped-corner-br" aria-hidden="true"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+            <div style="color: var(--color-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em;">Góc Nhìn Khán Phòng</div>
+            <span style="color: var(--color-pewter); font-size: 0.75rem; border: 1px solid rgba(201, 162, 39, 0.3); padding: 2px 8px;">Minh họa</span>
+          </div>
+
+          <h3 id="preview-table" style="color: var(--color-cream); font-size: 1.25rem; margin-bottom: 4px;">Chưa chọn bàn</h3>
+          <div id="preview-tier" style="color: var(--color-gold); font-size: 0.9rem; margin-bottom: 12px;">Vui lòng chọn bàn trên sơ đồ hoặc danh sách</div>
+          <p id="preview-desc" style="color: var(--color-pewter); font-size: 0.9rem; margin-bottom: 16px;">
+            Góc nhìn mô phỏng và thông tin chỗ ngồi sẽ hiển thị chi tiết tại đây.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button id="btn-view-ticket" type="button" class="deco-btn deco-btn-solid deco-btn-sm" style="display: none;">
+              Xem Vé Minh Họa
+            </button>
+            <button id="btn-reset-seating" type="button" class="deco-btn deco-btn-sm">
+              Đặt Lại Sơ Đồ
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       CHÂN TRANG (FOOTER)
+       Trang nghiêm, tối giản, thông báo minh họa bản quyền
+       ========================================================================= -->
+  <footer style="background-color: var(--bg-charcoal); border-top: 1px solid rgba(201, 162, 39, 0.3); padding: 48px 20px; text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+      <!-- Biểu tượng hoa văn hình thoi xoay 45 độ -->
+      <div style="width: 28px; height: 28px; border: 1px solid var(--color-gold); transform: rotate(45deg); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;" aria-hidden="true">
+        <div style="width: 10px; height: 10px; background-color: var(--color-gold); opacity: 0.4;"></div>
+      </div>
+
+      <div style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px;">
+        NGUYỆT CẦM
+      </div>
+      <p style="color: var(--color-pewter); font-size: 0.9rem; margin-bottom: 12px;">
+        Trang web minh họa phong cách thiết kế Art Deco & Gatsby hoài niệm.
+      </p>
+      <p style="color: var(--color-pewter); font-size: 0.8rem; opacity: 0.6;">
+        © 2026 Nguyệt Cầm. Mọi thông tin chương trình và vị trí mang tính chất tham khảo thiết kế.
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       5. TẤM VÉ MINH HỌA (SOUVENIR TICKET MODAL)
+       Khung ziggurat bậc thang, thông tin chỗ, cảnh báo không có giá trị đặt chỗ thật,
+       tuyệt đối không có mã QR giả.
+       ========================================================================= -->
+  <div id="ticket-modal" class="ticket-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ticket-modal-title" aria-hidden="true">
+    <div class="ticket-box">
+      <div class="ticket-box-inner">
+        <!-- Bốn góc bậc thang Ziggurat -->
+        <div class="stepped-corner-tl" aria-hidden="true" style="opacity: 1;"></div>
+        <div class="stepped-corner-tr" aria-hidden="true" style="opacity: 1;"></div>
+        <div class="stepped-corner-bl" aria-hidden="true" style="opacity: 1;"></div>
+        <div class="stepped-corner-br" aria-hidden="true" style="opacity: 1;"></div>
+
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px;" aria-hidden="true">
+          <span style="width: 32px; height: 1px; background: var(--color-gold); opacity: 0.5;"></span>
+          <div style="width: 8px; height: 8px; border: 1px solid var(--color-gold); transform: rotate(45deg);"></div>
+          <span style="width: 32px; height: 1px; background: var(--color-gold); opacity: 0.5;"></span>
+        </div>
+
+        <span style="color: var(--color-pewter); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 4px;">Thẻ Kỷ Niệm Thính Phòng</span>
+        <h3 id="ticket-modal-title" style="color: var(--color-gold); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 16px;">
+          NGUYỆT CẦM
+        </h3>
+
+        <div style="border-top: 1px solid rgba(201, 162, 39, 0.3); border-bottom: 1px solid rgba(201, 162, 39, 0.3); padding: 20px 0; margin-bottom: 20px; text-align: left;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <div style="color: var(--color-pewter); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Suất Diễn</div>
+              <div id="ticket-showtime" style="color: var(--color-cream); font-family: var(--font-heading); font-size: 0.95rem;">Suất I: 19:30</div>
+            </div>
+            <div>
+              <div style="color: var(--color-pewter); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Vị Trí Bàn</div>
+              <div id="ticket-seat-name" style="color: var(--color-gold); font-family: var(--font-heading); font-size: 1.4rem;">Bàn A1</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <div style="color: var(--color-pewter); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Hạng Vị Trí</div>
+            <div id="ticket-tier" style="color: var(--color-cream); font-size: 0.9rem;">Bàn Cận Sân Khấu (VIP)</div>
+          </div>
+
+          <div>
+            <div style="color: var(--color-pewter); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">Góc Nhìn Khán Phòng</div>
+            <div id="ticket-perspective" style="color: var(--color-pewter); font-size: 0.85rem;">Chính diện phím dương cầm (Cự ly 3.2m)</div>
+          </div>
+        </div>
+
+        <!-- Cảnh báo bắt buộc: Không có giá trị đặt chỗ thật, KHÔNG mã QR giả -->
+        <div class="ticket-disclaimer">
+          ⚠️ Không có giá trị đặt chỗ thật<br>
+          <span style="font-size: 0.75rem; color: var(--color-pewter); text-transform: none; letter-spacing: 0.02em;">Bản minh họa giao diện nghệ thuật Art Deco</span>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button id="btn-change-selection" type="button" class="deco-btn deco-btn-solid deco-btn-sm">
+            Đổi Lựa Chọn
+          </button>
+          <button id="btn-close-ticket" type="button" class="deco-btn deco-btn-sm">
+            Đóng Lại
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Art Deco Interactive Script -->
+  <script src="script.js" defer></script>
+</body>
+</html>

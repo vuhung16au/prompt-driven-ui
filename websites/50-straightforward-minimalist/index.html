@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án của bạn - Straightforward Minimalist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#234B63',
+                        muted: '#A0B4C0',
+                        accent: '#FF6B6B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    
+    <!-- Navigation -->
+    <nav class="border-b border-white/15 px-6 py-6 md:px-12">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between">
+            <div class="text-[15px] font-bold tracking-widest uppercase">Thương Hiệu</div>
+            <div class="hidden md:flex gap-8">
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Giải pháp</a>
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Tính năng</a>
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Bảng giá</a>
+            </div>
+            <div>
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold border border-white/30 bg-transparent text-white hover:bg-white hover:text-[#234B63] transition-colors rounded-none">Đăng nhập</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12 md:py-32 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-2 hidden md:block">
+            <!-- Editorial margin space -->
+            <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-4">Giới thiệu</span>
+        </div>
+        <div class="md:col-span-10">
+            <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Giới thiệu</span>
+            <h1 class="text-[40px] md:text-[60px] leading-[1.1] font-bold mb-8 max-w-4xl">Hệ thống tối giản cho thiết kế doanh nghiệp hiện đại.</h1>
+            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] max-w-2xl mb-12">
+                Một kiến trúc nghiêm ngặt loại bỏ mọi yếu tố thừa. Cấu trúc và văn bản là trung tâm, mang lại tốc độ tương tác cao và độ chính xác đến từng điểm ảnh.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-white text-[#234B63] hover:bg-white/90 transition-colors rounded-none w-full sm:w-auto">Bắt đầu ngay</a>
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold text-white hover:opacity-70 underline-offset-4 hover:underline transition-colors rounded-none w-full sm:w-auto">Tìm hiểu thêm</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-white/15" />
+
+    <!-- Features Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Tính năng</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Tính năng</span>
+                <h2 class="text-[30px] leading-[1.2] font-bold">Cấu trúc vững chắc và linh hoạt</h2>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15 border-y border-white/15">
+            <!-- Feature 1 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">Tốc độ hiển thị</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">Trải nghiệm người dùng không có độ trễ. Giao diện được tối ưu hóa bằng CSS thuần túy, không có hiệu ứng chuyển động chậm chạp.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">Độ nét cao</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">Các thành phần UI đều góc cạnh, không đổ bóng. Mọi nội dung căn chỉnh theo hệ thống lưới pixel-perfect.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">Tương phản mạnh mẽ</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">Sử dụng nền Deep Slate Teal kết hợp chữ Pure White, tạo nên không gian làm việc chuyên nghiệp, dễ đọc và tập trung.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-white/15" />
+
+    <!-- Data/Table Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Bảng giá</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Bảng giá</span>
+                <h2 class="text-[30px] leading-[1.2] font-bold mb-12">Minh bạch và linh hoạt</h2>
+                
+                <div class="border-t border-white/15">
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 border-b border-white/15 py-6">
+                        <div class="sm:col-span-2">
+                            <h3 class="text-[22px] leading-[1.2] font-bold">Gói Cơ Bản</h3>
+                            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] mt-2">Sử dụng bởi các nhóm nhỏ hoặc cá nhân</p>
+                        </div>
+                        <div class="flex items-center text-[22px] leading-[1.2] tabular-nums mt-4 sm:mt-0 font-bold">
+                            Miễn phí
+                        </div>
+                        <div class="flex items-center justify-start sm:justify-end mt-6 sm:mt-0">
+                            <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold border border-white/30 bg-transparent text-white hover:bg-white hover:text-[#234B63] transition-colors rounded-none w-full sm:w-auto">Bắt đầu miễn phí</a>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 border-b border-white/15 py-6 hover:bg-white/5 transition-colors duration-200">
+                        <div class="sm:col-span-2">
+                            <h3 class="text-[22px] leading-[1.2] font-bold">Gói Doanh Nghiệp</h3>
+                            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] mt-2">Tính năng không giới hạn và hỗ trợ ưu tiên</p>
+                        </div>
+                        <div class="flex items-center text-[22px] leading-[1.2] tabular-nums mt-4 sm:mt-0 font-bold">
+                            2,500,000đ<span class="text-[15px] text-[#A0B4C0] ml-2 font-normal">/tháng</span>
+                        </div>
+                        <div class="flex items-center justify-start sm:justify-end mt-6 sm:mt-0">
+                            <!-- Accent color used extremely sparingly here -->
+                            <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-[#FF6B6B] text-white hover:opacity-90 transition-opacity rounded-none w-full sm:w-auto">Nâng cấp (Dữ liệu mẫu)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12 border-t border-white/15">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Liên hệ</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Liên hệ</span>
+                
+                <!-- Bordered Card -->
+                <div class="border border-white/15 bg-transparent p-8 md:p-12 text-white max-w-2xl hover:bg-white/5 transition-colors duration-200">
+                    <h3 class="text-[22px] leading-[1.2] font-bold mb-8">Gửi yêu cầu công việc</h3>
+                    <form onsubmit="event.preventDefault(); alert('Đây chỉ là bản demo (Dữ liệu mẫu). Không có kết nối API thật.');">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mb-2">Họ và tên</label>
+                                <input type="text" placeholder="Nhập tên" class="h-12 w-full border-b border-white/30 bg-transparent px-0 py-2 text-[15px] text-white placeholder:text-white/40 focus:border-white focus:outline-none focus:ring-0 rounded-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mb-2">Địa chỉ Email</label>
+                                <input type="email" placeholder="email@company.com" class="h-12 w-full border-b border-white/30 bg-transparent px-0 py-2 text-[15px] text-white placeholder:text-white/40 focus:border-white focus:outline-none focus:ring-0 rounded-none transition-colors">
+                            </div>
+                            <div class="pt-4">
+                                <button type="submit" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-white text-[#234B63] hover:bg-white/90 transition-colors rounded-none w-full sm:w-auto ring-offset-[#234B63] focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none">
+                                    Gửi (Dữ liệu mẫu)
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/15 px-6 py-12 md:px-12">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <div class="text-[15px] font-bold tracking-widest uppercase mb-4">Thương Hiệu</div>
+                <p class="text-[15px] text-[#A0B4C0]">© 2026 Straightforward Minimalist System.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-6 md:justify-end">
+                <a href="#" class="text-[15px] underline underline-offset-4 text-white hover:opacity-70 transition-opacity">Quyền riêng tư</a>
+                <a href="#" class="text-[15px] underline underline-offset-4 text-white hover:opacity-70 transition-opacity">Điều khoản</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flow_check - Terminal UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay" aria-hidden="true"></div>
+    <div class="container">
+        <header>
+            <h1>&gt; flow_check<span class="cursor" aria-hidden="true">_</span></h1>
+            <p>Test-run the process of receiving requests, validating data, and generating reports within an illustrative terminal.</p>
+        </header>
+
+        <main class="grid-layout">
+            <!-- 1. Initial command -->
+            <section class="pane init-pane">
+                <div class="pane-header">+--- SYSTEM CONTROL ---+</div>
+                <div class="pane-content">
+                    <p><span class="prompt">user@system:~$</span> ./run_simulation.sh --target=data_validation</p>
+                    <p class="muted">// Running workflow data validation simulation (no real data affected)</p>
+                    <button id="btn-run" class="btn">[ RUN SAMPLE ]</button>
+                    <button id="btn-reset" class="btn hidden">[ RESET ]</button>
+                </div>
+            </section>
+
+            <!-- 2. Input data -->
+            <section class="pane data-pane">
+                <div class="pane-header">+--- INPUT DATA ---+</div>
+                <div class="pane-content split">
+                    <div class="col">
+                        <h3>DATASET (3 records)</h3>
+                        <pre id="dataset">
+[
+  { "id": 1, "name": "John Doe", "email": "john@example.com" },
+  { "id": 2, "name": "Jane Smith", "email": null },
+  { "id": 3, "name": "Alice Lee", "email": "alice@example.com" }
+]
+                        </pre>
+                    </div>
+                    <div class="col">
+                        <h3>SCHEMA</h3>
+                        <pre>
+{
+  "id": "number (required)",
+  "name": "string (required)",
+  "email": "string (required, email format)"
+}
+                        </pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3 & 4. Execution log & Edit and rerun -->
+            <section class="pane log-pane">
+                <div class="pane-header">+--- EXECUTION LOG ---+</div>
+                <div class="pane-content" id="log-output">
+                    <p class="muted">Waiting for execution...</p>
+                </div>
+                <div id="fix-panel" class="fix-panel hidden">
+                    <p class="error-text">! RECORD 2 MISSING EMAIL !</p>
+                    <label for="email-fix"><span class="prompt">&gt; fix_email id=2 email=</span></label>
+                    <div class="input-group">
+                        <input type="text" id="email-fix" placeholder="Enter email...">
+                        <button id="btn-fix" class="btn">[ EDIT & RERUN ]</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Report -->
+            <section class="pane report-pane hidden" id="report-pane">
+                <div class="pane-header">+--- REPORT ---+</div>
+                <div class="pane-content">
+                    <div id="report-content"></div>
+                    <div class="actions">
+                        <button id="btn-copy" class="btn">[ COPY RESULT ]</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

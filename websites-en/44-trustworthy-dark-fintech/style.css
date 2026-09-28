@@ -1,0 +1,9 @@
+body {
+            background-color: #192625;
+            color: #FFFFFF;
+        }
+        /* Focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid #B3F05D;
+            outline-offset: 2px;
+        }

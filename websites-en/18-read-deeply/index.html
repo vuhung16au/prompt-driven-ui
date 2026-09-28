@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read more deeply. Argue more clearly.</title>
+  <meta name="description" content="A reading and discussion class for working professionals who want to deeply understand what they read.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: "#1C1714",
+            backgroundAlt: "#251E19",
+            foreground: "#E8DFD4",
+            muted: "#3D332B",
+            mutedForeground: "#9C8B7A",
+            accent: "#C9A962",
+            accentSecondary: "#8B2635",
+            border: "#4A3F35",
+          },
+          fontFamily: {
+            heading: ['"Cormorant Garamond"', 'serif'],
+            body: ['"Crimson Pro"', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #1C1714;
+      color: #E8DFD4;
+      font-family: "Crimson Pro", serif;
+      line-height: 1.625;
+    }
+    
+    /* Texture overlays */
+    .texture-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+    .paper-noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      mix-blend-mode: overlay;
+    }
+    .vignette {
+      background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(28,23,20,0.4) 100%);
+    }
+
+    /* Arch top */
+    .arch-top {
+      border-radius: 40% 40% 0 0 / 20% 20% 0 0;
+    }
+
+    /* Image sepia */
+    .sepia-image {
+      filter: sepia(0.6) contrast(0.95) brightness(0.9);
+      transition: all 700ms ease-out;
+    }
+    .sepia-image:hover, .sepia-image:focus {
+      filter: sepia(0) contrast(1) brightness(1);
+      transform: scale(1.02);
+    }
+
+    /* Brass Button */
+    .btn-brass {
+      background: linear-gradient(180deg, #D4B872 0%, #C9A962 50%, #B8953F 100%);
+      color: #1C1714;
+      text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.3);
+      transition: all 300ms ease;
+    }
+    .btn-brass:hover, .btn-brass:focus {
+      filter: brightness(1.1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 4px 12px rgba(201,169,98,0.3);
+    }
+    .btn-brass:active {
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .btn-secondary {
+      border: 2px solid #C9A962;
+      color: #C9A962;
+      background: transparent;
+      transition: all 300ms ease;
+    }
+    .btn-secondary:hover, .btn-secondary:focus {
+      border-color: #8B2635;
+      background-color: #8B2635;
+      color: #E8DFD4;
+    }
+
+    /* Ornate divider */
+    .ornate-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #4A3F35 20%, #C9A962 50%, #4A3F35 80%, transparent 100%);
+      position: relative;
+    }
+    .ornate-divider::before {
+      content: "✶";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #C9A962;
+      font-size: 14px;
+      background: #1C1714;
+      padding: 0 12px;
+    }
+
+    /* Drop cap */
+    .drop-cap::first-letter {
+      font-family: "Cinzel", serif;
+      font-size: 72px;
+      float: left;
+      margin-right: 1rem;
+      line-height: 0.8;
+      color: #C9A962;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Corner flourish */
+    .corner-flourish {
+      position: relative;
+    }
+    .corner-flourish::before, .corner-flourish::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #C9A962;
+      opacity: 0.6;
+      transition: opacity 300ms ease;
+      pointer-events: none;
+    }
+    .corner-flourish:hover::before, .corner-flourish:hover::after {
+      opacity: 1;
+    }
+    .corner-flourish::before {
+      top: -1px; left: -1px;
+      border-right: none; border-bottom: none;
+    }
+    .corner-flourish::after {
+      bottom: -1px; right: -1px;
+      border-left: none; border-top: none;
+    }
+    .corner-flourish.large::before, .corner-flourish.large::after {
+      width: 40px; height: 40px;
+    }
+
+    /* Wax seal badge */
+    .wax-seal {
+      background: radial-gradient(circle, #A52A3F 0%, #8B2635 80%, #5E1A24 100%);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4);
+      border-radius: 50%;
+      color: #E8DFD4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Engraved heading */
+    .engraved-text {
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.1);
+    }
+
+    /* Focus ring */
+    *:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px #1C1714, 0 0 0 4px #C9A962 !important;
+      border-radius: 4px;
+    }
+
+    /* Custom select sentence for interactive lesson */
+    .selectable-sentence {
+      cursor: pointer;
+      border-bottom: 1px dashed #9C8B7A;
+      transition: all 300ms ease;
+    }
+    .selectable-sentence:hover, .selectable-sentence:focus {
+      background-color: rgba(201,169,98,0.1);
+      border-bottom-color: #C9A962;
+    }
+    .selectable-sentence.active {
+      background-color: rgba(201,169,98,0.2);
+      border-bottom: 1px solid #C9A962;
+      color: #C9A962;
+    }
+
+    .lesson-explanation {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease-out, opacity 300ms ease-out, padding 300ms ease-out;
+      opacity: 0;
+    }
+    .lesson-explanation.show {
+      max-height: 500px;
+      opacity: 1;
+      padding: 1rem 0;
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 220ms ease-out;
+    }
+    .accordion-trigger[aria-expanded="true"] .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-background relative">
+  <!-- Atmospheric Overlays -->
+  <div class="texture-overlay paper-noise"></div>
+  <div class="texture-overlay vignette"></div>
+
+  <!-- Navigation (Desktop & Mobile) -->
+  <nav class="border-b border-border bg-background/90 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-heading text-2xl tracking-wide text-foreground hover:text-accent transition-colors">ACADEMIA</a>
+      <div class="hidden md:flex items-center gap-8 font-display text-xs tracking-[0.2em] uppercase">
+        <a href="#curriculum" class="text-mutedForeground hover:text-accent transition-colors">Curriculum</a>
+        <a href="#lesson" class="text-mutedForeground hover:text-accent transition-colors">Sample Lesson</a>
+        <a href="#instructor" class="text-mutedForeground hover:text-accent transition-colors">Instructor</a>
+        <a href="#schedule" class="btn-brass rounded h-10 px-6 flex items-center font-medium">Select Schedule</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-foreground hover:text-accent p-2" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-backgroundAlt p-6 flex-col gap-4 font-display text-xs tracking-[0.2em] uppercase">
+      <a href="#curriculum" class="block py-2 text-mutedForeground hover:text-accent" onclick="this.parentElement.classList.add('hidden')">Curriculum</a>
+      <a href="#lesson" class="block py-2 text-mutedForeground hover:text-accent" onclick="this.parentElement.classList.add('hidden')">Sample Lesson</a>
+      <a href="#instructor" class="block py-2 text-mutedForeground hover:text-accent" onclick="this.parentElement.classList.add('hidden')">Instructor</a>
+      <a href="#schedule" class="block py-2 text-accent mt-2" onclick="this.parentElement.classList.add('hidden')">Select Schedule &rarr;</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="py-16 md:py-32 px-6 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Content -->
+        <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <span class="font-display text-xs uppercase tracking-[0.3em] text-accent mb-6 block leading-relaxed">Advanced Discussion Class</span>
+          <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-8">
+            Read more deeply.<br>Argue more clearly.
+          </h1>
+          <p class="text-lg md:text-xl text-mutedForeground max-w-2xl mb-12">
+            A reading and discussion class for working professionals who want to deeply understand what they read. Skip the speed-reading; we pause to dissect every argument.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
+            <a href="#schedule" class="btn-brass rounded h-14 px-10 flex items-center justify-center font-display text-xs uppercase tracking-[0.15em] font-medium engraved-text">Select Class Schedule</a>
+            <a href="#lesson" class="btn-secondary rounded h-14 px-10 flex items-center justify-center font-display text-xs uppercase tracking-[0.15em] font-medium">View Sample Lesson</a>
+          </div>
+        </div>
+        
+        <!-- Image -->
+        <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+          <div class="relative p-2 corner-flourish corner-flourish-large inline-block w-full max-w-[320px] md:max-w-[400px]">
+            <div class="arch-top overflow-hidden border border-border">
+              <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classical library space with warm lighting" class="w-full h-auto aspect-[3/4] object-cover sepia-image" loading="lazy">
+            </div>
+            <!-- Wax Seal -->
+            <div class="absolute -top-3 -right-3 w-16 h-16 wax-seal z-10" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-4xl mx-auto px-6" aria-hidden="true">
+      <div class="ornate-divider my-16"></div>
+    </div>
+
+    <!-- Syllabus Section -->
+    <section id="curriculum" class="py-16 md:py-24 px-6 max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Curriculum</span>
+        <h2 class="font-heading text-4xl md:text-5xl">Four Steps to Dissecting Arguments</h2>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Chapter I -->
+        <div class="bg-backgroundAlt border border-border rounded p-6 md:p-8 corner-flourish group hover:border-accent/50 transition-colors shadow-none hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <button class="w-full text-left accordion-trigger flex justify-between items-center outline-none" aria-expanded="false" onclick="toggleAccordion(this)">
+            <div>
+              <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 block">Volume I</span>
+              <h3 class="font-heading text-2xl md:text-3xl">Read the Question</h3>
+            </div>
+            <svg class="accordion-icon text-accent transition-transform duration-300 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="pt-6 mt-6 border-t border-border text-mutedForeground">
+              <p class="mb-4">Differentiate between what authors actually ask and what you assume they are asking. Identify implicit assumptions in how problems are framed.</p>
+              <div class="bg-background p-4 rounded border border-border">
+                <strong class="text-foreground font-medium">Outcome:</strong> You will no longer go off-topic when beginning to discuss complex texts.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter II -->
+        <div class="bg-backgroundAlt border border-border rounded p-6 md:p-8 corner-flourish group hover:border-accent/50 transition-colors shadow-none hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <button class="w-full text-left accordion-trigger flex justify-between items-center outline-none" aria-expanded="false" onclick="toggleAccordion(this)">
+            <div>
+              <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 block">Volume II</span>
+              <h3 class="font-heading text-2xl md:text-3xl">Dissect the Argument</h3>
+            </div>
+            <svg class="accordion-icon text-accent transition-transform duration-300 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="pt-6 mt-6 border-t border-border text-mutedForeground">
+              <p class="mb-4">Peel back long paragraphs into core propositions. Uncover the hidden thesis statement among convoluted explanations.</p>
+              <div class="bg-background p-4 rounded border border-border">
+                <strong class="text-foreground font-medium">Outcome:</strong> See through to the skeletal structure of any profound written work.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter III -->
+        <div class="bg-backgroundAlt border border-border rounded p-6 md:p-8 corner-flourish group hover:border-accent/50 transition-colors shadow-none hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <button class="w-full text-left accordion-trigger flex justify-between items-center outline-none" aria-expanded="false" onclick="toggleAccordion(this)">
+            <div>
+              <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 block">Volume III</span>
+              <h3 class="font-heading text-2xl md:text-3xl">Verify the Evidence</h3>
+            </div>
+            <svg class="accordion-icon text-accent transition-transform duration-300 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="pt-6 mt-6 border-t border-border text-mutedForeground">
+              <p class="mb-4">Evaluate the weight of presented evidence. Differentiate between objective facts, expert opinions, and logical fallacies.</p>
+              <div class="bg-background p-4 rounded border border-border">
+                <strong class="text-foreground font-medium">Outcome:</strong> Resist being easily persuaded by beautifully written but weak arguments.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter IV -->
+        <div class="bg-backgroundAlt border border-border rounded p-6 md:p-8 corner-flourish group hover:border-accent/50 transition-colors shadow-none hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <button class="w-full text-left accordion-trigger flex justify-between items-center outline-none" aria-expanded="false" onclick="toggleAccordion(this)">
+            <div>
+              <span class="font-display text-xs uppercase tracking-[0.25em] text-accent mb-2 block">Volume IV</span>
+              <h3 class="font-heading text-2xl md:text-3xl">Compose the Response</h3>
+            </div>
+            <svg class="accordion-icon text-accent transition-transform duration-300 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="pt-6 mt-6 border-t border-border text-mutedForeground">
+              <p class="mb-4">Organize ideas to reply systematically. Learn to partially agree, partially rebut, and offer fresh perspectives instead of mere criticism.</p>
+              <div class="bg-background p-4 rounded border border-border">
+                <strong class="text-foreground font-medium">Outcome:</strong> Write sharp, composed, and highly constructive counterarguments.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-4xl mx-auto px-6" aria-hidden="true">
+      <div class="ornate-divider my-16"></div>
+    </div>
+
+    <!-- Sample Lesson Section (Interactive) -->
+    <section id="lesson" class="py-16 md:py-24 px-6 max-w-5xl mx-auto relative">
+      <div class="text-center mb-16">
+        <span class="font-display text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Practice</span>
+        <h2 class="font-heading text-4xl md:text-5xl">Sample Lesson</h2>
+        <p class="mt-4 text-mutedForeground">Read the following excerpt and select the sentence containing the main thesis.</p>
+      </div>
+
+      <div class="bg-backgroundAlt border border-border rounded p-8 md:p-12 relative corner-flourish">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <!-- Text Body -->
+          <div class="md:col-span-8 text-lg text-foreground">
+            <p class="drop-cap mb-6">I</p>
+            <p class="inline">n an era of overwhelming information, many believe that reading as many books as possible is the ideal. They set goals of a book a week, proud of their rapid consumption of text. </p>
+            <button class="selectable-sentence inline text-left text-lg font-body" onclick="selectSentence(this, 'wrong')">However, sheer volume can never compensate for the quality of deep focus.</button>
+            <span class="inline"> Speed-reading often leads to vague retention, superficial understanding, and quick forgetting when new information overrides the old. </span>
+            <button class="selectable-sentence inline text-left text-lg font-body" onclick="selectSentence(this, 'correct')">In truth, the capacity for deep reading — the ability to pause, interrogate the text, and converse with the author — is the definitive skill for intellectual maturity.</button>
+            <span class="inline"> This skill requires intentional slowness, a rarity in today's rushed pace of life.</span>
+          </div>
+          
+          <!-- Marginal Notes / Explanation -->
+          <div class="md:col-span-4 border-t md:border-t-0 md:border-l border-border pt-6 md:pt-0 md:pl-8 flex flex-col justify-center">
+            <div id="lesson-default" class="text-mutedForeground text-sm italic">
+              <p>Click on a sentence in the paragraph to test whether it is the thesis statement.</p>
+            </div>
+            
+            <div id="lesson-wrong" class="lesson-explanation">
+              <span class="font-display text-xs uppercase tracking-[0.2em] text-mutedForeground mb-2 block">Analysis</span>
+              <p class="text-mutedForeground">This sentence is a <strong>transitional statement</strong>. It pushes back against the habit of speed-reading mentioned previously, but it does not yet provide the core solution or the author's comprehensive perspective on reading.</p>
+              <button class="mt-4 text-accent text-sm hover:underline outline-none focus-visible:ring" onclick="resetLesson()">Try again</button>
+            </div>
+
+            <div id="lesson-correct" class="lesson-explanation">
+              <span class="font-display text-xs uppercase tracking-[0.2em] text-accent mb-2 block">Correct</span>
+              <p class="text-foreground">This is indeed the <strong>thesis statement</strong>. It clearly defines "the capacity for deep reading" and asserts its paramount importance ("the definitive skill for intellectual maturity"), encompassing the entire meaning of the excerpt.</p>
+              <button class="mt-4 text-accent text-sm hover:underline outline-none focus-visible:ring" onclick="resetLesson()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructor" class="py-16 md:py-24 px-6 max-w-6xl mx-auto bg-backgroundAlt/30 border-y border-border">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="font-display text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Instructor</span>
+          <h2 class="font-heading text-4xl md:text-5xl mb-6">Discussion Moderator</h2>
+          <p class="text-lg text-mutedForeground mb-6">
+            The moderator does not stand at a podium to force-feed knowledge. Their role is akin to a diligent librarian: asking piercing questions, pointing out blind spots in your arguments, and keeping the discussion strictly on course.
+          </p>
+          <ul class="space-y-4 text-mutedForeground">
+            <li class="flex items-start gap-3">
+              <svg class="text-accent shrink-0 mt-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>On-the-spot logical text analysis.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="text-accent shrink-0 mt-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Constructive debate, no ad hominem attacks.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="text-accent shrink-0 mt-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Extensive experience in academic group moderation.</span>
+            </li>
+          </ul>
+          <p class="mt-8 text-sm italic text-mutedForeground border-l-2 border-border pl-4">
+            * The illustrative persona represents the pedagogical approach of the class.
+          </p>
+        </div>
+        <div class="flex justify-center lg:justify-end">
+          <div class="p-2 border border-border corner-flourish max-w-sm w-full">
+            <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portrait of the discussion moderator" class="w-full aspect-[4/5] object-cover sepia-image" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-16 md:py-32 px-6 max-w-4xl mx-auto">
+      <div class="border border-border corner-flourish corner-flourish-large bg-backgroundAlt relative">
+        <div class="p-8 md:p-12 text-center">
+          <span class="font-display text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Enrollment</span>
+          <h2 class="font-heading text-4xl md:text-5xl mb-8">Proposed Class Schedule</h2>
+          <p class="text-mutedForeground mb-12 max-w-2xl mx-auto">
+            The class requires reading approximately 30 pages of material prior to each week. Please consider your personal availability before enrolling to ensure the quality of our discussions.
+          </p>
+
+          <div class="overflow-x-auto text-left mb-12">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="border-b-2 border-border font-display text-xs uppercase tracking-[0.1em] text-mutedForeground">
+                  <th class="py-4 pr-4 font-medium">Class</th>
+                  <th class="py-4 px-4 font-medium">Time</th>
+                  <th class="py-4 pl-4 font-medium">Prerequisites</th>
+                </tr>
+              </thead>
+              <tbody class="text-lg">
+                <tr class="border-b border-border/50 hover:bg-background/50 transition-colors">
+                  <td class="py-6 pr-4 font-heading text-xl">Evening Cohort</td>
+                  <td class="py-6 px-4">19:30 - 21:30<br><span class="text-sm text-mutedForeground">Tue & Thu</span></td>
+                  <td class="py-6 pl-4 text-mutedForeground text-base">Prior reading required</td>
+                </tr>
+                <tr class="hover:bg-background/50 transition-colors">
+                  <td class="py-6 pr-4 font-heading text-xl">Weekend Cohort</td>
+                  <td class="py-6 px-4">09:00 - 11:00<br><span class="text-sm text-mutedForeground">Sat & Sun</span></td>
+                  <td class="py-6 pl-4 text-mutedForeground text-base">Prior reading required</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <button class="btn-brass rounded h-14 px-10 inline-flex items-center justify-center font-display text-xs uppercase tracking-[0.15em] font-medium engraved-text" onclick="alert('Submission functionality is currently under development. Please check back later.')">
+            View Options
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border bg-background py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="font-heading text-2xl text-foreground">ACADEMIA</div>
+      <div class="text-mutedForeground text-sm text-center md:text-left">
+        &copy; 2026 Academia Reading Class. <br class="md:hidden">All interactions on this page are for illustrative purposes.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Accordion Logic
+    function toggleAccordion(button) {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !isExpanded);
+      
+      const content = button.nextElementSibling;
+      if (!isExpanded) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = "0";
+      }
+    }
+
+    // Interactive Lesson Logic
+    function selectSentence(element, type) {
+      // Reset others
+      document.querySelectorAll('.selectable-sentence').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+
+      // Hide default and all explanations
+      document.getElementById('lesson-default').style.display = 'none';
+      document.querySelectorAll('.lesson-explanation').forEach(el => el.classList.remove('show'));
+
+      // Show specific explanation
+      if (type === 'wrong') {
+        document.getElementById('lesson-wrong').classList.add('show');
+      } else if (type === 'correct') {
+        document.getElementById('lesson-correct').classList.add('show');
+      }
+    }
+
+    function resetLesson() {
+      document.querySelectorAll('.selectable-sentence').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lesson-explanation').forEach(el => el.classList.remove('show'));
+      setTimeout(() => {
+        document.getElementById('lesson-default').style.display = 'block';
+      }, 300);
+    }
+  </script>
+</body>
+</html>

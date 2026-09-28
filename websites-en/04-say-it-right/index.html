@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Say It Right. Remember It Long.</title>
+  <meta name="description" content="Words for brands that want to state clearly what they do.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter+Tight:wght@400;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <main>
+    <!-- 1. Poster bằng chữ -->
+    <section class="hero container py-20">
+      <h1 class="display-title">
+        SAY IT RIGHT.<br>
+        <span class="accent-text">REMEMBER IT LONG.</span>
+      </h1>
+      <p class="lead">Words for brands that want to state clearly what they do.</p>
+      <hr class="divider">
+      <div>
+        <a href="#work" class="btn btn-primary">
+          View crafted words
+          <span class="underline"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Ba bài toán -->
+    <section id="work" class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Three Case Studies</h2>
+      
+      <div class="cases-grid">
+        <article class="case-item">
+          <div class="mono-label case-brand">Lumiere Tech</div>
+          <p class="case-problem">Hard to explain AI data analytics to non-technical clients.</p>
+          <h3 class="case-solution">Understand your data. No coding required.</h3>
+        </article>
+        
+        <article class="case-item">
+          <div class="mono-label case-brand">Verdant Co.</div>
+          <p class="case-problem">Green messaging is too vague, getting lost among thousands of other eco-products.</p>
+          <h3 class="case-solution">Packaging degrades in 30 days. Leaves no trace.</h3>
+        </article>
+
+        <article class="case-item">
+          <div class="mono-label case-brand">Apex Fitness</div>
+          <p class="case-problem">Old slogan "Try your best" doesn't provide clear motivation to sign up.</p>
+          <h3 class="case-solution">Add 1% every day. We count with you.</h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. Trước và sau -->
+    <section class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Before & After</h2>
+      <p class="lead">An illustrative exercise on clarifying messages.</p>
+      
+      <div class="ba-toggle-wrapper">
+        <div class="ba-toggle" role="group" aria-label="Toggle text version">
+          <button type="button" class="ba-btn" id="btn-before" aria-pressed="true">Before</button>
+          <button type="button" class="ba-btn" id="btn-after" aria-pressed="false">After</button>
+        </div>
+      </div>
+
+      <div class="before-after-container">
+        <div class="ba-column">
+          <div class="mono-label mb-12">Example 1: Management Software</div>
+          <div id="text-1" class="ba-text">"A comprehensive solution to optimize workflows and increase enterprise performance."</div>
+        </div>
+        <div class="ba-column">
+          <div class="mono-label mb-12">Example 2: Delivery Service</div>
+          <div id="text-2" class="ba-text">"Committed to providing fast, safe, and top-tier shipping services."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Cách tìm câu đúng -->
+    <section class="container py-28">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">How to Find the Right Words</h2>
+      
+      <div class="process-list">
+        <div class="process-row">
+          <div class="process-num">01</div>
+          <h3 class="process-title">Research</h3>
+          <p class="process-desc">Find the real bottleneck of the product and how customers are naming that problem.</p>
+        </div>
+        <div class="process-row">
+          <div class="process-num">02</div>
+          <h3 class="process-title">Select</h3>
+          <p class="process-desc">Eliminate cliches. Keep only a single, sharpest message.</p>
+        </div>
+        <div class="process-row">
+          <div class="process-num">03</div>
+          <h3 class="process-title">Test</h3>
+          <p class="process-desc">Read it out loud. If it feels awkward or people don't get it instantly, rewrite it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Thử brief -->
+    <section class="container py-28 mb-12">
+      <div class="accent-bar"></div>
+      <h2 class="section-title">Brief Tester</h2>
+      <p class="lead">Enter project info to format your brief (This is a format tester, not an AI generator).</p>
+
+      <div class="brief-container">
+        <form id="brief-form">
+          <div class="input-group">
+            <label for="brandName" class="input-label">Brand Name</label>
+            <input type="text" id="brandName" class="input-field" placeholder="e.g. ABC Company" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="brandGoal" class="input-label">Communication Goal</label>
+            <textarea id="brandGoal" class="input-field" placeholder="e.g. Let customers know we sell organic coffee..." required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 2rem;">
+            <button type="submit" class="btn btn-outline">View your brief</button>
+            <button type="reset" id="btn-reset" class="btn btn-primary" style="display: none;">
+              Reset
+              <span class="underline"></span>
+            </button>
+          </div>
+        </form>
+
+        <div id="brief-result" class="brief-output" aria-live="polite">
+          <div class="mono-label" style="margin-bottom: 1rem;">Brief Summary</div>
+          <h4 id="out-brand" style="font-size: 1.5rem; margin-bottom: 0.5rem; word-break: break-word;"></h4>
+          <p id="out-goal" style="color: var(--mutedForeground); word-break: break-word;"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container py-20" style="border-top: 1px solid var(--border);">
+    <div class="mono-label">© 2026 Say It Right. Designed with Bold Typography.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

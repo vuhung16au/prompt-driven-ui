@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gom ý rời thành việc rõ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="aurora-bg" aria-hidden="true">
+        <div class="aurora-blob lavender"></div>
+        <div class="aurora-blob mint"></div>
+        <div class="aurora-blob peach"></div>
+    </div>
+    
+    <button class="motion-toggle" aria-label="Dừng/Phát chuyển động nền" title="Dừng chuyển động">⏸</button>
+    
+    <main class="container">
+        <header class="hero">
+            <h1>Gom ý rời thành <span class="gradient-text">việc rõ</span>.</h1>
+            <p>Chọn một bộ ghi chú mẫu để xem cách sắp lại thành quyết định, việc cần làm và điều còn thiếu.</p>
+        </header>
+
+        <section class="tool-section" aria-label="Công cụ sắp xếp ghi chú">
+            <div class="context-selector" role="tablist" aria-label="Chọn bộ ghi chú mẫu">
+                <button class="tab-btn active" role="tab" aria-selected="true" data-dataset="meeting">Họp dự án</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-dataset="article">Ý tưởng bài viết</button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-dataset="plan">Kế hoạch tuần</button>
+            </div>
+
+            <div class="panels">
+                <!-- Input Panel -->
+                <div class="panel input-panel" id="notes">
+                    <h2>Ghi chú nguồn</h2>
+                    <ul class="notes-list" id="notesList">
+                        <!-- Rendered by JS -->
+                    </ul>
+                    <a href="#output" class="mobile-jump-btn">Chuyển tới kết quả ↓</a>
+                </div>
+
+                <!-- Output Panel -->
+                <div class="panel output-panel" id="output">
+                    <div class="output-header">
+                        <h2>Bản đã sắp</h2>
+                        <button class="copy-btn" id="copyBtn">Sao chép</button>
+                    </div>
+                    <div class="output-content" id="outputContent" aria-live="polite">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <a href="#notes" class="mobile-jump-btn reverse">Quay lại ghi chú ↑</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="sharp-corners">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKER'S POST | Stories of Creative Makers</title>
+    <meta name="description" content="Stories about creative makers and how a small project comes to life.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        newsprint: '#F9F9F7',
+                        ink: '#111111',
+                        muted: '#E5E5E0',
+                        accent: '#CC0000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-newsprint text-ink font-body min-h-screen flex flex-col">
+
+    <!-- Header / Masthead -->
+    <header class="border-b-4 border-ink z-40 bg-newsprint sticky top-0">
+        <div class="max-w-screen-xl mx-auto px-4 py-4 md:py-6 flex flex-col items-center">
+            <!-- Metadata -->
+            <div class="w-full flex justify-between items-end border-b border-ink pb-2 mb-4 font-mono text-xs uppercase tracking-widest text-neutral-600">
+                <span>Vol. <span id="edition-number">1</span></span>
+                <span class="hidden md:inline">SEP 28, 2026</span>
+                <span>DIGITAL EDITION</span>
+            </div>
+            <!-- Title -->
+            <h1 class="font-display text-5xl sm:text-7xl lg:text-9xl tracking-tighter leading-[0.8] font-black text-center uppercase my-2">Maker's Post</h1>
+            <p class="font-sans text-sm md:text-base uppercase tracking-widest text-neutral-600 text-center mt-2 border-t border-ink pt-2 w-full max-w-2xl">
+                Stories about creative makers and how a small project comes to life
+            </p>
+        </div>
+        
+        <!-- Ticker -->
+        <div class="border-t border-ink bg-ink text-newsprint py-1 overflow-hidden ticker-container font-mono text-xs uppercase tracking-widest relative flex items-center">
+            <div class="px-4 py-1 bg-accent font-bold z-10 absolute left-0 h-full flex items-center">BREAKING NEWS</div>
+            <div class="ticker-content pl-32">
+                <span class="mx-4">PROJECT A JUST RELEASED ITS BETA VERSION</span> • 
+                <span class="mx-4">TOOL B UPDATED ITS NEW INTERFACE</span> • 
+                <span class="mx-4">FLAT DESIGN TREND MAKES A COMEBACK</span> •
+                <span class="mx-4">MAKERS ARE SHIFTING TOWARDS MINIMALISM</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-screen-xl mx-auto w-full border-x border-ink">
+        
+        <!-- View: Front Page -->
+        <div id="view-home" class="grid grid-cols-1 lg:grid-cols-12 w-full newsprint-texture">
+            
+            <!-- Column 1: Lead Story (6 cols) -->
+            <section class="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-ink p-4 md:p-6 lg:p-8 flex flex-col group cursor-pointer hard-shadow-hover bg-newsprint" onclick="openArticle('lead-story')">
+                <div class="flex items-center gap-2 mb-4 font-mono text-xs uppercase tracking-widest text-accent font-bold">
+                    <span>◆ Feature</span>
+                </div>
+                <h2 class="font-display text-4xl lg:text-6xl font-black leading-[1.1] mb-4">When an Idea Needs Fewer Things</h2>
+                <p class="font-body text-lg leading-relaxed text-neutral-800 mb-6 drop-cap">
+                    Sometimes, the best way to grow a project isn't by adding features, but by boldly cutting away the unnecessary. A story about scoping down to find core value.
+                </p>
+                <div class="mt-auto relative border border-ink bg-muted aspect-video overflow-hidden">
+                    <div class="absolute inset-0 halftone-bg"></div>
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop" alt="Minimalist workspace with notebook and pen" class="w-full h-full object-cover newsprint-img relative z-10 opacity-90">
+                    <div class="absolute bottom-0 right-0 bg-newsprint border-t border-l border-ink px-2 py-1 font-mono text-[10px] uppercase z-20">Fig 1.1</div>
+                </div>
+            </section>
+
+            <!-- Column 2: Categories (3 cols) -->
+            <section class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-ink bg-newsprint flex flex-col">
+                <!-- Tabs -->
+                <div class="flex border-b-2 border-ink font-sans uppercase tracking-widest text-xs font-bold w-full bg-newsprint">
+                    <button class="flex-1 py-3 text-center border-r border-ink tab-btn active bg-ink text-newsprint" data-tab="design">Design</button>
+                    <button class="flex-1 py-3 text-center border-r border-ink tab-btn hover:bg-neutral-100" data-tab="makers">Makers</button>
+                    <button class="flex-1 py-3 text-center tab-btn hover:bg-neutral-100" data-tab="tools">Tools</button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="flex-grow p-4 md:p-6" id="tab-content">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+            <!-- Column 3: Sidebar (3 cols) -->
+            <section class="lg:col-span-3 bg-newsprint flex flex-col">
+                
+                <!-- Previous Editions -->
+                <div class="border-b border-ink p-4 md:p-6">
+                    <h3 class="font-sans font-bold uppercase tracking-widest text-sm mb-4 border-b border-ink pb-2">Previous Editions</h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left font-display text-xl font-bold hover:text-accent transition-colors edition-btn flex justify-between items-center" data-edition="1">
+                            <span>Vol. 1: Minimal</span>
+                            <span class="font-mono text-xs text-neutral-500">Viewing</span>
+                        </button>
+                        <button class="w-full text-left font-display text-xl font-bold hover:text-accent transition-colors edition-btn flex justify-between items-center text-neutral-500" data-edition="2">
+                            <span>Vol. 2: Expand</span>
+                            <span class="font-mono text-xs">View &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Subscription -->
+                <div class="p-4 md:p-6 bg-ink text-newsprint flex-grow">
+                    <div class="font-serif text-2xl tracking-[0.5em] text-neutral-600 text-center mb-4">✧ ✧ ✧</div>
+                    <h3 class="font-display text-2xl font-bold mb-2">Subscribe</h3>
+                    <p class="font-sans text-sm mb-6 text-neutral-400">Subscribe to receive creative stories every Monday morning.</p>
+                    
+                    <form id="subscribe-form" class="space-y-4">
+                        <div>
+                            <label for="email" class="sr-only">Email Address</label>
+                            <input type="email" id="email" required placeholder="YOUR_EMAIL@MAIL.COM" class="w-full bg-transparent border-b-2 border-newsprint px-0 py-2 font-mono text-sm focus:outline-none focus:border-accent text-newsprint placeholder-neutral-600">
+                        </div>
+                        <button type="submit" class="w-full bg-newsprint text-ink font-sans uppercase tracking-widest font-bold py-3 text-sm hover:bg-accent hover:text-newsprint transition-colors border border-transparent">
+                            Submit
+                        </button>
+                        <p class="font-mono text-[10px] text-neutral-500 uppercase mt-2 text-center">This is just a demo, no emails are collected.</p>
+                    </form>
+                    <div id="subscribe-message" class="hidden mt-4 font-mono text-xs p-3 border border-newsprint text-center"></div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- View: Article Reader (Hidden by default) -->
+        <div id="view-article" class="hidden w-full bg-newsprint newsprint-texture min-h-[70vh]">
+            <!-- Top bar -->
+            <div class="border-b border-ink p-4 flex justify-between items-center sticky top-[100px] bg-newsprint z-30">
+                <button onclick="closeArticle()" class="font-sans text-sm uppercase tracking-widest font-bold hover:text-accent flex items-center gap-2 link-red-hover">
+                    <i data-lucide="arrow-left" class="w-4 h-4 stroke-[2]"></i> Back to front page
+                </button>
+                <div class="font-mono text-xs uppercase tracking-widest text-neutral-500">Article</div>
+            </div>
+
+            <!-- Content -->
+            <article class="max-w-[68ch] mx-auto p-4 md:p-8 lg:py-16">
+                <header class="mb-10 text-center">
+                    <div id="article-category" class="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4">◆ Category</div>
+                    <h1 id="article-title" class="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] mb-6">Article Title</h1>
+                    <div class="font-sans text-sm uppercase tracking-widest text-neutral-600 border-t border-b border-ink py-2 mx-auto inline-block">
+                        By <span id="article-author" class="font-bold text-ink">Illustrative Author</span>
+                    </div>
+                </header>
+
+                <div class="font-body text-lg leading-relaxed text-neutral-900 space-y-6 text-justify">
+                    <p id="article-lead" class="text-xl font-medium leading-relaxed drop-cap">
+                        Article lead goes here.
+                    </p>
+                    
+                    <p id="article-p1">Paragraph one.</p>
+                    
+                    <blockquote class="my-10 pl-6 border-l-4 border-ink font-display text-2xl italic text-neutral-800">
+                        "<span id="article-quote">This is a prominent pull quote from a fictional figure, adding emphasis to the article.</span>"
+                    </blockquote>
+                    
+                    <p id="article-p2">Paragraph two.</p>
+                    <p id="article-p3">Paragraph three.</p>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t-2 border-ink text-center">
+                    <button onclick="closeArticle()" class="btn-secondary font-sans uppercase tracking-widest font-bold text-sm px-8 py-3">
+                        Read another article
+                    </button>
+                </div>
+            </article>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t-4 border-ink bg-newsprint py-8 px-4 mt-auto">
+        <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-display text-3xl font-black uppercase">Maker's Post</div>
+            <div class="font-mono text-xs uppercase tracking-widest text-neutral-600 text-center md:text-right">
+                Edition: Vol 1.0 <br> Printed in Local
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear books so you can focus on business</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#FAFAF8',
+                        foreground: '#1A1A1A',
+                        muted: '#F5F3F0',
+                        'muted-foreground': '#6B6B6B',
+                        border: '#E8E4DF',
+                        accent: '#B8860B',
+                        'accent-secondary': '#D4A84B',
+                        card: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        'small-caps': '0.15em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            line-height: 1.75;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.03"/%3E%3C/svg%3E');
+        }
+        .small-caps {
+            font-family: '"IBM Plex Mono"', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background-color: #B8860B;
+            color: white;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            transition: all 200ms ease-out;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .btn-primary:hover {
+            background-color: #D4A84B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #1A1A1A;
+            border: 1px solid #1A1A1A;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            transition: all 200ms ease-out;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        .btn-secondary:hover {
+            background-color: #F5F3F0;
+            border-color: #B8860B;
+            color: #B8860B;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E8E4DF;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 2px rgba(26,26,26,0.04);
+            transition: all 200ms ease-out;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+            background-color: rgba(245, 243, 240, 0.3);
+            border-color: #D4A84B;
+        }
+        .card-featured {
+            border-top: 2px solid #B8860B;
+            background-color: rgba(184, 134, 11, 0.02);
+            box-shadow: 0 4px 12px rgba(26,26,26,0.06);
+        }
+        .input-field {
+            height: 44px;
+            border: 1px solid #E8E4DF;
+            border-radius: 6px;
+            background-color: transparent;
+            padding: 0 1rem;
+            transition: all 150ms ease-out;
+            width: 100%;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #B8860B;
+            box-shadow: 0 0 0 2px #FAFAF8, 0 0 0 4px #B8860B;
+        }
+        .section-label-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-label-line {
+            height: 1px;
+            flex: 1;
+            background-color: #E8E4DF;
+        }
+        .section-label-text {
+            color: #B8860B;
+        }
+        
+        /* Tabular nums for tables/pricing */
+        .tabular-nums {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Checklist animation */
+        .checklist-content {
+            display: none;
+            animation: fadeIn 200ms ease-out forwards;
+        }
+        .checklist-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ambient glow */
+        .ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.03) 0%, rgba(250, 250, 248, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-foreground bg-background relative overflow-x-hidden">
+    <div class="ambient-glow"></div>
+
+    <nav class="py-6 px-6 md:px-12 max-w-7xl mx-auto flex justify-between items-center relative z-10">
+        <div class="font-serif text-xl md:text-2xl font-semibold tracking-tight">Clear Books</div>
+        <div class="hidden md:flex gap-8 items-center text-sm font-medium tracking-wide">
+            <a href="#scope" class="hover:text-accent transition-colors">Scope of Service</a>
+            <a href="#where-you-are" class="hover:text-accent transition-colors">Where You Are</a>
+            <a href="#collaborate" class="hover:text-accent transition-colors">How We Collaborate</a>
+        </div>
+        <a href="#contact" class="btn-primary text-sm px-6">Submit Request</a>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-32 md:py-44 px-6 relative z-10 text-center max-w-5xl mx-auto flex flex-col items-center">
+            <h1 class="font-serif text-[2.5rem] md:text-[4.5rem] leading-[1.1] tracking-[-0.02em] mb-8 max-w-4xl text-foreground">
+                Clear books so you can<br/>focus on business.
+            </h1>
+            <p class="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl font-sans tracking-[0.01em]">
+                View scope of work, documents to prepare, and what you receive after each period. A transparent process for your business.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#handover" class="btn-primary">View sample dossier</a>
+                <a href="#contact" class="btn-secondary">Submit consultation request</a>
+            </div>
+        </section>
+
+        <!-- Clear Scope of Service -->
+        <section id="scope" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Clear Scope of Service</span>
+                <span class="section-label-line"></span>
+            </div>
+            
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-6">Transparency in Every Item</h2>
+                <p class="text-muted-foreground max-w-3xl mx-auto">
+                    We perform bookkeeping and periodic reporting based on the documents you provide. This does not include unproven penalty compensation commitments or unofficial legal advice.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="card card-featured">
+                    <h3 class="font-serif text-xl font-semibold mb-4">In Scope</h3>
+                    <ul class="space-y-4 text-muted-foreground">
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Verify validity of input invoices and documents.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Record data into accounting software.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-accent mt-1">✦</span>
+                            <span>Prepare periodic tax reports and annual financial statements.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="font-serif text-xl font-semibold mb-4">Out of Scope</h3>
+                    <ul class="space-y-4 text-muted-foreground">
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Consulting on tax evasion or forging documents.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Commitments to pass tax audits or compensate for penalties not caused by accounting errors.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-border mt-1">✦</span>
+                            <span>Digital signatures, e-invoices (equipped by client).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#handover" class="inline-flex items-center gap-2 text-foreground font-medium hover:text-accent transition-colors">
+                    <span class="pb-1 border-b border-accent">View handover dossier</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Where You Are -->
+        <section id="where-you-are" class="py-24 md:py-32 px-6 max-w-5xl mx-auto bg-muted/30">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">Where You Are</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-6 text-center">Select your current need</h2>
+                
+                <div class="flex flex-col md:flex-row gap-4 justify-center mt-8">
+                    <button onclick="showChecklist('start')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-accent bg-accent/10 text-accent" id="btn-start">
+                        Starting
+                    </button>
+                    <button onclick="showChecklist('monthly')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent" id="btn-monthly">
+                        Monthly
+                    </button>
+                    <button onclick="showChecklist('cleanup')" class="px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent" id="btn-cleanup">
+                        Need data reorganization
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-card border border-border p-8 rounded-lg shadow-sm">
+                <!-- Start Checklist -->
+                <div id="checklist-start" class="checklist-content active">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Newly Established Business</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Business registration license</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Corporate bank account setup</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Digital signature and e-invoice registration</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Initial business license tax declaration</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Monthly Checklist -->
+                <div id="checklist-monthly" class="checklist-content">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Monthly/Quarterly Routine</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Periodic bank statements</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Summary of input/output invoices</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Actual payroll and timesheets</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cleanup Checklist -->
+                <div id="checklist-cleanup" class="checklist-content">
+                    <h3 class="font-serif text-xl font-semibold mb-6">Checklist: Data Reorganization</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">All documents and invoices from previous years</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Submitted financial and tax reports</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Accounting software data files (if any)</span>
+                        </label>
+                        <label class="flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 accent-accent border-border rounded">
+                            <span class="text-muted-foreground group-hover:text-foreground transition-colors">Previous tax audit minutes (if any)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-sm text-muted-foreground italic border-t border-border pt-4">
+                    * Note: This list is a sample checklist and does not replace official legal advice.
+                </div>
+            </div>
+        </section>
+
+        <!-- A Handover Package -->
+        <section id="handover" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">A Handover Package</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-12 text-center">Standard Handover Dossier</h2>
+            
+            <div class="overflow-x-auto rounded-lg border border-border">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="bg-muted/50 border-b border-border">
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3">Input documents</th>
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3 border-l border-border">Work performed</th>
+                            <th class="p-6 font-serif text-lg font-semibold w-1/3 border-l border-border">Results received</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border bg-card">
+                        <tr>
+                            <td class="p-6 align-top text-muted-foreground">
+                                - Purchase/Sales Invoices<br>
+                                - Bank Statements<br>
+                                - Payroll
+                            </td>
+                            <td class="p-6 align-top border-l border-border text-muted-foreground">
+                                - Classification and validation<br>
+                                - Data entry into software<br>
+                                - Tax obligation calculation
+                            </td>
+                            <td class="p-6 align-top border-l border-border font-medium">
+                                - Detailed invoice ledger<br>
+                                - Periodic VAT & PIT declarations<br>
+                                - General journal
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 align-top text-muted-foreground">
+                                - Full year accounting data<br>
+                                - Submitted declarations
+                            </td>
+                            <td class="p-6 align-top border-l border-border text-muted-foreground">
+                                - Revenue & expense transfer<br>
+                                - Financial statement prep<br>
+                                - Annual tax finalization
+                            </td>
+                            <td class="p-6 align-top border-l border-border font-medium">
+                                - Annual Financial Statements<br>
+                                - CIT & PIT Finalization reports<br>
+                                - Handover minutes
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-right text-sm text-muted-foreground">
+                <p>Physical documents such as original bank statements and paper invoices are retained by the client.</p>
+            </div>
+        </section>
+
+        <!-- How We Collaborate -->
+        <section id="collaborate" class="py-24 md:py-32 px-6 max-w-5xl mx-auto">
+            <div class="section-label-container">
+                <span class="section-label-line"></span>
+                <span class="small-caps section-label-text">How We Collaborate</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <h2 class="font-serif text-3xl md:text-[2.5rem] leading-[1.2] tracking-[-0.01em] mb-16 text-center">3 Clear Collaboration Steps</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Desktop line connector -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-border"></div>
+                
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-background border border-accent rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl text-accent">1</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Document Receipt</h3>
+                    <p class="text-muted-foreground text-sm">Business sends statement files, input/output invoice lists via email or shared group.</p>
+                </div>
+                
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-background border border-accent rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl text-accent">2</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Reconciliation</h3>
+                    <p class="text-muted-foreground text-sm">Accountant reviews, feedbacks on missing/invalid documents, and drafts expected reports or taxes.</p>
+                </div>
+
+                <div class="relative bg-card p-8 border border-border rounded-lg text-center z-10 shadow-sm hover:shadow-md transition-shadow card-featured">
+                    <div class="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-6 font-serif text-xl">3</div>
+                    <h3 class="font-serif text-xl font-semibold mb-4">Handover</h3>
+                    <p class="text-muted-foreground text-sm">Business approves data. Accountant submits reports and returns submission confirmation minutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discuss Needs -->
+        <section id="contact" class="py-24 md:py-32 px-6 max-w-3xl mx-auto">
+            <div class="card card-featured p-8 md:p-12">
+                <h2 class="font-serif text-3xl leading-[1.2] tracking-[-0.01em] mb-4 text-center">Discuss Needs</h2>
+                <p class="text-center text-muted-foreground mb-8">Fill in basic information so we can send a sample quote and portfolio.</p>
+
+                <form id="contact-form" class="space-y-6" onsubmit="handleForm(event)">
+                    <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-4">
+                        Please fill out all required fields.
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 small-caps">Business Name / Contact Person *</label>
+                            <input type="text" id="name" class="input-field" placeholder="E.g., ABC Ltd" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 small-caps">Email / Phone *</label>
+                            <input type="text" id="contact-info" class="input-field" placeholder="To receive feedback" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 small-caps">Business Entity Type</label>
+                        <select class="input-field cursor-pointer" id="type">
+                            <option value="">Select type</option>
+                            <option value="trading">Trading, Services</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="construction">Construction, Installation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2 small-caps">Estimated Voucher Volume / Month</label>
+                        <select class="input-field cursor-pointer" id="volume">
+                            <option value="">Select range</option>
+                            <option value="under_10">Under 10 invoices</option>
+                            <option value="10_50">10 - 50 invoices</option>
+                            <option value="over_50">Over 50 invoices</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="btn-primary w-full justify-center">Review & Submit</button>
+                        <p class="text-xs text-muted-foreground text-center mt-4">
+                            This form is used for preliminary assessment and does not obligate service sign-up.<br>
+                            Please do not attach real financial data here.
+                        </p>
+                    </div>
+                </form>
+
+                <div id="form-success" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 text-2xl">✓</div>
+                    <h3 class="font-serif text-xl font-semibold mb-2">Information Received</h3>
+                    <p class="text-muted-foreground mb-6">We will get back to you using the provided contact details.</p>
+                    <button type="button" onclick="resetForm()" class="btn-secondary">Submit Another Request</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-foreground text-white py-12 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div>
+                <div class="font-serif text-2xl font-semibold mb-2">Clear Books</div>
+                <p class="text-gray-400 text-sm">Clear books, stable business.</p>
+            </div>
+            <div class="text-sm text-gray-400 tabular-nums">
+                © 2024 Clear Books. Illustrative design.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showChecklist(id) {
+            // Hide all checklists
+            document.querySelectorAll('.checklist-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show selected
+            document.getElementById('checklist-' + id).classList.add('active');
+            
+            // Update button styles
+            const btns = ['start', 'monthly', 'cleanup'];
+            btns.forEach(btn => {
+                const el = document.getElementById('btn-' + btn);
+                if (btn === id) {
+                    el.className = 'px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-accent bg-accent/10 text-accent';
+                } else {
+                    el.className = 'px-6 py-3 border rounded-md font-medium transition-all text-sm md:text-base border-border hover:border-accent hover:text-accent';
+                }
+            });
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact-info').value;
+            const error = document.getElementById('form-error');
+            
+            if(!name || !contact) {
+                error.classList.remove('hidden');
+                return;
+            }
+            error.classList.add('hidden');
+            
+            // Show success state
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('form-success').classList.add('hidden');
+            document.getElementById('contact-form').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biên tập Theo Hướng Cá Nhân</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#292929',
+                        cardLight: '#FFFFFF',
+                        cardOffWhite: '#F5F5F5',
+                        textDark: '#111111',
+                        accent: '#CCFF00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-canvas text-white font-sans overflow-x-hidden selection:bg-accent selection:text-textDark">
+    
+    <!-- Navigation -->
+    <nav class="p-6 md:px-12 flex justify-between items-center border-b border-white/20">
+        <div class="font-serif text-3xl font-bold italic">Biên Tập.</div>
+        <button class="px-6 py-2 bg-accent text-textDark rounded-full border-2 border-textDark font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors">
+            Liên hệ
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="p-6 md:p-12 min-h-[80vh] flex flex-col justify-center relative">
+        <!-- Floating Annotation -->
+        <div class="hidden md:block absolute top-1/4 right-10 lg:right-32 bg-accent text-textDark border-2 border-textDark px-4 py-1 rounded-full font-bold uppercase tracking-widest transform rotate-12 z-10 text-xs shadow-[4px_4px_0_0_rgba(17,17,17,1)]">
+            * Thô Mộc & Táo Bạo
+        </div>
+
+        <p class="uppercase tracking-widest text-sm text-gray-400 mb-4 font-bold">14/100 — Bản Tuyên Ngôn</p>
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-black leading-[0.9] mb-8 tracking-tighter">
+            CHỦ NGHĨA BIỂU HIỆN<br>
+            <span class="text-accent italic">CÓ CẤU TRÚC</span>
+        </h1>
+        <p class="text-3xl md:text-4xl text-gray-300 max-w-4xl leading-[160%]">
+            Hệ thống thiết kế này kết hợp bố cục cứng nhắc, có cấu trúc của lưới bento với sự biểu hiện hỗn loạn, thô mộc của một bản tuyên ngôn cá nhân.
+        </p>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="w-full bg-accent text-textDark py-4 border-y-2 border-textDark overflow-hidden flex items-center whitespace-nowrap">
+        <div class="animate-marquee inline-block font-serif text-3xl md:text-4xl italic font-bold">
+            NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • 
+        </div>
+        <div class="animate-marquee inline-block font-serif text-3xl md:text-4xl italic font-bold" aria-hidden="true">
+            NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • NGHỆ THUẬT CHỮ LÀ YẾU TỐ THỊ GIÁC CHÍNH • 
+        </div>
+    </div>
+
+    <!-- Bento Grid Section -->
+    <section class="p-6 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[450px]">
+            
+            <!-- Large Card (Span 2 cols) -->
+            <div class="md:col-span-2 relative overflow-hidden bg-cardLight text-textDark p-8 lg:p-12 border-2 border-textDark flex flex-col justify-between group hover:bg-textDark hover:text-white transition-colors duration-500">
+                <div class="flex justify-between items-start">
+                    <h2 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">Đề Cao<br>Cá Nhân</h2>
+                    <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-full border-2 border-textDark flex items-center justify-center group-hover:border-white group-hover:bg-accent group-hover:text-textDark transition-colors shrink-0 ml-4">
+                        <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </div>
+                <p class="text-2xl md:text-3xl leading-[160%] max-w-xl mt-8 md:mt-0 font-medium">
+                    Giao diện đóng vai trò như một bức tranh chứa đựng tiếng nói của người sáng tạo, sử dụng văn bản đồ sộ và các đường viền rõ nét.
+                </p>
+                <!-- Floating badge overlapping inside -->
+                <div class="absolute bottom-10 right-10 bg-accent text-textDark border-2 border-textDark px-4 py-2 rounded-none font-black text-xl -rotate-6 transform group-hover:bg-white shadow-[4px_4px_0_0_rgba(17,17,17,1)] transition-transform group-hover:scale-110">
+                    ! TÁO BẠO
+                </div>
+            </div>
+
+            <!-- Tall Accent Card -->
+            <div class="relative overflow-hidden bg-accent text-textDark p-6 border-2 border-textDark flex flex-col justify-end min-h-[450px] md:min-h-full">
+                <div class="absolute inset-0 p-4">
+                    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=800&auto=format&fit=crop" alt="Nghệ Thuật Trừu Tượng" class="w-full h-full object-cover border-2 border-textDark filter grayscale contrast-[1.2]" loading="lazy" />
+                </div>
+                <div class="relative z-10 bg-white border-2 border-textDark p-5 shadow-[4px_4px_0_0_rgba(17,17,17,1)]">
+                    <p class="font-bold uppercase tracking-widest text-xs mb-2 text-gray-500">Hiện Vật A</p>
+                    <h3 class="font-serif text-3xl font-bold leading-tight">Thiết Kế Phẳng<br>Nhưng Chân Thực</h3>
+                </div>
+            </div>
+
+            <!-- Dark Outline Card -->
+            <div class="relative overflow-hidden bg-canvas text-white p-8 border border-white/20 flex flex-col justify-between hover:border-white/50 transition-colors min-h-[400px] md:min-h-full">
+                <h3 class="font-serif text-4xl lg:text-5xl italic leading-tight">Khoảng Không<br>Màu Than<br>Sâu Thẳm</h3>
+                <div class="mt-8 mb-8">
+                    <p class="text-gray-400 font-mono text-sm leading-relaxed">
+                        {<br>
+                        &nbsp;&nbsp;NỀN: #292929,<br>
+                        &nbsp;&nbsp;TƯƠNG_PHẢN_CAO: ĐÚNG,<br>
+                        &nbsp;&nbsp;BO_GÓC: KHÔNG<br>
+                        }
+                    </p>
+                </div>
+                <div>
+                    <button class="px-6 py-4 bg-white text-textDark rounded-full font-bold uppercase tracking-widest text-sm hover:bg-accent transition-colors w-full border-2 border-transparent">
+                        Khám Phá Khoảng Không
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image/Quote Card (Span 2 cols) -->
+            <div class="md:col-span-2 relative overflow-hidden bg-cardOffWhite text-textDark p-8 lg:p-12 border-2 border-textDark flex items-center justify-center min-h-[400px] md:min-h-full">
+                <h2 class="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-center leading-none uppercase mix-blend-exclusion text-white z-10 pointer-events-none tracking-tighter">
+                    Thiết Kế<br>Táo Bạo
+                </h2>
+                <!-- Abstract floating element -->
+                <div class="absolute bg-textDark text-white font-mono p-4 rounded-full w-32 h-32 md:w-40 md:h-40 flex items-center justify-center text-center leading-tight -rotate-12 hover:rotate-12 transition-transform duration-500 cursor-crosshair">
+                    KHÔNG CÓ<br>BÓNG<br>MỀM
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Massive Typography Footer -->
+    <footer class="p-6 md:p-12 border-t border-white/20 mt-12 flex flex-col items-center overflow-hidden">
+        <h2 class="text-[18vw] font-serif font-black leading-[0.8] tracking-tighter hover:italic hover:text-accent transition-all duration-500 cursor-pointer text-center w-full break-words">
+            KẾT THÚC.
+        </h2>
+        <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-12 pt-6 border-t border-white/10 uppercase tracking-widest text-xs font-bold text-gray-500">
+            <span>© 2026 Lưới Biên Tập</span>
+            <span class="text-accent">Tạo Ra Có Chủ Đích</span>
+        </div>
+    </footer>
+
+</body>
+</html>

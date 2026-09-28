@@ -1,0 +1,8 @@
+body {
+            background-color: #3E513E;
+            color: #F9FAFB;
+        }
+        .bento-card {
+            background-color: rgba(249, 250, 251, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giặt gọn, chọn giờ dễ - Neat Laundry</title>
+  <meta name="description" content="Chọn loại đồ, số lượng và thời gian lấy trong một lượt thử đơn giản.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#10B981',
+            accent: '#F59E0B',
+            muted: '#F3F4F6',
+            foreground: '#111827',
+            border: '#E5E7EB',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #111827; background-color: #FFFFFF; }
+    .flat-shadow { box-shadow: none !important; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const App = () => {
+      const [step, setStep] = useState(0); // 0: Home, 1: Items, 2: Time, 3: Summary, 4: Completed
+      const [items, setItems] = useState({ clothes: 0, blankets: 0, delicates: 0 });
+      const [date, setDate] = useState('');
+      const [timeSlot, setTimeSlot] = useState('');
+
+      useEffect(() => {
+        lucide.createIcons();
+      }, [step]);
+
+      const handleItemChange = (type, val) => {
+        const newVal = Math.max(0, parseInt(val) || 0);
+        setItems(prev => ({ ...prev, [type]: newVal }));
+      };
+
+      const hasItems = items.clothes > 0 || items.blankets > 0 || items.delicates > 0;
+
+      const dates = [
+        { value: '2026-10-01', label: 'Hôm nay, 1 Th10' },
+        { value: '2026-10-02', label: 'Ngày mai, 2 Th10' },
+        { value: '2026-10-03', label: 'Thứ Bảy, 3 Th10' }
+      ];
+
+      const timeSlots = {
+        '2026-10-01': [
+          { id: 't1', label: '08:00 - 10:00', available: false },
+          { id: 't2', label: '10:00 - 12:00', available: true },
+          { id: 't3', label: '13:00 - 15:00', available: true },
+          { id: 't4', label: '15:00 - 17:00', available: true },
+        ],
+        '2026-10-02': [
+          { id: 't1', label: '08:00 - 10:00', available: true },
+          { id: 't2', label: '10:00 - 12:00', available: true },
+          { id: 't3', label: '13:00 - 15:00', available: false },
+          { id: 't4', label: '15:00 - 17:00', available: true },
+        ],
+        '2026-10-03': [
+          { id: 't1', label: '08:00 - 10:00', available: true },
+          { id: 't2', label: '10:00 - 12:00', available: true },
+          { id: 't3', label: '13:00 - 15:00', available: true },
+          { id: 't4', label: '15:00 - 17:00', available: false },
+        ]
+      };
+
+      const handleDateChange = (newDate) => {
+        if (newDate !== date) {
+          setDate(newDate);
+          setTimeSlot(''); // Clear slot when date changes
+        }
+      };
+
+      const handleReset = () => {
+        setItems({ clothes: 0, blankets: 0, delicates: 0 });
+        setDate('');
+        setTimeSlot('');
+        setStep(0);
+      };
+
+      const renderHeader = () => (
+        <header className="py-6 px-4 md:px-8 max-w-7xl mx-auto flex justify-between items-center">
+          <div className="font-extrabold text-2xl tracking-tight flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary text-white flex items-center justify-center rounded-md">N</div>
+            Neat Laundry
+          </div>
+        </header>
+      );
+
+      if (step === 0) {
+        return (
+          <div className="min-h-screen bg-white">
+            {renderHeader()}
+            <main className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
+                <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-foreground">
+                  Giặt gọn,<br/> <span className="text-primary">chọn giờ dễ.</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-700 max-w-lg">
+                  Chọn loại đồ, số lượng và thời gian lấy trong một lượt thử đơn giản. Không thủ tục rườm rà.
+                </p>
+                <div className="pt-4">
+                  <button 
+                    onClick={() => setStep(1)}
+                    className="bg-primary text-white font-semibold text-lg py-4 px-8 rounded-md transition-all duration-200 hover:scale-105 hover:bg-blue-600 inline-flex items-center gap-2"
+                  >
+                    Thử đặt lịch lấy đồ
+                    <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                  </button>
+                </div>
+              </div>
+              <div className="relative">
+                {/* Flat Illustration (Geometric) */}
+                <div className="w-full aspect-square bg-muted rounded-lg flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute top-10 left-10 w-64 h-64 bg-secondary/20 rounded-full"></div>
+                  <div className="absolute bottom-10 right-10 w-48 h-48 bg-primary/20 rotate-12"></div>
+                  <div className="z-10 bg-white p-8 rounded-lg">
+                    <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                      <path d="M10 2v4.5"/>
+                      <path d="M14 2v4.5"/>
+                      <path d="M4 6.5h16"/>
+                      <path d="M5.5 6.5L7 22h10l1.5-15.5"/>
+                      <path d="M9.5 12h5"/>
+                      <path d="M9.5 16h5"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        );
+      }
+
+      if (step === 1) {
+        return (
+          <div className="min-h-screen bg-muted/50 pb-20">
+            {renderHeader()}
+            <main className="max-w-2xl mx-auto px-4 pt-8">
+              <div className="mb-8 flex items-center gap-4">
+                <button onClick={() => setStep(0)} className="w-12 h-12 flex items-center justify-center bg-white rounded-md transition-all duration-200 hover:scale-105 border-2 border-border text-foreground">
+                  <i data-lucide="arrow-left" className="w-5 h-5"></i>
+                </button>
+                <div className="flex-1">
+                  <div className="text-sm font-semibold tracking-wider text-secondary uppercase mb-1">Bước 1 của 3</div>
+                  <h2 className="text-3xl font-bold">Chọn đồ cần giặt</h2>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {/* Clothes */}
+                <div className="bg-white p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-200 hover:scale-[1.02]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-full">
+                      <i data-lucide="shirt" className="w-6 h-6"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg">Áo quần mặc thường</h3>
+                      <p className="text-gray-600 text-sm">Đơn vị: kg</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-muted rounded-md p-1">
+                    <button onClick={() => handleItemChange('clothes', items.clothes - 1)} className="w-10 h-10 flex items-center justify-center bg-white rounded text-foreground hover:bg-gray-100"><i data-lucide="minus" className="w-4 h-4"></i></button>
+                    <input type="number" min="0" value={items.clothes} onChange={(e) => handleItemChange('clothes', e.target.value)} className="w-12 text-center bg-transparent font-bold text-lg focus:outline-none focus:ring-2 focus:ring-primary rounded" />
+                    <button onClick={() => handleItemChange('clothes', items.clothes + 1)} className="w-10 h-10 flex items-center justify-center bg-primary rounded text-white hover:bg-blue-600"><i data-lucide="plus" className="w-4 h-4"></i></button>
+                  </div>
+                </div>
+
+                {/* Blankets */}
+                <div className="bg-white p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-200 hover:scale-[1.02]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-secondary/10 text-secondary flex items-center justify-center rounded-full">
+                      <i data-lucide="bed" className="w-6 h-6"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg">Chăn ga gối</h3>
+                      <p className="text-gray-600 text-sm">Đơn vị: cái/bộ</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-muted rounded-md p-1">
+                    <button onClick={() => handleItemChange('blankets', items.blankets - 1)} className="w-10 h-10 flex items-center justify-center bg-white rounded text-foreground hover:bg-gray-100"><i data-lucide="minus" className="w-4 h-4"></i></button>
+                    <input type="number" min="0" value={items.blankets} onChange={(e) => handleItemChange('blankets', e.target.value)} className="w-12 text-center bg-transparent font-bold text-lg focus:outline-none focus:ring-2 focus:ring-secondary rounded" />
+                    <button onClick={() => handleItemChange('blankets', items.blankets + 1)} className="w-10 h-10 flex items-center justify-center bg-secondary rounded text-white hover:bg-emerald-600"><i data-lucide="plus" className="w-4 h-4"></i></button>
+                  </div>
+                </div>
+
+                {/* Delicates */}
+                <div className="bg-white p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-200 hover:scale-[1.02]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-accent/10 text-accent flex items-center justify-center rounded-full">
+                      <i data-lucide="sparkles" className="w-6 h-6"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg">Đồ nhạy cảm (Delicate)</h3>
+                      <p className="text-gray-600 text-sm">Đơn vị: cái (Giặt tay/hấp)</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-muted rounded-md p-1">
+                    <button onClick={() => handleItemChange('delicates', items.delicates - 1)} className="w-10 h-10 flex items-center justify-center bg-white rounded text-foreground hover:bg-gray-100"><i data-lucide="minus" className="w-4 h-4"></i></button>
+                    <input type="number" min="0" value={items.delicates} onChange={(e) => handleItemChange('delicates', e.target.value)} className="w-12 text-center bg-transparent font-bold text-lg focus:outline-none focus:ring-2 focus:ring-accent rounded" />
+                    <button onClick={() => handleItemChange('delicates', items.delicates + 1)} className="w-10 h-10 flex items-center justify-center bg-accent rounded text-white hover:bg-amber-600"><i data-lucide="plus" className="w-4 h-4"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex justify-end">
+                <button 
+                  onClick={() => setStep(2)}
+                  disabled={!hasItems}
+                  className={`py-4 px-8 rounded-md font-semibold text-lg inline-flex items-center gap-2 transition-all duration-200 ${hasItems ? 'bg-primary text-white hover:bg-blue-600 hover:scale-105 cursor-pointer' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                >
+                  Tiếp tục chọn giờ
+                  <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                </button>
+              </div>
+            </main>
+          </div>
+        );
+      }
+
+      if (step === 2) {
+        return (
+          <div className="min-h-screen bg-muted/50 pb-20">
+            {renderHeader()}
+            <main className="max-w-2xl mx-auto px-4 pt-8">
+              <div className="mb-8 flex items-center gap-4">
+                <button onClick={() => setStep(1)} className="w-12 h-12 flex items-center justify-center bg-white rounded-md transition-all duration-200 hover:scale-105 border-2 border-border text-foreground">
+                  <i data-lucide="arrow-left" className="w-5 h-5"></i>
+                </button>
+                <div className="flex-1">
+                  <div className="text-sm font-semibold tracking-wider text-secondary uppercase mb-1">Bước 2 của 3</div>
+                  <h2 className="text-3xl font-bold">Chọn thời gian lấy đồ</h2>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg mb-6">
+                <h3 className="font-bold text-lg mb-4">Ngày lấy</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {dates.map(d => (
+                    <button 
+                      key={d.value}
+                      onClick={() => handleDateChange(d.value)}
+                      className={`p-4 rounded-md font-semibold transition-all duration-200 text-left md:text-center border-2 ${date === d.value ? 'border-primary bg-primary/5 text-primary scale-[1.02]' : 'border-border bg-white hover:bg-gray-50 text-foreground'}`}
+                    >
+                      {d.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {date && (
+                <div className="bg-white p-6 rounded-lg animate-[fadeIn_0.2s_ease-out]">
+                  <h3 className="font-bold text-lg mb-4">Khung giờ</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {timeSlots[date].map(slot => (
+                      <button 
+                        key={slot.id}
+                        disabled={!slot.available}
+                        onClick={() => setTimeSlot(slot.id)}
+                        className={`p-4 rounded-md font-semibold transition-all duration-200 text-left border-2 flex justify-between items-center ${
+                          !slot.available 
+                            ? 'border-border bg-gray-100 text-gray-400 cursor-not-allowed'
+                            : timeSlot === slot.id
+                              ? 'border-primary bg-primary text-white scale-[1.02]'
+                              : 'border-border bg-white hover:border-primary hover:text-primary text-foreground'
+                        }`}
+                      >
+                        <span>{slot.label}</span>
+                        {!slot.available && <span className="text-xs uppercase tracking-wider font-bold">Hết lượt</span>}
+                        {slot.available && timeSlot === slot.id && <i data-lucide="check" className="w-5 h-5"></i>}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-8 flex justify-end">
+                <button 
+                  onClick={() => setStep(3)}
+                  disabled={!date || !timeSlot}
+                  className={`py-4 px-8 rounded-md font-semibold text-lg inline-flex items-center gap-2 transition-all duration-200 ${date && timeSlot ? 'bg-primary text-white hover:bg-blue-600 hover:scale-105 cursor-pointer' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                >
+                  Xem tóm tắt
+                  <i data-lucide="arrow-right" className="w-5 h-5"></i>
+                </button>
+              </div>
+            </main>
+          </div>
+        );
+      }
+
+      if (step === 3) {
+        const selectedDateLabel = dates.find(d => d.value === date)?.label;
+        const selectedTimeLabel = timeSlots[date]?.find(t => t.id === timeSlot)?.label;
+
+        return (
+          <div className="min-h-screen bg-muted/50 pb-20">
+            {renderHeader()}
+            <main className="max-w-2xl mx-auto px-4 pt-8">
+              <div className="mb-8 flex items-center gap-4">
+                <button onClick={() => setStep(2)} className="w-12 h-12 flex items-center justify-center bg-white rounded-md transition-all duration-200 hover:scale-105 border-2 border-border text-foreground">
+                  <i data-lucide="arrow-left" className="w-5 h-5"></i>
+                </button>
+                <div className="flex-1">
+                  <div className="text-sm font-semibold tracking-wider text-secondary uppercase mb-1">Bước 3 của 3</div>
+                  <h2 className="text-3xl font-bold">Tóm tắt đơn thử</h2>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 md:p-8 rounded-lg space-y-8">
+                {/* Items Summary */}
+                <div>
+                  <div className="flex justify-between items-end mb-4 border-b-2 border-border pb-2">
+                    <h3 className="font-bold text-xl">Đồ cần giặt</h3>
+                    <button onClick={() => setStep(1)} className="text-primary font-semibold hover:underline text-sm">Sửa</button>
+                  </div>
+                  <div className="space-y-3">
+                    {items.clothes > 0 && (
+                      <div className="flex justify-between items-center text-lg">
+                        <span className="text-gray-700">Áo quần</span>
+                        <span className="font-bold">{items.clothes} kg</span>
+                      </div>
+                    )}
+                    {items.blankets > 0 && (
+                      <div className="flex justify-between items-center text-lg">
+                        <span className="text-gray-700">Chăn ga gối</span>
+                        <span className="font-bold">{items.blankets} cái</span>
+                      </div>
+                    )}
+                    {items.delicates > 0 && (
+                      <div className="flex justify-between items-center text-lg">
+                        <span className="text-gray-700">Đồ nhạy cảm</span>
+                        <span className="font-bold">{items.delicates} cái</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Time Summary */}
+                <div>
+                  <div className="flex justify-between items-end mb-4 border-b-2 border-border pb-2">
+                    <h3 className="font-bold text-xl">Thời gian lấy đồ</h3>
+                    <button onClick={() => setStep(2)} className="text-primary font-semibold hover:underline text-sm">Sửa</button>
+                  </div>
+                  <div className="bg-primary/5 p-4 rounded-md border-2 border-primary/20">
+                    <div className="font-semibold text-lg text-primary">{selectedDateLabel}</div>
+                    <div className="text-gray-700 font-medium">{selectedTimeLabel}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col md:flex-row gap-4 justify-end">
+                <button 
+                  onClick={handleReset}
+                  className="py-4 px-8 rounded-md font-semibold text-lg bg-white border-2 border-border text-foreground hover:bg-gray-50 transition-all duration-200 order-2 md:order-1"
+                >
+                  Làm lại từ đầu
+                </button>
+                <button 
+                  onClick={() => setStep(4)}
+                  className="py-4 px-8 rounded-md font-semibold text-lg bg-accent text-white hover:bg-amber-600 hover:scale-105 transition-all duration-200 flex justify-center items-center gap-2 order-1 md:order-2"
+                >
+                  Xác nhận thử đặt lịch
+                  <i data-lucide="check-circle" className="w-5 h-5"></i>
+                </button>
+              </div>
+            </main>
+          </div>
+        );
+      }
+
+      if (step === 4) {
+        return (
+          <div className="min-h-screen bg-primary flex items-center justify-center p-4">
+            <div className="bg-white p-8 md:p-12 rounded-lg max-w-lg w-full text-center">
+              <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check" className="w-10 h-10"></i>
+              </div>
+              <h2 className="text-3xl font-extrabold mb-4">Hoàn tất quy trình thử</h2>
+              <div className="text-gray-700 text-lg mb-8 space-y-2">
+                <p>Cảm ơn bạn đã trải nghiệm thao tác chọn đồ và thời gian.</p>
+                <p className="font-bold text-accent bg-accent/10 inline-block px-3 py-1 rounded-md">Chưa đặt lịch lấy đồ thực tế.</p>
+                <p className="text-sm text-gray-500 mt-4">Đây chỉ là mô phỏng giao diện tĩnh. Trong thực tế, bước này sẽ kết nối với hệ thống tạo đơn hàng.</p>
+              </div>
+              <button 
+                onClick={handleReset}
+                className="w-full py-4 rounded-md font-semibold text-lg bg-foreground text-white hover:bg-gray-800 transition-all duration-200"
+              >
+                Về trang chủ
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return null;
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

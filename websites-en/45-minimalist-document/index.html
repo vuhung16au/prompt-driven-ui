@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+        <!-- Profile / Header -->
+        <header class="mb-16">
+            <img src="https://via.placeholder.com/150/EAEAEA/888888?text=Avatar" alt="Avatar" class="w-16 h-16 rounded-full mb-6">
+            <h1 class="mb-4">Alex Doe</h1>
+            <p class="max-chars mb-6">A product designer and design engineer based in San Francisco. I build minimal, functional interfaces for the web and mobile, focusing on typography, layout, and performance.</p>
+            <div class="flex gap-4">
+                <a href="#" class="inline-block bg-[#111111] text-white px-4 py-2 rounded text-[14px] leading-none no-underline hover:opacity-90 transition-opacity">Contact</a>
+                <a href="#" class="inline-block bg-transparent text-[#111111] px-4 py-2 rounded text-[14px] leading-none hover:bg-gray-200 transition-colors">Resume</a>
+            </div>
+        </header>
+
+        <hr class="mb-12">
+
+        <!-- Experience Section -->
+        <section class="mb-16">
+            <h2 class="mb-8">Work Experience</h2>
+            
+            <div class="flex flex-col gap-10">
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">2021 — Present</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <div class="font-bold text-[14px]">Design Lead</div>
+                        <div class="mb-2 text-[14px]">Acme Corp</div>
+                        <p>Leading the design systems team. Responsible for standardizing UI components across multiple platforms and improving accessibility. Redesigned the core dashboard, reducing user friction and increasing engagement by 25%.</p>
+                    </div>
+                </div>
+
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">2018 — 2021</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <div class="font-bold text-[14px]">Product Designer</div>
+                        <div class="mb-2 text-[14px]">Beta Technologies</div>
+                        <p>Designed end-to-end user flows for a B2B SaaS platform. Conducted user research, created wireframes, and delivered high-fidelity prototypes. Worked closely with engineering to ensure seamless implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="mb-12">
+
+        <!-- Projects Section -->
+        <section class="mb-16">
+            <h2 class="mb-8">Selected Projects</h2>
+            
+            <div class="flex flex-col gap-10">
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">2023</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <div class="font-bold text-[14px]">Minimalist Document</div>
+                        <div class="mb-2"><a href="#" class="text-[#111111] underline hover:text-[#666666] transition-colors">View Project</a></div>
+                        <p>An open-source design system focusing on typography and whitespace. Built with HTML and Tailwind CSS to serve as a baseline for document-style websites.</p>
+                    </div>
+                </div>
+
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">2022</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <div class="font-bold text-[14px]">Reading App</div>
+                        <div class="mb-2"><a href="#" class="text-[#111111] underline hover:text-[#666666] transition-colors">View Project</a></div>
+                        <p>A distraction-free reading application for long-form articles. Features offline support, custom typography settings, and synchronization across devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="mb-12">
+        
+        <!-- Writing Section -->
+        <section class="mb-16">
+            <h2 class="mb-8">Writing</h2>
+            
+            <div class="flex flex-col gap-10">
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">Oct 12, 2023</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <a href="#" class="font-bold text-[14px] text-[#111111] hover:underline">The Value of Whitespace in UI Design</a>
+                        <p class="mt-2">Why removing elements is often more effective than adding them, and how whitespace drives focus and clarity.</p>
+                    </div>
+                </div>
+
+                <!-- List Item -->
+                <div class="flex flex-col md:flex-row md:gap-8">
+                    <div class="md:w-1/4 mb-1 md:mb-0 shrink-0">
+                        <span class="muted-text">Aug 05, 2023</span>
+                    </div>
+                    <div class="md:w-3/4 max-chars">
+                        <a href="#" class="font-bold text-[14px] text-[#111111] hover:underline">Designing for the Web in 2024</a>
+                        <p class="mt-2">A look at upcoming trends, the return of brutalism, and why performance is still the most important feature.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

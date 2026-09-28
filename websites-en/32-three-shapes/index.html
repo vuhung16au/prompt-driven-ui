@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Shapes | Bauhaus Layout Workshop</title>
+  <meta name="description" content="Explore the relationship between circle, square, and triangle before entering a layout practice workshop.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-identity" aria-label="Three Shapes - Home">
+        <div class="brand-shapes" aria-hidden="true">
+          <span class="shape-icon circle"></span>
+          <span class="shape-icon square"></span>
+          <svg class="shape-icon triangle-svg" viewBox="0 0 100 100">
+            <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#121212" stroke-width="12" stroke-linejoin="miter" />
+          </svg>
+        </div>
+        <span class="brand-text">THREE SHAPES</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        MENU ☰
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary navigation">
+        <a href="#try-layouts" class="nav-link">Try Layouts</a>
+        <a href="#program" class="nav-link">Program</a>
+        <a href="#works" class="nav-link">Works</a>
+        <a href="#sessions" class="nav-link">Select Session</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- 1. Hero / Workshop Poster -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>●</span>
+          <span>Experimental Layout Workshop • 180 Mins</span>
+        </div>
+        <h1 id="hero-heading" class="text-hero">
+          THREE SHAPES.<br>MANY<br>PERSPECTIVES.
+        </h1>
+        <p class="hero-desc">
+          Explore the relationship between circle, square, and triangle before entering a layout practice workshop.
+        </p>
+        <div class="hero-actions">
+          <a href="#try-layouts" class="btn btn-primary">Try a layout</a>
+          <a href="#program" class="btn btn-outline">View Program</a>
+        </div>
+      </div>
+
+      <!-- Right Panel Poster Artwork -->
+      <div class="hero-poster-stage" aria-label="Bauhaus geometric composition illustration">
+        <div class="poster-shape-yellow-disc" aria-hidden="true"></div>
+        <div class="poster-shape-red-diamond" aria-hidden="true"></div>
+        <div class="poster-central-card">
+          <svg class="poster-inner-triangle" viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="50,15 15,85 85,85" fill="#121212" />
+          </svg>
+          <span class="poster-card-caption">COMPOSITION 01</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Interactive Presets: Try Three Layouts -->
+    <section id="try-layouts" class="presets-section" aria-labelledby="presets-title">
+      <div class="section-wrapper">
+        <h2 id="presets-title" class="section-title">Try 3 Layouts</h2>
+
+        <div class="presets-container">
+          <!-- Preset Controls -->
+          <div class="preset-controls">
+            <button class="preset-btn active" data-preset="balanced" aria-pressed="true">
+              <div class="preset-title">
+                <span>1. Balanced</span>
+                <span aria-hidden="true">■</span>
+              </div>
+              <p class="preset-desc">Forms rely on each other around a central axis, creating a static and harmonious feel.</p>
+            </button>
+
+            <button class="preset-btn" data-preset="off-center" aria-pressed="false">
+              <div class="preset-title">
+                <span>2. Off-center</span>
+                <span aria-hidden="true">▲</span>
+              </div>
+              <p class="preset-desc">Weight is shifted to one side, generating visual tension and implied movement.</p>
+            </button>
+
+            <button class="preset-btn" data-preset="rhythmic" aria-pressed="false">
+              <div class="preset-title">
+                <span>3. Rhythmic</span>
+                <span aria-hidden="true">●</span>
+              </div>
+              <p class="preset-desc">Organized in a parallel grid, suggesting continuous repetition.</p>
+            </button>
+
+            <!-- Sub Action Controls -->
+            <div class="preset-sub-actions">
+              <button id="btn-reset-preset" class="btn btn-outline btn-reset">Reset to Balanced</button>
+              <button id="btn-rotate-shapes" class="btn btn-outline btn-reset">Rotate Square 45°</button>
+            </div>
+          </div>
+
+          <!-- Preset Interactive Stage -->
+          <div class="canvas-card" aria-label="Interactive geometric layout canvas">
+            <div class="canvas-header">
+              <span>Geometric Testing Canvas</span>
+              <span id="canvas-preset-name" class="canvas-status-badge">BALANCED</span>
+            </div>
+
+            <div class="canvas-viewport" id="canvas-viewport">
+              <div id="shape-circle" class="stage-shape" aria-label="Blue Circle"></div>
+              <div id="shape-square" class="stage-shape" aria-label="Red Square"></div>
+              <div id="shape-triangle-wrapper" class="stage-shape" aria-label="Yellow Triangle">
+                <svg id="shape-triangle-svg" viewBox="0 0 100 100">
+                  <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#121212" stroke-width="5" stroke-linejoin="miter" />
+                </svg>
+              </div>
+            </div>
+
+            <div class="canvas-footer">
+              <p id="canvas-explanation" class="canvas-explanation">
+                Forms rely on each other around a central axis, creating a static and harmonious feel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. What You Will Do (Asymmetric 2+1 layout) -->
+    <section id="program" class="activities-section" aria-labelledby="activities-title">
+      <div class="section-wrapper">
+        <h2 id="activities-title" class="section-title">What You Will Do</h2>
+
+        <div class="activities-grid">
+          <!-- Card 1 (Span 2) -->
+          <article class="activity-card span-2">
+            <div class="card-shape-accent circle" aria-hidden="true"></div>
+            <span class="activity-num">Phase 01</span>
+            <h3 class="activity-title">Observe and Analyze</h3>
+            <p class="activity-body">
+              Dissect seminal Bauhaus publications to grasp how negative whitespace, visual weight, and directional vectors establish information hierarchy. Analyze asymmetric equilibrium and primary color theory.
+            </p>
+            <div class="activity-materials">
+              Focus: Golden ratio grids, geometric counterweights, visual deconstruction
+            </div>
+          </article>
+
+          <!-- Card 2 (Span 1) -->
+          <article class="activity-card">
+            <div class="card-shape-accent square" aria-hidden="true"></div>
+            <span class="activity-num">Phase 02</span>
+            <h3 class="activity-title">Hands-on Cut & Paste</h3>
+            <p class="activity-body">
+              Step away from digital screens. Work with heavyweight art paper in pure primaries, T-squares, precision scissors, and paste to physically feel the kinetic gravity of each shape on an A3 canvas.
+            </p>
+            <div class="activity-materials">
+              Materials: 300gsm art papers, cutting mats, precision scissors, T-squares
+            </div>
+          </article>
+
+          <!-- Card 3 (Span 3) -->
+          <article class="activity-card span-3">
+            <svg class="card-shape-accent triangle" viewBox="0 0 100 100" aria-hidden="true">
+              <polygon points="50,10 10,90 90,90" fill="#D02020" stroke="#121212" stroke-width="8" stroke-linejoin="miter"/>
+            </svg>
+            <span class="activity-num">Phase 03</span>
+            <h3 class="activity-title">Compare and Refine</h3>
+            <p class="activity-body">
+              Pin works side by side onto the studio critique board. Discuss visual tension directly with peers, adjusting angles and positions to discover the optimal point of balanced visual force.
+            </p>
+            <div class="activity-materials">
+              Deliverables: 3 finished A3 geometric poster compositions crafted entirely with your own hands
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Practice Works (Four Original Compositions) -->
+    <section id="works" class="works-section" aria-labelledby="works-title">
+      <div class="section-wrapper">
+        <h2 id="works-title" class="section-title">Practice Works</h2>
+
+        <div class="works-grid">
+          <!-- Work 1: Compression -->
+          <article class="work-card" data-work-key="compression" tabindex="0" role="button" aria-label="View analysis for Compression composition">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-compression-bar"></div>
+              <div class="comp-compression-circle"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Compression</h3>
+              <p class="work-caption">Asymmetric collision between sharp angular square and circular curve.</p>
+              <button class="work-inspect-btn" type="button">Inspect composition →</button>
+            </div>
+          </article>
+
+          <!-- Work 2: Cutting Edge -->
+          <article class="work-card" data-work-key="cutting-edge" tabindex="0" role="button" aria-label="View analysis for Cutting Edge composition">
+            <div class="work-canvas" aria-hidden="true">
+              <svg class="comp-cutting-triangle" viewBox="0 0 100 100">
+                <polygon points="50,10 10,90 90,90" fill="#1040C0" stroke="#121212" stroke-width="5" stroke-linejoin="miter" />
+              </svg>
+              <div class="comp-cutting-ground"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Cutting Edge</h3>
+              <p class="work-caption">Triangular point piercing the continuous black baseline.</p>
+              <button class="work-inspect-btn" type="button">Inspect composition →</button>
+            </div>
+          </article>
+
+          <!-- Work 3: Concentric -->
+          <article class="work-card" data-work-key="concentric" tabindex="0" role="button" aria-label="View analysis for Concentric composition">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-corner-dot tl"></div>
+              <div class="comp-corner-dot tr"></div>
+              <div class="comp-corner-dot bl"></div>
+              <div class="comp-corner-dot br"></div>
+              <div class="comp-concentric-core"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Concentric</h3>
+              <p class="work-caption">Central diamond held in equilibrium by a four-corner forcefield.</p>
+              <button class="work-inspect-btn" type="button">Inspect composition →</button>
+            </div>
+          </article>
+
+          <!-- Work 4: Polarity -->
+          <article class="work-card" data-work-key="polarity" tabindex="0" role="button" aria-label="View analysis for Polarity composition">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-polarity-left"></div>
+              <div class="comp-polarity-ring"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Polarity</h3>
+              <p class="work-caption">Splitting space through contrast of solid-void and straight-curve.</p>
+              <button class="work-inspect-btn" type="button">Inspect composition →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Select Sample Session & Registration (Blue section) -->
+    <section id="sessions" class="sessions-section" aria-labelledby="sessions-title">
+      <div class="sessions-backdrop-circle" aria-hidden="true"></div>
+      <div class="sessions-backdrop-square" aria-hidden="true"></div>
+
+      <div class="section-wrapper">
+        <h2 id="sessions-title" class="section-title">Select Sample Session</h2>
+
+        <div class="sessions-grid">
+          <!-- Session Schedule Options -->
+          <div class="schedules-container" role="radiogroup" aria-labelledby="sessions-title">
+            <!-- Option 1 -->
+            <label class="schedule-option-card selected" data-session-label="Saturday Morning, 09:00 - 12:00">
+              <input type="radio" name="session" class="schedule-radio" value="sat-morning" checked>
+              <div class="schedule-details">
+                <div class="schedule-title">Session 01: Saturday Morning</div>
+                <div class="schedule-time">09:00 - 12:00 (180 Mins)</div>
+                <p class="schedule-meta">Sample Data Mockup • Emphasizes foundational observation and tactile cutting.</p>
+              </div>
+            </label>
+
+            <!-- Option 2 -->
+            <label class="schedule-option-card" data-session-label="Sunday Afternoon, 14:00 - 17:00">
+              <input type="radio" name="session" class="schedule-radio" value="sun-afternoon">
+              <div class="schedule-details">
+                <div class="schedule-title">Session 02: Sunday Afternoon</div>
+                <div class="schedule-time">14:00 - 17:00 (180 Mins)</div>
+                <p class="schedule-meta">Sample Data Mockup • Emphasizes spatial tension and primary color harmonies.</p>
+              </div>
+            </label>
+
+            <div style="background: rgba(18, 18, 18, 0.4); border: 2px solid #FFFFFF; padding: 1rem; color: #FFFFFF;">
+              <p style="font-size: 0.875rem; line-height: 1.5;">
+                <strong>Honesty Note:</strong> No "only 3 spots left" clickbait without verified real backend data. The form on the right operates strictly as a client-side demo preview.
+              </p>
+            </div>
+          </div>
+
+          <!-- Registration Form Panel -->
+          <div class="registration-panel">
+            <h3 class="form-panel-title">Registration Details</h3>
+            <form id="workshop-registration-form" class="registration-form" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="form-selected-session">Selected Practice Session</label>
+                <div id="form-selected-session" class="form-selected-pill">Saturday Morning, 09:00 - 12:00</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-name">Full Name <span style="color: #D02020;">*</span></label>
+                <input type="text" id="reg-name" name="name" class="form-input" placeholder="e.g., Walter Gropius" required autocomplete="name">
+                <span id="reg-name-error" class="form-error-msg" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-email">Email Address <span style="color: #D02020;">*</span></label>
+                <input type="email" id="reg-email" name="email" class="form-input" placeholder="you@domain.com" required autocomplete="email">
+                <span id="reg-email-error" class="form-error-msg" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-level">Composition Background (Optional)</label>
+                <select id="reg-level" name="level" class="form-select">
+                  <option value="beginner">Beginner - Exploring geometry for the first time</option>
+                  <option value="intermediate">Intermediate - Familiar with design basics</option>
+                  <option value="designer">Practicing Designer / Architect</option>
+                </select>
+              </div>
+
+              <p class="form-notice">
+                * This trial functionality is a prototype demonstration. It does not initiate external workflows or payments.
+              </p>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Confirm Sample Registration
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Bauhaus Accordion (FAQ) -->
+    <section id="faq" class="faq-section" aria-labelledby="faq-title">
+      <div class="section-wrapper">
+        <h2 id="faq-title" class="section-title" style="text-align: center;">Workshop FAQ</h2>
+
+        <div class="accordion-list">
+          <!-- Item 1 -->
+          <div class="accordion-item is-open">
+            <button class="accordion-header" aria-expanded="true" aria-controls="faq-ans-1">
+              <span>Do I need to bring any tools or materials?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-1" class="accordion-content">
+              All physical tools and materials—including 300gsm heavyweight art paper in pure primaries (Red, Yellow, Blue), T-squares, Japanese craft scissors, self-healing cutting mats, and non-warping paste—are provided at each participant workstation. You only need to bring a personal sketchbook if you wish.
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-2">
+              <span>Can beginners without design background participate?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-2" class="accordion-content">
+              Yes, absolutely. The foundational Vorkurs pedagogical methodology of the Bauhaus commences with unlearning rigid assumptions and rediscovering pure elementary geometry. The workshop progresses step by step from visual proportion to tangible cutting without requiring any prior drawing skills.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-3">
+              <span>What tangible work do I take home after 180 minutes?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-3" class="accordion-content">
+              You will complete and take home a portfolio set of 3 finished A3 geometric poster compositions mounted on stiff greyboard, along with a visual principles summary formulated during the wall critique session.
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-4">
+              <span>Is this an active booking or ticketing service?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-4" class="accordion-content">
+              No. This website is an interactive Bauhaus design specification prototype created to showcase constructivist aesthetics, layout preset transitions, and responsive behavior. The registration flow functions entirely as a simulated preview without external backend dependencies.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detail Inspection Modal for Works -->
+  <div id="work-detail-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="work-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="work-modal-title" class="modal-title">Composition Analysis</h3>
+        <button id="work-modal-close-btn" class="modal-close-btn" aria-label="Close analysis modal">✕</button>
+      </div>
+      <div id="work-modal-body" class="modal-body">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="document.getElementById('work-detail-modal').classList.remove('active')" class="btn btn-outline" style="min-height: 40px; padding: 0.5rem 1.25rem;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Feedback Modal -->
+  <div id="feedback-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="feedback-modal-title" class="modal-title">Sample Registration Confirmed</h3>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close window">✕</button>
+      </div>
+      <div id="modal-summary-content" class="modal-body">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="modal-footer">
+        <button id="modal-reset-btn" type="button" class="btn btn-outline" style="min-height: 40px; padding: 0.5rem 1.25rem;">Reset Form</button>
+        <button type="button" onclick="document.getElementById('feedback-modal').classList.remove('active')" class="btn btn-primary" style="min-height: 40px; padding: 0.5rem 1.25rem;">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-shapes" aria-hidden="true">
+            <span class="shape-icon circle"></span>
+            <span class="shape-icon square"></span>
+            <svg class="shape-icon triangle-svg" viewBox="0 0 100 100">
+              <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="miter" />
+            </svg>
+          </div>
+          <span class="brand-text">THREE SHAPES</span>
+        </div>
+        <p class="footer-statement">
+          Constructivist geometric philosophy: Form follows function. Composed from three primary colors and three foundational shapes.
+        </p>
+      </div>
+
+      <div class="footer-meta">
+        <div>
+          <span>© 2026 Three Shapes • Bauhaus Interface Demonstration • Sample Mockup Data</span>
+        </div>
+        <button id="btn-back-to-top" class="btn-top" type="button">Back to top ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

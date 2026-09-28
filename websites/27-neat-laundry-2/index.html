@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giặt gọn, chọn giờ dễ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        foreground: '#111827',
+                        muted: '#F3F4F6',
+                        border: '#E5E7EB',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #FFFFFF; color: #111827; }
+        /* Flat design reset */
+        * { box-shadow: none !important; }
+        
+        .uppercase-label {
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        .btn-primary {
+            background-color: #3B82F6; color: white; border-radius: 6px; 
+            transition: all 200ms;
+        }
+        .btn-primary:hover { background-color: #2563EB; transform: scale(1.05); }
+        .btn-primary:disabled { background-color: #93C5FD; cursor: not-allowed; transform: none; }
+        
+        .btn-secondary {
+            background-color: #F3F4F6; color: #111827; border-radius: 6px;
+            transition: all 200ms;
+        }
+        .btn-secondary:hover { background-color: #E5E7EB; transform: scale(1.05); }
+        
+        .btn-outline {
+            border: 4px solid #111827; color: #111827; background-color: transparent; border-radius: 6px;
+            transition: all 200ms;
+        }
+        .btn-outline:hover { background-color: #111827; color: white; }
+
+        .card {
+            background-color: #F3F4F6; padding: 24px; border-radius: 8px;
+            transition: all 200ms; cursor: pointer;
+        }
+        .card:hover { transform: scale(1.02); background-color: #E5E7EB; }
+        .card.active { background-color: #3B82F6; color: white; }
+        .card.active:hover { background-color: #2563EB; }
+        .card.active .text-muted { color: #DBEAFE; }
+
+        .time-slot {
+            background-color: white; border: 4px solid #F3F4F6; border-radius: 6px; text-align: center; padding: 12px;
+            transition: all 160ms; cursor: pointer; font-weight: 600;
+        }
+        .time-slot:hover { border-color: #3B82F6; }
+        .time-slot.selected { background-color: #3B82F6; border-color: #3B82F6; color: white; }
+        .time-slot.disabled { background-color: #F3F4F6; color: #9CA3AF; cursor: not-allowed; border-color: #F3F4F6; }
+        
+        .input-number {
+            background-color: white; border: 2px solid #E5E7EB; text-align: center; font-weight: 600; width: 60px;
+        }
+        .input-number:focus { outline: none; border-color: #3B82F6; }
+
+        .shape-bg {
+            position: absolute; z-index: -1; opacity: 0.05;
+        }
+        
+        /* Hide scrollbar for neatness */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative overflow-x-hidden" x-data="laundryApp()">
+
+    <!-- Decorative background shapes -->
+    <div class="shape-bg rounded-full bg-primary w-96 h-96 -top-20 -right-20"></div>
+    <div class="shape-bg bg-secondary w-64 h-64 rotate-45 bottom-20 -left-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
+        
+        <!-- Header / Nav -->
+        <header class="flex justify-between items-center mb-12">
+            <div class="flex items-center gap-2 text-2xl font-bold tracking-tight">
+                <div class="bg-primary w-10 h-10 flex items-center justify-center rounded-md text-white">
+                    <i data-lucide="shirt"></i>
+                </div>
+                Giặt gọn
+            </div>
+            <div x-show="step > 0 && step < 4" class="text-sm font-bold text-gray-500 uppercase-label tracking-wider">
+                Bước <span x-text="step"></span> / 3
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 w-full max-w-2xl mx-auto flex flex-col">
+            
+            <!-- STEP 0: Hero / Intro -->
+            <div x-show="step === 0" x-transition.opacity.duration.300ms class="flex flex-col items-center text-center space-y-8">
+                <div class="w-48 h-48 bg-blue-50 rounded-full flex items-center justify-center mb-4 relative">
+                    <div class="absolute inset-0 bg-primary opacity-10 rounded-full scale-110"></div>
+                    <i data-lucide="shopping-basket" class="w-24 h-24 text-primary relative z-10"></i>
+                </div>
+                
+                <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-foreground leading-tight">
+                    Giặt gọn, <br/><span class="text-primary">chọn giờ dễ.</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 max-w-lg">
+                    Chọn loại đồ, số lượng và thời gian lấy trong một lượt thử đơn giản.
+                </p>
+
+                <div class="pt-8 w-full sm:w-auto">
+                    <button @click="nextStep()" class="btn-primary w-full sm:w-auto px-10 h-16 text-lg font-bold flex items-center justify-center gap-3">
+                        Thử đặt lịch lấy đồ
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 1: Select Items -->
+            <div x-show="step === 1" style="display: none;" x-transition.opacity.duration.300ms class="flex flex-col space-y-8">
+                <div>
+                    <button @click="prevStep()" class="text-gray-500 hover:text-foreground font-semibold flex items-center gap-2 mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Quay lại
+                    </button>
+                    <h2 class="text-4xl font-extrabold mb-2">Cần giặt những gì?</h2>
+                    <p class="text-lg text-gray-600">Chọn số lượng cho từng loại đồ.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Clothes Item -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-muted rounded-lg border-l-8 border-primary">
+                        <div class="flex items-center gap-4 mb-4 sm:mb-0">
+                            <div class="bg-white p-3 rounded-md text-primary">
+                                <i data-lucide="shirt" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Áo quần</h3>
+                                <p class="text-gray-600">Giặt sấy gập (mỗi kg)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white rounded-md p-1 border-2 border-border">
+                            <button @click="updateItem('clothes', -1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted" :disabled="items.clothes === 0">-</button>
+                            <input type="number" x-model.number="items.clothes" min="0" class="input-number h-10 border-none outline-none appearance-none" />
+                            <button @click="updateItem('clothes', 1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Blankets Item -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-muted rounded-lg border-l-8 border-secondary">
+                        <div class="flex items-center gap-4 mb-4 sm:mb-0">
+                            <div class="bg-white p-3 rounded-md text-secondary">
+                                <i data-lucide="bed-double" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Chăn mền</h3>
+                                <p class="text-gray-600">Kích thước lớn (mỗi cái)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white rounded-md p-1 border-2 border-border">
+                            <button @click="updateItem('blankets', -1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted" :disabled="items.blankets === 0">-</button>
+                            <input type="number" x-model.number="items.blankets" min="0" class="input-number h-10 border-none outline-none appearance-none" />
+                            <button @click="updateItem('blankets', 1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Delicates Item -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-6 bg-muted rounded-lg border-l-8 border-accent">
+                        <div class="flex items-center gap-4 mb-4 sm:mb-0">
+                            <div class="bg-white p-3 rounded-md text-accent">
+                                <i data-lucide="sparkles" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Đồ delicate</h3>
+                                <p class="text-gray-600">Cần nâng niu (mỗi cái)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white rounded-md p-1 border-2 border-border">
+                            <button @click="updateItem('delicates', -1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted" :disabled="items.delicates === 0">-</button>
+                            <input type="number" x-model.number="items.delicates" min="0" class="input-number h-10 border-none outline-none appearance-none" />
+                            <button @click="updateItem('delicates', 1)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-foreground font-bold text-xl rounded hover:bg-muted">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex justify-end">
+                    <button @click="nextStep()" :disabled="!hasItems()" class="btn-primary w-full sm:w-auto px-8 h-14 text-lg font-bold flex items-center justify-center gap-2">
+                        Chọn giờ <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Choose Time -->
+            <div x-show="step === 2" style="display: none;" x-transition.opacity.duration.300ms class="flex flex-col space-y-8">
+                <div>
+                    <button @click="prevStep()" class="text-gray-500 hover:text-foreground font-semibold flex items-center gap-2 mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Quay lại
+                    </button>
+                    <h2 class="text-4xl font-extrabold mb-2">Lấy đồ khi nào?</h2>
+                    <p class="text-lg text-gray-600">Chọn ngày và khoảng giờ lấy đồ.</p>
+                </div>
+
+                <!-- Date Selection -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Ngày</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <template x-for="date in dates" :key="date.id">
+                            <div @click="selectDate(date.id)" 
+                                 class="card text-center" 
+                                 :class="selectedDate === date.id ? 'active' : ''">
+                                <div class="text-sm font-semibold uppercase-label tracking-wider mb-1" :class="selectedDate === date.id ? 'text-blue-100' : 'text-gray-500'" x-text="date.day"></div>
+                                <div class="text-2xl font-extrabold" x-text="date.date"></div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Time Selection -->
+                <div x-show="selectedDate !== null">
+                    <h3 class="text-xl font-bold mb-4">Khoảng giờ</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <template x-for="slot in availableTimeSlots" :key="slot.id">
+                            <button @click="if(slot.available) selectTime(slot.id)" 
+                                 class="time-slot"
+                                 :class="[
+                                    selectedTime === slot.id ? 'selected' : '',
+                                    !slot.available ? 'disabled' : ''
+                                 ]"
+                                 :disabled="!slot.available">
+                                <div x-text="slot.time"></div>
+                                <div x-show="!slot.available" class="text-xs mt-1 uppercase-label tracking-wider">Hết lượt</div>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex justify-between items-center">
+                    <button @click="nextStep()" :disabled="selectedDate === null || selectedTime === null" class="btn-primary w-full sm:w-auto px-8 h-14 text-lg font-bold flex items-center justify-center gap-2 ml-auto">
+                        Tóm tắt <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Summary -->
+            <div x-show="step === 3" style="display: none;" x-transition.opacity.duration.300ms class="flex flex-col space-y-8">
+                <div>
+                    <button @click="prevStep()" class="text-gray-500 hover:text-foreground font-semibold flex items-center gap-2 mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Quay lại
+                    </button>
+                    <h2 class="text-4xl font-extrabold mb-2">Xem lại thông tin</h2>
+                    <p class="text-lg text-gray-600">Vui lòng kiểm tra lại trước khi hoàn tất thử nghiệm.</p>
+                </div>
+
+                <div class="bg-muted p-8 rounded-lg space-y-8">
+                    
+                    <!-- Items Summary -->
+                    <div>
+                        <div class="flex justify-between items-end mb-4 border-b-2 border-border pb-2">
+                            <h3 class="text-xl font-bold">Loại đồ</h3>
+                            <button @click="step = 1" class="text-primary font-bold hover:underline text-sm uppercase-label tracking-wide">Sửa</button>
+                        </div>
+                        <ul class="space-y-3">
+                            <li x-show="items.clothes > 0" class="flex justify-between font-medium">
+                                <span class="flex items-center gap-2"><i data-lucide="shirt" class="w-4 h-4 text-primary"></i> Áo quần</span>
+                                <span><span x-text="items.clothes"></span> kg</span>
+                            </li>
+                            <li x-show="items.blankets > 0" class="flex justify-between font-medium">
+                                <span class="flex items-center gap-2"><i data-lucide="bed-double" class="w-4 h-4 text-secondary"></i> Chăn mền</span>
+                                <span><span x-text="items.blankets"></span> cái</span>
+                            </li>
+                            <li x-show="items.delicates > 0" class="flex justify-between font-medium">
+                                <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-accent"></i> Đồ delicate</span>
+                                <span><span x-text="items.delicates"></span> cái</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Time Summary -->
+                    <div>
+                        <div class="flex justify-between items-end mb-4 border-b-2 border-border pb-2">
+                            <h3 class="text-xl font-bold">Thời gian lấy</h3>
+                            <button @click="step = 2" class="text-primary font-bold hover:underline text-sm uppercase-label tracking-wide">Sửa</button>
+                        </div>
+                        <div class="font-medium flex items-center gap-2">
+                            <i data-lucide="calendar" class="w-5 h-5 text-gray-500"></i>
+                            <span x-text="getFormattedSelectedDateTime()"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pt-6">
+                    <button @click="submitOrder()" class="btn-primary w-full h-16 text-xl font-extrabold flex items-center justify-center gap-2">
+                        Kết thúc thử
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Result -->
+            <div x-show="step === 4" style="display: none;" x-transition.opacity.duration.300ms class="flex flex-col items-center text-center space-y-6 py-12">
+                <div class="w-24 h-24 bg-amber-100 rounded-full flex items-center justify-center mb-4 text-accent">
+                    <i data-lucide="info" class="w-12 h-12"></i>
+                </div>
+                
+                <h2 class="text-4xl font-extrabold">Đã kết thúc thử nghiệm</h2>
+                <p class="text-xl text-gray-600 max-w-md">
+                    Chưa đặt lịch lấy đồ. Đây chỉ là bản minh họa giao diện.
+                </p>
+
+                <div class="pt-8 w-full sm:w-auto flex flex-col gap-4">
+                    <button @click="resetApp()" class="btn-outline w-full sm:w-auto px-8 h-14 text-lg font-bold flex items-center justify-center gap-2">
+                        <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                        Thử lại từ đầu
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function laundryApp() {
+            return {
+                step: 0,
+                items: {
+                    clothes: 0,
+                    blankets: 0,
+                    delicates: 0
+                },
+                selectedDate: null,
+                selectedTime: null,
+                
+                dates: [
+                    { id: 'd1', day: 'Hôm nay', date: '24 Th10' },
+                    { id: 'd2', day: 'Ngày mai', date: '25 Th10' },
+                    { id: 'd3', day: 'Thứ Sáu', date: '26 Th10' },
+                ],
+                
+                timeSlots: {
+                    'd1': [
+                        { id: 't1', time: '08:00 - 10:00', available: false },
+                        { id: 't2', time: '10:00 - 12:00', available: true },
+                        { id: 't3', time: '13:00 - 15:00', available: true },
+                        { id: 't4', time: '15:00 - 17:00', available: true },
+                    ],
+                    'd2': [
+                        { id: 't1', time: '08:00 - 10:00', available: true },
+                        { id: 't2', time: '10:00 - 12:00', available: true },
+                        { id: 't3', time: '13:00 - 15:00', available: false },
+                        { id: 't4', time: '15:00 - 17:00', available: true },
+                    ],
+                    'd3': [
+                        { id: 't1', time: '08:00 - 10:00', available: true },
+                        { id: 't2', time: '10:00 - 12:00', available: true },
+                        { id: 't3', time: '13:00 - 15:00', available: true },
+                        { id: 't4', time: '15:00 - 17:00', available: true },
+                    ]
+                },
+
+                get availableTimeSlots() {
+                    return this.selectedDate ? this.timeSlots[this.selectedDate] : [];
+                },
+
+                init() {
+                    this.$watch('step', value => {
+                        lucide.createIcons();
+                        window.scrollTo(0, 0);
+                    });
+                    setTimeout(() => lucide.createIcons(), 100);
+                },
+
+                updateItem(type, amount) {
+                    const newVal = this.items[type] + amount;
+                    if (newVal >= 0) {
+                        this.items[type] = newVal;
+                    }
+                },
+
+                hasItems() {
+                    return this.items.clothes > 0 || this.items.blankets > 0 || this.items.delicates > 0;
+                },
+
+                selectDate(dateId) {
+                    if (this.selectedDate !== dateId) {
+                        this.selectedDate = dateId;
+                        this.selectedTime = null; // Reset time when date changes
+                    }
+                },
+
+                selectTime(timeId) {
+                    this.selectedTime = timeId;
+                },
+
+                nextStep() {
+                    if (this.step === 1 && !this.hasItems()) return;
+                    if (this.step === 2 && (this.selectedDate === null || this.selectedTime === null)) return;
+                    this.step++;
+                },
+
+                prevStep() {
+                    if (this.step > 0) this.step--;
+                },
+
+                getFormattedSelectedDateTime() {
+                    if (!this.selectedDate || !this.selectedTime) return '';
+                    const dateObj = this.dates.find(d => d.id === this.selectedDate);
+                    const timeObj = this.timeSlots[this.selectedDate].find(t => t.id === this.selectedTime);
+                    return `${dateObj.day}, ${dateObj.date} lúc ${timeObj.time}`;
+                },
+
+                submitOrder() {
+                    this.step = 4;
+                },
+
+                resetApp() {
+                    this.step = 0;
+                    this.items = { clothes: 0, blankets: 0, delicates: 0 };
+                    this.selectedDate = null;
+                    this.selectedTime = null;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

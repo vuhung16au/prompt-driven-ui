@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doanh Nghiệp Cao Cấp Nền Tối</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#1E1E1E',
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans text-white antialiased">
+    
+    <!-- Phần Điều hướng -->
+    <nav class="border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="font-serif text-xl font-bold tracking-wider uppercase">Acme Corp</div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase text-gray-400">
+                <a href="#services" class="hover:text-white transition-colors">Dịch vụ</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Đánh giá</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-flex border border-white/20 bg-transparent text-white hover:bg-white hover:text-charcoal px-6 py-3 text-xs font-semibold tracking-widest uppercase transition-all duration-300 rounded-none">Tư vấn</a>
+        </div>
+    </nav>
+
+    <!-- Phần Hero -->
+    <section class="py-24 md:py-32 border-b border-white/10 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7">
+                <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl leading-tight tracking-tight mb-8">
+                    Uy tín, Niềm tin,<br>và Chuyên môn.
+                </h1>
+                <p class="font-sans font-light text-base sm:text-lg leading-relaxed text-gray-400 mb-12 max-w-2xl">
+                    Chúng tôi cung cấp các dịch vụ chuyên nghiệp và tư vấn chiến lược vô song cho các doanh nghiệp toàn cầu. Sự chính xác và rõ ràng trong từng cam kết.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-widest uppercase bg-white text-charcoal hover:bg-gray-200 transition-all duration-300 rounded-none">
+                        Lên lịch tư vấn
+                    </a>
+                    <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-widest uppercase border border-white/20 bg-transparent text-white hover:bg-white hover:text-charcoal transition-all duration-300 rounded-none">
+                        Xem dịch vụ
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-5 h-96 bg-[#2A2A2A] border border-white/10 relative flex items-center justify-center overflow-hidden">
+                <!-- Hình ảnh thay thế đại diện cho nhiếp ảnh chuyên nghiệp, phong cách tối màu -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-charcoal/80 to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200&h=1600&sat=-100" alt="Hình ảnh văn phòng doanh nghiệp trừu tượng" class="object-cover w-full h-full grayscale opacity-50" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Dịch vụ -->
+    <section id="services" class="py-24 md:py-32 border-b border-white/10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 max-w-3xl">
+                <h2 class="font-serif text-3xl sm:text-4xl mb-6">Năng Lực Chiến Lược</h2>
+                <p class="text-gray-400 font-light text-base sm:text-lg leading-relaxed">
+                    Những năng lực cốt lõi của chúng tôi được thiết kế để vượt qua các môi trường pháp lý phức tạp và thúc đẩy tăng trưởng doanh nghiệp bền vững.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/10">
+                <!-- Dịch vụ 1 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">01</span>
+                    <h3 class="font-serif text-2xl mb-4">Thành Lập Doanh Nghiệp</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Cấu trúc các thực thể toàn cầu với trọng tâm là bảo vệ trách nhiệm pháp lý và tối ưu hiệu quả về thuế.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Tìm hiểu thêm <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+                <!-- Dịch vụ 2 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">02</span>
+                    <h3 class="font-serif text-2xl mb-4">Quản Trị Doanh Nghiệp</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Thiết lập cấu trúc hội đồng quản trị vững mạnh, các quy trình tuân thủ và chính sách nội bộ.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Tìm hiểu thêm <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+                <!-- Dịch vụ 3 -->
+                <div class="relative flex flex-col p-8 border-b border-r border-white/10 bg-transparent hover:bg-white/5 transition-colors duration-300 group">
+                    <span class="text-gray-500 font-mono text-sm tracking-widest mb-6">03</span>
+                    <h3 class="font-serif text-2xl mb-4">Soạn Thảo Hợp Đồng</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                        Chuẩn bị tỉ mỉ các thỏa thuận dịch vụ tổng thể, hợp đồng nhà cung cấp và tài liệu lao động.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-sm font-semibold tracking-widest uppercase text-white group-hover:text-gold transition-colors">
+                        Tìm hiểu thêm <span class="ml-2">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần Đánh giá -->
+    <section id="testimonials" class="py-24 md:py-32 px-6 border-b border-white/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-serif text-3xl sm:text-4xl mb-12">Góc Nhìn Khách Hàng</h2>
+                <div class="border-t border-white/10 pt-8">
+                    <p class="font-serif text-2xl sm:text-3xl leading-relaxed mb-8">
+                        <span class="text-gray-500 text-4xl mr-2">"</span>Sự chính xác và tầm nhìn chiến lược của họ đã đóng vai trò quan trọng trong việc mở rộng quốc tế của chúng tôi. Một mối quan hệ đối tác thực sự cao cấp."
+                    </p>
+                    <div>
+                        <div class="font-semibold tracking-wider uppercase text-sm mb-1 text-white">Jane Doe</div>
+                        <div class="text-gray-400 font-light text-sm">Giám đốc Điều hành, Global Nexus</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 mt-auto hidden md:block">
+                 <p class="font-serif text-2xl sm:text-3xl leading-relaxed mb-8">
+                        <span class="text-gray-500 text-4xl mr-2">"</span>Chất lượng không thỏa hiệp và kiến thức sâu rộng về ngành. Họ giải quyết sự phức tạp với sự tinh tế vô song."
+                    </p>
+                    <div>
+                        <div class="font-semibold tracking-wider uppercase text-sm mb-1 text-white">Richard Roe</div>
+                        <div class="text-gray-400 font-light text-sm">Giám đốc Điều hành, Horizon Capital</div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Phần Liên hệ / Kêu gọi hành động -->
+    <section id="contact" class="py-24 md:py-32 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-serif text-4xl sm:text-5xl mb-6">Bạn đã sẵn sàng?</h2>
+            <p class="text-gray-400 font-light text-base sm:text-lg leading-relaxed mb-12">
+                Hãy đặt lịch tư vấn riêng để thảo luận về các yêu cầu cụ thể của bạn.
+            </p>
+            <a href="#" class="inline-flex items-center justify-center px-12 py-5 text-sm font-semibold tracking-widest uppercase bg-white text-charcoal hover:bg-gray-200 transition-all duration-300 rounded-none">
+                Liên hệ với chúng tôi
+            </a>
+        </div>
+    </section>
+
+    <!-- Phần Chân trang -->
+    <footer class="border-t border-white/10 py-12 px-6 text-sm text-gray-500 font-light">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 uppercase tracking-widest font-semibold text-gray-400">Acme Corp &copy; 2026</div>
+            <div class="flex space-x-6 uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a>
+                <a href="#" class="hover:text-white transition-colors">Điều khoản dịch vụ</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

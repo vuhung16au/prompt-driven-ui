@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuỗi Khối - Mô phỏng tương tác</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#030304',
+            surface: '#0F1115',
+            primary: '#F7931A',
+            secondary: '#EA580C',
+            tertiary: '#FFD600',
+            muted: '#94A3B8',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative overflow-x-hidden antialiased">
+  
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+  <div class="bg-blur-ambient w-[600px] h-[600px] top-[-200px] left-1/2 -translate-x-1/2"></div>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    
+    <!-- Hero Section -->
+    <header class="text-center max-w-3xl mx-auto mb-24">
+      <h1 class="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+        Một thay đổi.<br>
+        <span class="text-gradient">Cả chuỗi cùng biết.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-muted mb-10 font-body leading-relaxed">
+        Khám phá cách các khối dữ liệu liên hệ với nhau qua một mô hình tương tác đơn giản.
+      </p>
+      <a href="#demo" class="btn-primary focus-visible">Thử thay đổi một khối</a>
+    </header>
+
+    <!-- Tình huống & Chuỗi mẫu -->
+    <section id="demo" class="mb-24">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Tình huống cần kiểm chứng</h2>
+        <p class="text-muted max-w-2xl mx-auto">Ví dụ sổ ghi nhận bốn lần bàn giao tài liệu. Dữ liệu bên dưới được mô phỏng để giải thích cách chuỗi hoạt động.</p>
+      </div>
+
+      <!-- Chain Visualizer -->
+      <div class="relative overflow-x-auto pb-8">
+        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start min-w-[768px] mx-auto justify-center" id="blockchain-container">
+          
+          <!-- Block 1 -->
+          <div class="w-64 card-block relative group" id="block-1">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">1</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Hành động</div>
+              <div class="font-heading font-semibold text-lg">Tạo hồ sơ</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (hiện tại):</span>
+                <span class="text-primary truncate ml-2" title="a1b2c3d4">a1b2...</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (trước đó):</span>
+                <span class="text-white">0000...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Link 1 -> 2 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-1"></div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="w-64 card-block relative group" id="block-2">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">2</div>
+            <div class="mb-4 pb-4 border-b border-white/10 flex justify-between items-center cursor-pointer" onclick="toggleDisclosure('block-2-details')">
+              <div>
+                <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Hành động</div>
+                <div class="font-heading font-semibold text-lg" id="block-2-title-display">Giao cho Alice</div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted group-hover:text-primary transition-colors"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            
+            <div id="block-2-details" class="disclosure-content mb-4 space-y-2 font-body text-sm text-gray-300 bg-white/5 p-3 rounded-lg">
+              <p><span class="text-muted">Người gửi:</span> Hệ thống</p>
+              <p><span class="text-muted">Tên tài liệu:</span> <span id="block-2-doc-name">Hợp đồng A</span></p>
+              <p><span class="text-muted">Phiên bản:</span> v1.0</p>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (hiện tại):</span>
+                <span class="text-primary truncate ml-2" id="block-2-hash">e5f6g7h8</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (trước đó):</span>
+                <span class="text-white truncate ml-2" title="a1b2c3d4">a1b2...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-2-status">Khớp</span>
+            </div>
+          </div>
+
+          <!-- Link 2 -> 3 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-2"></div>
+          </div>
+
+          <!-- Block 3 -->
+          <div class="w-64 card-block relative group" id="block-3">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">3</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Hành động</div>
+              <div class="font-heading font-semibold text-lg">Giao cho Bob</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (hiện tại):</span>
+                <span class="text-primary truncate ml-2" id="block-3-hash">i9j0k1l2</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-muted">Mã (trước đó):</span>
+                <span class="text-white truncate ml-2 flex-1 text-right" id="block-3-prev-hash" title="e5f6g7h8">e5f6...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-3-status">Khớp</span>
+            </div>
+          </div>
+
+          <!-- Link 3 -> 4 -->
+          <div class="hidden md:block w-8 shrink-0 relative mt-16">
+            <div class="chain-link w-full absolute top-1/2 -translate-y-1/2" id="link-3"></div>
+          </div>
+
+          <!-- Block 4 -->
+          <div class="w-64 card-block relative group" id="block-4">
+            <div class="absolute -top-3 -left-3 bg-primary/20 text-primary border border-primary/50 w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm font-bold glow-primary z-20">4</div>
+            <div class="mb-4 pb-4 border-b border-white/10">
+              <div class="font-mono text-xs text-muted mb-1 uppercase tracking-wider">Hành động</div>
+              <div class="font-heading font-semibold text-lg">Lưu trữ</div>
+            </div>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="flex justify-between">
+                <span class="text-muted">Mã (hiện tại):</span>
+                <span class="text-primary truncate ml-2">m3n4o5p6</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-muted">Mã (trước đó):</span>
+                <span class="text-white truncate ml-2 flex-1 text-right" id="block-4-prev-hash" title="i9j0k1l2">i9j0...</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
+              <span class="status-badge ok" id="block-4-status">Khớp</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Thử thay dữ liệu & Giải thích -->
+    <div class="grid md:grid-cols-2 gap-12 mb-24">
+      <section class="glass-card p-8">
+        <h3 class="font-heading text-2xl font-semibold mb-6">Thử thay dữ liệu khối 2</h3>
+        <form id="edit-form" class="space-y-6">
+          <div>
+            <label for="doc-title" class="block text-sm font-mono text-muted mb-2 uppercase tracking-wider">Tên tài liệu mới</label>
+            <input type="text" id="doc-title" class="input-field focus-visible" value="Hợp đồng A" autocomplete="off">
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <button type="button" id="btn-update" class="btn-primary focus-visible">Cập nhật khối</button>
+            <button type="button" id="btn-verify" class="btn-outline focus-visible" disabled>Kiểm tra liên kết</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="p-8 border border-white/10 rounded-2xl bg-surface/50">
+        <h3 class="font-heading text-2xl font-semibold mb-4">Kết quả kiểm tra</h3>
+        <div id="result-text" class="text-muted leading-relaxed mb-6">
+          <p>Mọi liên kết đang an toàn. Thử đổi tên tài liệu và kiểm tra xem điều gì sẽ xảy ra với các khối tiếp theo.</p>
+        </div>
+        <div class="p-4 bg-void border border-white/10 rounded-lg text-sm text-gray-400">
+          <strong>Lưu ý:</strong> Đây chỉ là mô phỏng giao diện tương tác; không có kết nối mạng blockchain hay thực hiện giao dịch thật.
+        </div>
+      </section>
+    </div>
+
+    <!-- Khôi phục & Từ vựng -->
+    <section class="border-t border-white/10 pt-16">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="flex-1">
+          <h3 class="font-heading text-2xl font-semibold mb-6">Đã hiểu mô hình?</h3>
+          <p class="text-muted mb-8 max-w-md">Bạn có thể khôi phục lại dữ liệu ban đầu để xem lại từ đầu, hoặc tìm hiểu các thuật ngữ bên cạnh.</p>
+          <button type="button" id="btn-reset" class="btn-outline focus-visible">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            Khôi phục chuỗi
+          </button>
+        </div>
+
+        <div class="flex-1 w-full space-y-4">
+          <!-- Glossary Item 1 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-1')">
+              Khối (Block)
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-1" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              Gói dữ liệu chứa thông tin giao dịch, hành động hoặc hồ sơ. Mỗi khối đều có một mã nhận diện độc nhất tạo ra từ chính nội dung của nó.
+            </div>
+          </div>
+          
+          <!-- Glossary Item 2 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-2')">
+              Liên kết (Link / Hash tham chiếu)
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-2" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              Khối sau luôn lưu mã của khối trước đó. Điều này tạo ra một chuỗi gắn kết không thể tách rời hoặc tự ý chèn ngang.
+            </div>
+          </div>
+
+          <!-- Glossary Item 3 -->
+          <div class="border border-white/10 rounded-lg bg-surface overflow-hidden">
+            <button type="button" class="w-full text-left p-4 font-heading font-semibold flex justify-between items-center focus-visible focus:outline-none focus:bg-white/5 hover:bg-white/5 transition-colors" onclick="toggleDisclosure('glossary-3')">
+              Kiểm chứng (Verify)
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="glossary-3" class="disclosure-content p-4 pt-0 text-sm text-muted">
+              Hành động tính toán lại mã nhận diện của các khối. Nếu nội dung một khối thay đổi, mã của nó đổi theo, làm đứt gãy liên kết với khối tiếp theo.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

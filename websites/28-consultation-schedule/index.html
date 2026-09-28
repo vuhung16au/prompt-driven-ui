@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Tư Vấn</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        md: {
+                            bg: '#FFFBFE',
+                            onBg: '#1C1B1F',
+                            primary: '#6750A4',
+                            onPrimary: '#FFFFFF',
+                            secContainer: '#E8DEF8',
+                            onSecContainer: '#1D192B',
+                            tertiary: '#7D5260',
+                            surfContainer: '#F3EDF7',
+                            surfContainerLow: '#E7E0EC',
+                            outline: '#79747E',
+                            onSurfVariant: '#49454F',
+                            error: '#B3261E',
+                        }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'] },
+                    transitionTimingFunction: { 'md': 'cubic-bezier(0.2, 0, 0, 1)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FFFBFE; color: #1C1B1F; font-family: 'Roboto', sans-serif; }
+        .ease-md { transition-timing-function: cubic-bezier(0.2, 0, 0, 1); }
+        
+        /* Material 3 Filled Text Field styling */
+        .md-input:focus-within label, .md-input input:not(:placeholder-shown) + label, .md-input textarea:not(:placeholder-shown) + label {
+            transform: translateY(-0.8rem) scale(0.75);
+        }
+        .md-input:focus-within label { color: #6750A4; }
+        .md-input.error { border-color: #B3261E; }
+        .md-input.error:focus-within label { color: #B3261E; }
+        
+        /* Format buttons */
+        .format-btn[aria-checked="true"] { background-color: #E8DEF8; color: #1D192B; border: 2px solid #6750A4; }
+        .format-btn[aria-checked="false"] { background-color: #F3EDF7; color: #49454F; border: 2px solid transparent; }
+        .format-btn[aria-checked="true"] .check-icon { opacity: 1; }
+        
+        /* Date buttons */
+        .date-btn[aria-pressed="true"] { background-color: #6750A4; color: #FFFFFF; }
+        .date-btn[aria-pressed="false"]:not(:disabled):hover { background-color: #E7E0EC; }
+        
+        /* Time slot buttons */
+        .slot-btn[aria-pressed="true"] { background-color: #6750A4; color: #FFFFFF; }
+        .slot-btn[aria-pressed="false"]:not(:disabled) { background-color: #E8DEF8; color: #1D192B; }
+        .slot-btn[aria-pressed="false"]:not(:disabled):hover { background-color: #E8DEF8; opacity: 0.9; }
+        .slot-btn:disabled { background-color: #E7E0EC; color: #1C1B1F; opacity: 0.38; cursor: not-allowed; }
+    </style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden antialiased">
+    <!-- Atmospheric Blur Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-md-secContainer/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-10 left-0 w-80 h-80 bg-md-tertiary/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+        <div class="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-md-primary/10 rounded-[100px] blur-3xl rotate-12 mix-blend-multiply"></div>
+    </div>
+
+    <main class="relative z-10 container mx-auto px-4 py-8 md:py-12 max-w-4xl flex flex-col gap-6 md:gap-8">
+        <!-- Hero Section -->
+        <header class="bg-md-surfContainer rounded-[32px] md:rounded-[48px] p-6 md:p-12 shadow-sm transition-all duration-300 ease-md hover:shadow-md group">
+            <h1 class="text-3xl md:text-5xl font-medium text-md-onBg leading-tight tracking-tight mb-4 group-hover:scale-[1.01] origin-left transition-transform duration-300 ease-md">
+                Chọn lịch tư vấn phù hợp với bạn
+            </h1>
+            <p class="text-base md:text-xl text-md-onSurfVariant max-w-2xl">
+                Xem thông tin buổi tư vấn và thử chọn một khung giờ trong lịch minh họa.
+            </p>
+        </header>
+
+        <!-- Needs & Format -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="bg-md-surfContainer rounded-[24px] p-6 shadow-sm hover:shadow-md transition-all duration-300 ease-md flex flex-col group">
+                <h2 class="text-xl md:text-2xl font-medium text-md-onBg mb-2 group-hover:text-md-primary transition-colors duration-300">Thông tin tư vấn</h2>
+                <div class="flex items-center gap-3 mb-4 text-md-primary">
+                    <span class="material-symbols-rounded text-3xl">psychology</span>
+                    <span class="font-medium text-lg">Cố vấn Minh Tâm</span>
+                </div>
+                <p class="text-md-onSurfVariant mb-4 flex-grow leading-relaxed text-sm md:text-base">
+                    Lắng nghe, tháo gỡ vướng mắc và định hướng giải pháp tâm lý ban đầu. (Lưu ý: Đây không phải chẩn đoán y khoa, không cam kết kết quả điều trị).
+                </p>
+            </section>
+
+            <section class="bg-md-surfContainer rounded-[24px] p-6 shadow-sm hover:shadow-md transition-all duration-300 ease-md">
+                <h2 class="text-xl md:text-2xl font-medium text-md-onBg mb-4">1. Chọn hình thức</h2>
+                <div class="flex flex-col gap-3" id="format-selection" role="radiogroup">
+                    <button role="radio" aria-checked="true" class="format-btn w-full text-left p-4 rounded-[20px] transition-all duration-300 ease-md active:scale-95 focus-visible:ring-2 focus-visible:ring-md-primary focus-visible:ring-offset-2 flex justify-between items-center bg-md-surfContainerLow" data-value="Tư vấn ban đầu">
+                        <div>
+                            <div class="font-medium text-base">Tư vấn ban đầu</div>
+                            <div class="text-sm opacity-80 mt-1">45 phút • Phân tích tổng quan</div>
+                        </div>
+                        <span class="material-symbols-rounded check-icon text-md-primary transition-opacity duration-300">check_circle</span>
+                    </button>
+                    <button role="radio" aria-checked="false" class="format-btn w-full text-left p-4 rounded-[20px] transition-all duration-300 ease-md active:scale-95 focus-visible:ring-2 focus-visible:ring-md-primary focus-visible:ring-offset-2 flex justify-between items-center bg-md-surfContainerLow" data-value="Tái trao đổi">
+                        <div>
+                            <div class="font-medium text-base">Tái trao đổi</div>
+                            <div class="text-sm opacity-80 mt-1">30 phút • Cập nhật tiến độ</div>
+                        </div>
+                        <span class="material-symbols-rounded check-icon text-md-primary opacity-0 transition-opacity duration-300">check_circle</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Calendar & Slots -->
+        <section class="bg-md-surfContainer rounded-[24px] p-6 shadow-sm hover:shadow-md transition-all duration-300 ease-md">
+            <h2 class="text-xl md:text-2xl font-medium text-md-onBg mb-2">2. Lịch và thời gian</h2>
+            <p class="text-sm md:text-base text-md-onSurfVariant mb-6">Chọn ngày để xem các khung giờ còn trống (Dữ liệu mẫu).</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Date Picker -->
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-medium text-md-onBg text-lg">Tháng 10, 2026</h3>
+                        <div class="flex gap-2">
+                            <button class="w-10 h-10 rounded-full hover:bg-md-onSurfVariant/10 flex items-center justify-center transition-colors active:scale-95" aria-label="Tháng trước">
+                                <span class="material-symbols-rounded">chevron_left</span>
+                            </button>
+                            <button class="w-10 h-10 rounded-full hover:bg-md-onSurfVariant/10 flex items-center justify-center transition-colors active:scale-95" aria-label="Tháng sau">
+                                <span class="material-symbols-rounded">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-1 text-center mb-2 text-xs md:text-sm text-md-onSurfVariant font-medium">
+                        <div>T2</div><div>T3</div><div>T4</div><div>T5</div><div>T6</div><div>T7</div><div>CN</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-1 text-center" id="calendar-grid">
+                        <!-- Generated via JS -->
+                    </div>
+                </div>
+
+                <!-- Time Slots -->
+                <div>
+                    <h3 class="font-medium text-md-onBg mb-4 text-lg">Giờ khả dụng</h3>
+                    <div class="grid grid-cols-2 gap-3" id="time-slots">
+                        <p class="text-sm text-md-onSurfVariant col-span-2 p-4 bg-md-surfContainerLow rounded-xl text-center">Vui lòng chọn ngày để xem giờ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Review -->
+        <section class="bg-md-surfContainer rounded-[24px] p-6 shadow-sm hover:shadow-md transition-all duration-300 ease-md">
+            <h2 class="text-xl md:text-2xl font-medium text-md-onBg mb-6">3. Thông tin liên hệ</h2>
+            <form id="booking-form" class="flex flex-col gap-6" novalidate>
+                <!-- Name -->
+                <div>
+                    <div class="md-input relative w-full h-14 bg-md-surfContainerLow rounded-t-[12px] border-b-2 border-md-outline focus-within:border-md-primary transition-colors duration-200" id="name-container">
+                        <input type="text" id="name" required class="w-full h-full pt-5 px-4 bg-transparent outline-none text-md-onBg font-medium" placeholder=" " aria-describedby="name-error" />
+                        <label for="name" class="absolute left-4 top-4 text-md-onSurfVariant transition-all duration-200 origin-left pointer-events-none">Họ và tên</label>
+                    </div>
+                    <div id="name-error" class="text-md-error text-xs px-4 mt-1 hidden">Vui lòng nhập họ và tên.</div>
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <div class="md-input relative w-full h-14 bg-md-surfContainerLow rounded-t-[12px] border-b-2 border-md-outline focus-within:border-md-primary transition-colors duration-200" id="phone-container">
+                        <input type="tel" id="phone" required pattern="[0-9]{10}" class="w-full h-full pt-5 px-4 bg-transparent outline-none text-md-onBg font-medium" placeholder=" " aria-describedby="phone-error" />
+                        <label for="phone" class="absolute left-4 top-4 text-md-onSurfVariant transition-all duration-200 origin-left pointer-events-none">Số điện thoại</label>
+                    </div>
+                    <div id="phone-error" class="text-md-error text-xs px-4 mt-1 hidden">Vui lòng nhập số điện thoại hợp lệ (10 chữ số).</div>
+                </div>
+
+                <!-- Notes -->
+                <div class="md-input relative w-full bg-md-surfContainerLow rounded-t-[12px] border-b-2 border-md-outline focus-within:border-md-primary transition-colors duration-200">
+                    <textarea id="notes" rows="3" class="w-full pt-6 px-4 pb-2 bg-transparent outline-none text-md-onBg font-medium resize-none" placeholder=" "></textarea>
+                    <label for="notes" class="absolute left-4 top-4 text-md-onSurfVariant transition-all duration-200 origin-left pointer-events-none">Ghi chú (tùy chọn)</label>
+                </div>
+
+                <!-- Review Panel inside form to enable submit logic -->
+                <div class="mt-2 bg-md-bg/60 p-5 rounded-[20px] border border-md-outline/10 shadow-sm">
+                    <h3 class="font-medium text-md-onBg mb-3 text-lg">4. Xem lại & Xác nhận</h3>
+                    <div class="text-sm text-md-onSurfVariant flex flex-col gap-2 mb-6" id="summary-content">
+                        <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg">category</span> Hình thức: <strong id="sum-format" class="text-md-onBg">Tư vấn ban đầu</strong></div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg">calendar_today</span> Ngày hẹn: <strong id="sum-date" class="text-md-error">Chưa chọn</strong></div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg">schedule</span> Giờ hẹn: <strong id="sum-time" class="text-md-error">Chưa chọn</strong></div>
+                    </div>
+                    <button type="submit" class="w-full sm:w-auto px-8 h-12 bg-md-primary text-md-onPrimary rounded-full font-medium transition-all duration-300 ease-md active:scale-95 hover:bg-md-primary/90 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-md-primary focus-visible:ring-offset-2 flex items-center justify-center gap-2">
+                        <span>Xem xác nhận mẫu</span>
+                        <span class="material-symbols-rounded text-[20px]">arrow_forward</span>
+                    </button>
+                    <p class="text-xs text-md-onSurfVariant mt-4 text-center sm:text-left flex items-center justify-center sm:justify-start gap-1">
+                        <span class="material-symbols-rounded text-[14px]">info</span>
+                        Đây là giao diện minh họa, không có lịch thật được đặt.
+                    </p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Snackbar -->
+    <div id="snackbar" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-md-onBg text-md-bg px-6 py-3 rounded-xl shadow-lg transition-all duration-300 ease-md translate-y-20 opacity-0 z-50 flex items-center gap-3">
+        <span class="material-symbols-rounded text-md-secContainer">notifications</span>
+        <span id="snackbar-msg" class="text-sm font-medium">Thao tác thành công.</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // State
+            let state = {
+                format: 'Tư vấn ban đầu',
+                date: null,
+                time: null
+            };
+
+            // Format Selection
+            const formatBtns = document.querySelectorAll('.format-btn');
+            formatBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    formatBtns.forEach(b => {
+                        b.setAttribute('aria-checked', 'false');
+                        b.querySelector('.check-icon').classList.remove('opacity-100');
+                        b.querySelector('.check-icon').classList.add('opacity-0');
+                    });
+                    btn.setAttribute('aria-checked', 'true');
+                    btn.querySelector('.check-icon').classList.remove('opacity-0');
+                    btn.querySelector('.check-icon').classList.add('opacity-100');
+                    state.format = btn.getAttribute('data-value');
+                    updateSummary();
+                });
+            });
+
+            // Calendar Generation (Dummy for current month)
+            const calendarGrid = document.getElementById('calendar-grid');
+            const daysInMonth = 31; 
+            const firstDayOffset = 3; 
+            
+            for(let i=0; i<firstDayOffset; i++) {
+                const empty = document.createElement('div');
+                calendarGrid.appendChild(empty);
+            }
+
+            for(let i=1; i<=daysInMonth; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'date-btn w-10 h-10 mx-auto rounded-full flex items-center justify-center text-sm font-medium transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-md-primary';
+                btn.innerText = i;
+                btn.setAttribute('aria-pressed', 'false');
+                
+                if(i < 15 && i % 2 === 0) {
+                    btn.disabled = true;
+                    btn.classList.add('opacity-30', 'cursor-not-allowed');
+                } else {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('.date-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+                        btn.setAttribute('aria-pressed', 'true');
+                        state.date = `Ngày ${i} Tháng 10, 2026`;
+                        
+                        state.time = null;
+                        renderTimeSlots();
+                        updateSummary();
+                    });
+                }
+                calendarGrid.appendChild(btn);
+            }
+
+            // Time Slots Render
+            function renderTimeSlots() {
+                const slotsContainer = document.getElementById('time-slots');
+                slotsContainer.innerHTML = '';
+                
+                if(!state.date) {
+                    slotsContainer.innerHTML = '<p class="text-sm text-md-onSurfVariant col-span-2 p-4 bg-md-surfContainerLow rounded-xl text-center">Vui lòng chọn ngày để xem giờ.</p>';
+                    return;
+                }
+
+                const slots = [
+                    { time: '09:00', available: true },
+                    { time: '10:00', available: false },
+                    { time: '14:00', available: true },
+                    { time: '15:30', available: true }
+                ];
+
+                slots.forEach(slot => {
+                    const btn = document.createElement('button');
+                    btn.className = 'slot-btn w-full py-3 rounded-full font-medium text-sm transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-md-primary';
+                    
+                    if(!slot.available) {
+                        btn.disabled = true;
+                        btn.innerHTML = `<span class="line-through opacity-70">${slot.time}</span><span class="block text-[10px] opacity-70 font-normal mt-0.5">Kín lịch</span>`;
+                        btn.setAttribute('aria-pressed', 'false');
+                    } else {
+                        btn.innerText = slot.time;
+                        btn.setAttribute('aria-pressed', state.time === slot.time ? 'true' : 'false');
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            document.querySelectorAll('.slot-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+                            btn.setAttribute('aria-pressed', 'true');
+                            state.time = slot.time;
+                            updateSummary();
+                        });
+                    }
+                    slotsContainer.appendChild(btn);
+                });
+            }
+
+            // Summary Update
+            function updateSummary() {
+                document.getElementById('sum-format').innerText = state.format;
+                document.getElementById('sum-date').innerText = state.date || 'Chưa chọn';
+                document.getElementById('sum-time').innerText = state.time || 'Chưa chọn';
+                
+                if(!state.date) document.getElementById('sum-date').className = 'text-md-error';
+                else document.getElementById('sum-date').className = 'text-md-onBg';
+                
+                if(!state.time) document.getElementById('sum-time').className = 'text-md-error';
+                else document.getElementById('sum-time').className = 'text-md-onBg';
+            }
+
+            // Form Validation & Submit
+            const form = document.getElementById('booking-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                let isValid = true;
+                const nameInput = document.getElementById('name');
+                const phoneInput = document.getElementById('phone');
+                
+                // Clear old errors
+                document.getElementById('name-error').classList.add('hidden');
+                document.getElementById('phone-error').classList.add('hidden');
+                document.getElementById('name-container').classList.remove('error', 'border-md-error');
+                document.getElementById('phone-container').classList.remove('error', 'border-md-error');
+
+                if(!nameInput.value.trim()) {
+                    document.getElementById('name-error').classList.remove('hidden');
+                    document.getElementById('name-container').classList.add('error', 'border-md-error');
+                    isValid = false;
+                }
+                
+                const phoneRegex = /^[0-9]{10}$/;
+                if(!phoneRegex.test(phoneInput.value.trim())) {
+                    document.getElementById('phone-error').classList.remove('hidden');
+                    document.getElementById('phone-container').classList.add('error', 'border-md-error');
+                    isValid = false;
+                }
+
+                if(!state.date || !state.time) {
+                    showSnackbar('Vui lòng chọn ngày và giờ tư vấn.', true);
+                    return;
+                }
+
+                if(isValid) {
+                    showSnackbar('Xác nhận mẫu thành công! (Đây là demo)');
+                    // Reset
+                    form.reset();
+                    state.date = null;
+                    state.time = null;
+                    document.querySelectorAll('.date-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+                    renderTimeSlots();
+                    updateSummary();
+                } else {
+                    // Focus first invalid
+                    if(!nameInput.value.trim()) nameInput.focus();
+                    else phoneInput.focus();
+                }
+            });
+
+            // Snackbar logic
+            let snackbarTimeout;
+            function showSnackbar(msg, isError = false) {
+                const snackbar = document.getElementById('snackbar');
+                const msgEl = document.getElementById('snackbar-msg');
+                const icon = snackbar.querySelector('span');
+                
+                msgEl.innerText = msg;
+                if(isError) {
+                    snackbar.classList.replace('bg-md-onBg', 'bg-md-error');
+                    snackbar.classList.replace('text-md-bg', 'text-md-onPrimary');
+                    icon.innerText = 'error';
+                    icon.className = 'material-symbols-rounded text-md-onPrimary';
+                } else {
+                    snackbar.classList.replace('bg-md-error', 'bg-md-onBg');
+                    snackbar.classList.replace('text-md-onPrimary', 'text-md-bg');
+                    icon.innerText = 'check_circle';
+                    icon.className = 'material-symbols-rounded text-md-secContainer';
+                }
+                
+                snackbar.classList.remove('translate-y-20', 'opacity-0');
+                
+                clearTimeout(snackbarTimeout);
+                snackbarTimeout = setTimeout(() => {
+                    snackbar.classList.add('translate-y-20', 'opacity-0');
+                }, 4000);
+            }
+
+            // Init
+            updateSummary();
+        });
+    </script>
+</body>
+</html>

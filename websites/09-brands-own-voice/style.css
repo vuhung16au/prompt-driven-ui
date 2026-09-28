@@ -1,0 +1,26 @@
+/* Custom CSS utilities and specific stylings */
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* Ensure smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .group-hover\:scale-105:hover {
+        transform: none !important;
+    }
+    .grayscale {
+        filter: grayscale(0) !important;
+    }
+}

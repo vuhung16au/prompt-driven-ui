@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project - Straightforward Minimalist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#234B63',
+                        muted: '#A0B4C0',
+                        accent: '#FF6B6B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    
+    <!-- Navigation -->
+    <nav class="border-b border-white/15 px-6 py-6 md:px-12">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between">
+            <div class="text-[15px] font-bold tracking-widest uppercase">Brand</div>
+            <div class="hidden md:flex gap-8">
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Solutions</a>
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Features</a>
+                <a href="#" class="text-[15px] text-white hover:opacity-70 transition-opacity">Pricing</a>
+            </div>
+            <div>
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold border border-white/30 bg-transparent text-white hover:bg-white hover:text-[#234B63] transition-colors rounded-none">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12 md:py-32 grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-2 hidden md:block">
+            <!-- Editorial margin space -->
+            <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-4">About</span>
+        </div>
+        <div class="md:col-span-10">
+            <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">About</span>
+            <h1 class="text-[40px] md:text-[60px] leading-[1.1] font-bold mb-8 max-w-4xl">Minimalist system for modern enterprise design.</h1>
+            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] max-w-2xl mb-12">
+                A strict architecture that removes all redundant elements. Structure and typography are central, bringing high interaction speed and pixel-perfect precision.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-white text-[#234B63] hover:bg-white/90 transition-colors rounded-none w-full sm:w-auto">Get started now</a>
+                <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold text-white hover:opacity-70 underline-offset-4 hover:underline transition-colors rounded-none w-full sm:w-auto">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-white/15" />
+
+    <!-- Features Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Features</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Features</span>
+                <h2 class="text-[30px] leading-[1.2] font-bold">Solid and flexible structure</h2>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15 border-y border-white/15">
+            <!-- Feature 1 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">Display speed</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">Lag-free user experience. The interface is optimized with pure CSS, without slow motion effects.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">High definition</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">UI components are sharp, without shadows. All content aligns to a pixel-perfect grid system.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="py-12 md:py-16 md:px-12 md:first:pl-0 md:last:pr-0 hover:bg-white/5 transition-colors duration-200">
+                <h3 class="text-[22px] leading-[1.2] font-bold mb-4">Strong contrast</h3>
+                <p class="text-[15px] leading-[1.5] text-[#A0B4C0]">Uses a Deep Slate Teal background combined with Pure White text, creating a professional, readable, and focused workspace.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-white/15" />
+
+    <!-- Data/Table Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Pricing</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Pricing</span>
+                <h2 class="text-[30px] leading-[1.2] font-bold mb-12">Transparent and flexible</h2>
+                
+                <div class="border-t border-white/15">
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 border-b border-white/15 py-6">
+                        <div class="sm:col-span-2">
+                            <h3 class="text-[22px] leading-[1.2] font-bold">Basic Plan</h3>
+                            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] mt-2">Used by small teams or individuals</p>
+                        </div>
+                        <div class="flex items-center text-[22px] leading-[1.2] tabular-nums mt-4 sm:mt-0 font-bold">
+                            Free
+                        </div>
+                        <div class="flex items-center justify-start sm:justify-end mt-6 sm:mt-0">
+                            <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold border border-white/30 bg-transparent text-white hover:bg-white hover:text-[#234B63] transition-colors rounded-none w-full sm:w-auto">Start for free</a>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 border-b border-white/15 py-6 hover:bg-white/5 transition-colors duration-200">
+                        <div class="sm:col-span-2">
+                            <h3 class="text-[22px] leading-[1.2] font-bold">Enterprise Plan</h3>
+                            <p class="text-[15px] leading-[1.5] text-[#A0B4C0] mt-2">Unlimited features and priority support</p>
+                        </div>
+                        <div class="flex items-center text-[22px] leading-[1.2] tabular-nums mt-4 sm:mt-0 font-bold">
+                            2,500,000đ<span class="text-[15px] text-[#A0B4C0] ml-2 font-normal">/month</span>
+                        </div>
+                        <div class="flex items-center justify-start sm:justify-end mt-6 sm:mt-0">
+                            <!-- Accent color used extremely sparingly here -->
+                            <a href="#" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-[#FF6B6B] text-white hover:opacity-90 transition-opacity rounded-none w-full sm:w-auto">Upgrade (Mock Data)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="max-w-[1440px] mx-auto px-6 py-24 md:px-12 border-t border-white/15">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-2 hidden md:block">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mt-2">Contact</span>
+            </div>
+            <div class="md:col-span-10">
+                <span class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block md:hidden mb-4">Contact</span>
+                
+                <!-- Bordered Card -->
+                <div class="border border-white/15 bg-transparent p-8 md:p-12 text-white max-w-2xl hover:bg-white/5 transition-colors duration-200">
+                    <h3 class="text-[22px] leading-[1.2] font-bold mb-8">Submit a work request</h3>
+                    <form onsubmit="event.preventDefault(); alert('This is just a demo (Mock Data). No real API connection.');">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mb-2">Full name</label>
+                                <input type="text" placeholder="Enter name" class="h-12 w-full border-b border-white/30 bg-transparent px-0 py-2 text-[15px] text-white placeholder:text-white/40 focus:border-white focus:outline-none focus:ring-0 rounded-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="text-[13px] leading-[1.2] uppercase tracking-widest text-[#A0B4C0] block mb-2">Email Address</label>
+                                <input type="email" placeholder="email@company.com" class="h-12 w-full border-b border-white/30 bg-transparent px-0 py-2 text-[15px] text-white placeholder:text-white/40 focus:border-white focus:outline-none focus:ring-0 rounded-none transition-colors">
+                            </div>
+                            <div class="pt-4">
+                                <button type="submit" class="inline-flex h-12 items-center justify-center px-6 text-[15px] font-bold bg-white text-[#234B63] hover:bg-white/90 transition-colors rounded-none w-full sm:w-auto ring-offset-[#234B63] focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none">
+                                    Submit (Mock Data)
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/15 px-6 py-12 md:px-12">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <div class="text-[15px] font-bold tracking-widest uppercase mb-4">Brand</div>
+                <p class="text-[15px] text-[#A0B4C0]">© 2026 Straightforward Minimalist System.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-6 md:justify-end">
+                <a href="#" class="text-[15px] underline underline-offset-4 text-white hover:opacity-70 transition-opacity">Privacy Policy</a>
+                <a href="#" class="text-[15px] underline underline-offset-4 text-white hover:opacity-70 transition-opacity">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ brief đến bản được duyệt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-[#050506] text-[#EDEDEF] antialiased overflow-x-hidden">
+    
+    <!-- Background System -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0a0a0f_0%,#050506_50%,#020203_100%)]"></div>
+        <div class="absolute inset-0 bg-grid opacity-[0.02]"></div>
+        <div class="absolute inset-0 bg-noise opacity-[0.015]"></div>
+        
+        <!-- Animated Blobs -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[1400px] bg-[#5E6AD2] rounded-full blur-[150px] opacity-25 animate-float"></div>
+        <div class="absolute top-1/4 left-[-200px] w-[600px] h-[800px] bg-[#8A2BE2] rounded-full blur-[120px] opacity-15 animate-float delay-700"></div>
+        <div class="absolute bottom-[-100px] right-[-100px] w-[500px] h-[700px] bg-[#4169E1] rounded-full blur-[100px] opacity-12 animate-float delay-1000"></div>
+    </div>
+
+    <!-- Navigation / Header -->
+    <nav class="sticky top-0 z-50 border-b border-white/[0.06] bg-[#050506]/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-semibold tracking-tight text-lg gradient-text">DesignSpace</div>
+            <button class="md:hidden text-[#EDEDEF] p-2 focus:ring-2 focus:ring-[#5E6AD2]/50 rounded-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center max-w-4xl scroll-reveal">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-tight mb-6 bg-gradient-to-b from-white via-white/95 to-white/70 bg-clip-text text-transparent">
+            Từ brief đến bản được duyệt.
+        </h1>
+        <p class="text-lg md:text-xl text-[#8A8F98] mb-10 max-w-2xl leading-relaxed">
+            Một workspace mẫu để xem phiên bản thiết kế, phản hồi và những việc còn lại trước bàn giao. Dự án Mùa Thu hiện tại: <strong>v2.0</strong> (Đang chờ duyệt).
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+            <button id="open-workspace-btn" class="btn-primary px-6 py-3 rounded-lg font-medium text-white flex items-center gap-2">
+                Mở dự án mẫu
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <div class="flex items-center gap-3 text-sm text-[#8A8F98]">
+                <img src="https://ui-avatars.com/api/?name=Vũ+Hưng&background=5E6AD2&color=fff" alt="Người phụ trách" class="w-8 h-8 rounded-full border border-white/10">
+                <span>Phụ trách: Vũ Hưng</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Workspace Section -->
+    <section id="workspace" class="container mx-auto px-4 md:px-6 py-16 scroll-mt-24 max-w-6xl">
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row h-[700px] border border-white/[0.06] shadow-multi">
+            
+            <!-- Sidebar -->
+            <aside class="w-full md:w-64 border-b md:border-b-0 md:border-r border-white/[0.06] bg-white/[0.02] flex flex-row md:flex-col p-4 gap-2 overflow-x-auto md:overflow-hidden sidebar-tabs">
+                <button class="tab-btn active w-full text-left px-4 py-3 rounded-lg font-medium text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#5E6AD2]/50" data-target="panel-brief">
+                    1. Brief & Yêu cầu
+                </button>
+                <button class="tab-btn w-full text-left px-4 py-3 rounded-lg font-medium text-sm text-[#8A8F98] transition-all hover:bg-white/[0.05] hover:text-[#EDEDEF] focus:outline-none focus:ring-2 focus:ring-[#5E6AD2]/50" data-target="panel-design">
+                    2. Bản dựng & So sánh
+                </button>
+                <button class="tab-btn w-full text-left px-4 py-3 rounded-lg font-medium text-sm text-[#8A8F98] transition-all hover:bg-white/[0.05] hover:text-[#EDEDEF] flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-[#5E6AD2]/50" data-target="panel-feedback">
+                    3. Phản hồi <span class="bg-[#5E6AD2]/20 text-[#5E6AD2] px-2 py-0.5 rounded-full text-xs feedback-counter">3/3</span>
+                </button>
+                <button class="tab-btn w-full text-left px-4 py-3 rounded-lg font-medium text-sm text-[#8A8F98] transition-all hover:bg-white/[0.05] hover:text-[#EDEDEF] focus:outline-none focus:ring-2 focus:ring-[#5E6AD2]/50" data-target="panel-handover">
+                    4. Bàn giao
+                </button>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="flex-1 bg-[#0a0a0c] relative overflow-y-auto">
+                
+                <!-- Panel 1: Brief -->
+                <div id="panel-brief" class="panel-content active p-8">
+                    <h2 class="text-2xl font-semibold mb-6 tracking-tight">Brief Dự án: Mùa Thu</h2>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="glass-surface p-6 rounded-xl border border-white/[0.06]">
+                            <h3 class="text-sm font-mono tracking-widest text-[#5E6AD2] mb-3">MỤC TIÊU</h3>
+                            <p class="text-[#EDEDEF] leading-relaxed">Thiết kế landing page ra mắt bộ sưu tập thời trang "Mùa Thu". Tạo cảm giác ấm áp, sang trọng và thúc đẩy người dùng đăng ký nhận thông tin sớm.</p>
+                        </div>
+                        <div class="glass-surface p-6 rounded-xl border border-white/[0.06]">
+                            <h3 class="text-sm font-mono tracking-widest text-[#5E6AD2] mb-3">ĐỐI TƯỢNG</h3>
+                            <p class="text-[#EDEDEF] leading-relaxed">Khách hàng độ tuổi 25-35, quan tâm đến thời trang bền vững và phong cách tối giản.</p>
+                        </div>
+                        <div class="glass-surface p-6 rounded-xl border border-white/[0.06]">
+                            <h3 class="text-sm font-mono tracking-widest text-[#5E6AD2] mb-3">PHẠM VI</h3>
+                            <ul class="list-disc list-inside text-[#EDEDEF] space-y-2">
+                                <li>1 trang chủ (Landing page).</li>
+                                <li>Tối ưu hóa hiển thị trên di động.</li>
+                                <li>Form đăng ký nhận tin (UI/UX).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Design & Compare -->
+                <div id="panel-design" class="panel-content hidden p-8 h-full flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-semibold tracking-tight">So sánh phiên bản</h2>
+                        <div class="flex bg-white/[0.05] rounded-lg p-1">
+                            <button id="btn-v1" class="px-4 py-1.5 rounded-md text-sm font-medium text-[#8A8F98] hover:text-[#EDEDEF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#5E6AD2]/50">v1.0</button>
+                            <button id="btn-v2" class="px-4 py-1.5 rounded-md text-sm font-medium bg-[#5E6AD2] text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/50">v2.0 (Mới)</button>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex-1 bg-[#050506] border border-white/[0.06] rounded-xl overflow-hidden flex items-center justify-center p-4">
+                        <!-- v1 View -->
+                        <div id="view-v1" class="absolute inset-0 w-full h-full p-8 hidden flex-col items-center justify-center text-center opacity-70">
+                            <div class="w-full max-w-lg border border-white/10 rounded-lg p-8 bg-[#0a0a0c]">
+                                <h1 class="text-3xl text-gray-400 mb-4">Bộ Sưu Tập Mùa Thu Đã Ra Mắt Khám Phá Ngay Hôm Nay</h1>
+                                <p class="text-gray-500 mb-6">Đăng ký để nhận thông báo sớm nhất từ chúng tôi.</p>
+                                <button class="bg-gray-700 text-white px-6 py-2 rounded">Đăng ký ngay</button>
+                            </div>
+                        </div>
+
+                        <!-- v2 View -->
+                        <div id="view-v2" class="absolute inset-0 w-full h-full p-8 flex flex-col items-center justify-center text-center">
+                            <div class="w-full max-w-lg border border-white/[0.15] rounded-xl p-8 bg-[#0a0a0c] shadow-[0_8px_40px_rgba(0,0,0,0.5),0_0_80px_rgba(94,106,210,0.1)] relative transition-all duration-300 transform scale-[1.02]">
+                                <h1 class="text-4xl font-bold text-white mb-4 bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">Đón Mùa Thu.</h1>
+                                <p class="text-[#8A8F98] mb-8">Tinh tế trong từng đường kim mũi chỉ. Trải nghiệm phong cách tối giản.</p>
+                                <div class="flex gap-4 justify-center">
+                                    <button class="bg-[#5E6AD2] hover:bg-[#6872D9] text-white px-6 py-3 rounded-lg font-medium shadow-[0_0_0_1px_rgba(94,106,210,0.5),0_4px_12px_rgba(94,106,210,0.3)] transition-all">Khám phá</button>
+                                    <button class="bg-white/[0.05] hover:bg-white/[0.08] text-white px-6 py-3 rounded-lg font-medium border border-white/10 transition-all">Đăng ký tin</button>
+                                </div>
+                                
+                                <!-- Highlight markers -->
+                                <div class="absolute top-10 left-10 w-6 h-6 bg-[#5E6AD2] rounded-full text-xs flex items-center justify-center font-bold text-white shadow-lg animate-pulse" title="Tăng tương phản & Rút gọn Headline">1</div>
+                                <div class="absolute bottom-12 left-1/2 -translate-x-12 w-6 h-6 bg-[#5E6AD2] rounded-full text-xs flex items-center justify-center font-bold text-white shadow-lg animate-pulse" title="Chuyển CTA & Cải thiện phân cấp">2</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[#8A8F98]">
+                        <div class="flex items-start gap-2">
+                            <span class="w-5 h-5 bg-[#5E6AD2]/20 text-[#5E6AD2] rounded flex items-center justify-center font-mono text-xs mt-0.5">1</span>
+                            <p><strong>Tăng tương phản & Headline:</strong> Rút gọn tiêu đề, dùng chữ trắng trên nền tối để nổi bật hơn v1.</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="w-5 h-5 bg-[#5E6AD2]/20 text-[#5E6AD2] rounded flex items-center justify-center font-mono text-xs mt-0.5">2</span>
+                            <p><strong>Bố cục CTA:</strong> Tách 2 nút hành động rõ ràng, thêm viền phát sáng (glow) để tăng tỷ lệ nhấp.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Feedback -->
+                <div id="panel-feedback" class="panel-content hidden p-8">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h2 class="text-2xl font-semibold tracking-tight">Xử lý phản hồi</h2>
+                            <p class="text-[#8A8F98] text-sm mt-1">Từ buổi đánh giá ngày 24/09</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs font-mono text-[#5E6AD2] mb-1">TIẾN ĐỘ</div>
+                            <div class="text-xl font-semibold"><span id="resolved-count">0</span>/3 hoàn tất</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Feedback Item 1 -->
+                        <div class="feedback-item p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group" data-id="1">
+                            <div class="flex items-start justify-between">
+                                <div class="flex gap-3">
+                                    <div class="mt-1">
+                                        <input type="checkbox" class="feedback-checkbox w-5 h-5 rounded border-white/20 bg-transparent text-[#5E6AD2] focus:ring-[#5E6AD2] focus:ring-offset-[#050506]">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-[#EDEDEF] group-hover:text-[#5E6AD2] transition-colors">Tương phản tiêu đề H1</h4>
+                                        <p class="text-sm text-[#8A8F98] mt-1">Chữ màu xám ở v1 khó đọc trên điện thoại. Cần tăng độ sáng và làm ngắn lại.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-[#8A8F98]">UI/UX</span>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Item 2 -->
+                        <div class="feedback-item p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group" data-id="2">
+                            <div class="flex items-start justify-between">
+                                <div class="flex gap-3">
+                                    <div class="mt-1">
+                                        <input type="checkbox" class="feedback-checkbox w-5 h-5 rounded border-white/20 bg-transparent text-[#5E6AD2] focus:ring-[#5E6AD2] focus:ring-offset-[#050506]">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-[#EDEDEF] group-hover:text-[#5E6AD2] transition-colors">Thiếu CTA phụ</h4>
+                                        <p class="text-sm text-[#8A8F98] mt-1">Cần thêm nút "Đăng ký tin" bên cạnh nút khám phá bộ sưu tập.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-[#8A8F98]">Flow</span>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Item 3 -->
+                        <div class="feedback-item p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group" data-id="3">
+                            <div class="flex items-start justify-between">
+                                <div class="flex gap-3">
+                                    <div class="mt-1">
+                                        <input type="checkbox" class="feedback-checkbox w-5 h-5 rounded border-white/20 bg-transparent text-[#5E6AD2] focus:ring-[#5E6AD2] focus:ring-offset-[#050506]">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-[#EDEDEF] group-hover:text-[#5E6AD2] transition-colors">Kiểm tra trên Mobile</h4>
+                                        <p class="text-sm text-[#8A8F98] mt-1">Đảm bảo khoảng cách các nút đủ lớn (tối thiểu 44px) trên màn hình nhỏ.</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-white/10 px-2 py-1 rounded text-[#8A8F98]">QA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 4: Handover -->
+                <div id="panel-handover" class="panel-content hidden p-8 flex flex-col h-full">
+                    <h2 class="text-2xl font-semibold tracking-tight mb-6">Bàn giao dự án</h2>
+                    
+                    <div class="grid grid-cols-1 gap-4 mb-8">
+                        <label class="flex items-center p-4 border border-white/[0.06] rounded-xl bg-white/[0.02]">
+                            <input type="checkbox" checked disabled class="w-5 h-5 rounded text-[#5E6AD2] bg-white/10 border-none mr-3">
+                            <span class="text-[#EDEDEF]">Nội dung & Hình ảnh gốc (Đã cập nhật đủ)</span>
+                        </label>
+                        <label class="flex items-center p-4 border border-white/[0.06] rounded-xl bg-white/[0.02]">
+                            <input type="checkbox" checked disabled class="w-5 h-5 rounded text-[#5E6AD2] bg-white/10 border-none mr-3">
+                            <span class="text-[#EDEDEF]">Kiểm tra hiển thị Mobile (Responsive 390px, 768px)</span>
+                        </label>
+                        <label class="flex items-center p-4 border border-white/[0.06] rounded-xl bg-white/[0.02]">
+                            <input type="checkbox" checked disabled class="w-5 h-5 rounded text-[#5E6AD2] bg-white/10 border-none mr-3">
+                            <span class="text-[#EDEDEF]">Quyền truy cập mã nguồn & Tài liệu</span>
+                        </label>
+                    </div>
+
+                    <div class="mt-auto flex justify-end">
+                        <button id="btn-report" class="btn-primary bg-[#5E6AD2] text-white px-6 py-3 rounded-lg font-medium shadow-[0_0_0_1px_rgba(94,106,210,0.5),0_4px_12px_rgba(94,106,210,0.3)] transition-all flex items-center gap-2">
+                            Xem bản tổng kết
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Summary Report -->
+    <div id="report-modal" class="fixed inset-0 z-50 bg-[#050506]/90 backdrop-blur-sm hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-[#0a0a0c] border border-white/[0.1] rounded-2xl w-full max-w-lg p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-semibold mb-4 gradient-text">Tổng kết bàn giao (Mẫu)</h3>
+            <div class="text-[#8A8F98] space-y-3 mb-6 text-sm">
+                <p><strong>Dự án:</strong> Mùa Thu Landing Page</p>
+                <p><strong>Phiên bản:</strong> v2.0 (Đã xử lý 3/3 phản hồi)</p>
+                <p><strong>Thành phẩm:</strong> Source code tĩnh (HTML/Tailwind/JS) kèm tài liệu cấu trúc UI.</p>
+                <div class="p-3 bg-white/[0.03] rounded border border-white/[0.05] mt-4">
+                    <p class="italic">Lưu ý: Dữ liệu mẫu dùng để minh họa giao diện. Form đăng ký hiện chưa kết nối API thực tế.</p>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <button id="close-modal" class="bg-white/[0.05] hover:bg-white/[0.1] text-white px-4 py-2 rounded-lg font-medium border border-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-white/50">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thảo An — Take a Moment to Soften and Unwind</title>
+  <meta name="description" content="Thảo An - A natural botanical relaxation sanctuary. Choose a relaxation session based on your time and the feeling you are seeking.">
+  <meta name="theme-color" content="#F9F8F4">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Thảo An — Take a Moment to Soften and Unwind">
+  <meta property="og:description" content="Natural botanical relaxation sanctuary. Everything unfolds slowly so your body and mind can fully restore.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.jpg">
+
+  <!-- Google Fonts: Playfair Display (Serif) & Source Sans 3 (Humanist Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Botanical Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Paper Grain Tactile Texture (Crucial Botanical Brand Element) -->
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="site-container">
+      <nav class="nav-bar" aria-label="Main navigation">
+        <a href="#hero-section" class="brand-logo" aria-label="Thảo An Home">
+          <span>Thảo</span><i>An</i>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="nav-links">
+          <a href="#services-section" class="nav-link">Sessions</a>
+          <a href="#experience-section" class="nav-link">Experience</a>
+          <a href="#booking-section" class="nav-link">Sample Schedule</a>
+          <a href="#prepare-section" class="nav-link">Before You Arrive</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="#booking-section" class="btn btn-secondary" style="min-height: 42px; padding: 0.5rem 1.25rem;">Book Session</a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-overlay" id="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-nav-header">
+      <div class="brand-logo">
+        <span>Thảo</span><i>An</i>
+      </div>
+      <button type="button" class="mobile-nav-close" id="menu-close" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-nav-body">
+      <a href="#hero-section" class="mobile-nav-link">Home</a>
+      <a href="#services-section" class="mobile-nav-link">Choose by Need</a>
+      <a href="#experience-section" class="mobile-nav-link">The Experience</a>
+      <a href="#booking-section" class="mobile-nav-link">Illustrative Schedule</a>
+      <a href="#prepare-section" class="mobile-nav-link">Before You Arrive</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Section 1: Hero / Relaxation Session -->
+    <section class="hero-section" id="hero-section" aria-labelledby="hero-heading">
+      <div class="site-container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"></path>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <span>Botanical Sanctuary</span>
+            </div>
+
+            <h1 class="hero-title" id="hero-heading">
+              Take a moment to <br>
+              <i class="italic font-normal">soften and unwind.</i>
+            </h1>
+
+            <p class="hero-lead">
+              Choose a relaxation session based on your time and the feeling you are seeking. At Thảo An, everything unfolds slowly so your body and mind can fully restore.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#services-section" class="btn btn-primary">
+                <span>Select a session</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#experience-section" class="btn btn-secondary">
+                <span>Explore the space</span>
+              </a>
+            </div>
+
+            <p class="hero-trust-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Pure native botanicals • Non-medical therapy • Personalized pacing</span>
+            </p>
+          </div>
+
+          <div class="hero-image-wrap">
+            <!-- Decorative organic leaf SVG line art -->
+            <svg class="leaf-ornament leaf-ornament-hero swaying-leaf" viewBox="0 0 64 128" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M32 128 C32 80, 0 64, 0 32 C0 0, 32 0, 32 0 C64 0, 64 32, 64 32 C64 64, 32 80, 32 128" />
+              <path d="M32 0 L32 128" />
+              <path d="M32 40 C20 34, 12 36, 6 42" />
+              <path d="M32 60 C44 54, 52 56, 58 62" />
+              <path d="M32 80 C20 74, 12 76, 6 82" />
+            </svg>
+
+            <!-- Arched Roman Frame -->
+            <div class="arch-frame">
+              <img src="images/hero.jpg" alt="Botanical wellness treatment room at Thảo An with soft natural daylight, linen textures, and lush greenery" class="arch-image" width="800" height="1067" priority="high">
+            </div>
+
+            <!-- Floating Hero Quote -->
+            <div class="hero-quote-card" aria-hidden="true">
+              <div class="hero-quote-text">“Slow down your rhythm, listen to your breath.”</div>
+              <div class="hero-quote-author">Thảo An • Quiet Sanctuary</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Choose by Need -->
+    <section class="section-spacing" id="services-section" aria-labelledby="services-heading">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">Choose by Need</span>
+          <h2 class="section-title" id="services-heading">
+            A relaxation session <i class="italic font-normal">tailored for you</i>
+          </h2>
+          <p class="section-desc">
+            Each experience is mindfully calibrated to your schedule and the specific tensions you wish to release today.
+          </p>
+        </div>
+
+        <div class="services-grid" role="listbox" aria-label="Available relaxation sessions">
+          <!-- Service 1: Short Break -->
+          <article class="service-card" data-service-id="short" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <span class="service-duration-badge">30 Mins</span>
+            <h3 class="service-name">Short Break</h3>
+            <p class="service-description">
+              Focused tension release for neck, shoulders, and upper back. Perfect for a quick recharge during lunch or after a long day at the desk.
+            </p>
+            <div class="service-select-btn">
+              <span>Select Session</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Service 2: Deep Relaxation (Staggered naturally in desktop grid) -->
+          <article class="service-card card-stagger" data-service-id="long" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+            </div>
+            <span class="service-duration-badge">90 Mins</span>
+            <h3 class="service-name">Deep Relaxation</h3>
+            <p class="service-description">
+              Full-body therapy combining warm mugwort herbal oil and deep acupressure techniques. Soothes sore muscles, untangles tension knots, and invites deep restful sleep.
+            </p>
+            <div class="service-select-btn">
+              <span>Select Session</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+
+          <!-- Service 3: Herbal Experience -->
+          <article class="service-card" data-service-id="herbal" role="option" tabindex="0" aria-selected="false">
+            <div class="service-icon-box" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <span class="service-duration-badge">120 Mins</span>
+            <h3 class="service-name">Herbal Experience</h3>
+            <p class="service-description">
+              Begins with a fresh ginger foot soak, traditional herbal steam, and concludes with a full-body hot stone massage with agarwood. Complete holistic care for all senses.
+            </p>
+            <div class="service-select-btn">
+              <span>Select Session</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: What Happens During the Session -->
+    <section class="section-spacing" id="experience-section" aria-labelledby="experience-heading" style="background-color: var(--color-bg-subtle);">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">What Happens During the Session</span>
+          <h2 class="section-title" id="experience-heading">
+            Step by step, <i class="italic font-normal">grounding every sense</i>
+          </h2>
+          <p class="section-desc">
+            Never rushed, never pressured. Every moment at Thảo An is crafted with mindful attentiveness for your utmost ease.
+          </p>
+        </div>
+
+        <div class="experience-list">
+          <!-- Step 1: Welcome -->
+          <div class="experience-step">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-top">
+                <img src="images/welcome.jpg" alt="Rustic ceramic cup of warm herbal tea and lemongrass welcoming guests" loading="lazy" width="800" height="900">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">01</span>
+              <h3 class="step-title">The <i class="italic font-normal">Welcome</i></h3>
+              <p class="step-desc">
+                Stepping through the doorway, you are greeted by the gentle aroma of lemongrass and a warm cup of roasted black bean tea. A mindful interlude to slow your heartbeat and leave noise behind before treatment begins.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Clean botanical essence:</strong> Crisp lemongrass essential oil paired with warm roasted black bean and dried lotus petal infusion.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Experience -->
+          <div class="experience-step is-reversed">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-soft">
+                <img src="images/experience.jpg" alt="Smooth warm river stones and botanical amber herbal oil in calm lighting" loading="lazy" width="800" height="600">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">02</span>
+              <h3 class="step-title">The <i class="italic font-normal">Experience</i></h3>
+              <p class="step-desc">
+                In ambient lighting and soothing acoustic melodies, the practitioner begins your treatment. You hold full freedom to request pressure adjustments—gentler or firmer—or shift focus areas to feel completely at ease. Care always follows your natural rhythm.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Attentive adjustments:</strong> You can request deeper or lighter pressure, or adjust the warmth of herbal compresses at any moment.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Conclusion -->
+          <div class="experience-step">
+            <div class="step-image-wrap">
+              <div class="step-image-frame arch-round">
+                <img src="images/conclusion.jpg" alt="Organic waffle linen towel and candied ginger welcoming the gentle return" loading="lazy" width="800" height="800">
+              </div>
+            </div>
+            <div class="step-content">
+              <span class="step-num">03</span>
+              <h3 class="step-title">The <i class="italic font-normal">Conclusion</i></h3>
+              <p class="step-desc">
+                As the treatment concludes, we preserve private space for you to gently awaken your senses. You will be served candied ginger and warm water to stabilize energy, carrying a lingering feeling of weightlessness as you depart.
+              </p>
+              <div class="step-highlight-box">
+                <strong>Gentle awakening:</strong> Organic waffle linen towel, warming ginger slice, and infused warm water to balance your equilibrium.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Illustrative Schedule -->
+    <section class="section-spacing" id="booking-section" aria-labelledby="booking-heading">
+      <div class="site-container">
+        <div class="section-header">
+          <span class="section-label">Illustrative Schedule</span>
+          <h2 class="section-title" id="booking-heading">
+            Sample <i class="italic font-normal">Scheduling Flow</i>
+          </h2>
+          <p class="section-desc">
+            Select a sample date and time slot to preview how scheduling works.
+          </p>
+        </div>
+
+        <div class="booking-panel-container">
+          <div class="booking-card">
+            <!-- Retained Selected Service Summary at top of panel -->
+            <div class="selected-service-summary" id="booking-service-summary">
+              <div class="summary-left">
+                <span class="summary-heading">Selected Session</span>
+                <div class="summary-name" id="selected-service-name">Short Break</div>
+                <div class="summary-meta" id="selected-service-duration">30 Mins • Focused tension release for neck, shoulders, and upper back.</div>
+              </div>
+              <a href="#services-section" class="summary-change-btn" aria-label="Change relaxation session">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                  <path d="M16 21h5v-5"></path>
+                </svg>
+                <span>Change Session</span>
+              </a>
+            </div>
+
+            <!-- Schedule Grid: Date Picker & Time Slots -->
+            <div class="schedule-grid">
+              <!-- Column 1: Date Picker (Mock Month) -->
+              <div class="schedule-column">
+                <h3 class="column-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>1. Choose Date (October)</span>
+                </h3>
+
+                <div class="calendar-widget">
+                  <div class="calendar-month-bar">
+                    <button type="button" class="calendar-nav-btn" aria-label="Previous month (disabled)" disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <span class="month-label">October 2026</span>
+                    <button type="button" class="calendar-nav-btn" aria-label="Next month (disabled)" disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                  </div>
+
+                  <div class="calendar-weekdays" aria-hidden="true">
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                    <div>Su</div>
+                  </div>
+
+                  <div class="calendar-days-grid" id="calendar-days" role="grid" aria-label="October calendar days">
+                    <!-- Populated dynamically by script.js -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2: Time Slots Selector -->
+              <div class="schedule-column">
+                <h3 class="column-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>2. Select Sample Time Slot</span>
+                </h3>
+
+                <div class="slots-container" id="time-slots-container" role="radiogroup" aria-label="Available time slots">
+                  <!-- Populated dynamically by script.js -->
+                </div>
+
+                <!-- Acceptance Test Case 1: Notice when changing services invalidates old slot -->
+                <div class="slot-reset-alert hidden" id="slot-reset-alert" role="alert">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span id="slot-reset-reason">
+                    Service duration has changed. Previous time slot is no longer valid. Please select an available slot.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking Confirmation Footer -->
+            <div class="booking-footer">
+              <!-- Acceptance Test Case 2: Sample schedule label appears PRIOR to confirm action -->
+              <div class="schedule-disclaimer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:var(--color-sage);" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>
+                  <strong>Illustrative Schedule:</strong> Demonstration only; does not send real data or create live bookings.
+                </span>
+              </div>
+
+              <!-- Acceptance Test Case 3 & 4: Button high-contrast & disabled when incomplete -->
+              <div style="text-align: right; width: 100%;">
+                <p id="booking-help-text" style="font-size: 0.8125rem; color: var(--color-fg-muted); margin-bottom: 0.75rem;">
+                  Please select an available time slot to continue.
+                </p>
+                <button type="button" class="btn btn-primary" id="btn-confirm-booking" disabled aria-haspopup="dialog">
+                  <span>Confirm Illustrative Schedule</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Before You Arrive -->
+    <section class="section-spacing" id="prepare-section" aria-labelledby="prepare-heading">
+      <div class="site-container">
+        <div class="arrive-grid">
+          <div class="arrive-left">
+            <span class="section-label">Before You Arrive</span>
+            <h2 class="section-title" id="prepare-heading">
+              Mindful reminders <i class="italic font-normal">for your session</i>
+            </h2>
+            <p class="section-desc">
+              To ensure your experience unfolds smoothly and gently, here are a few simple recommendations from Thảo An.
+            </p>
+
+            <ul class="checklist" role="list">
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Arrive 10 minutes early:</strong> Sip a warm cup of roasted black bean tea and ground your energy before entering the room.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Wear loose clothing:</strong> Choose breathable, relaxed apparel so your muscles can release fully without constriction.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Enjoy a light meal 1 hour prior:</strong> Avoid being overly full or completely hungry during your bodywork session.</span>
+              </li>
+              <li class="checklist-item">
+                <div class="check-icon-circle" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <span><strong>Honor the quiet sanctuary:</strong> Keep mobile phones silenced to preserve peace and deep stillness for all.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="arrive-right">
+            <div class="request-card">
+              <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Special Requests Note</h3>
+              <p style="font-size: 0.9375rem; color: var(--color-fg-muted); margin-bottom: 1.5rem;">
+                Every body tells a unique story. Share your specific areas of attention so our practitioner can adjust care accordingly.
+              </p>
+
+              <form onsubmit="return false;" aria-label="Special requests note form">
+                <label for="special-requests" class="form-label">Personal Note (Sample)</label>
+                <textarea id="special-requests" class="form-textarea" placeholder="For example: Please focus gentle pressure on my right shoulder, sensitive to overpowering aromas..."></textarea>
+                <div class="form-helper-text">
+                  * Illustrative form: Demonstrational only; no personal data is stored or transmitted.
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary" id="btn-toggle-sample" aria-expanded="false" aria-controls="sample-note-box">
+                    <span>View sample request</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Sample Note Display -->
+                <div class="sample-note-box hidden" id="sample-note-box" role="region" aria-label="Sample request template">
+                  <div class="sample-note-header">
+                    <span>Suggested Template:</span>
+                  </div>
+                  <p class="sample-note-content">
+                    “Hello Thảo An, I have persistent tension in my right shoulder and neck from desk work. Please focus gentle-to-medium acupressure on this area using warm herbal oil. I am sensitive to overpowering fragrances. Thank you.”
+                  </p>
+                  <button type="button" class="sample-copy-btn" id="btn-use-sample">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                    <span>Use this template in notes</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span>Thảo</span><i>An</i>
+        </div>
+        <p class="footer-tagline">
+          A mindful pause amidst the restless rush of daily life.
+        </p>
+
+        <div class="footer-nav">
+          <a href="#hero-section">Home</a>
+          <a href="#services-section">Sessions</a>
+          <a href="#experience-section">Experience</a>
+          <a href="#booking-section">Sample Schedule</a>
+          <a href="#prepare-section">Before You Arrive</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Thảo An. Botanical / Organic Serif Design System.</p>
+          <p style="margin-top: 0.5rem; opacity: 0.75;">
+            Demonstration website for interface preview only. No medical claims or commercial transactions are processed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confirmation Modal Dialog -->
+  <div class="dialog-backdrop" id="booking-dialog" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="dialog-card">
+      <button type="button" class="dialog-close-btn" id="dialog-close-btn" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <div class="dialog-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Simulation Recorded</span>
+      </div>
+
+      <h3 class="dialog-title" id="dialog-title">Sample Schedule Confirmed</h3>
+      <p class="dialog-desc">Here is the summary of the relaxation session you just previewed on the illustrative interface:</p>
+
+      <div class="dialog-summary-list">
+        <div class="summary-row">
+          <span class="summary-row-label">Session:</span>
+          <span class="summary-row-value" id="dialog-service-val">Short Break (30 Mins)</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Date:</span>
+          <span class="summary-row-value" id="dialog-date-val">October 15, 2026</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-row-label">Time Slot:</span>
+          <span class="summary-row-value" id="dialog-time-val">09:30</span>
+        </div>
+      </div>
+
+      <div class="dialog-note">
+        <strong>Demonstration Note:</strong> This interaction is purely for user experience preview. No real personal data is retained or transmitted, and no fees are incurred.
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <button type="button" class="btn btn-secondary" id="btn-dialog-reset" style="flex: 1;">
+          Start Over
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-dialog-done" style="flex: 1;">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

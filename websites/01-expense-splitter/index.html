@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia tiền gọn, chuyến đi vui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-icon">
+                <span class="icon">👛</span>
+            </div>
+            <h1>Chia tiền gọn, chuyến đi vui.</h1>
+            <p>Nhập chi phí mẫu và xem mỗi người cần góp bao nhiêu.</p>
+        </header>
+
+        <main class="clay-card calculator-card">
+            <section class="section-members">
+                <h2>Thành viên</h2>
+                <div class="members-list" id="members-list">
+                    <!-- Avatars go here -->
+                </div>
+                <div class="add-member">
+                    <input type="text" id="new-member-name" placeholder="Tên thành viên mới..." class="clay-input">
+                    <button class="clay-btn btn-primary" id="btn-add-member">Thêm</button>
+                </div>
+                <p class="error-msg" id="member-error"></p>
+            </section>
+
+            <section class="section-expenses">
+                <h2>Khoản chi</h2>
+                <div class="expenses-list" id="expenses-list">
+                    <!-- Expenses go here -->
+                </div>
+                <form id="expense-form" class="expense-form">
+                    <input type="text" id="expense-name" placeholder="Tên khoản (vd: Ăn trưa)" class="clay-input" required>
+                    <input type="number" id="expense-amount" placeholder="Số tiền (VNĐ)" class="clay-input" min="1" step="1" required>
+                    <select id="expense-payer" class="clay-input" required>
+                        <!-- Payer options -->
+                    </select>
+                    <button type="submit" class="clay-btn btn-primary">Thêm khoản chi</button>
+                </form>
+            </section>
+
+            <section class="section-results">
+                <h2>Kết quả chia</h2>
+                <div class="total-summary">
+                    <p>Tổng cộng: <strong id="total-amount">0 đ</strong></p>
+                </div>
+                <div id="results-list" class="results-list">
+                    <!-- Split results -->
+                </div>
+            </section>
+
+            <section class="section-actions">
+                <button class="clay-btn btn-outline" id="btn-copy-summary">Sao chép tóm tắt</button>
+                <button class="clay-btn btn-ghost" id="btn-reset">Làm mới dữ liệu</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

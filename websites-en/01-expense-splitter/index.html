@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neat split, fun trip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-icon">
+                <span class="icon">👛</span>
+            </div>
+            <h1>Neat split, fun trip.</h1>
+            <p>Enter sample expenses and see how much each person needs to contribute.</p>
+        </header>
+
+        <main class="clay-card calculator-card">
+            <section class="section-members">
+                <h2>Members</h2>
+                <div class="members-list" id="members-list">
+                    <!-- Avatars go here -->
+                </div>
+                <div class="add-member">
+                    <input type="text" id="new-member-name" placeholder="New member name..." class="clay-input">
+                    <button class="clay-btn btn-primary" id="btn-add-member">Add</button>
+                </div>
+                <p class="error-msg" id="member-error"></p>
+            </section>
+
+            <section class="section-expenses">
+                <h2>Expenses</h2>
+                <div class="expenses-list" id="expenses-list">
+                    <!-- Expenses go here -->
+                </div>
+                <form id="expense-form" class="expense-form">
+                    <input type="text" id="expense-name" placeholder="Expense (e.g., Lunch)" class="clay-input" required>
+                    <input type="number" id="expense-amount" placeholder="Amount (VND)" class="clay-input" min="1" step="1" required>
+                    <select id="expense-payer" class="clay-input" required>
+                        <!-- Payer options -->
+                    </select>
+                    <button type="submit" class="clay-btn btn-primary">Add Expense</button>
+                </form>
+            </section>
+
+            <section class="section-results">
+                <h2>Split Results</h2>
+                <div class="total-summary">
+                    <p>Total: <strong id="total-amount">0 đ</strong></p>
+                </div>
+                <div id="results-list" class="results-list">
+                    <!-- Split results -->
+                </div>
+            </section>
+
+            <section class="section-actions">
+                <button class="clay-btn btn-outline" id="btn-copy-summary">Copy Summary</button>
+                <button class="clay-btn btn-ghost" id="btn-reset">Reset Data</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

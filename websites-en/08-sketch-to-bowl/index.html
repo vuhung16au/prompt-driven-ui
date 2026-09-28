@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From a sketch to a bowl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="A pottery session begins with what you want to hold in your hands.">
+</head>
+<body>
+    <div class="page-container">
+        <!-- 1. Open Sketchbook Page -->
+        <header class="section hero">
+            <div class="hero-text">
+                <h1>From a sketch to a bowl.</h1>
+                <p>A pottery session begins with what you want to hold in your hands.</p>
+                <div class="hero-actions">
+                    <a href="#process" class="btn primary">View process</a>
+                    <a href="#shapes" class="btn secondary">Choose shape</a>
+                </div>
+            </div>
+            
+            <div class="hero-image decorative-tilt">
+                <div class="sketch-card">
+                    <div class="placeholder-img">Sketch photo</div>
+                    <span class="caption">Sketch</span>
+                </div>
+                <div class="arrow-dashed" aria-hidden="true">
+                    <svg viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="6 6">
+                        <path d="M0,10 Q50,0 90,10" />
+                        <path d="M80,0 L95,10 L80,20" />
+                    </svg>
+                </div>
+                <div class="sketch-card">
+                    <div class="placeholder-img">Finished product</div>
+                    <span class="caption">Finished piece</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Four Steps of Crafting -->
+        <section id="process" class="section process">
+            <h2>Four Steps of Crafting</h2>
+            <div class="process-grid">
+                <article class="process-step decorative-tilt-alt">
+                    <div class="placeholder-img step-img">Bowl sketch</div>
+                    <h3 class="step-title">1. Sketch</h3>
+                    <p>Visualize the shape on paper.</p>
+                </article>
+                <article class="process-step">
+                    <div class="placeholder-img step-img">Shaping bowl</div>
+                    <h3 class="step-title">2. Shape</h3>
+                    <p>Feel the clay through your fingertips.</p>
+                </article>
+                <article class="process-step decorative-tilt">
+                    <div class="placeholder-img step-img">Trimming bowl</div>
+                    <h3 class="step-title">3. Trim</h3>
+                    <p>Refine the lines, add textures.</p>
+                </article>
+                <article class="process-step decorative-tilt-alt">
+                    <div class="placeholder-img step-img">Firing bowl</div>
+                    <h3 class="step-title">4. Fire</h3>
+                    <p>Wait for the fire to complete the piece.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. Choose Shape -->
+        <section id="shapes" class="section shapes">
+            <h2>Choose Shape</h3>
+            <div class="shape-container">
+                <div class="shape-tabs">
+                    <button class="tab-btn active" data-shape="bowl">Bowl</button>
+                    <button class="tab-btn" data-shape="cup">Cup</button>
+                    <button class="tab-btn" data-shape="plate">Plate</button>
+                </div>
+                <div class="shape-preview decorative-tilt">
+                    <div class="tape-strip" aria-hidden="true"></div>
+                    <div class="placeholder-img preview-img" id="shape-img" aria-label="Bowl sketch photo">Bowl sketch photo</div>
+                    <p class="preview-desc" id="shape-desc">Round bowl shape, fits perfectly in your palm.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="layout-grid-2">
+            <!-- 4. Workshop Session -->
+            <section class="section workshop-note">
+                <div class="tape-strip red-tape" aria-hidden="true"></div>
+                <div class="note-content">
+                    <h2>Workshop Session</h2>
+                    <ul class="workshop-details">
+                        <li><strong>Duration:</strong> About 3 hours</li>
+                        <li><strong>Materials:</strong> Natural clay, food-safe glazes</li>
+                        <li><strong>Inclusions:</strong> Hand-building, glazing, 2 firings</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5. Idea Notebook -->
+            <section class="section idea-notebook">
+                <div class="thumbtack" aria-hidden="true"></div>
+                <h2>Idea Notebook</h2>
+                <form class="idea-form" id="idea-form" novalidate>
+                    <div class="form-group">
+                        <label for="idea-text">What you want to create:</label>
+                        <textarea id="idea-text" placeholder="Jot down your ideas, patterns, or shapes..." rows="4"></textarea>
+                    </div>
+                    <button type="button" class="btn primary" id="save-idea-btn">Save Draft</button>
+                    <div class="form-msg" id="form-msg" aria-live="polite"></div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

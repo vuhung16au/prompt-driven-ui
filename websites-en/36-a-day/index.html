@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Day, Clearly Seen in Every Block</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header-area">
+            <div class="control-bar">
+                <h1 class="sr-only">Organize personal schedule</h1>
+                <div class="toggle-wrapper">
+                    <label class="switch">
+                        <input type="checkbox" id="reduce-transparency" aria-pressed="false">
+                        <span class="slider"></span>
+                    </label>
+                    <label for="reduce-transparency" class="toggle-label">Reduce Transparency</label>
+                </div>
+            </div>
+            <h1>A Day, Clearly Seen in Every Block.</h1>
+            <p>Try organizing your personal schedule in a frosted glass interface, with states and content that remain consistently legible.</p>
+            <div style="margin-top: 24px;">
+                <button class="btn-primary" id="btn-add-event">Try planning a day</button>
+            </div>
+        </header>
+
+        <main class="grid">
+            <section class="calendar-section">
+                <div class="glass-panel">
+                    <div class="panel-content panel-header">
+                        <h2>Today's Schedule</h2>
+                    </div>
+                    <div class="timeline" id="timeline-container">
+                        <!-- Render slots via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="detail-section">
+                <div class="glass-panel" id="detail-panel">
+                    <div class="panel-content" id="detail-content">
+                        <!-- Render details via JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="notification" class="notification">
+        <span id="notif-text">Event deleted.</span>
+        <button id="btn-undo" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">Undo</button>
+    </div>
+
+    <script>
+        const I18N = {
+            addTitle: "Add Sample Event",
+            editTitle: "Event Details",
+            titleLabel: "Title",
+            startLabel: "Start time",
+            endLabel: "End time",
+            saveBtn: "Save",
+            cancelBtn: "Cancel",
+            deleteBtn: "Delete",
+            emptySelect: "Select an event to view or edit",
+            errStartEnd: "End time must be after start time.",
+            errRequired: "Please fill out all required fields.",
+            conflictLabel: "Conflict",
+            deletedMsg: "Event deleted.",
+            undoBtn: "Undo"
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

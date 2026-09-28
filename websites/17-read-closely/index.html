@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đọc Kỹ Hơn - Lớp Đọc & Thảo Luận</title>
+    <meta name="description" content="Một lớp đọc và thảo luận dành cho người đi làm muốn hiểu sâu điều mình đọc.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-mahogany: #1C1714;
+            --bg-oak: #251E19;
+            --text-parchment: #E8DFD4;
+            --text-ink: #9C8B7A;
+            --border-wood: #4A3F35;
+            --accent-brass: #C9A962;
+            --accent-crimson: #8B2635;
+        }
+        
+        body {
+            background-color: var(--bg-mahogany);
+            color: var(--text-parchment);
+            font-family: 'Crimson Pro', serif;
+            line-height: 1.625;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .font-display {
+            font-family: 'Cinzel', serif;
+            line-height: 1.45; /* Ngăn cắt dấu tiếng Việt */
+        }
+
+        .arch-top {
+            border-radius: 40% 40% 0 0 / 20% 20% 0 0;
+        }
+
+        .img-sepia {
+            filter: sepia(0.6) contrast(0.95) brightness(0.9);
+            transition: filter 700ms ease-out, transform 700ms ease-out;
+        }
+        
+        .img-sepia:hover, .img-sepia:focus {
+            filter: sepia(0) contrast(1) brightness(1);
+            transform: scale(1.02);
+        }
+
+        .ornate-frame {
+            position: relative;
+        }
+        
+        .ornate-frame::before,
+        .ornate-frame::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-brass);
+            opacity: 0.6;
+            transition: opacity 300ms ease;
+            pointer-events: none;
+        }
+        
+        .ornate-frame::before {
+            top: -1px; left: -1px;
+            border-right: none; border-bottom: none;
+        }
+        
+        .ornate-frame::after {
+            bottom: -1px; right: -1px;
+            border-left: none; border-top: none;
+        }
+        
+        .ornate-frame:hover::before,
+        .ornate-frame:hover::after {
+            opacity: 1;
+        }
+
+        .corner-flourish {
+            position: relative;
+        }
+        .corner-flourish::before,
+        .corner-flourish::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--accent-brass);
+            opacity: 0.6;
+            transition: opacity 300ms ease;
+            pointer-events: none;
+        }
+        .corner-flourish::before {
+            top: -1px; left: -1px;
+            border-right: none; border-bottom: none;
+        }
+        .corner-flourish::after {
+            bottom: -1px; right: -1px;
+            border-left: none; border-top: none;
+        }
+        .corner-flourish:hover::before,
+        .corner-flourish:hover::after {
+            opacity: 1;
+        }
+
+        .ornate-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-wood) 20%, var(--accent-brass) 50%, var(--border-wood) 80%, transparent 100%);
+            position: relative;
+            margin: 3rem auto;
+            width: 100%;
+            max-width: 16rem;
+        }
+        
+        .ornate-divider::before {
+            content: "✶";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--accent-brass);
+            font-size: 12px;
+            background: var(--bg-mahogany);
+            padding: 0 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #D4B872 0%, #C9A962 50%, #B8953F 100%);
+            color: #1C1714;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.3);
+            transition: filter 300ms ease, transform 150ms ease, box-shadow 300ms ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            min-height: 48px;
+            line-height: 1.45;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            filter: brightness(1.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 4px 12px rgba(201,169,98,0.3);
+        }
+
+        .btn-primary:active {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            transform: translateY(1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-brass);
+            color: var(--accent-brass);
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 300ms ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            min-height: 48px;
+            line-height: 1.45;
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: var(--accent-crimson);
+            border-color: var(--accent-crimson);
+            color: var(--text-parchment);
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 72px;
+            float: left;
+            margin-right: 16px;
+            line-height: 0.8;
+            color: var(--accent-brass);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-top: 8px;
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(28,23,20,0.4) 100%);
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        .paper-texture {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 51;
+            mix-blend-mode: overlay;
+        }
+
+        .academia-card {
+            background-color: var(--bg-oak);
+            border: 1px solid var(--border-wood);
+            border-radius: 4px;
+            transition: all 300ms ease;
+        }
+
+        .academia-card:hover {
+            border-color: rgba(201, 169, 98, 0.5);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        *:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--bg-mahogany), 0 0 0 4px var(--accent-brass);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Wax seal */
+        .wax-seal {
+            background: radial-gradient(circle, #a72d3f 0%, #8B2635 80%, #5e1a24 100%);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        /* Interactive sentence in sample lesson */
+        .interactive-sentence {
+            cursor: pointer;
+            border-bottom: 1px dotted var(--text-ink);
+            transition: all 300ms ease;
+        }
+        .interactive-sentence:hover, .interactive-sentence:focus {
+            color: var(--accent-brass);
+            border-bottom-color: var(--accent-brass);
+            background-color: rgba(201, 169, 98, 0.1);
+        }
+        .interactive-sentence.active {
+            color: var(--accent-brass);
+            background-color: rgba(201, 169, 98, 0.15);
+            border-bottom: 1px solid var(--accent-brass);
+        }
+
+        /* Toggle animation for explanation */
+        .explanation-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 300ms ease-out, opacity 300ms ease-out, padding 300ms ease-out;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .explanation-panel.expanded {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Details & Summary */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .syllabus-icon {
+            transition: transform 300ms ease;
+        }
+        details[open] .syllabus-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased relative min-h-screen pb-24">
+    <!-- SVG Noise Filter for Paper Texture -->
+    <svg style="display:none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalTurbulence" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+        </filter>
+    </svg>
+    <div class="paper-texture" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalTurbulence%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    <div class="vignette"></div>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-16 md:pt-24 lg:pt-32 flex flex-col gap-24 md:gap-32">
+        
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-7 flex flex-col gap-8">
+                <div class="space-y-4">
+                    <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Học kỳ Mùa Thu</span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">Đọc kỹ hơn.<br>Lập luận rõ hơn.</h1>
+                </div>
+                <p class="text-lg md:text-xl text-[#9C8B7A] max-w-2xl">
+                    Một lớp đọc và thảo luận dành cho người đi làm muốn hiểu sâu điều mình đọc. Xây dựng tư duy phân tích văn bản qua các văn bản cổ điển và đương đại.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#bai-hoc" class="btn-primary px-8 text-xs font-semibold">Xem bài học mẫu</a>
+                    <a href="#lich-hoc" class="btn-secondary px-8 text-xs font-semibold">Chọn lịch học</a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 ornate-frame p-2 md:p-3 bg-[#251E19]">
+                <div class="overflow-hidden arch-top aspect-[4/5] bg-[#1C1714]">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Thư viện cổ với các giá sách bằng gỗ" class="w-full h-full object-cover img-sepia" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- 4 Chapters Section -->
+        <section id="chuong-trinh" class="max-w-4xl mx-auto w-full">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Syllabus</span>
+                <h2 class="text-4xl md:text-5xl">Bốn Cột Mốc Phân Tích</h2>
+            </div>
+
+            <div class="flex flex-col gap-8">
+                <!-- Chapter 1 -->
+                <details class="academia-card corner-flourish group" open>
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume I</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Đọc câu hỏi</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Trước khi phân tích luận điểm, ta phải hiểu văn bản đang trả lời câu hỏi gì. Xác định sai câu hỏi dẫn đến mọi đánh giá phía sau đều chệch hướng.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Kết quả đầu ra</strong>
+                            Nhận diện được câu hỏi cốt lõi bị ẩn lấp dưới các thủ pháp tu từ. Bài tập: Tìm câu hỏi chính trong đoạn văn bản mẫu của Seneca.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 2 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume II</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Tách luận điểm</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Lọc bỏ những yếu tố kể chuyện, cảm xúc để thấy bộ khung logic của tác giả. Một lập luận vững chắc không phụ thuộc vào độ bóng bẩy của ngôn từ.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Kết quả đầu ra</strong>
+                            Sơ đồ hóa được các tiền đề và kết luận. Bài tập: Tách luận điểm chính khỏi một bài báo ý kiến.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 3 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume III</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Kiểm bằng chứng</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Không phải bằng chứng nào cũng có sức nặng như nhau. Học cách phân loại và đánh giá tính xác đáng của dữ liệu được trích dẫn.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Kết quả đầu ra</strong>
+                            Xác định được các lỗ hổng logic hoặc bằng chứng yếu. Bài tập: Đánh giá trích dẫn trong một báo cáo nghiên cứu.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 4 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume IV</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Viết phản hồi</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Trình bày sự đồng tình hoặc bất đồng một cách có cấu trúc, tôn trọng và chặt chẽ logic.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Kết quả đầu ra</strong>
+                            Viết được một đoạn phản biện hoàn chỉnh. Bài tập: Viết phản hồi 300 chữ cho văn bản đã phân tích.
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Sample Lesson -->
+        <section id="bai-hoc" class="max-w-6xl mx-auto w-full">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Bài thực hành số I</span>
+                <h2 class="text-4xl md:text-5xl">Bóc tách lập luận</h2>
+                <p class="text-[#9C8B7A] max-w-2xl mx-auto">Hãy nhấp vào câu văn mà bạn cho là chứa lập luận chính của tác giả trong đoạn trích dưới đây.</p>
+            </div>
+
+            <div class="academia-card corner-flourish p-8 md:p-16 relative">
+                <!-- Decorative wax seal -->
+                <div class="absolute -top-4 -right-4 w-12 h-12 rounded-full wax-seal flex items-center justify-center z-20" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#C9A962" stroke="none" class="opacity-80"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
+                    <div class="md:col-span-8">
+                        <div class="text-lg md:text-xl leading-relaxed font-serif text-[#E8DFD4]">
+                            <p class="drop-cap mb-6">Trí nhớ con người không giống như một chiếc máy ghi âm, thụ động thu thập mọi điều tai nghe mắt thấy. Thay vào đó, nó là một quá trình chủ động tái tạo. <button class="interactive-sentence text-left inline" tabindex="0" onclick="showExplanation('wrong')">Mỗi lần chúng ta nhớ lại một sự kiện, bộ não thực chất đang lắp ráp lại các mảnh ký ức từ nhiều nguồn khác nhau, đôi khi trộn lẫn với thông tin mới.</button> <button class="interactive-sentence text-left inline" tabindex="0" onclick="showExplanation('correct')">Do đó, lời khai của nhân chứng, dù có tự tin đến đâu, không bao giờ nên được xem là bằng chứng hoàn toàn khách quan trong các phán quyết quan trọng nếu thiếu sự hỗ trợ của bằng chứng vật lý.</button> Việc hiểu rõ bản chất linh hoạt của trí nhớ giúp ta tránh được những sai lầm đáng tiếc.</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 border-t md:border-t-0 md:border-l border-[#4A3F35] pt-6 md:pt-0 md:pl-6 text-sm text-[#9C8B7A]">
+                        <h4 class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase mb-4">Ghi chú lề</h4>
+                        <p class="mb-4">Trích đoạn từ tiểu luận <em>"Ký ức và Sự thật"</em>. Lưu ý cách tác giả chuyển từ việc mô tả hiện tượng sang việc đưa ra một khuyến nghị hành động.</p>
+                        
+                        <div id="explanation-container" class="explanation-panel bg-[#1C1714] p-4 rounded border border-[#4A3F35]">
+                            <div id="feedback-correct" class="hidden">
+                                <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-2 text-[#C9A962]">Chính xác</strong>
+                                <p>Câu văn này chứa luận điểm chính. Tác giả sử dụng cụm từ "Do đó" để chỉ ra kết luận (lời khai không nên xem là bằng chứng tuyệt đối) được rút ra từ các tiền đề (trí nhớ tái tạo và dễ sai lệch) được nêu ở những câu trước.</p>
+                                <button onclick="resetExercise()" class="mt-4 text-xs font-display uppercase tracking-widest text-[#9C8B7A] hover:text-[#C9A962] transition-colors underline underline-offset-4">Thử lại</button>
+                            </div>
+                            <div id="feedback-wrong" class="hidden">
+                                <strong class="font-display text-[#8B2635] text-[10px] tracking-widest uppercase block mb-2">Chưa đúng</strong>
+                                <p>Câu này là một <strong>tiền đề</strong> (giải thích cơ chế hoạt động của trí nhớ), không phải luận điểm chính. Nó phục vụ mục đích cung cấp lý do để dẫn tới một kết luận khác quan trọng hơn ở phía sau.</p>
+                                <button onclick="resetExercise()" class="mt-4 text-xs font-display uppercase tracking-widest text-[#9C8B7A] hover:text-[#C9A962] transition-colors underline underline-offset-4">Thử lại</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Instructor -->
+        <section class="max-w-5xl mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase mb-4 block">Người điều phối</span>
+                    <h2 class="text-4xl md:text-5xl mb-6">Trần Văn Đọc</h2>
+                    <p class="text-lg text-[#9C8B7A] mb-6">
+                        Là người dẫn dắt các buổi thảo luận, vai trò của người điều phối không phải là đưa ra câu trả lời đúng, mà là đặt những câu hỏi đúng để học viên tự kiểm tra lại độ vững chắc trong lập luận của mình.
+                    </p>
+                    <ul class="space-y-3 text-[#E8DFD4]">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">I.</span>
+                            <span>Không phán xét đúng/sai, chỉ yêu cầu làm rõ bằng chứng.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">II.</span>
+                            <span>Duy trì không gian đối thoại tôn trọng góc nhìn khác biệt.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">III.</span>
+                            <span>Giữ nhịp độ thảo luận đi vào chiều sâu thay vì chiều rộng.</span>
+                        </li>
+                    </ul>
+                    <p class="text-xs text-[#9C8B7A] italic mt-8 border-t border-[#4A3F35] pt-4 inline-block">
+                        * Nhân vật minh họa cho phong cách điều phối của chương trình.
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div class="ornate-frame p-2 bg-[#251E19] w-full max-w-sm">
+                        <div class="arch-top overflow-hidden aspect-[3/4] bg-[#1C1714]">
+                            <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chân dung người điều phối lớp học" class="w-full h-full object-cover img-sepia" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Schedule Selection -->
+        <section id="lich-hoc" class="max-w-4xl mx-auto w-full mb-16">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Tham gia</span>
+                <h2 class="text-4xl md:text-5xl">Chọn lịch thảo luận</h2>
+                <p class="text-[#9C8B7A]">Mỗi lớp tối đa 12 học viên để đảm bảo chất lượng trao đổi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Option 1 -->
+                <div class="academia-card corner-flourish p-8 flex flex-col h-full relative group">
+                    <div class="mb-6 pb-6 border-b border-[#4A3F35]">
+                        <h3 class="font-display text-xl text-[#E8DFD4] tracking-widest uppercase mb-2">Lớp Tối Thứ Năm</h3>
+                        <p class="text-[#C9A962] font-serif text-lg">19:30 - 21:30</p>
+                    </div>
+                    <div class="flex-grow space-y-4 mb-8 text-[#9C8B7A] text-sm">
+                        <p><strong>Nội dung:</strong> Đọc và phân tích các văn bản phi hư cấu, xã hội học và triết học ứng dụng.</p>
+                        <p><strong>Điều kiện:</strong> Dành ra 2 giờ mỗi tuần đọc tài liệu trước buổi học.</p>
+                        <p><strong>Khai giảng dự kiến:</strong> Tuần đầu tiên của tháng tới.</p>
+                    </div>
+                    <button class="btn-secondary w-full" onclick="alert('Đây là bản xem trước minh họa. Chức năng đặt lịch chưa được kích hoạt.')">Xem lựa chọn</button>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="academia-card corner-flourish p-8 flex flex-col h-full relative group shadow-[inset_0_0_0_1px_rgba(201,169,98,0.5)]">
+                    <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full wax-seal flex items-center justify-center z-20" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A962" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-[#4A3F35]">
+                        <h3 class="font-display text-xl text-[#E8DFD4] tracking-widest uppercase mb-2">Lớp Sáng Thứ Bảy</h3>
+                        <p class="text-[#C9A962] font-serif text-lg">09:00 - 11:30</p>
+                    </div>
+                    <div class="flex-grow space-y-4 mb-8 text-[#9C8B7A] text-sm">
+                        <p><strong>Nội dung:</strong> Chuyên sâu phân tích bài báo khoa học, báo cáo kinh tế và lập luận kinh doanh.</p>
+                        <p><strong>Điều kiện:</strong> Dành ra 3 giờ đọc và viết ghi chú trước khi tham gia.</p>
+                        <p><strong>Khai giảng dự kiến:</strong> Tuần thứ hai của tháng tới.</p>
+                    </div>
+                    <button class="btn-primary w-full" onclick="alert('Đây là bản xem trước minh họa. Chức năng đặt lịch chưa được kích hoạt.')">Xem lựa chọn</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-[#4A3F35] bg-[#1C1714] py-8 text-center text-sm text-[#9C8B7A] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>&copy; 2026 Dự án Đọc Kỹ Hơn. Giao diện phong cách Academia.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showExplanation(type) {
+            const container = document.getElementById('explanation-container');
+            const correctDiv = document.getElementById('feedback-correct');
+            const wrongDiv = document.getElementById('feedback-wrong');
+            const sentences = document.querySelectorAll('.interactive-sentence');
+            
+            // Reset active states
+            sentences.forEach(s => s.classList.remove('active'));
+            
+            // Set active clicked
+            event.target.classList.add('active');
+
+            // Show panel
+            container.classList.add('expanded');
+            
+            if (type === 'correct') {
+                correctDiv.classList.remove('hidden');
+                wrongDiv.classList.add('hidden');
+            } else {
+                wrongDiv.classList.remove('hidden');
+                correctDiv.classList.add('hidden');
+            }
+        }
+
+        function resetExercise() {
+            const container = document.getElementById('explanation-container');
+            const correctDiv = document.getElementById('feedback-correct');
+            const wrongDiv = document.getElementById('feedback-wrong');
+            const sentences = document.querySelectorAll('.interactive-sentence');
+            
+            sentences.forEach(s => s.classList.remove('active'));
+            container.classList.remove('expanded');
+            
+            setTimeout(() => {
+                correctDiv.classList.add('hidden');
+                wrongDiv.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>

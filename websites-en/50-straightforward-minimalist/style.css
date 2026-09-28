@@ -1,0 +1,10 @@
+body {
+            background-color: #234B63;
+            color: #FFFFFF;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Ensure inputs without full borders still have crisp focus states as defined */
+        input:focus {
+            box-shadow: none !important;
+        }

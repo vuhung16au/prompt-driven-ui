@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Nguyen | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#F9F8F6',
+                        charcoal: '#1A1A1A',
+                        taupe: '#EBE5DE',
+                        warmgrey: '#6C6863',
+                        gold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    transitionDuration: {
+                        '1500': '1500ms',
+                        '2000': '2000ms',
+                    },
+                    letterSpacing: {
+                        'widest-xl': '0.25em',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-alabaster text-charcoal font-sans antialiased">
+    <!-- Grid Lines -->
+    <div class="fixed inset-0 pointer-events-none z-0 flex justify-center max-w-[1600px] mx-auto w-full px-8 md:px-16">
+        <div class="w-full h-full flex justify-between">
+            <div class="w-px h-full bg-charcoal/10"></div>
+            <div class="w-px h-full bg-charcoal/10 hidden md:block"></div>
+            <div class="w-px h-full bg-charcoal/10 hidden md:block"></div>
+            <div class="w-px h-full bg-charcoal/10 hidden md:block"></div>
+            <div class="w-px h-full bg-charcoal/10 hidden md:block"></div>
+            <div class="w-px h-full bg-charcoal/10"></div>
+        </div>
+    </div>
+    
+    <!-- Noise overlay -->
+    <div class="fixed inset-0 pointer-events-none z-50 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+    <!-- Nav -->
+    <nav class="relative z-10 max-w-[1600px] mx-auto px-8 md:px-16 py-8 flex justify-between items-center">
+        <div class="font-serif italic text-xl">An Nguyen</div>
+        <a href="#contact" class="text-xs uppercase tracking-[0.2em] font-medium border-b border-transparent hover:border-gold transition-colors duration-500 hover:text-gold">Liên hệ</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-[1600px] mx-auto px-8 md:px-16 pt-12 pb-32">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-end mb-32">
+            <div class="md:col-span-5 md:pb-12 order-2 md:order-1">
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mb-8">
+                    Thiết kế để thương hiệu có tiếng nói <span class="italic text-gold">riêng.</span>
+                </h1>
+                <p class="text-lg leading-relaxed text-warmgrey mb-10 max-w-md">
+                    Tôi là An Nguyễn. Tôi làm nhận diện và website cho những dự án nhỏ muốn được nhớ đến.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#moc" class="group relative inline-flex h-12 items-center justify-center bg-charcoal text-white px-10 text-xs uppercase tracking-[0.2em] font-medium overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-shadow duration-500">
+                        <span class="absolute inset-0 bg-gold translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></span>
+                        <span class="relative z-10">Xem dự án Mộc</span>
+                    </a>
+                    <a href="#contact" class="inline-flex h-12 items-center justify-center border border-charcoal px-10 text-xs uppercase tracking-[0.2em] font-medium hover:bg-charcoal hover:text-white transition-colors duration-500">
+                        Gửi brief
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-7 order-1 md:order-2 relative group cursor-pointer" onclick="document.getElementById('moc').scrollIntoView({behavior: 'smooth'})">
+                <div class="absolute -left-12 top-1/2 -translate-y-1/2 hidden md:block z-20">
+                    <span class="vertical-text text-xs uppercase tracking-[0.3em] text-warmgrey">Dự án minh họa</span>
+                </div>
+                <div class="overflow-hidden aspect-[4/5] md:aspect-[3/4] shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                    <img src="https://images.unsplash.com/photo-1601334460010-0975e533c373?auto=format&fit=crop&q=80&w=1200" alt="Mộc Packaging" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                </div>
+                <div class="mt-6 flex items-center justify-between">
+                    <span class="text-xs uppercase tracking-[0.2em] font-medium">Nhận diện & Website</span>
+                    <div class="h-px w-12 bg-charcoal"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study Mộc -->
+        <section id="moc" class="py-24 border-t border-charcoal/20">
+            <div class="mb-16">
+                <h2 class="font-serif text-4xl md:text-6xl mb-4">Mộc <span class="italic text-gold">Crafts</span></h2>
+                <div class="h-px w-24 bg-gold mb-12"></div>
+                <div class="group overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] mb-16 relative">
+                     <img src="https://images.unsplash.com/photo-1610969966114-118021ea0297?auto=format&fit=crop&q=80&w=1600" alt="Mộc Overview" class="w-full aspect-[21/9] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4">
+                        <h3 class="text-xs uppercase tracking-[0.2em] font-medium mb-4 text-warmgrey">Vấn đề & Yêu cầu</h3>
+                        <p class="text-base leading-relaxed">
+                            Khách hàng cần một hệ thống nhận diện và website tạo cảm giác thủ công, mộc mạc nhưng vẫn toát lên sự sang trọng, tinh tế. Thương hiệu muốn nhấn mạnh vào chất liệu và quá trình tạo ra sản phẩm.
+                        </p>
+                    </div>
+                    <div class="md:col-span-8">
+                        <h3 class="text-xs uppercase tracking-[0.2em] font-medium mb-4 text-warmgrey">Quyết định thiết kế</h3>
+                        <p class="text-lg leading-relaxed mb-6">
+                            <span class="float-left font-serif text-7xl leading-[0.8] mr-3 text-charcoal">C</span>húng tôi quyết định sử dụng chất liệu giấy làm nền tảng thị giác, kết hợp với các kiểu chữ có chân mang nét thủ công. Nhịp điệu hình ảnh được sắp xếp chậm rãi, tập trung vào chi tiết sản phẩm.
+                        </p>
+                        <p class="text-base leading-relaxed text-warmgrey">
+                            Vai trò: Thiết kế nhận diện, Thiết kế giao diện (UI/UX).<br>
+                            Bàn giao: Hệ thống logo, Hướng dẫn sử dụng thương hiệu (Brand Guidelines), và Website Responsive.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-24 items-center">
+                    <div class="group overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.08)]">
+                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=800" alt="Mộc detail 1" class="w-full aspect-square object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                    </div>
+                    <div class="group overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.08)] md:mt-32">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800" alt="Mộc detail 2" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Selected Projects -->
+        <section class="py-24 border-t border-charcoal/20">
+            <h2 class="text-xs uppercase tracking-[0.3em] font-medium mb-16 text-center">Dự án chọn lọc</h2>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+                <!-- Project 1 (Portrait) -->
+                <div class="md:col-span-5">
+                    <a href="#" class="block group">
+                        <div class="overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-shadow duration-700 mb-6 relative">
+                            <div class="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)] pointer-events-none z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&q=80&w=800" alt="Tạp chí Di Sản" class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                        </div>
+                        <div class="flex items-center justify-between border-t border-charcoal/20 pt-4 group-hover:border-gold transition-colors duration-500">
+                            <div>
+                                <h3 class="font-serif text-2xl group-hover:text-gold transition-colors duration-500">Di Sản</h3>
+                                <p class="text-sm text-warmgrey mt-1">Ấn phẩm văn hóa</p>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-warmgrey group-hover:text-gold transition-colors duration-500">Xem chi tiết</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Project 2 (Landscape offset) -->
+                <div class="md:col-span-7 md:mt-32">
+                    <a href="#" class="block group">
+                        <div class="overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-shadow duration-700 mb-6 relative">
+                            <div class="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)] pointer-events-none z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000" alt="Nội thất Zen Space" class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1500 ease-out" loading="lazy">
+                        </div>
+                        <div class="flex items-center justify-between border-t border-charcoal/20 pt-4 group-hover:border-gold transition-colors duration-500">
+                            <div>
+                                <h3 class="font-serif text-2xl group-hover:text-gold transition-colors duration-500">Zen Space</h3>
+                                <p class="text-sm text-warmgrey mt-1">Studio Nội thất</p>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-warmgrey group-hover:text-gold transition-colors duration-500">Xem chi tiết</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Creator -->
+        <section class="py-24 border-t border-charcoal/20">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
+                <div class="md:col-span-4 group">
+                    <div class="overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="An Nguyen - Portrait" class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-2000 ease-out" loading="lazy">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="text-[10px] uppercase tracking-widest bg-alabaster/80 px-2 py-1 text-charcoal">Ảnh minh họa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-8 md:pl-8">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-8">Cách làm việc & <span class="italic text-gold">Cộng tác</span></h2>
+                    <p class="text-lg leading-relaxed mb-10 max-w-2xl">
+                        Mỗi dự án là một sự đầu tư kỹ lưỡng vào chi tiết. Tôi tập trung vào chất lượng thiết kế để tạo ra sự khác biệt thông qua sự tinh gọn và chiều sâu.
+                    </p>
+                    <div class="space-y-8 border-t border-charcoal/10 pt-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                            <div class="text-xs uppercase tracking-[0.2em] font-medium text-warmgrey pt-1">01 / Định hướng</div>
+                            <div class="sm:col-span-3">
+                                <h4 class="font-serif text-xl mb-2">Khám phá & Concept</h4>
+                                <p class="text-warmgrey text-base">Tìm hiểu sâu về giá trị cốt lõi của thương hiệu, từ đó xây dựng moodboard và định hướng phong cách thị giác.</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 border-t border-charcoal/10 pt-8">
+                            <div class="text-xs uppercase tracking-[0.2em] font-medium text-warmgrey pt-1">02 / Thiết kế</div>
+                            <div class="sm:col-span-3">
+                                <h4 class="font-serif text-xl mb-2">Chế tác chi tiết</h4>
+                                <p class="text-warmgrey text-base">Phát triển các bản thiết kế hoàn thiện cho logo, ấn phẩm và giao diện website với sự tỉ mỉ trong từng đường nét.</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 border-t border-charcoal/10 pt-8">
+                            <div class="text-xs uppercase tracking-[0.2em] font-medium text-warmgrey pt-1">03 / Bàn giao</div>
+                            <div class="sm:col-span-3">
+                                <h4 class="font-serif text-xl mb-2">Hoàn thiện & Hướng dẫn</h4>
+                                <p class="text-warmgrey text-base">Bàn giao toàn bộ tài nguyên thiết kế, hệ thống hướng dẫn sử dụng và mã nguồn website chuẩn xác.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-charcoal text-alabaster py-24 relative overflow-hidden">
+        <!-- Inverted noise for footer -->
+        <div class="absolute inset-0 pointer-events-none opacity-[0.05]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-[1600px] mx-auto px-8 md:px-16 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <h2 class="font-serif text-4xl md:text-6xl mb-6">Bắt đầu <br><span class="italic text-gold">Dự án mới</span></h2>
+                    <p class="text-taupe opacity-80 text-lg max-w-sm mb-12">
+                        Hãy kể cho tôi nghe về ý tưởng của bạn.
+                    </p>
+                </div>
+                <div class="md:col-span-7 md:col-start-6">
+                    <form id="briefForm" class="space-y-8" onsubmit="event.preventDefault(); submitForm();">
+                        <div class="relative group">
+                            <label class="text-[10px] uppercase tracking-widest text-taupe opacity-60 mb-2 block">Tên dự án</label>
+                            <input type="text" id="projectName" class="w-full bg-transparent border-b border-alabaster/30 py-3 text-lg focus:outline-none focus:border-gold transition-colors duration-500 placeholder-taupe/30 font-serif italic" placeholder="Dự án của bạn tên là gì?">
+                        </div>
+                        <div class="relative group">
+                            <label class="text-[10px] uppercase tracking-widest text-taupe opacity-60 mb-2 block">Việc cần làm</label>
+                            <input type="text" id="projectTasks" class="w-full bg-transparent border-b border-alabaster/30 py-3 text-lg focus:outline-none focus:border-gold transition-colors duration-500 placeholder-taupe/30 font-serif italic" placeholder="Nhận diện, Website, hay cả hai?">
+                        </div>
+                        <div class="relative group">
+                            <label class="text-[10px] uppercase tracking-widest text-taupe opacity-60 mb-2 block">Email liên hệ</label>
+                            <div class="relative">
+                                <input type="email" id="contactEmail" class="w-full bg-transparent border-b border-alabaster/30 py-3 text-lg focus:outline-none focus:border-gold transition-colors duration-500 placeholder-taupe/30 font-serif italic" placeholder="hello@example.com">
+                                <span id="emailError" class="absolute right-0 top-1/2 -translate-y-1/2 text-xs text-red-400 hidden">Email không hợp lệ</span>
+                            </div>
+                        </div>
+                        <div class="pt-8">
+                            <button type="submit" class="group relative inline-flex h-12 items-center justify-center border border-alabaster/30 px-10 text-xs uppercase tracking-[0.2em] font-medium overflow-hidden hover:border-gold transition-colors duration-500">
+                                <span class="absolute inset-0 bg-gold translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></span>
+                                <span class="relative z-10 group-hover:text-charcoal transition-colors duration-300">Xem brief mẫu</span>
+                            </button>
+                            <p id="formSuccess" class="text-gold text-sm mt-4 hidden font-serif italic">Bản mẫu nội dung, không gửi dữ liệu đi.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-alabaster/10 mt-32 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest text-taupe opacity-60">
+                <div>&copy; 2026 An Nguyen.</div>
+                <div>Thiết kế theo phong cách Editorial</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

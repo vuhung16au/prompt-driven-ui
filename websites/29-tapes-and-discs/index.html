@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BĂNG ĐĨA 95 - Bộ Sưu Tập</title>
+    <style>
+        @font-face {
+            font-family: 'MS Sans Serif';
+            src: local('MS Sans Serif'), local('Tahoma');
+        }
+        body {
+            background-color: #c0c0c0;
+            background-image:
+                linear-gradient(45deg, #b8b8b8 25%, transparent 25%),
+                linear-gradient(-45deg, #b8b8b8 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #b8b8b8 75%),
+                linear-gradient(-45deg, transparent 75%, #b8b8b8 75%);
+            background-size: 4px 4px;
+            background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+            font-family: "MS Sans Serif", "Segoe UI", Tahoma, sans-serif;
+            color: #000;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+        }
+        * { box-sizing: border-box; }
+        
+        .window {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+        }
+        .title-bar {
+            background: linear-gradient(to right, #000080, #1084d0);
+            color: white;
+            padding: 2px 4px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default;
+            user-select: none;
+        }
+        .title-bar.inactive {
+            background: #808080;
+        }
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+        .title-bar-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+            font-size: 10px;
+            line-height: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: black;
+            padding: 0;
+        }
+        .title-bar-btn:active {
+            border-color: #808080 #fff #fff #808080;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+        }
+        .window-content {
+            padding: 8px;
+            flex: 1;
+            overflow: auto;
+        }
+        
+        .inset-panel {
+            background: #fff;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+            padding: 4px;
+        }
+        .outset-btn {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #dfdfdf;
+            padding: 4px 8px;
+            color: #000;
+            text-align: center;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .outset-btn:active, .outset-btn.active {
+            border-color: #808080 #fff #fff #808080;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+            padding: 5px 7px 3px 9px;
+            background: #e8e8e8;
+        }
+        .outset-btn:focus-visible {
+            outline: 2px dotted black;
+            outline-offset: -4px;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 32px;
+            background: #c0c0c0;
+            border-top: 2px solid #fff;
+            box-shadow: 0 -1px 0 #dfdfdf;
+            display: flex;
+            padding: 2px;
+            z-index: 10000;
+        }
+        .start-btn {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0 8px;
+            height: 100%;
+        }
+        .taskbar-tasks {
+            display: flex;
+            gap: 2px;
+            flex: 1;
+            margin-left: 4px;
+            overflow-x: auto;
+        }
+        .task-btn {
+            width: 150px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .task-btn.active {
+            background: #e8e8e8;
+            border-color: #808080 #fff #fff #808080;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+            padding: 1px 5px -1px 7px;
+        }
+        .clock {
+            padding: 0 8px;
+            display: flex;
+            align-items: center;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+            font-size: 12px;
+            margin-left: auto;
+        }
+        
+        .desktop-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px;
+        }
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            font-size: 12px;
+        }
+        .desktop-icon-img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 4px;
+            background: #000080;
+            border: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #fff;
+        }
+        .desktop-icon-text {
+            background: transparent;
+            padding: 2px 4px;
+            border: 1px dotted transparent;
+        }
+        .desktop-icon.selected .desktop-icon-text {
+            background: #000080;
+            border-color: #808080;
+        }
+
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 16px;
+            padding: 16px;
+        }
+        .folder-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+        }
+        .folder-icon-img {
+            width: 32px;
+            height: 32px;
+            background: #FFFF00;
+            border: 1px solid #000;
+            border-top: 4px solid #000080;
+            margin-bottom: 4px;
+        }
+        .folder-icon.selected .folder-icon-text {
+            background: #000080;
+            color: #fff;
+        }
+
+        .status-bar {
+            border-top: 1px solid #808080;
+            padding: 2px 0;
+            font-size: 12px;
+            display: flex;
+            background: #c0c0c0;
+        }
+        .status-pane {
+            border: 1px solid;
+            border-color: #808080 #fff #fff #808080;
+            padding: 2px 4px;
+            flex: 1;
+            margin: 0 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border-right: 1px solid #c0c0c0;
+            border-bottom: 1px solid #c0c0c0;
+            padding: 2px 4px;
+            text-align: left;
+            font-size: 12px;
+        }
+        th {
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+        }
+        tr.selected td {
+            background: #000080;
+            color: white;
+        }
+
+        .blink-text {
+            animation: blink 1s step-end infinite;
+            color: red;
+            font-weight: bold;
+        }
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background: #000080;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            padding: 4px;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            margin-bottom: 8px;
+        }
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        a { color: #0000FF; text-decoration: underline; }
+        a:visited { color: #800080; }
+        a:active, a:hover { color: #FF0000; }
+
+        .hidden { display: none !important; }
+        
+        .rainbow-text {
+            animation: rainbow 4s linear infinite;
+            font-family: "Arial Black", Impact, sans-serif;
+            font-size: 32px;
+            text-shadow: 2px 2px 0 #808080;
+            text-align: center;
+        }
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            17% { color: #ff8000; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            67% { color: #0080ff; }
+            83% { color: #8000ff; }
+            100% { color: #ff0000; }
+        }
+
+        input[type="text"], textarea {
+            background: #fff;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            padding: 4px;
+            font-family: "MS Sans Serif", sans-serif;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Desktop Icons -->
+    <div class="desktop-container">
+        <div class="desktop-icon" ondblclick="openWindow('win-library')">
+            <div class="desktop-icon-img">Lib</div>
+            <div class="desktop-icon-text">Thư viện</div>
+        </div>
+        <div class="desktop-icon" ondblclick="openWindow('win-schedule')">
+            <div class="desktop-icon-img">Cal</div>
+            <div class="desktop-icon-text">Lịch nghe</div>
+        </div>
+        <div class="desktop-icon" ondblclick="openWindow('win-guestbook')">
+            <div class="desktop-icon-img">Bk</div>
+            <div class="desktop-icon-text">Sổ ghé thăm</div>
+        </div>
+    </div>
+
+    <!-- Main Window: Library -->
+    <div id="win-library" class="window" style="top: 50px; left: 50px; width: 400px; height: 300px;">
+        <div class="title-bar" onmousedown="dragStart(event, 'win-library')">
+            <div class="title-bar-text">Thư viện BĂNG ĐĨA 95</div>
+            <div class="title-bar-controls">
+                <button class="title-bar-btn" onclick="minimizeWindow('win-library')">_</button>
+                <button class="title-bar-btn" onclick="maximizeWindow('win-library')">[]</button>
+                <button class="title-bar-btn" onclick="closeWindow('win-library')">X</button>
+            </div>
+        </div>
+        <div class="window-content" style="background: #fff;">
+            <div class="rainbow-text">BĂNG ĐĨA 95</div>
+            <p style="text-align: center; margin: 0 0 16px 0;">Mở một bộ sưu tập, đọc tracklist và khám phá những buổi nghe nhạc minh họa.</p>
+            
+            <div class="inset-panel folder-grid">
+                <div class="folder-icon" ondblclick="openWindow('win-collection-morning')">
+                    <div class="folder-icon-img"></div>
+                    <div class="folder-icon-text">Buổi sáng</div>
+                </div>
+                <div class="folder-icon">
+                    <div class="folder-icon-img"></div>
+                    <div class="folder-icon-text">Mưa</div>
+                </div>
+                <div class="folder-icon">
+                    <div class="folder-icon-img"></div>
+                    <div class="folder-icon-text">Đi xa</div>
+                </div>
+            </div>
+        </div>
+        <div class="status-bar">
+            <div class="status-pane">3 bộ sưu tập (Minh họa)</div>
+            <div class="status-pane" style="max-width: 100px;">1.44 MB</div>
+        </div>
+    </div>
+
+    <!-- Collection Window: Morning -->
+    <div id="win-collection-morning" class="window hidden" style="top: 80px; left: 100px; width: 450px; height: 400px;">
+        <div class="title-bar" onmousedown="dragStart(event, 'win-collection-morning')">
+            <div class="title-bar-text">Bộ sưu tập - Buổi sáng</div>
+            <div class="title-bar-controls">
+                <button class="title-bar-btn" onclick="minimizeWindow('win-collection-morning')">_</button>
+                <button class="title-bar-btn" onclick="maximizeWindow('win-collection-morning')">[]</button>
+                <button class="title-bar-btn" onclick="closeWindow('win-collection-morning')">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="marquee">
+                <span>NEW! Băng cassette chủ đề Buổi Sáng đã có mặt! *** NEW! ***</span>
+            </div>
+            
+            <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+                <div class="inset-panel" style="width: 150px; height: 100px; background: #808080; display: flex; align-items: center; justify-content: center; color: white;">
+                    [Ảnh Cassette AI]
+                </div>
+                <div>
+                    <h2 style="margin: 0; font-family: 'Arial Black', sans-serif;">Buổi sáng</h2>
+                    <p style="margin: 4px 0;">Thể loại: Acoustic, Lofi</p>
+                    <p style="color: #FF0000; font-weight: bold;">Lưu ý: Audio sẽ không phát nếu chưa có file âm thanh thực tế.</p>
+                </div>
+            </div>
+
+            <div class="inset-panel" style="height: 150px; overflow: auto; padding: 0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tên bài hát</th>
+                            <th>Thời lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="selectRow(this)">
+                            <td>1</td>
+                            <td>Bình minh trên phố</td>
+                            <td>03:45</td>
+                        </tr>
+                        <tr onclick="selectRow(this)">
+                            <td>2</td>
+                            <td>Ly cafe đầu ngày</td>
+                            <td>04:12</td>
+                        </tr>
+                        <tr onclick="selectRow(this)">
+                            <td>3</td>
+                            <td>Sương mai</td>
+                            <td>02:58</td>
+                        </tr>
+                        <tr onclick="selectRow(this)">
+                            <td>4</td>
+                            <td>Gió nhẹ</td>
+                            <td>03:20</td>
+                        </tr>
+                        <tr onclick="selectRow(this)">
+                            <td>5</td>
+                            <td>Tia nắng đầu tiên</td>
+                            <td>04:05</td>
+                        </tr>
+                        <tr onclick="selectRow(this)">
+                            <td>6</td>
+                            <td>Chào ngày mới</td>
+                            <td>03:50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 8px; text-align: right;">
+                <button class="outset-btn" onclick="alert('Ghi chú: Bài hát đang chờ file âm thanh thật.')">Xem ghi chú bài</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Window -->
+    <div id="win-schedule" class="window hidden" style="top: 100px; left: 150px; width: 350px; height: 350px;">
+        <div class="title-bar" onmousedown="dragStart(event, 'win-schedule')">
+            <div class="title-bar-text">Lịch buổi nghe.txt - Notepad</div>
+            <div class="title-bar-controls">
+                <button class="title-bar-btn" onclick="minimizeWindow('win-schedule')">_</button>
+                <button class="title-bar-btn" onclick="maximizeWindow('win-schedule')">[]</button>
+                <button class="title-bar-btn" onclick="closeWindow('win-schedule')">X</button>
+            </div>
+        </div>
+        <div class="window-content notepad-bg" style="font-family: 'Courier New', Courier, monospace;">
+            <p>LỊCH BUỔI NGHE NHẠC (MINH HỌA)</p>
+            <p>================================</p>
+            <br>
+            <p>1. Ngày 15/10/1997 - 19:00</p>
+            <p>Chủ đề: Nhạc Trịnh</p>
+            <a href="#" onclick="alert('Chi tiết: Buổi nghe nhạc Trịnh tại quán cafe Mộc.')">Xem chi tiết</a>
+            <br><br>
+            <p>2. Ngày 20/10/1997 - 20:00</p>
+            <p>Chủ đề: Quốc tế Phụ Nữ - Pop Ballad</p>
+            <a href="#" onclick="alert('Chi tiết: Dành riêng cho phái đẹp với những bản Pop Ballad ngọt ngào.')">Xem chi tiết</a>
+            <br><br>
+            <p>3. Ngày 31/10/1997 - 21:00</p>
+            <p>Chủ đề: Halloween Rock</p>
+            <a href="#" onclick="alert('Chi tiết: Đêm Rock ma mị đón Halloween.')">Xem chi tiết</a>
+        </div>
+    </div>
+
+    <!-- Guestbook Window -->
+    <div id="win-guestbook" class="window hidden" style="top: 120px; left: 200px; width: 400px; height: 350px;">
+        <div class="title-bar" onmousedown="dragStart(event, 'win-guestbook')">
+            <div class="title-bar-text">Sổ ghé thăm</div>
+            <div class="title-bar-controls">
+                <button class="title-bar-btn" onclick="minimizeWindow('win-guestbook')">_</button>
+                <button class="title-bar-btn" onclick="maximizeWindow('win-guestbook')">[]</button>
+                <button class="title-bar-btn" onclick="closeWindow('win-guestbook')">X</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <p class="blink-text" style="margin-top: 0;">HOT! Hãy để lại lời nhắn của bạn!</p>
+            <p style="font-size: 12px; color: #808080;">Lưu ý: Nội dung chỉ lưu tạm thời trong phiên làm việc hiện tại, không xuất bản công khai.</p>
+            
+            <form id="guestbook-form" onsubmit="submitGuestbook(event)">
+                <label class="form-label" for="gb-name">Bút danh:</label>
+                <input type="text" id="gb-name" required>
+                
+                <label class="form-label" for="gb-message">Cảm nghĩ:</label>
+                <textarea id="gb-message" rows="3" required></textarea>
+                
+                <div style="display: flex; gap: 8px;">
+                    <button type="submit" class="outset-btn">Ký tên</button>
+                    <button type="button" class="outset-btn" onclick="clearGuestbook()">Xóa bộ nhớ</button>
+                </div>
+            </form>
+
+            <div style="margin-top: 16px;">
+                <h3 style="font-size: 14px; border-bottom: 2px solid #808080;">Các lời nhắn:</h3>
+                <div id="guestbook-entries" class="inset-panel" style="height: 80px; overflow: auto; background: #e8e8e8;">
+                    <!-- Entries go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <button class="outset-btn start-btn" onclick="alert('Start Menu (Minh họa)')">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjYzBjMGMwIi8+PHBhdGggZD0iTTEgMWgxNHYxNEgxem0yIDJoMTB2MTBIM3oiIGZpbGw9IiMwMDAiLz48L3N2Zz4=" alt="Start">
+            Start
+        </button>
+        <div class="taskbar-tasks" id="taskbar-tasks">
+            <!-- Task buttons appended here dynamically -->
+        </div>
+        <div class="clock" id="taskbar-clock">
+            12:00 PM
+        </div>
+    </div>
+
+    <script>
+        // Update Clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            const strTime = hours + ':' + minutes + ' ' + ampm;
+            document.getElementById('taskbar-clock').innerText = strTime;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Window Management
+        const windows = [
+            { id: 'win-library', title: 'Thư viện', open: true, minimized: false, zIndex: 1 },
+            { id: 'win-collection-morning', title: 'Buổi sáng', open: false, minimized: false, zIndex: 0 },
+            { id: 'win-schedule', title: 'Lịch nghe', open: false, minimized: false, zIndex: 0 },
+            { id: 'win-guestbook', title: 'Sổ ghé thăm', open: false, minimized: false, zIndex: 0 }
+        ];
+        
+        let highestZIndex = 10;
+
+        function updateTaskbar() {
+            const taskContainer = document.getElementById('taskbar-tasks');
+            taskContainer.innerHTML = '';
+            
+            // Find active window
+            let activeWinId = null;
+            let maxZ = -1;
+            windows.forEach(w => {
+                if (w.open && !w.minimized) {
+                    if (w.zIndex > maxZ) {
+                        maxZ = w.zIndex;
+                        activeWinId = w.id;
+                    }
+                }
+            });
+
+            windows.forEach(w => {
+                if (w.open) {
+                    const btn = document.createElement('button');
+                    const isActive = w.id === activeWinId && !w.minimized;
+                    btn.className = 'outset-btn task-btn ' + (isActive ? 'active' : '');
+                    btn.innerText = w.title;
+                    btn.onclick = () => toggleWindow(w.id);
+                    taskContainer.appendChild(btn);
+                    
+                    // update title bar color
+                    const winEl = document.getElementById(w.id);
+                    if (winEl) {
+                        const titleBar = winEl.querySelector('.title-bar');
+                        if (isActive) {
+                            titleBar.classList.remove('inactive');
+                        } else {
+                            titleBar.classList.add('inactive');
+                        }
+                    }
+                }
+            });
+        }
+
+        function focusWindow(id) {
+            const win = windows.find(w => w.id === id);
+            if (win) {
+                highestZIndex++;
+                win.zIndex = highestZIndex;
+                document.getElementById(id).style.zIndex = highestZIndex;
+            }
+            updateTaskbar();
+        }
+
+        function openWindow(id) {
+            const win = windows.find(w => w.id === id);
+            if (win) {
+                win.open = true;
+                win.minimized = false;
+                document.getElementById(id).classList.remove('hidden');
+                focusWindow(id);
+            }
+        }
+
+        function closeWindow(id) {
+            const win = windows.find(w => w.id === id);
+            if (win) {
+                win.open = false;
+                document.getElementById(id).classList.add('hidden');
+                updateTaskbar();
+            }
+        }
+
+        function minimizeWindow(id) {
+            const win = windows.find(w => w.id === id);
+            if (win) {
+                win.minimized = true;
+                document.getElementById(id).classList.add('hidden');
+                updateTaskbar();
+            }
+        }
+
+        function maximizeWindow(id) {
+            const el = document.getElementById(id);
+            if (el.style.width === '100%') {
+                el.style.width = el.getAttribute('data-w') || '400px';
+                el.style.height = el.getAttribute('data-h') || '300px';
+                el.style.top = el.getAttribute('data-t') || '50px';
+                el.style.left = el.getAttribute('data-l') || '50px';
+            } else {
+                el.setAttribute('data-w', el.style.width);
+                el.setAttribute('data-h', el.style.height);
+                el.setAttribute('data-t', el.style.top);
+                el.setAttribute('data-l', el.style.left);
+                el.style.width = '100%';
+                el.style.height = 'calc(100% - 36px)'; // Minus taskbar
+                el.style.top = '0';
+                el.style.left = '0';
+            }
+        }
+
+        function toggleWindow(id) {
+            const win = windows.find(w => w.id === id);
+            if (win) {
+                if (win.minimized) {
+                    win.minimized = false;
+                    document.getElementById(id).classList.remove('hidden');
+                    focusWindow(id);
+                } else {
+                    // Check if it's the active window
+                    let activeWinId = null;
+                    let maxZ = -1;
+                    windows.forEach(w => {
+                        if (w.open && !w.minimized && w.zIndex > maxZ) {
+                            maxZ = w.zIndex;
+                            activeWinId = w.id;
+                        }
+                    });
+                    
+                    if (activeWinId === id) {
+                        minimizeWindow(id);
+                    } else {
+                        focusWindow(id);
+                    }
+                }
+            }
+        }
+
+        // Draggable windows
+        let draggedWindow = null;
+        let startX = 0, startY = 0, initialX = 0, initialY = 0;
+
+        function dragStart(e, id) {
+            if (e.target.tagName === 'BUTTON') return; // Don't drag if clicking controls
+            
+            draggedWindow = document.getElementById(id);
+            focusWindow(id);
+            
+            startX = e.clientX;
+            startY = e.clientY;
+            initialX = parseInt(draggedWindow.style.left || 0, 10);
+            initialY = parseInt(draggedWindow.style.top || 0, 10);
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', dragEnd);
+        }
+
+        function drag(e) {
+            if (!draggedWindow) return;
+            e.preventDefault();
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            draggedWindow.style.left = (initialX + dx) + 'px';
+            draggedWindow.style.top = (initialY + dy) + 'px';
+        }
+
+        function dragEnd() {
+            draggedWindow = null;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', dragEnd);
+        }
+
+        // Table Selection
+        function selectRow(row) {
+            const tbody = row.parentNode;
+            Array.from(tbody.children).forEach(tr => tr.classList.remove('selected'));
+            row.classList.add('selected');
+        }
+
+        // Guestbook
+        let guestbookEntries = [];
+        function submitGuestbook(e) {
+            e.preventDefault();
+            const name = document.getElementById('gb-name').value;
+            const message = document.getElementById('gb-message').value;
+            
+            guestbookEntries.push({ name, message });
+            renderGuestbook();
+            
+            document.getElementById('gb-name').value = '';
+            document.getElementById('gb-message').value = '';
+        }
+
+        function renderGuestbook() {
+            const container = document.getElementById('guestbook-entries');
+            if (guestbookEntries.length === 0) {
+                container.innerHTML = '<p style="margin:4px; font-size:12px; color:#808080;">Chưa có lời nhắn nào.</p>';
+                return;
+            }
+            container.innerHTML = guestbookEntries.map(entry => 
+                `<div style="margin: 4px; padding-bottom: 4px; border-bottom: 1px dotted #808080; font-size:12px;">
+                    <strong>${entry.name}:</strong> ${entry.message}
+                </div>`
+            ).join('');
+        }
+
+        function clearGuestbook() {
+            if (confirm("Bạn có chắc muốn xóa tất cả lời nhắn trong phiên này?")) {
+                guestbookEntries = [];
+                renderGuestbook();
+            }
+        }
+
+        // Initialize
+        updateTaskbar();
+        renderGuestbook();
+        
+        // Add click listener to windows for focus
+        document.querySelectorAll('.window').forEach(win => {
+            win.addEventListener('mousedown', () => focusWindow(win.id));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words Have Rhythm Too | Kinetic Typography</title>
+  <meta name="description" content="Three motion studies for the same message: emphasize, stretch, and alter rhythm.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav">
+    <div class="logo">KINETIC TYPE.</div>
+    <div class="nav-controls">
+      <button id="motion-toggle" class="btn-ghost" aria-pressed="false">PAUSE MOTION</button>
+      <a href="#brief" class="btn btn-outline">SUBMIT IDEAS</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Section 1: Motion Message -->
+    <section class="hero">
+      <div class="marquee marquee-fast bg-accent text-black border-y">
+        <div class="marquee-content">
+          <span>SPEED IS THE MESSAGE + SCALE IS EMOTION + MOTION IS RHYTHM +</span>
+          <span>SPEED IS THE MESSAGE + SCALE IS EMOTION + MOTION IS RHYTHM +</span>
+        </div>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">WORDS HAVE<br>RHYTHM TOO.</h1>
+        <p class="lead">Three motion studies for the same message: emphasize, stretch, and alter rhythm.</p>
+        <a href="#studies" class="btn btn-primary">VIEW MOTION</a>
+      </div>
+    </section>
+
+    <div class="marquee marquee-slow border-b">
+      <div class="marquee-content">
+        <span>"THE RHYTHM OF TYPOGRAPHY IS THE VOICE OF DESIGN" — KINETIC STUDIO &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>"THE RHYTHM OF TYPOGRAPHY IS THE VOICE OF DESIGN" — KINETIC STUDIO &nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Section 2: Three Studies -->
+    <section id="studies" class="section">
+      <div class="container">
+        <h2 class="section-title">THREE STUDIES</h2>
+        <div class="grid studies-grid">
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">01</span>
+            <div class="card-content">
+              <h3 class="card-title">EMPHASIZE</h3>
+              <p class="card-desc">Focus energy on a single point to create visual weight.</p>
+              <div class="preview-box play-demo" data-study="emphasize">
+                <div class="demo-text">ATTENTION</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Play Emphasize sample">PLAY</button>
+            </div>
+          </div>
+          
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">02</span>
+            <div class="card-content">
+              <h3 class="card-title">STRETCH</h3>
+              <p class="card-desc">Manipulate time and space by continuously changing text scale.</p>
+              <div class="preview-box play-demo" data-study="stretch">
+                <div class="demo-text">EXPAND</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Play Stretch sample">PLAY</button>
+            </div>
+          </div>
+          
+          <div class="card group">
+            <span class="bg-number" aria-hidden="true">03</span>
+            <div class="card-content">
+              <h3 class="card-title">RHYTHM</h3>
+              <p class="card-desc">Break regularity with sudden pauses to create surprise.</p>
+              <div class="preview-box play-demo" data-study="rhythm">
+                <div class="demo-text">SURPRISE</div>
+              </div>
+              <button class="btn btn-outline w-full play-btn" aria-label="Play Rhythm sample">PLAY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Anatomy of Rhythm -->
+    <section class="section border-y">
+      <div class="container">
+        <h2 class="section-title">ANATOMY OF RHYTHM</h2>
+        <div class="timeline-container">
+          <div class="timeline-track"></div>
+          <div class="grid md-grid-3 gap-px bg-border">
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">0.0s - START</div>
+              <div class="keyframe-visual"></div>
+              <p class="muted-text">Static frame sets viewer expectations before motion occurs.</p>
+            </div>
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">1.2s - CLIMAX</div>
+              <div class="keyframe-visual inverted"></div>
+              <p class="muted-text">Strongest visual impact, breaking initial stability.</p>
+            </div>
+            <div class="bg-base p-8 keyframe-card">
+              <div class="keyframe-time">2.4s - RELEASE</div>
+              <div class="keyframe-visual"></div>
+              <p class="muted-text">Return to equilibrium with the afterimage of motion in mind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Scope of Work -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">SCOPE OF WORK</h2>
+        <div class="editorial-list">
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">BRAND MOTION</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">FILM TITLES</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+          <a href="#studies" class="editorial-item group">
+            <h3 class="editorial-title">INTERACTIVE INTERFACES</h3>
+            <span class="editorial-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Motion Brief -->
+    <section id="brief" class="section bg-accent text-black border-t">
+      <div class="container">
+        <h2 class="section-title text-black">MOTION BRIEF</h2>
+        <div class="grid md-grid-2">
+          <form class="brief-form" id="brief-form">
+            <div class="form-group">
+              <label for="message">MESSAGE (MAX 50 CHARS)</label>
+              <input type="text" id="message" class="large-input" maxlength="50" placeholder="ENTER MESSAGE HERE">
+              <div class="char-count" id="char-count">0/50</div>
+            </div>
+            <div class="form-group">
+              <label for="purpose">PURPOSE OF USE</label>
+              <select id="purpose" class="large-input">
+                <option value="">SELECT PURPOSE</option>
+                <option value="brand">BRAND IDENTITY</option>
+                <option value="ui">WEB INTERFACE</option>
+                <option value="video">VIDEO/FILM</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-outline form-submit">TEST SAMPLE</button>
+            <p class="muted-text-dark mt-4">* This is a live preview, no real data is sent.</p>
+          </form>
+          
+          <div class="preview-panel">
+            <div class="preview-label">PREVIEW</div>
+            <div class="preview-canvas" id="preview-canvas">
+              <div id="preview-text">...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer border-t">
+    <div class="container">
+      <div class="marquee marquee-fast">
+        <div class="marquee-content">
+          <span>KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY </span>
+          <span>KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY KINETIC TYPOGRAPHY </span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 KINETIC STUDIO.</p>
+        <p>DESIGNED BY AI</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIGHT SHIFT - Game Jam</title>
+  <meta name="description" content="Một game jam cuối tuần dành cho người làm hình, âm thanh và lập trình.">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <main class="container">
+    <header class="hero cyber-chamfer-lg">
+      <h1 class="glitch cyber-glitch" data-text="NIGHT SHIFT">NIGHT SHIFT<br><span class="subtitle">DỰNG THỨ BẠN MUỐN CHƠI</span></h1>
+      <p class="lead">Một game jam cuối tuần dành cho người làm hình, âm thanh và lập trình. Thông tin cộng đồng trên trang là minh họa.</p>
+      
+      <div class="role-tags">
+        <span class="tag tag-green">LẬP TRÌNH</span>
+        <span class="tag tag-magenta">HÌNH ẢNH</span>
+        <span class="tag tag-cyan">ÂM THANH</span>
+      </div>
+
+      <a href="#teams" class="btn btn-primary glitch-btn">
+        <span aria-hidden="true">></span> TÌM ĐỘI MẪU <span class="blink">_</span>
+      </a>
+    </header>
+
+    <section class="mission terminal-panel cyber-chamfer">
+      <div class="terminal-header">
+        <div class="dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="terminal-title">MISSION_BRIEFING.EXE</div>
+      </div>
+      <div class="terminal-body">
+        <h2 class="section-title">ĐỀ BÀI VÀ GIỚI HẠN</h2>
+        <ul class="mission-list">
+          <li><span class="accent">></span> <strong>Mục tiêu:</strong> Làm một game ngắn xoay quanh "Ánh Sáng".</li>
+          <li><span class="accent">></span> <strong>Thời gian:</strong> 48 giờ cuối tuần.</li>
+          <li><span class="accent">></span> <strong>Tài sản:</strong> Tự làm hoặc dùng tài sản miễn phí hợp lệ.</li>
+          <li><span class="accent">></span> <strong>Đầu ra:</strong> Bản chơi thử trên web hoặc file tải về độc lập.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="teams" class="teams">
+      <h2 class="section-title">TÌM ĐỘI</h2>
+      <div class="filters">
+        <button class="btn btn-outline filter-btn active" data-filter="all">TẤT CẢ</button>
+        <button class="btn btn-outline filter-btn" data-filter="dev">LẬP TRÌNH</button>
+        <button class="btn btn-outline filter-btn" data-filter="art">HÌNH ẢNH</button>
+        <button class="btn btn-outline filter-btn" data-filter="audio">ÂM THANH</button>
+      </div>
+
+      <div class="team-grid">
+        <article class="card cyber-chamfer holographic" data-need="dev">
+          <div class="corner-accents"></div>
+          <h3>TEAM NEON_DREAM</h3>
+          <p class="idea">Game trốn tìm trong thành phố neon.</p>
+          <div class="needs">Cần: <span class="tag tag-green">LẬP TRÌNH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+        <article class="card cyber-chamfer holographic" data-need="art">
+          <div class="corner-accents"></div>
+          <h3>TEAM CHROME_HEARTS</h3>
+          <p class="idea">Platformer 2D nhịp độ cao.</p>
+          <div class="needs">Cần: <span class="tag tag-magenta">HÌNH ẢNH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+        <article class="card cyber-chamfer holographic" data-need="audio">
+          <div class="corner-accents"></div>
+          <h3>TEAM VOID_RUNNER</h3>
+          <p class="idea">Trải nghiệm âm thanh 3D kinh dị.</p>
+          <div class="needs">Cần: <span class="tag tag-cyan">ÂM THANH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+        <article class="card cyber-chamfer holographic" data-need="dev">
+          <div class="corner-accents"></div>
+          <h3>TEAM SYNTH_WAVE</h3>
+          <p class="idea">Game bắn súng nhịp điệu arcade.</p>
+          <div class="needs">Cần: <span class="tag tag-green">LẬP TRÌNH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+        <article class="card cyber-chamfer holographic" data-need="art">
+          <div class="corner-accents"></div>
+          <h3>TEAM MECHA_SOUL</h3>
+          <p class="idea">Game đối kháng robot pixel.</p>
+          <div class="needs">Cần: <span class="tag tag-magenta">HÌNH ẢNH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+        <article class="card cyber-chamfer holographic" data-need="audio">
+          <div class="corner-accents"></div>
+          <h3>TEAM GLITCH_PUNK</h3>
+          <p class="idea">Giải đố bằng việc thao túng thời gian.</p>
+          <div class="needs">Cần: <span class="tag tag-cyan">ÂM THANH</span></div>
+          <button class="btn btn-ghost team-view-btn">XEM HỒ SƠ</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="progress">
+      <h2 class="section-title">BẢNG TIẾN ĐỘ: TEAM NEON_DREAM</h2>
+      <div class="timeline">
+        <div class="phase completed">
+          <div class="phase-marker">01</div>
+          <div class="phase-content">
+            <h4>Ý TƯỞNG</h4>
+            <p>Đã chốt concept ánh sáng và bóng tối.</p>
+          </div>
+        </div>
+        <div class="phase active">
+          <div class="phase-marker">02</div>
+          <div class="phase-content">
+            <h4>BẢN CHƠI THỬ</h4>
+            <p>Đang lập trình cơ chế đổ bóng.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-marker">03</div>
+          <div class="phase-content">
+            <h4>TRÌNH DIỄN</h4>
+            <p>Chờ nộp bài.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile">
+      <h2 class="section-title">HỒ SƠ THAM GIA MẪU</h2>
+      <form class="profile-form cyber-chamfer" id="profileForm">
+        <div class="input-group">
+          <label for="role">VAI TRÒ CỦA BẠN</label>
+          <div class="select-wrapper">
+             <span class="prefix">></span>
+             <select id="role" class="cyber-input" required>
+               <option value="" disabled selected>CHỌN VAI TRÒ...</option>
+               <option value="dev">LẬP TRÌNH VIÊN</option>
+               <option value="art">HỌA SĨ 2D/3D</option>
+               <option value="audio">THIẾT KẾ ÂM THANH</option>
+             </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="idea">ĐIỀU BẠN MUỐN LÀM</label>
+          <div class="textarea-wrapper">
+            <span class="prefix">></span>
+            <textarea id="idea" class="cyber-input" rows="3" placeholder="Ví dụ: Tôi muốn làm game pixel art..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-secondary">TẠO HỒ SƠ THỬ</button>
+        <p class="form-note">Dữ liệu chỉ hiển thị tạm thời, không gửi thật.</p>
+      </form>
+    </section>
+  </main>
+  
+  <div id="teamModal" class="modal hidden">
+    <div class="modal-content cyber-chamfer terminal-panel">
+       <div class="terminal-header">
+        <div class="dots">
+          <span class="dot red close-modal"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="terminal-title">TEAM_PROFILE.DAT</div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modalTeamName">TÊN ĐỘI</h3>
+        <p id="modalTeamIdea">Ý tưởng...</p>
+        <p><strong>Lịch dự kiến:</strong></p>
+        <ul>
+          <li>Tối T6: Họp chốt ý tưởng</li>
+          <li>Thứ 7: Làm prototype</li>
+          <li>Sáng CN: Hoàn thiện âm thanh & hình</li>
+          <li>Chiều CN: Test và nộp bài</li>
+        </ul>
+        <button class="btn btn-outline close-modal-btn">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

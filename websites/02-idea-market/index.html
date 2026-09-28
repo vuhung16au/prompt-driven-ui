@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chợ Ý Tưởng | Maximalism</title>
+  <meta name="description" content="Một ngày gặp những người làm đồ, làm chữ và làm những thứ khó xếp vào một ô.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dots bg-stripes">
+  
+  <header class="section" style="padding-top: 2rem;">
+    <div class="massive-bg-text" style="top: 0; left: -10%;">WOW</div>
+    <div class="massive-bg-text" style="top: 20%; right: -5%; color: var(--c2);">YES</div>
+    <div class="container">
+      <div class="decor animate-float" style="top: 10%; left: 10%;">✨</div>
+      <div class="decor animate-wiggle" style="top: 20%; right: 15%;">🚀</div>
+      <div class="decor animate-spin-slow" style="top: 50%; left: 5%;">💥</div>
+      
+      <div class="card rotate-1" style="max-width: 800px; margin: 0 auto; text-align: center; border-color: var(--c1); padding: 4rem 2rem;">
+        <h1 class="text-huge text-gradient ts-mega">CHỢ Ý TƯỞNG</h1>
+        <p class="text-h3" style="margin: 2rem 0;">Một ngày gặp những người làm đồ, làm chữ và làm những thứ khó xếp vào một ô.</p>
+        
+        <div style="margin-top: 3rem;">
+          <a href="#lich-dien-ra" class="btn btn-primary glow">XEM LỊCH HOẠT ĐỘNG</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section bg-checker" id="kham-pha-gian">
+    <div class="container">
+      <h2 class="text-h2 ts-3" style="text-align: center; margin-bottom: 3rem;">KHÁM PHÁ GIAN HÀNG</h2>
+      
+      <div class="filters" style="justify-content: center;">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="do">Đồ vật</button>
+        <button class="filter-btn" data-filter="chu">Chữ</button>
+        <button class="filter-btn" data-filter="am">Âm thanh</button>
+      </div>
+
+      <div class="grid grid-3" id="booth-container">
+        <!-- JS will populate booths here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lich-dien-ra">
+    <div class="massive-bg-text" style="top: 10%; left: -20%; color: var(--c4);">TIME</div>
+    <div class="container grid grid-2">
+      
+      <div>
+        <h2 class="text-h2 ts-2" style="margin-bottom: 2rem;">LỊCH DIỄN RA</h2>
+        <div class="timeline" id="timeline-container">
+          <!-- JS will populate timeline here -->
+        </div>
+      </div>
+
+      <div class="rotate-neg-1 translate-y-4">
+        <h2 class="text-h2 ts-2" style="margin-bottom: 2rem; color: var(--c3);">LỊCH CỦA BẠN</h2>
+        <div class="saved-schedule-box">
+          <h3 class="text-h3">Đã lưu (<span id="saved-count">0</span>/4)</h3>
+          <p style="opacity: 0.8; margin-bottom: 1rem;">Lịch trình bạn đã chọn để tham gia.</p>
+          
+          <ul class="schedule-list" id="saved-schedule-list">
+            <li style="justify-content: center; opacity: 0.5;">Chưa có hoạt động nào được lưu.</li>
+          </ul>
+
+          <div class="conflict-alert" id="conflict-alert">
+            ⚠️ Phát hiện trùng giờ! Vui lòng bỏ một mục để giải quyết xung đột.
+          </div>
+          
+          <div style="margin-top: 2rem; text-align: center;">
+            <button class="btn btn-ghost" id="reset-schedule">Xóa toàn bộ lịch</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section bg-checker" id="ban-do">
+    <div class="container">
+      <div class="decor animate-float-reverse" style="top: 10%; right: 10%;">🗺️</div>
+      <h2 class="text-h2 ts-3" style="text-align: center; margin-bottom: 3rem;">BẢN ĐỒ KHU VỰC</h2>
+      
+      <div class="map-container rotate-1">
+        <h3 class="text-h3" style="margin-bottom: 1rem;">SƠ ĐỒ HỘI CHỢ (MINH HỌA)</h3>
+        <p style="margin-bottom: 2rem;">Khu vực Đồ vật (Màu Cam) - Khu vực Chữ (Màu Xanh) - Khu vực Âm thanh (Màu Tím)</p>
+        
+        <div style="display: flex; justify-content: center; align-items: center; min-height: 300px; border: 4px dashed var(--c2); border-radius: 16px; background: rgba(0,0,0,0.3);">
+          <p class="text-h3" style="opacity: 0.5;">[Bản đồ minh họa vị trí các gian hàng]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section" style="padding: 4rem 0; border-top: 8px solid var(--c1);">
+    <div class="container" style="text-align: center;">
+      <h2 class="text-h2 ts-1" style="margin-bottom: 1rem;">CHỢ Ý TƯỞNG</h2>
+      <p>Một dự án minh họa phong cách Maximalism.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

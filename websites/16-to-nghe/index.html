@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi" class="sharp-corners">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TỜ NGHỀ | Chuyện Người Làm Sáng Tạo</title>
+    <meta name="description" content="Những câu chuyện về người làm sáng tạo và cách một dự án nhỏ thành hình.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        newsprint: '#F9F9F7',
+                        ink: '#111111',
+                        muted: '#E5E5E0',
+                        accent: '#CC0000',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-newsprint text-ink font-body min-h-screen flex flex-col">
+
+    <!-- Header / Masthead -->
+    <header class="border-b-4 border-ink z-40 bg-newsprint sticky top-0">
+        <div class="max-w-screen-xl mx-auto px-4 py-4 md:py-6 flex flex-col items-center">
+            <!-- Metadata -->
+            <div class="w-full flex justify-between items-end border-b border-ink pb-2 mb-4 font-mono text-xs uppercase tracking-widest text-neutral-600">
+                <span>Vol. <span id="edition-number">1</span></span>
+                <span class="hidden md:inline">28 THÁNG 9, 2026</span>
+                <span>BẢN ĐIỆN TỬ</span>
+            </div>
+            <!-- Title -->
+            <h1 class="font-display text-6xl sm:text-7xl lg:text-9xl tracking-tighter leading-[0.8] font-black text-center uppercase my-2">Tờ Nghề</h1>
+            <p class="font-sans text-sm md:text-base uppercase tracking-widest text-neutral-600 text-center mt-2 border-t border-ink pt-2 w-full max-w-2xl">
+                Những câu chuyện về người làm sáng tạo và cách một dự án nhỏ thành hình
+            </p>
+        </div>
+        
+        <!-- Ticker -->
+        <div class="border-t border-ink bg-ink text-newsprint py-1 overflow-hidden ticker-container font-mono text-xs uppercase tracking-widest relative flex items-center">
+            <div class="px-4 py-1 bg-accent font-bold z-10 absolute left-0 h-full flex items-center">TIN MỚI</div>
+            <div class="ticker-content pl-24">
+                <span class="mx-4">DỰ ÁN A VỪA RA MẮT BẢN THỬ NGHIỆM</span> • 
+                <span class="mx-4">CÔNG CỤ B CẬP NHẬT GIAO DIỆN MỚI</span> • 
+                <span class="mx-4">XU HƯỚNG THIẾT KẾ PHẲNG QUAY TRỞ LẠI</span> •
+                <span class="mx-4">NGƯỜI LÀM SÁNG TẠO ĐANG CHUYỂN HƯỚNG TỐI GIẢN</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-screen-xl mx-auto w-full border-x border-ink">
+        
+        <!-- View: Front Page -->
+        <div id="view-home" class="grid grid-cols-1 lg:grid-cols-12 w-full newsprint-texture">
+            
+            <!-- Column 1: Lead Story (6 cols) -->
+            <section class="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-ink p-4 md:p-6 lg:p-8 flex flex-col group cursor-pointer hard-shadow-hover bg-newsprint" onclick="openArticle('lead-story')">
+                <div class="flex items-center gap-2 mb-4 font-mono text-xs uppercase tracking-widest text-accent font-bold">
+                    <span>◆ Tiêu Điểm</span>
+                </div>
+                <h2 class="font-display text-4xl lg:text-6xl font-black leading-[1.1] mb-4">Khi Một Ý Tưởng Cần Ít Thứ Hơn</h2>
+                <p class="font-body text-lg leading-relaxed text-neutral-800 mb-6 drop-cap">
+                    Đôi khi, cách tốt nhất để phát triển một dự án không phải là thêm tính năng, mà là mạnh dạn cắt bỏ đi những gì không cần thiết. Câu chuyện về việc rút gọn phạm vi để tìm ra giá trị cốt lõi.
+                </p>
+                <div class="mt-auto relative border border-ink bg-muted aspect-video overflow-hidden">
+                    <!-- Image Placeholder / Halftone -->
+                    <div class="absolute inset-0 halftone-bg"></div>
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop" alt="Bàn làm việc tối giản với sổ và bút" class="w-full h-full object-cover newsprint-img relative z-10 opacity-90">
+                    <div class="absolute bottom-0 right-0 bg-newsprint border-t border-l border-ink px-2 py-1 font-mono text-[10px] uppercase z-20">Fig 1.1</div>
+                </div>
+            </section>
+
+            <!-- Column 2: Categories (3 cols) -->
+            <section class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-ink bg-newsprint flex flex-col">
+                <!-- Tabs -->
+                <div class="flex border-b-2 border-ink font-sans uppercase tracking-widest text-xs font-bold w-full bg-newsprint">
+                    <button class="flex-1 py-3 text-center border-r border-ink tab-btn active bg-ink text-newsprint" data-tab="thiet-ke">Thiết kế</button>
+                    <button class="flex-1 py-3 text-center border-r border-ink tab-btn hover:bg-neutral-100" data-tab="nguoi-lam">Người làm</button>
+                    <button class="flex-1 py-3 text-center tab-btn hover:bg-neutral-100" data-tab="cong-cu">Công cụ</button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="flex-grow p-4 md:p-6" id="tab-content">
+                    <!-- Injected by JS -->
+                </div>
+            </section>
+
+            <!-- Column 3: Sidebar (3 cols) -->
+            <section class="lg:col-span-3 bg-newsprint flex flex-col">
+                
+                <!-- Previous Editions -->
+                <div class="border-b border-ink p-4 md:p-6">
+                    <h3 class="font-sans font-bold uppercase tracking-widest text-sm mb-4 border-b border-ink pb-2">Số Báo Trước</h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left font-display text-xl font-bold hover:text-accent transition-colors edition-btn flex justify-between items-center" data-edition="1">
+                            <span>Vol. 1: Tối Giản</span>
+                            <span class="font-mono text-xs text-neutral-500">Đang xem</span>
+                        </button>
+                        <button class="w-full text-left font-display text-xl font-bold hover:text-accent transition-colors edition-btn flex justify-between items-center text-neutral-500" data-edition="2">
+                            <span>Vol. 2: Mở Rộng</span>
+                            <span class="font-mono text-xs">Xem &rarr;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Subscription -->
+                <div class="p-4 md:p-6 bg-ink text-newsprint flex-grow">
+                    <div class="font-serif text-2xl tracking-[0.5em] text-neutral-600 text-center mb-4">✧ ✧ ✧</div>
+                    <h3 class="font-display text-2xl font-bold mb-2">Nhận Số Mới</h3>
+                    <p class="font-sans text-sm mb-6 text-neutral-400">Đăng ký để nhận những câu chuyện sáng tạo vào mỗi sáng thứ Hai.</p>
+                    
+                    <form id="subscribe-form" class="space-y-4">
+                        <div>
+                            <label for="email" class="sr-only">Địa chỉ Email</label>
+                            <input type="email" id="email" required placeholder="DIEN_EMAIL_CUA_BAN@MAIL.COM" class="w-full bg-transparent border-b-2 border-newsprint px-0 py-2 font-mono text-sm focus:outline-none focus:border-accent text-newsprint placeholder-neutral-600">
+                        </div>
+                        <button type="submit" class="w-full bg-newsprint text-ink font-sans uppercase tracking-widest font-bold py-3 text-sm hover:bg-accent hover:text-newsprint transition-colors border border-transparent">
+                            Gửi Đăng Ký
+                        </button>
+                        <p class="font-mono text-[10px] text-neutral-500 uppercase mt-2 text-center">Đây chỉ là mẫu thử nghiệm, không thu thập email.</p>
+                    </form>
+                    <div id="subscribe-message" class="hidden mt-4 font-mono text-xs p-3 border border-newsprint text-center"></div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- View: Article Reader (Hidden by default) -->
+        <div id="view-article" class="hidden w-full bg-newsprint newsprint-texture min-h-[70vh]">
+            <!-- Top bar -->
+            <div class="border-b border-ink p-4 flex justify-between items-center sticky top-[100px] bg-newsprint z-30">
+                <button onclick="closeArticle()" class="font-sans text-sm uppercase tracking-widest font-bold hover:text-accent flex items-center gap-2 link-red-hover">
+                    <i data-lucide="arrow-left" class="w-4 h-4 stroke-[2]"></i> Trở về trang nhất
+                </button>
+                <div class="font-mono text-xs uppercase tracking-widest text-neutral-500">Bài Đọc</div>
+            </div>
+
+            <!-- Content -->
+            <article class="max-w-[68ch] mx-auto p-4 md:p-8 lg:py-16">
+                <header class="mb-10 text-center">
+                    <div id="article-category" class="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4">◆ Chuyên Mục</div>
+                    <h1 id="article-title" class="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] mb-6">Tiêu đề bài viết</h1>
+                    <div class="font-sans text-sm uppercase tracking-widest text-neutral-600 border-t border-b border-ink py-2 mx-auto inline-block">
+                        Bởi <span id="article-author" class="font-bold text-ink">Tác giả minh họa</span>
+                    </div>
+                </header>
+
+                <div class="font-body text-lg leading-relaxed text-neutral-900 space-y-6 text-justify">
+                    <p id="article-lead" class="text-xl font-medium leading-relaxed drop-cap">
+                        Lời dẫn của bài viết nằm ở đây.
+                    </p>
+                    
+                    <p id="article-p1">Đoạn một.</p>
+                    
+                    <blockquote class="my-10 pl-6 border-l-4 border-ink font-display text-2xl italic text-neutral-800">
+                        "<span id="article-quote">Đây là một trích dẫn nổi bật từ một nhân vật hư cấu, làm điểm nhấn cho bài viết.</span>"
+                    </blockquote>
+                    
+                    <p id="article-p2">Đoạn hai.</p>
+                    <p id="article-p3">Đoạn ba.</p>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t-2 border-ink text-center">
+                    <button onclick="closeArticle()" class="btn-secondary font-sans uppercase tracking-widest font-bold text-sm px-8 py-3">
+                        Đọc bài khác
+                    </button>
+                </div>
+            </article>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t-4 border-ink bg-newsprint py-8 px-4 mt-auto">
+        <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-display text-3xl font-black uppercase">Tờ Nghề</div>
+            <div class="font-mono text-xs uppercase tracking-widest text-neutral-600 text-center md:text-right">
+                Edition: Vol 1.0 <br> Printed in Local
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

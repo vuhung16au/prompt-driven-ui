@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read More Closely - Reading & Discussion Class</title>
+    <meta name="description" content="A reading and discussion class for working professionals who want to deeply understand what they read.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-mahogany: #1C1714;
+            --bg-oak: #251E19;
+            --text-parchment: #E8DFD4;
+            --text-ink: #9C8B7A;
+            --border-wood: #4A3F35;
+            --accent-brass: #C9A962;
+            --accent-crimson: #8B2635;
+        }
+        
+        body {
+            background-color: var(--bg-mahogany);
+            color: var(--text-parchment);
+            font-family: 'Crimson Pro', serif;
+            line-height: 1.625;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .font-display {
+            font-family: 'Cinzel', serif;
+            line-height: 1.45;
+        }
+
+        .arch-top {
+            border-radius: 40% 40% 0 0 / 20% 20% 0 0;
+        }
+
+        .img-sepia {
+            filter: sepia(0.6) contrast(0.95) brightness(0.9);
+            transition: filter 700ms ease-out, transform 700ms ease-out;
+        }
+        
+        .img-sepia:hover, .img-sepia:focus {
+            filter: sepia(0) contrast(1) brightness(1);
+            transform: scale(1.02);
+        }
+
+        .ornate-frame {
+            position: relative;
+        }
+        
+        .ornate-frame::before,
+        .ornate-frame::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-brass);
+            opacity: 0.6;
+            transition: opacity 300ms ease;
+            pointer-events: none;
+        }
+        
+        .ornate-frame::before {
+            top: -1px; left: -1px;
+            border-right: none; border-bottom: none;
+        }
+        
+        .ornate-frame::after {
+            bottom: -1px; right: -1px;
+            border-left: none; border-top: none;
+        }
+        
+        .ornate-frame:hover::before,
+        .ornate-frame:hover::after {
+            opacity: 1;
+        }
+
+        .corner-flourish {
+            position: relative;
+        }
+        .corner-flourish::before,
+        .corner-flourish::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--accent-brass);
+            opacity: 0.6;
+            transition: opacity 300ms ease;
+            pointer-events: none;
+        }
+        .corner-flourish::before {
+            top: -1px; left: -1px;
+            border-right: none; border-bottom: none;
+        }
+        .corner-flourish::after {
+            bottom: -1px; right: -1px;
+            border-left: none; border-top: none;
+        }
+        .corner-flourish:hover::before,
+        .corner-flourish:hover::after {
+            opacity: 1;
+        }
+
+        .ornate-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-wood) 20%, var(--accent-brass) 50%, var(--border-wood) 80%, transparent 100%);
+            position: relative;
+            margin: 3rem auto;
+            width: 100%;
+            max-width: 16rem;
+        }
+        
+        .ornate-divider::before {
+            content: "✶";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--accent-brass);
+            font-size: 12px;
+            background: var(--bg-mahogany);
+            padding: 0 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #D4B872 0%, #C9A962 50%, #B8953F 100%);
+            color: #1C1714;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.3);
+            transition: filter 300ms ease, transform 150ms ease, box-shadow 300ms ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            min-height: 48px;
+            line-height: 1.45;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            filter: brightness(1.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2), 0 4px 12px rgba(201,169,98,0.3);
+        }
+
+        .btn-primary:active {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            transform: translateY(1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-brass);
+            color: var(--accent-brass);
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 300ms ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            min-height: 48px;
+            line-height: 1.45;
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: var(--accent-crimson);
+            border-color: var(--accent-crimson);
+            color: var(--text-parchment);
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Cinzel', serif;
+            font-size: 72px;
+            float: left;
+            margin-right: 16px;
+            line-height: 0.8;
+            color: var(--accent-brass);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-top: 8px;
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(28,23,20,0.4) 100%);
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        .paper-texture {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 51;
+            mix-blend-mode: overlay;
+        }
+
+        .academia-card {
+            background-color: var(--bg-oak);
+            border: 1px solid var(--border-wood);
+            border-radius: 4px;
+            transition: all 300ms ease;
+        }
+
+        .academia-card:hover {
+            border-color: rgba(201, 169, 98, 0.5);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        *:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--bg-mahogany), 0 0 0 4px var(--accent-brass);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Wax seal */
+        .wax-seal {
+            background: radial-gradient(circle, #a72d3f 0%, #8B2635 80%, #5e1a24 100%);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), inset 0 -2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        .interactive-sentence {
+            cursor: pointer;
+            border-bottom: 1px dotted var(--text-ink);
+            transition: all 300ms ease;
+        }
+        .interactive-sentence:hover, .interactive-sentence:focus {
+            color: var(--accent-brass);
+            border-bottom-color: var(--accent-brass);
+            background-color: rgba(201, 169, 98, 0.1);
+        }
+        .interactive-sentence.active {
+            color: var(--accent-brass);
+            background-color: rgba(201, 169, 98, 0.15);
+            border-bottom: 1px solid var(--accent-brass);
+        }
+
+        .explanation-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 300ms ease-out, opacity 300ms ease-out, padding 300ms ease-out;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .explanation-panel.expanded {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .syllabus-icon {
+            transition: transform 300ms ease;
+        }
+        details[open] .syllabus-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased relative min-h-screen pb-24">
+    <svg style="display:none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalTurbulence" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+        </filter>
+    </svg>
+    <div class="paper-texture" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalTurbulence%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    <div class="vignette"></div>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-16 md:pt-24 lg:pt-32 flex flex-col gap-24 md:gap-32">
+        
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="lg:col-span-7 flex flex-col gap-8">
+                <div class="space-y-4">
+                    <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Autumn Semester</span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">Read more closely.<br>Reason more clearly.</h1>
+                </div>
+                <p class="text-lg md:text-xl text-[#9C8B7A] max-w-2xl">
+                    A reading and discussion class for working professionals who want to deeply understand what they read. Build your analytical mindset through classical and contemporary texts.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#sample-lesson" class="btn-primary px-8 text-xs font-semibold">View sample lesson</a>
+                    <a href="#schedule" class="btn-secondary px-8 text-xs font-semibold">Select class schedule</a>
+                </div>
+            </div>
+            <div class="lg:col-span-5 ornate-frame p-2 md:p-3 bg-[#251E19]">
+                <div class="overflow-hidden arch-top aspect-[4/5] bg-[#1C1714]">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classical library with wooden bookshelves" class="w-full h-full object-cover img-sepia" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- 4 Chapters Section -->
+        <section id="syllabus" class="max-w-4xl mx-auto w-full">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Syllabus</span>
+                <h2 class="text-4xl md:text-5xl">Four Pillars of Analysis</h2>
+            </div>
+
+            <div class="flex flex-col gap-8">
+                <!-- Chapter 1 -->
+                <details class="academia-card corner-flourish group" open>
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume I</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Read the question</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Before analyzing an argument, we must understand what question the text is answering. Misidentifying the core question leads all subsequent evaluations astray.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Learning Outcome</strong>
+                            Identify the core question hidden beneath rhetorical devices. Exercise: Find the central question in a selected passage from Seneca.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 2 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume II</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Isolate arguments</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Filter out narrative elements and emotional appeals to reveal the author's logical framework. A solid argument does not rely on the polish of its prose.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Learning Outcome</strong>
+                            Map out premises and conclusions. Exercise: Extract the main argument from an opinion editorial.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 3 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume III</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Verify evidence</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Not all evidence carries the same weight. Learn to categorize and evaluate the relevance and validity of cited data.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Learning Outcome</strong>
+                            Identify logical fallacies or weak evidence. Exercise: Evaluate citations in a research report.
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Chapter 4 -->
+                <details class="academia-card corner-flourish group">
+                    <summary class="p-8 cursor-pointer flex justify-between items-center focus-visible:outline-none">
+                        <div class="space-y-2">
+                            <div class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Volume IV</div>
+                            <h3 class="text-2xl md:text-3xl transition-colors group-hover:text-[#C9A962]">Write responses</h3>
+                        </div>
+                        <div class="syllabus-icon w-8 h-8 rounded-full border border-[#4A3F35] flex items-center justify-center group-hover:border-[#C9A962]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#C9A962]"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 pt-0 border-t border-[#4A3F35]/50 mt-2">
+                        <p class="text-[#9C8B7A] pt-6 mb-4">Present your agreement or disagreement in a structured, respectful, and logically rigorous manner.</p>
+                        <div class="bg-[#1C1714] p-4 rounded text-sm text-[#E8DFD4] border border-[#4A3F35]">
+                            <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-1">Learning Outcome</strong>
+                            Draft a complete critical response. Exercise: Write a 300-word response to the analyzed text.
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Sample Lesson -->
+        <section id="sample-lesson" class="max-w-6xl mx-auto w-full">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Practical Exercise I</span>
+                <h2 class="text-4xl md:text-5xl">Dissecting Arguments</h2>
+                <p class="text-[#9C8B7A] max-w-2xl mx-auto">Click on the sentence you believe contains the author's primary argument in the excerpt below.</p>
+            </div>
+
+            <div class="academia-card corner-flourish p-8 md:p-16 relative">
+                <div class="absolute -top-4 -right-4 w-12 h-12 rounded-full wax-seal flex items-center justify-center z-20" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#C9A962" stroke="none" class="opacity-80"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
+                    <div class="md:col-span-8">
+                        <div class="text-lg md:text-xl leading-relaxed font-serif text-[#E8DFD4]">
+                            <p class="drop-cap mb-6">Human memory is not akin to a tape recorder, passively capturing every sight and sound. Instead, it is an active reconstructive process. <button class="interactive-sentence text-left inline" tabindex="0" onclick="showExplanation('wrong')">Each time we recall an event, the brain essentially pieces together memory fragments from various sources, sometimes interweaving new information.</button> <button class="interactive-sentence text-left inline" tabindex="0" onclick="showExplanation('correct')">Therefore, eyewitness testimony, regardless of the witness's confidence, should never be regarded as entirely objective evidence in critical verdicts without the support of physical evidence.</button> Understanding the fluid nature of memory helps us avoid regrettable errors in judgment.</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 border-t md:border-t-0 md:border-l border-[#4A3F35] pt-6 md:pt-0 md:pl-6 text-sm text-[#9C8B7A]">
+                        <h4 class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase mb-4">Marginalia</h4>
+                        <p class="mb-4">Excerpt from the essay <em>"Memory and Truth"</em>. Note how the author transitions from describing a phenomenon to proposing a course of action.</p>
+                        
+                        <div id="explanation-container" class="explanation-panel bg-[#1C1714] p-4 rounded border border-[#4A3F35]">
+                            <div id="feedback-correct" class="hidden">
+                                <strong class="font-display text-[#C9A962] text-[10px] tracking-widest uppercase block mb-2 text-[#C9A962]">Correct</strong>
+                                <p>This sentence contains the main argument. The author uses the word "Therefore" to signal a conclusion (eyewitness testimony should not be absolute evidence) drawn from the premises (memory is reconstructive and fallible) stated earlier.</p>
+                                <button onclick="resetExercise()" class="mt-4 text-xs font-display uppercase tracking-widest text-[#9C8B7A] hover:text-[#C9A962] transition-colors underline underline-offset-4">Try again</button>
+                            </div>
+                            <div id="feedback-wrong" class="hidden">
+                                <strong class="font-display text-[#8B2635] text-[10px] tracking-widest uppercase block mb-2">Incorrect</strong>
+                                <p>This sentence is a <strong>premise</strong> (explaining the mechanism of memory), not the primary argument. It serves to provide a reason leading to a more significant conclusion later in the paragraph.</p>
+                                <button onclick="resetExercise()" class="mt-4 text-xs font-display uppercase tracking-widest text-[#9C8B7A] hover:text-[#C9A962] transition-colors underline underline-offset-4">Try again</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Instructor -->
+        <section class="max-w-5xl mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase mb-4 block">The Moderator</span>
+                    <h2 class="text-4xl md:text-5xl mb-6">Arthur Pendelton</h2>
+                    <p class="text-lg text-[#9C8B7A] mb-6">
+                        As the facilitator of our discussions, the moderator's role is not to provide the correct answers, but to ask the right questions so participants can test the rigor of their own arguments.
+                    </p>
+                    <ul class="space-y-3 text-[#E8DFD4]">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">I.</span>
+                            <span>No judgment of right/wrong, only demands for evidentiary clarity.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">II.</span>
+                            <span>Maintains a dialogic space respectful of divergent perspectives.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#C9A962] mt-1">III.</span>
+                            <span>Keeps the pace focused on intellectual depth rather than breadth.</span>
+                        </li>
+                    </ul>
+                    <p class="text-xs text-[#9C8B7A] italic mt-8 border-t border-[#4A3F35] pt-4 inline-block">
+                        * Fictional persona illustrating the program's moderation style.
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div class="ornate-frame p-2 bg-[#251E19] w-full max-w-sm">
+                        <div class="arch-top overflow-hidden aspect-[3/4] bg-[#1C1714]">
+                            <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portrait of the class moderator" class="w-full h-full object-cover img-sepia" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornate-divider"></div>
+
+        <!-- Schedule Selection -->
+        <section id="schedule" class="max-w-4xl mx-auto w-full mb-16">
+            <div class="text-center mb-16 space-y-4">
+                <span class="font-display text-xs tracking-[0.25em] text-[#C9A962] uppercase">Enrollment</span>
+                <h2 class="text-4xl md:text-5xl">Select Class Schedule</h2>
+                <p class="text-[#9C8B7A]">Each cohort is limited to 12 participants to ensure discussion quality.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Option 1 -->
+                <div class="academia-card corner-flourish p-8 flex flex-col h-full relative group">
+                    <div class="mb-6 pb-6 border-b border-[#4A3F35]">
+                        <h3 class="font-display text-xl text-[#E8DFD4] tracking-widest uppercase mb-2">Thursday Evening</h3>
+                        <p class="text-[#C9A962] font-serif text-lg">19:30 - 21:30</p>
+                    </div>
+                    <div class="flex-grow space-y-4 mb-8 text-[#9C8B7A] text-sm">
+                        <p><strong>Content:</strong> Reading and analyzing non-fiction, sociology, and applied philosophy.</p>
+                        <p><strong>Prerequisite:</strong> Dedicate 2 hours per week to pre-reading materials.</p>
+                        <p><strong>Expected Start:</strong> First week of next month.</p>
+                    </div>
+                    <button class="btn-secondary w-full" onclick="alert('This is an illustrative preview. Scheduling functionality is not yet activated.')">View options</button>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="academia-card corner-flourish p-8 flex flex-col h-full relative group shadow-[inset_0_0_0_1px_rgba(201,169,98,0.5)]">
+                    <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full wax-seal flex items-center justify-center z-20" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#C9A962" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-[#4A3F35]">
+                        <h3 class="font-display text-xl text-[#E8DFD4] tracking-widest uppercase mb-2">Saturday Morning</h3>
+                        <p class="text-[#C9A962] font-serif text-lg">09:00 - 11:30</p>
+                    </div>
+                    <div class="flex-grow space-y-4 mb-8 text-[#9C8B7A] text-sm">
+                        <p><strong>Content:</strong> In-depth analysis of scientific papers, economic reports, and business arguments.</p>
+                        <p><strong>Prerequisite:</strong> Dedicate 3 hours to reading and note-taking before class.</p>
+                        <p><strong>Expected Start:</strong> Second week of next month.</p>
+                    </div>
+                    <button class="btn-primary w-full" onclick="alert('This is an illustrative preview. Scheduling functionality is not yet activated.')">View options</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-[#4A3F35] bg-[#1C1714] py-8 text-center text-sm text-[#9C8B7A] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>&copy; 2026 Read More Closely Project. Academia style interface.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showExplanation(type) {
+            const container = document.getElementById('explanation-container');
+            const correctDiv = document.getElementById('feedback-correct');
+            const wrongDiv = document.getElementById('feedback-wrong');
+            const sentences = document.querySelectorAll('.interactive-sentence');
+            
+            sentences.forEach(s => s.classList.remove('active'));
+            event.target.classList.add('active');
+            container.classList.add('expanded');
+            
+            if (type === 'correct') {
+                correctDiv.classList.remove('hidden');
+                wrongDiv.classList.add('hidden');
+            } else {
+                wrongDiv.classList.remove('hidden');
+                correctDiv.classList.add('hidden');
+            }
+        }
+
+        function resetExercise() {
+            const container = document.getElementById('explanation-container');
+            const correctDiv = document.getElementById('feedback-correct');
+            const wrongDiv = document.getElementById('feedback-wrong');
+            const sentences = document.querySelectorAll('.interactive-sentence');
+            
+            sentences.forEach(s => s.classList.remove('active'));
+            container.classList.remove('expanded');
+            
+            setTimeout(() => {
+                correctDiv.classList.add('hidden');
+                wrongDiv.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>

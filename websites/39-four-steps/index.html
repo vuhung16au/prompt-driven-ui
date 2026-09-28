@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy trình sửa nhà - Bốn bước rõ ràng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Bốn bước,<br>mỗi bước một điều rõ ràng.</h1>
+            <p class="lead">Xem một quy trình sửa nhà qua đầu vào, công việc và sản phẩm bàn giao từng giai đoạn.</p>
+            
+            <div class="actions">
+                <button id="btn-start" class="btn btn-primary">Xem bốn bước</button>
+                <button id="btn-view-all" class="btn btn-secondary">Xem toàn bộ quy trình</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="stack-container" id="stack-container">
+            <!-- Step 1 -->
+            <section class="step-card" style="--step-index: 0;" id="step-1">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">01</span>
+                        <h2>Khảo sát</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Đầu ra</h3>
+                        <p>Ảnh hiện trạng và phạm vi cần làm.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Checklist yêu cầu</h3>
+                        <form class="checklist" data-step="1">
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_1">
+                                <span class="check-box"></span>
+                                <span class="check-label">Khảo sát hiện trạng mặt bằng</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_2">
+                                <span class="check-box"></span>
+                                <span class="check-label">Đo đạc kích thước thực tế</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_3">
+                                <span class="check-box"></span>
+                                <span class="check-label">Chốt danh mục và phạm vi thi công</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Ảnh hiện trạng</div>
+                </div>
+            </section>
+
+            <!-- Step 2 -->
+            <section class="step-card" style="--step-index: 1;" id="step-2">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">02</span>
+                        <h2>Phần thô</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Đầu ra</h3>
+                        <p>Ảnh đường điện/nước và checklist, cùng công trình mẫu.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Checklist công việc</h3>
+                        <form class="checklist" data-step="2">
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_1">
+                                <span class="check-box"></span>
+                                <span class="check-label">Phá dỡ và xây trát tường ngăn</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_2">
+                                <span class="check-box"></span>
+                                <span class="check-label">Thi công đường ống cấp thoát nước</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_3">
+                                <span class="check-box"></span>
+                                <span class="check-label">Đi dây điện, cáp mạng âm tường</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Ảnh đường điện / nước</div>
+                </div>
+            </section>
+
+            <!-- Step 3 -->
+            <section class="step-card" style="--step-index: 2;" id="step-3">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">03</span>
+                        <h2>Hoàn thiện</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Đầu ra</h3>
+                        <p>Danh sách vật liệu và hạng mục chờ kiểm.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Checklist công việc</h3>
+                        <form class="checklist" data-step="3">
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_1">
+                                <span class="check-box"></span>
+                                <span class="check-label">Lát sàn, ốp gạch khu vực ướt</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_2">
+                                <span class="check-box"></span>
+                                <span class="check-label">Sơn bả trần tường</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_3">
+                                <span class="check-box"></span>
+                                <span class="check-label">Lắp đặt thiết bị vệ sinh, đèn chiếu sáng</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Ảnh sau hoàn thiện</div>
+                </div>
+            </section>
+
+            <!-- Step 4 -->
+            <section class="step-card" style="--step-index: 3;" id="step-4">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">04</span>
+                        <h2>Bàn giao</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Đầu ra</h3>
+                        <p>Biên bản bàn giao và công trình đã nghiệm thu.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Checklist bàn giao</h3>
+                        <form class="checklist" data-step="4">
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_1">
+                                <span class="check-box"></span>
+                                <span class="check-label">Vệ sinh công nghiệp toàn bộ công trình</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_2">
+                                <span class="check-box"></span>
+                                <span class="check-label">Kiểm tra vận hành thiết bị lần cuối</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_3">
+                                <span class="check-box"></span>
+                                <span class="check-label">Hướng dẫn sử dụng và bàn giao chìa khóa</span>
+                            </label>
+                        </form>
+                    </div>
+
+                    <div class="step-footer">
+                        <button class="btn btn-secondary btn-view-all-footer">Xem toàn quy trình</button>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Ảnh bàn giao công trình</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

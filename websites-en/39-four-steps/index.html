@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Renovation - Four Clear Steps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Four steps,<br>each step one clear thing.</h1>
+            <p class="lead">Explore a home renovation process through inputs, tasks, and deliverables at each stage.</p>
+            
+            <div class="actions">
+                <button id="btn-start" class="btn btn-primary">View Four Steps</button>
+                <button id="btn-view-all" class="btn btn-secondary">View Handover Checklist</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="stack-container" id="stack-container">
+            <!-- Step 1 -->
+            <section class="step-card" style="--step-index: 0;" id="step-1">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">01</span>
+                        <h2>Survey</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Deliverable</h3>
+                        <p>Current condition photos and scope of work.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Requirements Checklist</h3>
+                        <form class="checklist" data-step="1">
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_1_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Survey current site conditions</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_2_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Measure actual dimensions</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task1_3_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Finalize scope of work</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Current condition photos</div>
+                </div>
+            </section>
+
+            <!-- Step 2 -->
+            <section class="step-card" style="--step-index: 1;" id="step-2">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">02</span>
+                        <h2>Structural Rough-in</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Deliverable</h3>
+                        <p>Electrical/plumbing photos, checklist, and sample project reference.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Task Checklist</h3>
+                        <form class="checklist" data-step="2">
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_1_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Demolition and partition wall construction</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_2_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Plumbing and drainage installation</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task2_3_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">In-wall electrical wiring</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Electrical / Plumbing photos</div>
+                </div>
+            </section>
+
+            <!-- Step 3 -->
+            <section class="step-card" style="--step-index: 2;" id="step-3">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">03</span>
+                        <h2>Finishing</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Deliverable</h3>
+                        <p>Materials list and items awaiting inspection.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Task Checklist</h3>
+                        <form class="checklist" data-step="3">
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_1_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Floor and wall tiling in wet areas</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_2_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Ceiling and wall painting</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task3_3_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Sanitary and lighting installation</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Post-finishing photos</div>
+                </div>
+            </section>
+
+            <!-- Step 4 -->
+            <section class="step-card" style="--step-index: 3;" id="step-4">
+                <div class="step-content">
+                    <div class="step-header">
+                        <span class="step-number">04</span>
+                        <h2>Handover</h2>
+                    </div>
+                    
+                    <div class="deliverable">
+                        <h3>Deliverable</h3>
+                        <p>Handover protocol and accepted project.</p>
+                    </div>
+
+                    <div class="task-list">
+                        <h3>Handover Checklist</h3>
+                        <form class="checklist" data-step="4">
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_1_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Post-construction deep cleaning</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_2_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Final equipment operation test</span>
+                            </label>
+                            <label class="check-item">
+                                <input type="checkbox" name="task4_3_en">
+                                <span class="check-box"></span>
+                                <span class="check-label">Usage instructions and key handover</span>
+                            </label>
+                        </form>
+                    </div>
+
+                    <div class="step-footer">
+                        <button class="btn btn-secondary btn-view-all-footer">View Full Process</button>
+                    </div>
+                </div>
+                <div class="step-media">
+                    <div class="media-placeholder">Handover project photos</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

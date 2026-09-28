@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON 88 - Vaporwave Event</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="background-grid"></div>
+    <div class="floating-sun"></div>
+
+    <div class="page-content">
+        <!-- Hero / Poster -->
+        <header class="hero section-padding">
+            <div class="hero-top">
+                <div class="time-location">
+                    <p class="mono-text">> DATE: THỨ BẢY</p>
+                    <p class="mono-text">> TIME: 19:00 - 22:00</p>
+                </div>
+                <div class="time-location text-right">
+                    <p class="mono-text">> LOC: VIRTUAL DIMENSION</p>
+                    <p class="mono-text">> SECTOR: 88</p>
+                </div>
+            </div>
+            
+            <h1 class="hero-title">NEON 88<br><span class="hero-subtitle">bước vào một tối khác.</span></h1>
+            
+            <p class="lead-text">Một buổi nghe nhạc điện tử trong thế giới hoài niệm số.<br>Toàn bộ lịch và nhân vật trên trang là minh họa.</p>
+            
+            <div class="hero-actions">
+                <a href="#schedule" class="btn btn-primary">
+                    <span class="btn-inner">Xem chương trình</span>
+                </a>
+                <a href="#tickets" class="btn btn-secondary">
+                    <span class="btn-inner">Chọn suất minh họa</span>
+                </a>
+            </div>
+            
+            <!-- Stage Artwork Placeholder -->
+            <div class="stage-artwork">
+                <img src="https://via.placeholder.com/1200x500/1a103c/00FFFF?text=STAGE+ARTWORK" alt="Neon Stage" class="artwork-img">
+            </div>
+        </header>
+
+        <!-- Program / Schedule -->
+        <section id="schedule" class="section-padding schedule-section">
+            <h2 class="section-title">> CHƯƠNG TRÌNH</h2>
+            
+            <div class="schedule-container terminal-window">
+                <div class="window-chrome">
+                    <div class="window-dots">
+                        <span class="dot dot-magenta"></span>
+                        <span class="dot dot-cyan"></span>
+                        <span class="dot dot-orange"></span>
+                    </div>
+                    <div class="window-title">TIMELINE.EXE</div>
+                </div>
+                <div class="window-content schedule-layout">
+                    <div class="timeline">
+                        <button class="timeline-item active" data-time="19:00" data-title="Warm-up" data-desc="Khởi động nhẹ nhàng với những âm thanh synthwave hoài cổ.">
+                            <span class="time">19:00</span>
+                            <span class="title">Warm-up</span>
+                        </button>
+                        <button class="timeline-item" data-time="20:00" data-title="Neon Fields" data-desc="Đắm chìm vào không gian cyberpunk với nhịp điệu mạnh mẽ.">
+                            <span class="time">20:00</span>
+                            <span class="title">Neon Fields</span>
+                        </button>
+                        <button class="timeline-item" data-time="21:00" data-title="Afterimage" data-desc="Kết thúc đêm diễn với những giai điệu bay bổng, ảo ảnh dư âm.">
+                            <span class="time">21:00</span>
+                            <span class="title">Afterimage</span>
+                        </button>
+                    </div>
+                    <div class="schedule-details">
+                        <img id="schedule-img" src="https://via.placeholder.com/600x400/FF00FF/090014?text=WARM-UP" alt="Warm-up session">
+                        <h3 id="schedule-title" class="glow-cyan-text">Warm-up</h3>
+                        <p id="schedule-desc" class="mono-text">Khởi động nhẹ nhàng với những âm thanh synthwave hoài cổ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Space / Venue -->
+        <section class="section-padding space-section">
+            <h2 class="section-title">> KHÔNG GIAN</h2>
+            <div class="space-grid">
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/00FFFF?text=PANORAMA" alt="Toàn cảnh sân khấu">
+                    <h3 class="glow-cyan-text">Toàn cảnh</h3>
+                    <p class="mono-text">Góc nhìn bao quát không gian hoài niệm số.</p>
+                </div>
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/FF00FF?text=LISTENING+STATION" alt="Bàn nghe nhạc">
+                    <h3 class="glow-cyan-text">Bàn nghe</h3>
+                    <p class="mono-text">Khu vực trải nghiệm âm thanh cá nhân hóa.</p>
+                </div>
+                <div class="space-card standard-card">
+                    <img src="https://via.placeholder.com/400x300/1a103c/FF9900?text=LIGHTING" alt="Chi tiết ánh sáng">
+                    <h3 class="glow-cyan-text">Ánh sáng</h3>
+                    <p class="mono-text">Hệ thống đèn neon phản chiếu chiều không gian khác.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticket Selection -->
+        <section id="tickets" class="section-padding ticket-section">
+            <h2 class="section-title">> CHỌN SUẤT MINH HỌA</h2>
+            
+            <div class="ticket-window terminal-window outline-cyan">
+                <div class="window-chrome bg-cyan-10 border-cyan">
+                    <div class="window-dots">
+                        <span class="dot dot-magenta"></span>
+                        <span class="dot dot-cyan"></span>
+                        <span class="dot dot-orange"></span>
+                    </div>
+                    <div class="window-title text-cyan">TICKETS.BAT</div>
+                </div>
+                <div class="window-content p-6">
+                    <div class="ticket-options">
+                        <label class="ticket-option">
+                            <input type="radio" name="slot" value="standing">
+                            <div class="option-content standard-card">
+                                <h3>Chỗ đứng</h3>
+                                <p class="mono-text">Trải nghiệm tự do trong không gian</p>
+                            </div>
+                        </label>
+                        <label class="ticket-option">
+                            <input type="radio" name="slot" value="seated">
+                            <div class="option-content standard-card">
+                                <h3>Chỗ ngồi</h3>
+                                <p class="mono-text">Tầm nhìn hoàn hảo từ khu vực riêng</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="ticket-summary">
+                        <p id="ticket-status" class="mono-text text-magenta mt-4">> Chưa tạo vé hoặc giữ chỗ.</p>
+                        <button id="view-selection-btn" class="btn btn-primary mt-4" disabled>
+                            <span class="btn-inner">Xem lựa chọn</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section-padding faq-section">
+            <div class="file-explorer-window">
+                <div class="explorer-header">
+                    <span class="mono-text">C:\NEON88\INFO.TXT</span>
+                </div>
+                <div class="explorer-content p-6">
+                    <h2 class="section-title text-2xl mb-6">> THÔNG TIN TRƯỚC BUỔI NGHE</h2>
+                    
+                    <div class="faq-item mb-6">
+                        <h3 class="glow-cyan-text">Q: Giờ vào cửa như thế nào?</h3>
+                        <p class="mono-text">A: Mở cửa từ 18:30. Vui lòng đến sớm để ổn định chỗ.</p>
+                    </div>
+                    <div class="faq-item mb-6">
+                        <h3 class="glow-cyan-text">Q: Nội dung buổi nghe gồm những gì?</h3>
+                        <p class="mono-text">A: Ba phần chính với âm nhạc điện tử, synthwave và hình ảnh retro.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="glow-cyan-text">Q: Cách xem lịch mẫu?</h3>
+                        <p class="mono-text">A: Nhấn vào các mốc thời gian trên thanh Timeline để xem chi tiết từng tiết mục.</p>
+                    </div>
+                </div>
+                <div class="explorer-status">
+                    <span>STATUS: READY</span>
+                    <button id="toggle-effects-btn" class="btn btn-ghost btn-sm">
+                        [Tắt hiệu ứng]
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p class="mono-text">© 2088 NEON DIMENSION. END OF TRANSMISSION.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

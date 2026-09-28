@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ba Hình | Thực hành Bố cục Bauhaus</title>
+  <meta name="description" content="Thử quan hệ giữa hình tròn, vuông và tam giác trước khi bước vào một buổi thực hành bố cục Bauhaus nguyên bản.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-identity" aria-label="Ba Hình - Trang chủ">
+        <div class="brand-shapes" aria-hidden="true">
+          <span class="shape-icon circle"></span>
+          <span class="shape-icon square"></span>
+          <svg class="shape-icon triangle-svg" viewBox="0 0 100 100">
+            <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#121212" stroke-width="12" stroke-linejoin="miter" />
+          </svg>
+        </div>
+        <span class="brand-text">BA HÌNH</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Mở menu điều hướng">
+        MENU ☰
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Điều hướng chính">
+        <a href="#thu-nghiem" class="nav-link">Thử bố cục</a>
+        <a href="#chuong-trinh" class="nav-link">Chương trình</a>
+        <a href="#tac-pham" class="nav-link">Tác phẩm</a>
+        <a href="#dang-ky" class="nav-link">Chọn buổi mẫu</a>
+        <a href="#faq" class="nav-link">Hỏi đáp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- 1. Hero / Workshop Poster -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>●</span>
+          <span>Xưởng Bố cục Thực nghiệm • 180 Phút</span>
+        </div>
+        <h1 id="hero-heading" class="text-hero">
+          BA HÌNH.<br>NHIỀU<br>CÁCH NHÌN.
+        </h1>
+        <p class="hero-desc">
+          Thử quan hệ giữa hình tròn, vuông và tam giác trước khi bước vào một buổi thực hành bố cục.
+        </p>
+        <div class="hero-actions">
+          <a href="#thu-nghiem" class="btn btn-primary">Thử một bố cục</a>
+          <a href="#chuong-trinh" class="btn btn-outline">Xem quy trình</a>
+        </div>
+      </div>
+
+      <!-- Right Panel Poster Artwork -->
+      <div class="hero-poster-stage" aria-label="Minh họa bố cục hình học Bauhaus">
+        <div class="poster-shape-yellow-disc" aria-hidden="true"></div>
+        <div class="poster-shape-red-diamond" aria-hidden="true"></div>
+        <div class="poster-central-card">
+          <svg class="poster-inner-triangle" viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="50,15 15,85 85,85" fill="#121212" />
+          </svg>
+          <span class="poster-card-caption">BỐ CỤC 01</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Interactive Presets: Thử ba bố cục -->
+    <section id="thu-nghiem" class="presets-section" aria-labelledby="presets-title">
+      <div class="section-wrapper">
+        <h2 id="presets-title" class="section-title">Thử 3 Bố Cục</h2>
+
+        <div class="presets-container">
+          <!-- Preset Controls -->
+          <div class="preset-controls">
+            <button class="preset-btn active" data-preset="balanced" aria-pressed="true">
+              <div class="preset-title">
+                <span>1. Cân bằng</span>
+                <span aria-hidden="true">■</span>
+              </div>
+              <p class="preset-desc">Các khối hình nương tựa vào nhau quanh trục trung tâm, tạo cảm giác tĩnh tại.</p>
+            </button>
+
+            <button class="preset-btn" data-preset="off-center" aria-pressed="false">
+              <div class="preset-title">
+                <span>2. Lệch tâm</span>
+                <span aria-hidden="true">▲</span>
+              </div>
+              <p class="preset-desc">Dồn trọng lượng về một phía, tạo sức căng và hướng chuyển động thị giác.</p>
+            </button>
+
+            <button class="preset-btn" data-preset="rhythmic" aria-pressed="false">
+              <div class="preset-title">
+                <span>3. Nhịp lặp</span>
+                <span aria-hidden="true">●</span>
+              </div>
+              <p class="preset-desc">Tổ chức theo trật tự lưới song song, gợi sự tiếp diễn liên tục.</p>
+            </button>
+
+            <!-- Sub Action Controls -->
+            <div class="preset-sub-actions">
+              <button id="btn-reset-preset" class="btn btn-outline btn-reset">Đặt lại vị trí gốc</button>
+              <button id="btn-rotate-shapes" class="btn btn-outline btn-reset">Xoay góc khối vuông</button>
+            </div>
+          </div>
+
+          <!-- Preset Interactive Stage -->
+          <div class="canvas-card" aria-label="Bảng thử nghiệm bố cục tương tác">
+            <div class="canvas-header">
+              <span>Khung thử nghiệm hình học</span>
+              <span id="canvas-preset-name" class="canvas-status-badge">CÂN BẰNG</span>
+            </div>
+
+            <div class="canvas-viewport" id="canvas-viewport">
+              <div id="shape-circle" class="stage-shape" aria-label="Hình tròn xanh dương"></div>
+              <div id="shape-square" class="stage-shape" aria-label="Hình vuông đỏ"></div>
+              <div id="shape-triangle-wrapper" class="stage-shape" aria-label="Hình tam giác vàng">
+                <svg id="shape-triangle-svg" viewBox="0 0 100 100">
+                  <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#121212" stroke-width="5" stroke-linejoin="miter" />
+                </svg>
+              </div>
+            </div>
+
+            <div class="canvas-footer">
+              <p id="canvas-explanation" class="canvas-explanation">
+                Các khối hình nương tựa vào nhau quanh trục trung tâm, tạo cảm giác tĩnh tại và ổn định trường lực.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. What You Will Do (Asymmetric 2+1 layout) -->
+    <section id="chuong-trinh" class="activities-section" aria-labelledby="activities-title">
+      <div class="section-wrapper">
+        <h2 id="activities-title" class="section-title">Bạn sẽ làm gì</h2>
+
+        <div class="activities-grid">
+          <!-- Card 1 (Span 2) -->
+          <article class="activity-card span-2">
+            <div class="card-shape-accent circle" aria-hidden="true"></div>
+            <span class="activity-num">Giai đoạn 01</span>
+            <h3 class="activity-title">Quan sát và phân tích</h3>
+            <p class="activity-body">
+              Mổ xẻ các ấn phẩm Bauhaus kinh điển để hiểu cách không gian trống, khối lượng thị giác và phương hướng tạo nên cấu trúc thông điệp. Phân tích nguyên tắc cân bằng bất đối xứng và lý thuyết màu nguyên bản.
+            </p>
+            <div class="activity-materials">
+              Tập trung: Nguyên lý tỷ lệ vàng, đối trọng hình học, phân tích thị giác
+            </div>
+          </article>
+
+          <!-- Card 2 (Span 1) -->
+          <article class="activity-card">
+            <div class="card-shape-accent square" aria-hidden="true"></div>
+            <span class="activity-num">Giai đoạn 02</span>
+            <h3 class="activity-title">Cắt ghép tay</h3>
+            <p class="activity-body">
+              Rời khỏi màn hình máy tính. Sử dụng giấy mỹ thuật ba màu cơ bản, thước chữ T, kéo và hồ dán để trực tiếp cảm nhận độ nặng vật lý của từng mảng khối trên mặt phẳng A3.
+            </p>
+            <div class="activity-materials">
+              Vật liệu: Giấy thủ công 300gsm, kéo cắt, keo khô, thước đo góc
+            </div>
+          </article>
+
+          <!-- Card 3 (Span 3) -->
+          <article class="activity-card span-3">
+            <svg class="card-shape-accent triangle" viewBox="0 0 100 100" aria-hidden="true">
+              <polygon points="50,10 10,90 90,90" fill="#D02020" stroke="#121212" stroke-width="8" stroke-linejoin="miter"/>
+            </svg>
+            <span class="activity-num">Giai đoạn 03</span>
+            <h3 class="activity-title">So sánh và tinh chỉnh</h3>
+            <p class="activity-body">
+              Ghim các bản nháp cạnh nhau trên bảng kiểm tra ánh sáng. Thảo luận trực diện về sức căng thị giác, chỉnh sửa góc quay và vị trí để đạt điểm cân bằng thị giác tối ưu nhất.
+            </p>
+            <div class="activity-materials">
+              Sản phẩm mang về: Bộ 03 bản poster hình học kích thước A3 hoàn thiện do chính tay bạn tạo hình
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Practice Works (Four Original Compositions) -->
+    <section id="tac-pham" class="works-section" aria-labelledby="works-title">
+      <div class="section-wrapper">
+        <h2 id="works-title" class="section-title">Tác phẩm thực hành</h2>
+
+        <div class="works-grid">
+          <!-- Work 1: Lực nén -->
+          <article class="work-card" data-work-key="compression" tabindex="0" role="button" aria-label="Xem chi tiết tác phẩm Lực nén">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-compression-bar"></div>
+              <div class="comp-compression-circle"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Lực nén</h3>
+              <p class="work-caption">Sự chèn ép giữa mảng vuông sắc cạnh và khối tròn mềm mại.</p>
+              <button class="work-inspect-btn" type="button">Phân tích bố cục →</button>
+            </div>
+          </article>
+
+          <!-- Work 2: Lưỡi cắt -->
+          <article class="work-card" data-work-key="cutting-edge" tabindex="0" role="button" aria-label="Xem chi tiết tác phẩm Lưỡi cắt">
+            <div class="work-canvas" aria-hidden="true">
+              <svg class="comp-cutting-triangle" viewBox="0 0 100 100">
+                <polygon points="50,10 10,90 90,90" fill="#1040C0" stroke="#121212" stroke-width="5" stroke-linejoin="miter" />
+              </svg>
+              <div class="comp-cutting-ground"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Lưỡi cắt</h3>
+              <p class="work-caption">Mũi nhọn tam giác phá vỡ sự đặc tuyến của nền đen.</p>
+              <button class="work-inspect-btn" type="button">Phân tích bố cục →</button>
+            </div>
+          </article>
+
+          <!-- Work 3: Đồng tâm -->
+          <article class="work-card" data-work-key="concentric" tabindex="0" role="button" aria-label="Xem chi tiết tác phẩm Đồng tâm">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-corner-dot tl"></div>
+              <div class="comp-corner-dot tr"></div>
+              <div class="comp-corner-dot bl"></div>
+              <div class="comp-corner-dot br"></div>
+              <div class="comp-concentric-core"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Đồng tâm</h3>
+              <p class="work-caption">Sự tỏa ra từ khối trung tâm, được neo giữ bởi bốn điểm góc.</p>
+              <button class="work-inspect-btn" type="button">Phân tích bố cục →</button>
+            </div>
+          </article>
+
+          <!-- Work 4: Phân cực -->
+          <article class="work-card" data-work-key="polarity" tabindex="0" role="button" aria-label="Xem chi tiết tác phẩm Phân cực">
+            <div class="work-canvas" aria-hidden="true">
+              <div class="comp-polarity-left"></div>
+              <div class="comp-polarity-ring"></div>
+            </div>
+            <div class="work-info">
+              <h3 class="work-title">Phân cực</h3>
+              <p class="work-caption">Chia đôi khung hình bằng đặc và rỗng, đường thẳng và đường cong.</p>
+              <button class="work-inspect-btn" type="button">Phân tích bố cục →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Select Sample Session & Registration (Blue section) -->
+    <section id="dang-ky" class="sessions-section" aria-labelledby="sessions-title">
+      <div class="sessions-backdrop-circle" aria-hidden="true"></div>
+      <div class="sessions-backdrop-square" aria-hidden="true"></div>
+
+      <div class="section-wrapper">
+        <h2 id="sessions-title" class="section-title">Chọn buổi mẫu</h2>
+
+        <div class="sessions-grid">
+          <!-- Session Schedule Options -->
+          <div class="schedules-container" role="radiogroup" aria-labelledby="sessions-title">
+            <!-- Option 1 -->
+            <label class="schedule-option-card selected" data-session-label="Sáng Thứ Bảy, 09:00 - 12:00">
+              <input type="radio" name="session" class="schedule-radio" value="sat-morning" checked>
+              <div class="schedule-details">
+                <div class="schedule-title">Buổi 01: Sáng Thứ Bảy</div>
+                <div class="schedule-time">09:00 - 12:00 (180 phút)</div>
+                <p class="schedule-meta">Dữ liệu mẫu mô phỏng • Tập trung vào quan sát và cắt dán cơ bản.</p>
+              </div>
+            </label>
+
+            <!-- Option 2 -->
+            <label class="schedule-option-card" data-session-label="Chiều Chủ Nhật, 14:00 - 17:00">
+              <input type="radio" name="session" class="schedule-radio" value="sun-afternoon">
+              <div class="schedule-details">
+                <div class="schedule-title">Buổi 02: Chiều Chủ Nhật</div>
+                <div class="schedule-time">14:00 - 17:00 (180 phút)</div>
+                <p class="schedule-meta">Dữ liệu mẫu mô phỏng • Tập trung vào tinh chỉnh và phối hợp ba màu.</p>
+              </div>
+            </label>
+
+            <div style="background: rgba(18, 18, 18, 0.4); border: 2px solid #FFFFFF; padding: 1rem; color: #FFFFFF;">
+              <p style="font-size: 0.875rem; line-height: 1.5;">
+                <strong>Lưu ý xác thực:</strong> Không hiển thị "chỉ còn 3 chỗ" nếu không có số liệu thực tế. Biểu mẫu bên phải hoạt động trong phạm vi trình diễn mô phỏng.
+              </p>
+            </div>
+          </div>
+
+          <!-- Registration Form Panel -->
+          <div class="registration-panel">
+            <h3 class="form-panel-title">Thông tin đăng ký</h3>
+            <form id="workshop-registration-form" class="registration-form" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="form-selected-session">Buổi thực hành đã chọn</label>
+                <div id="form-selected-session" class="form-selected-pill">Sáng Thứ Bảy, 09:00 - 12:00</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-name">Họ và tên <span style="color: #D02020;">*</span></label>
+                <input type="text" id="reg-name" name="name" class="form-input" placeholder="Ví dụ: Nguyễn Văn An" required autocomplete="name">
+                <span id="reg-name-error" class="form-error-msg" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-email">Địa chỉ Email <span style="color: #D02020;">*</span></label>
+                <input type="email" id="reg-email" name="email" class="form-input" placeholder="ban@domain.com" required autocomplete="email">
+                <span id="reg-email-error" class="form-error-msg" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="reg-level">Kinh nghiệm bố cục (Tùy chọn)</label>
+                <select id="reg-level" name="level" class="form-select">
+                  <option value="beginner">Mới bắt đầu - Chưa từng học bố cục</option>
+                  <option value="intermediate">Đã có hiểu biết cơ bản về hình học</option>
+                  <option value="designer">Nhà thiết kế / Kiến trúc sư thực hành</option>
+                </select>
+              </div>
+
+              <p class="form-notice">
+                * Đây là chức năng thử nghiệm trong mẫu. Không phát sinh thanh toán hay lưu trữ dữ liệu riêng tư.
+              </p>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Xác nhận đăng ký mẫu
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Bauhaus Accordion (FAQ) -->
+    <section id="faq" class="faq-section" aria-labelledby="faq-title">
+      <div class="section-wrapper">
+        <h2 id="faq-title" class="section-title" style="text-align: center;">Hỏi đáp xưởng thực hành</h2>
+
+        <div class="accordion-list">
+          <!-- Item 1 -->
+          <div class="accordion-item is-open">
+            <button class="accordion-header" aria-expanded="true" aria-controls="faq-ans-1">
+              <span>Cần chuẩn bị dụng cụ gì trước buổi học không?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-1" class="accordion-content">
+              Toàn bộ vật liệu thực hành bao gồm giấy mỹ thuật 300gsm ba màu gốc (Đỏ, Vàng, Xanh dương), thước chữ T, kéo cắt chuyên dụng, bàn cắt tự liền và hồ dán đều được chuẩn bị sẵn tại bàn của mỗi học viên. Bạn chỉ cần mang theo sổ tay ghi chép nếu muốn.
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-2">
+              <span>Người chưa từng học mỹ thuật có tham gia được không?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-2" class="accordion-content">
+              Hoàn toàn phù hợp. Triết lý sơ khởi (Vorkurs) của trường Bauhaus bắt đầu từ việc tháo bỏ định kiến để cảm nhận hình học thuần khiết nhất. Chương trình được thiết kế từng bước từ cảm nhận tỷ lệ đến thực hành cắt dán tay, không đòi hỏi hoa tay hay kỹ năng vẽ trước đó.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-3">
+              <span>Sau 180 phút, sản phẩm cụ thể mang về là gì?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-3" class="accordion-content">
+              Bạn sẽ hoàn thiện và mang về 03 bản poster hình học kích thước A3 ép cứng trên bìa carton xám, cùng 01 bản tóm tắt nguyên tắc thị giác do bạn tự đúc kết qua quá trình ghim đối chiếu trên tường xưởng.
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-ans-4">
+              <span>Trang web này có phải là dịch vụ đặt vé thật không?</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="faq-ans-4" class="accordion-content">
+              Không. Trang web này là sản phẩm giao diện mô phỏng phong cách Bauhaus theo bộ đặc tả thiết kế, nhằm trình diễn bố cục hình học, tương tác chuyển đổi preset và tính tương thích trên mọi màn hình. Mọi thao tác form đều là bản xem trước mô phỏng.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detail Inspection Modal for Works -->
+  <div id="work-detail-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="work-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="work-modal-title" class="modal-title">Phân tích tác phẩm</h3>
+        <button id="work-modal-close-btn" class="modal-close-btn" aria-label="Đóng bảng phân tích">✕</button>
+      </div>
+      <div id="work-modal-body" class="modal-body">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="document.getElementById('work-detail-modal').classList.remove('active')" class="btn btn-outline" style="min-height: 40px; padding: 0.5rem 1.25rem;">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Feedback Modal -->
+  <div id="feedback-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="feedback-modal-title" class="modal-title">Xác nhận đăng ký mẫu</h3>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Đóng cửa sổ">✕</button>
+      </div>
+      <div id="modal-summary-content" class="modal-body">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="modal-footer">
+        <button id="modal-reset-btn" type="button" class="btn btn-outline" style="min-height: 40px; padding: 0.5rem 1.25rem;">Làm mới biểu mẫu</button>
+        <button type="button" onclick="document.getElementById('feedback-modal').classList.remove('active')" class="btn btn-primary" style="min-height: 40px; padding: 0.5rem 1.25rem;">Đã hiểu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-shapes" aria-hidden="true">
+            <span class="shape-icon circle"></span>
+            <span class="shape-icon square"></span>
+            <svg class="shape-icon triangle-svg" viewBox="0 0 100 100">
+              <polygon points="50,10 10,90 90,90" fill="#F0C020" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="miter" />
+            </svg>
+          </div>
+          <span class="brand-text">BA HÌNH</span>
+        </div>
+        <p class="footer-statement">
+          Triết lý kiến tạo hình học: Hình thức theo sau công năng. Sáng tạo từ ba màu cơ bản và ba hình thuần khiết.
+        </p>
+      </div>
+
+      <div class="footer-meta">
+        <div>
+          <span>© 2026 Ba Hình • Dự án thực nghiệm giao diện Bauhaus • Dữ liệu mô phỏng</span>
+        </div>
+        <button id="btn-back-to-top" class="btn-top" type="button">Về đầu trang ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

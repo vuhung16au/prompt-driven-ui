@@ -1,0 +1,13 @@
+body {
+            background-color: theme('colors.canvas');
+            color: theme('colors.primary');
+        }
+        /* Smooth fade-in on load */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
