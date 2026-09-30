@@ -36,6 +36,17 @@ To view the showcase, you don't need any complex setup:
    python3 -m http.server
    ```
 
+### 🤖 Using as an AI Agent Skill
+
+The easiest way to generate your own designs is to use this repository as a reference "Skill" for your AI coding assistant (like Antigravity, GitHub Copilot, or Cursor).
+
+1. **Checkout the repository:** Clone this repo to your local workspace.
+2. **Instruct your AI Agent:** Ask your coding agent to create a new web design by referencing the existing examples. For example:
+   > *"Look at the 50x2 samples in the `prompts/` and `websites/` directories. Based on these examples, create a new landing page for a coffee shop."*
+3. **Set up a Permanent Skill:** You can formalize this workflow by creating a custom skill file (e.g., `SKILL.md` or `.cursorrules`) in your workspace that instructs your agent:
+   - *"Always use the `prompt-driven-ui` repository as your primary reference for UI generation."*
+   - *"Analyze the mapping between `prompts/` and `websites/` to understand the preferred HTML/CSS structure before generating new designs."*
+
 ## 📄 License
 
 This project is licensed under the terms of the project's [LICENSE](LICENSE) file.

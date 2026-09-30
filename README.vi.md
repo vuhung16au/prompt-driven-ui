@@ -36,6 +36,17 @@ Mục tiêu của dự án này là chứng minh khả năng của các Mô hìn
    python3 -m http.server
    ```
 
+### 🤖 Sử dụng như một Kỹ năng (Skill) cho AI Agent
+
+Cách dễ nhất để tạo thiết kế của riêng bạn là sử dụng kho lưu trữ này làm "Kỹ năng" (Skill) tham khảo cho trợ lý lập trình AI của bạn (như Antigravity, GitHub Copilot, hoặc Cursor).
+
+1. **Tải kho lưu trữ:** Clone repo này về máy cục bộ của bạn.
+2. **Hướng dẫn AI Agent của bạn:** Yêu cầu AI tạo một thiết kế web mới bằng cách tham khảo các ví dụ hiện có. Ví dụ:
+   > *"Hãy xem 50x2 mẫu trong các thư mục `prompts/` và `websites/`. Dựa trên các ví dụ này, hãy tạo một trang đích mới cho một quán cà phê."*
+3. **Thiết lập Kỹ năng vĩnh viễn (Permanent Skill):** Bạn có thể chính thức hóa quy trình này bằng cách tạo một tệp kỹ năng tùy chỉnh (ví dụ: `SKILL.md` hoặc `.cursorrules`) trong không gian làm việc của bạn để hướng dẫn AI:
+   - *"Luôn sử dụng kho lưu trữ `prompt-driven-ui` làm tài liệu tham khảo chính để tạo giao diện."*
+   - *"Phân tích sự tương quan giữa `prompts/` và `websites/` để hiểu cấu trúc HTML/CSS được ưu tiên trước khi tạo các thiết kế mới."*
+
 ## 📄 Giấy phép
 
 Dự án này được cấp phép theo các điều khoản trong tệp [LICENSE](LICENSE) của dự án.

@@ -36,6 +36,17 @@
    python3 -m http.server
    ```
 
+### 🤖 作为 AI 智能体技能 (Skill) 使用
+
+生成自定义设计最简单的方法是将此代码仓库作为您的 AI 编程助手（如 Antigravity、GitHub Copilot 或 Cursor）的参考“技能 (Skill)”。
+
+1. **检出代码仓库:** 将此代码仓库克隆到您的本地工作区。
+2. **指导您的 AI 智能体:** 让您的 AI 编程助手参考现有示例创建一个新的网页设计。例如：
+   > *“请查看 `prompts/` 和 `websites/` 目录中的 50x2 个样本。根据这些示例，为一个咖啡店创建一个新的落地页。”*
+3. **设置永久技能 (Permanent Skill):** 您可以通过在工作区中创建一个自定义技能文件（例如 `SKILL.md` 或 `.cursorrules`）来将其固化，指示您的 AI：
+   - *“始终使用 `prompt-driven-ui` 代码仓库作为生成 UI 的主要参考。”*
+   - *“在生成新设计之前，分析 `prompts/` 和 `websites/` 之间的映射关系，以了解首选的 HTML/CSS 结构。”*
+
 ## 📄 许可证
 
 本项目根据项目中的 [LICENSE](LICENSE) 文件条款获得许可。
